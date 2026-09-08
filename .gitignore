@@ -1,0 +1,34 @@
+# Sistemas de terceros con ciclo de vida propio (no se despliegan desde este repo)
+/moodle30/
+/tickets_15agosto/
+
+# Copias antiguas / entornos de prueba que no deben pasar al repo limpio
+/V1/
+/TEST/
+/Trident/
+/Version/
+/Spartan_prod/
+
+# Logs
+error_log
+*.log
+
+# Configuración con credenciales reales (nunca al repo, solo vive en el servidor y en local)
+/controler/config.local.php
+/controler/conexion.local.php
+/miperfil/controlador/conexion.local.php
+
+# Script de depuración con vulnerabilidad crítica (backdoor de reseteo de clave)
+# -- ver hallazgo de auditoría. Excluido del repo; pendiente eliminarlo
+# también manualmente del hosting real (cPanel) cuanto antes.
+/sesiones/review.php
+
+# Documentos subidos por socios/usuarios (datos personales, no van al repo)
+/documentos/*
+!/documentos/.gitkeep
+/miperfil/documentos/*
+!/miperfil/documentos/.gitkeep
+
+# Archivos de sistema/temporales
+Thumbs.db
+.DS_Store

@@ -1,0 +1,34 @@
+name: Desplegar a cPanel
+
+# main -> sitio real (public_html)
+# staging -> sitio de pruebas (beta.cooperativa15deagosto.fin.ec)
+on:
+  push:
+    branches:
+      - main
+      - staging
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Determinar repositorio destino en cPanel
+        id: target
+        run: |
+          if [ "${{ github.ref_name }}" = "main" ]; then
+            echo "repo_root=${{ secrets.CPANEL_REPO_PROD }}" >> "$GITHUB_OUTPUT"
+          else
+            echo "repo_root=${{ secrets.CPANEL_REPO_STAGING }}" >> "$GITHUB_OUTPUT"
+          fi
+
+      - name: Actualizar repo en cPanel (git pull)
+        run: |
+          curl -s -X POST \
+            -H "Authorization: cpanel ${{ secrets.CPANEL_USER }}:${{ secrets.CPANEL_API_TOKEN }}" \
+            "https://${{ secrets.CPANEL_HOST }}:2083/execute/VersionControl/update?repository_root=${{ steps.target.outputs.repo_root }}"
+
+      - name: Desplegar (correr .cpanel.yml)
+        run: |
+          curl -s -X POST \
+            -H "Authorization: cpanel ${{ secrets.CPANEL_USER }}:${{ secrets.CPANEL_API_TOKEN }}" \
+            "https://${{ secrets.CPANEL_HOST }}:2083/execute/VersionControl/deploy?repository_root=${{ steps.target.outputs.repo_root }}"
