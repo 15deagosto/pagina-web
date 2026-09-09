@@ -23,6 +23,19 @@
 * { box-sizing: border-box; }
 
 html { overflow-x: hidden; }
+/* Widget viejo "volver arriba" -- sin su JS original ya no funciona, se oculta */
+.v2 .paginacontainer, .v2 .preloader { display: none !important; }
+/* Imagen decorativa de las cabeceras internas -- tenía posición absoluta
+   calculada para el layout viejo; se reacomoda para que no se monte
+   sobre el menú. */
+.v2 .slider_image.margin_extra {
+  position: static !important;
+  margin: -60px 0 0 0 !important;
+  text-align: center !important;
+}
+.v2 .slider_image.margin_extra img { max-width: 220px !important; margin: 0 auto; }
+.v2 .inner-pages-section-area { position: relative; overflow: hidden; padding: 48px 0; }
+.v2 .image_column { display: flex; align-items: flex-end; justify-content: center; }
 body.v2 {
   margin: 0;
   overflow-x: hidden;

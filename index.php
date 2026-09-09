@@ -62,7 +62,7 @@ if ($slider) {
     </head>
     <body class="v2 bg-white text-neutral-800">
 
-        <?php include 'header-v2.php'; ?>
+        <?php include 'header.php'; ?>
 
         <!-- ===== HERO: carrusel real + glassmorphism ===== -->
         <section class="relative overflow-hidden bg-gradient-to-br from-rojo via-rojo to-rojo-dark text-white">
@@ -168,7 +168,7 @@ if ($slider) {
             <i class="fab fa-whatsapp"></i>
         </a>
 
-        <?php include './footer-v2.php' ?>
+        <?php include './footer.php' ?>
 
         <script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.1/aos.js"></script>
         <script src="assets/js/site-v2.js"></script>

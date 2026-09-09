@@ -19,23 +19,9 @@ $fnindex = new Fn_index();
         <!--=====FAB ICON=======-->
         <link rel="shortcut icon" href="assets/img/favicon-coop.png" type="image/x-icon">
 
-        <!--===== CSS LINK =======-->
-        <link rel="stylesheet" href="assets/css/plugins/bootstrap.min.css">
-        <link rel="stylesheet" href="assets/css/plugins/aos.css">
-        <link rel="stylesheet" href="assets/css/plugins/fontawesome.css">
-        <link rel="stylesheet" href="assets/css/plugins/magnific-popup.css">
-        <link rel="stylesheet" href="assets/css/plugins/owlcarousel.min.css">
-        <link rel="stylesheet" href="assets/css/plugins/sidebar.css">
-        <link rel="stylesheet" href="assets/css/plugins/slick-slider.css">
-        <link rel="stylesheet" href="assets/css/plugins/nice-select.css">
-        <link rel="stylesheet" href="assets/css/plugins/swiper-bundle.css">
-        <link rel="stylesheet" href="assets/css/main.css">
-        <link rel="stylesheet" href="assets/css/custom.css">
-
-        <!--=====  JS SCRIPT LINK =======-->
-        <script src="assets/js/plugins/jquery-3-7-1.min.js"></script>
+        <?php include "head-v2.php"; ?>
     </head>
-    <body>
+    <body class="v2">
 
         <!--===== PRELOADER STARTS =======-->
         <div class="preloader">
@@ -60,47 +46,7 @@ $fnindex = new Fn_index();
         </header>
         <!--=====HEADER END =======-->
 
-        <!--===== MOBILE HEADER STARTS =======-->
-        <div class="homepage2-body">
-            <div class="vl-offcanvas">
-                <div class="vl-offcanvas-wrapper">
-                    <div class="vl-offcanvas-header d-flex justify-content-between align-items-center mb-90">
-                        <div class="vl-offcanvas-logo">
-                            <a href="index-2.html"><img src="assets/img/logo/logo1.png" alt=""></a>
-                        </div>
-                        <div class="vl-offcanvas-close">
-                            <button class="vl-offcanvas-close-toggle"><i class="fa-solid fa-xmark"></i></button>
-                        </div>
-                    </div>
-
-                    <div class="vl-offcanvas-menu d-lg-none mb-40">
-                        <nav></nav>
-                    </div>
-
-                    <div class="space20"></div>
-                    <div class="vl-offcanvas-info">
-                        <h3 class="vl-offcanvas-sm-title">Contact Us</h3>
-                        <div class="space20"></div>
-                        <span><a href="#"> <i class="fa-regular fa-envelope"></i> +57 9954 6476</a></span>
-                        <span><a href="#"><i class="fa-solid fa-phone"></i> hello@exdos.com</a></span>
-                        <span><a href="#"><i class="fa-solid fa-location-dot"></i> Bhemeara,Kushtia</a></span>
-                    </div>
-                    <div class="space20"></div>
-                    <div class="vl-offcanvas-social">
-                        <h3 class="vl-offcanvas-sm-title">Follow Us</h3>
-                        <div class="space20"></div>
-                        <a href="#"><i class="fab fa-facebook-f"></i></a>
-                        <a href="#"><i class="fab fa-twitter"></i></a>
-                        <a href="#"><i class="fab fa-linkedin-in"></i></a>
-                        <a href="#"><i class="fab fa-instagram"></i></a>
-                    </div>
-
-                </div>
-            </div>
-            <div class="vl-offcanvas-overlay"></div>
-        </div>
-        <!--===== MOBILE HEADER STARTS =======-->
-
+        
         <!--===== HERO AREA STARTS =======-->
         <div class="inner-pages-section-area" style="background-image: url(assets/img/all-images/bg/bg-header-002.png); background-position: center; background-repeat: no-repeat; background-size: cover;">
             <div class="container">
@@ -158,24 +104,6 @@ $fnindex = new Fn_index();
         </div>
         <!--===== FOOTER AREA ENDS =======-->
 
-        <!--===== JS SCRIPT LINK =======-->
-        <script src="assets/js/plugins/bootstrap.min.js"></script>
-        <script src="assets/js/plugins/fontawesome.js"></script>
-        <script src="assets/js/plugins/aos.js"></script>
-        <script src="assets/js/plugins/counter.js"></script>
-        <script src="assets/js/plugins/gsap.min.js"></script>
-        <script src="assets/js/plugins/ScrollTrigger.min.js"></script>
-        <script src="assets/js/plugins/Splitetext.js"></script>
-        <script src="assets/js/plugins/SmoothScroll.js"></script>
-        <script src="assets/js/plugins/sidebar.js"></script>
-        <script src="assets/js/plugins/magnific-popup.js"></script>
-        <script src="assets/js/plugins/mobilemenu.js"></script>
-        <script src="assets/js/plugins/owlcarousel.min.js"></script>
-        <script src="assets/js/plugins/nice-select.js"></script>
-        <script src="assets/js/plugins/waypoints.js"></script>
-        <script src="assets/js/plugins/slick-slider.js"></script>
-        <script src="assets/js/plugins/circle-progress.js"></script>
-        <script src="assets/js/plugins/swiper.js"></script>
-        <script src="assets/js/main.js"></script>
-    </body>
+        <?php include "scripts-v2.php"; ?>
+</body>
 </html>

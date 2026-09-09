@@ -1,16 +1,6 @@
 <?php
+require_once './funciones/fn-utilidades.php';
 $textnosotros = $fnindex->fnindex_rtextosxtipo(5);
-
-// Corrige texto guardado con doble codificación UTF-8 (bug histórico de la BD,
-// no del código nuevo) sin tocar los datos originales.
-function arreglar_mojibake($texto) {
-    $mapa = array(
-        'ÃÂ¡' => 'á', 'ÃÂ©' => 'é', 'ÃÂ­' => 'í', 'ÃÂ³' => 'ó', 'ÃÂº' => 'ú', 'ÃÂ±' => 'ñ',
-        'Ã¡' => 'á', 'Ã©' => 'é', 'Ã­' => 'í', 'Ã³' => 'ó', 'Ãº' => 'ú', 'Ã±' => 'ñ',
-        'Â ' => ' ', 'Â' => '',
-    );
-    return preg_replace('/\s{2,}/', ' ', strtr($texto, $mapa));
-}
 ?>
 <div class="max-w-7xl mx-auto px-6">
     <div class="text-rojo font-bold uppercase text-xs tracking-widest mb-2 flex items-center gap-2" data-aos="fade-up">

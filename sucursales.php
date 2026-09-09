@@ -21,34 +21,9 @@ $detagenciamatriz = $fnindex->fnindex_rnosotros_id(64);
         <!--=====FAB ICON=======-->
         <link rel="shortcut icon" href="assets/img/favicon-coop.png" type="image/x-icon">
 
-        <!--===== CSS LINK =======-->
-        <link rel="stylesheet" href="assets/css/plugins/bootstrap.min.css">
-        <link rel="stylesheet" href="assets/css/plugins/aos.css">
-        <link rel="stylesheet" href="assets/css/plugins/fontawesome.css">
-        <link rel="stylesheet" href="assets/css/plugins/magnific-popup.css">
-        <link rel="stylesheet" href="assets/css/plugins/owlcarousel.min.css">
-        <link rel="stylesheet" href="assets/css/plugins/sidebar.css">
-        <link rel="stylesheet" href="assets/css/plugins/slick-slider.css">
-        <link rel="stylesheet" href="assets/css/plugins/nice-select.css">
-        <link rel="stylesheet" href="assets/css/plugins/swiper-bundle.css">
-        <link rel="stylesheet" href="assets/css/main.css">
-        <link rel="stylesheet" href="assets/css/custom.css">
-        <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin="">
-        <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin=""></script>
-
-        <!--=====  JS SCRIPT LINK =======-->
-        <style>
-            #map {
-                height: 65vh;
-            }
-            /* Estilo plateado para el mapa (afecta al fondo y capas) */
-            .leaflet-tile {
-                filter: grayscale(100%) brightness(1.2) contrast(1.1);
-            }
-        </style>
-        <script src="assets/js/plugins/jquery-3-7-1.min.js"></script>
+        <?php include "head-v2.php"; ?>
     </head>
-    <body>
+    <body class="v2">
 
         <!--===== PRELOADER STARTS =======-->
         <div class="preloader">
@@ -73,47 +48,7 @@ $detagenciamatriz = $fnindex->fnindex_rnosotros_id(64);
         </header>
         <!--=====HEADER END =======-->
 
-        <!--===== MOBILE HEADER STARTS =======-->
-        <div class="homepage2-body">
-            <div class="vl-offcanvas">
-                <div class="vl-offcanvas-wrapper">
-                    <div class="vl-offcanvas-header d-flex justify-content-between align-items-center mb-90">
-                        <div class="vl-offcanvas-logo">
-                            <a href="index-2.html"><img src="assets/img/logo/logo1.png" alt=""></a>
-                        </div>
-                        <div class="vl-offcanvas-close">
-                            <button class="vl-offcanvas-close-toggle"><i class="fa-solid fa-xmark"></i></button>
-                        </div>
-                    </div>
-
-                    <div class="vl-offcanvas-menu d-lg-none mb-40">
-                        <nav></nav>
-                    </div>
-
-                    <div class="space20"></div>
-                    <div class="vl-offcanvas-info">
-                        <h3 class="vl-offcanvas-sm-title">Contact Us</h3>
-                        <div class="space20"></div>
-                        <span><a href="#"> <i class="fa-regular fa-envelope"></i> +57 9954 6476</a></span>
-                        <span><a href="#"><i class="fa-solid fa-phone"></i> hello@exdos.com</a></span>
-                        <span><a href="#"><i class="fa-solid fa-location-dot"></i> Bhemeara,Kushtia</a></span>
-                    </div>
-                    <div class="space20"></div>
-                    <div class="vl-offcanvas-social">
-                        <h3 class="vl-offcanvas-sm-title">Follow Us</h3>
-                        <div class="space20"></div>
-                        <a href="#"><i class="fab fa-facebook-f"></i></a>
-                        <a href="#"><i class="fab fa-twitter"></i></a>
-                        <a href="#"><i class="fab fa-linkedin-in"></i></a>
-                        <a href="#"><i class="fab fa-instagram"></i></a>
-                    </div>
-
-                </div>
-            </div>
-            <div class="vl-offcanvas-overlay"></div>
-        </div>
-        <!--===== MOBILE HEADER STARTS =======-->
-
+        
         <!--===== HERO AREA STARTS =======-->
         <div class="inner-pages-section-area" style="background-image: url(assets/img/banner-agencias.jpg); background-position: center; background-repeat: no-repeat; background-size: cover;">
             <div class="container">
@@ -191,53 +126,6 @@ $detagenciamatriz = $fnindex->fnindex_rnosotros_id(64);
         </div>
         <!--===== FOOTER AREA ENDS =======-->
 
-        <!--===== JS SCRIPT LINK =======-->
-        <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
-        <script src="assets/js/plugins/bootstrap.min.js"></script>
-        <script src="assets/js/plugins/fontawesome.js"></script>
-        <script src="assets/js/plugins/aos.js"></script>
-        <script src="assets/js/plugins/counter.js"></script>
-        <script src="assets/js/plugins/gsap.min.js"></script>
-        <script src="assets/js/plugins/ScrollTrigger.min.js"></script>
-        <script src="assets/js/plugins/Splitetext.js"></script>
-        <script src="assets/js/plugins/SmoothScroll.js"></script>
-        <script src="assets/js/plugins/sidebar.js"></script>
-        <script src="assets/js/plugins/magnific-popup.js"></script>
-        <script src="assets/js/plugins/mobilemenu.js"></script>
-        <script src="assets/js/plugins/owlcarousel.min.js"></script>
-        <script src="assets/js/plugins/nice-select.js"></script>
-        <script src="assets/js/plugins/waypoints.js"></script>
-        <script src="assets/js/plugins/slick-slider.js"></script>
-        <script src="assets/js/plugins/circle-progress.js"></script>
-        <script src="assets/js/plugins/swiper.js"></script>
-        <script src="assets/js/main.js"></script>
-        <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin=""></script>
-        <script>
-            const cities = L.layerGroup();
-<?php
-$indice = 1;
-?>
-            // Crear un mapa centrado en una ubicación específica
-            var map = L.map('map').setView([<?php echo $detagenciamatriz[0]['x_nosotros'] ?>, <?php echo $detagenciamatriz[0]['y_nosotros'] ?>], 13);
-            // Añadir una capa de mapa base de OpenStreetMap
-            L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-                attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
-            }).addTo(map);
-            // Agregar un marcador en una ubicación específica
-            var marker = L.marker([<?php echo $detagenciamatriz[0]['x_nosotros'] ?>, <?php echo $detagenciamatriz[0]['y_nosotros'] ?>]).addTo(map);
-            marker.bindPopup("<b><?php echo $detagenciamatriz[0]['nombre_nosotros'] ?></b><br><?php echo $detagenciamatriz[0]['direccion_nosotros'] ?>").openPopup();
-                function jsindex_009(dato0, dato1, dato2, dato3, dato4, dato5) {
-                    var lat = dato2; // Latitud deseada (Ej: Nueva York)
-                    var lng = dato3; // Longitud deseada (Ej: Nueva York)
-                    map.flyTo([lat, lng], 13, {
-                        animate: true,
-                        duration: 2 // Duración en segundos
-                    });
-                    L.marker([lat, lng]).addTo(map).bindPopup('<b>'+dato4+'</b><br>'+dato5).openPopup();
-                    $.post("consulta/cn-index.php", {dato_0: dato0, dato_1: dato1}, function (data) {
-                        $("#i_dirnosotros").html(data);
-                    });
-                }
-        </script>
-    </body>
+        <?php include "scripts-v2.php"; ?>
+</body>
 </html>
