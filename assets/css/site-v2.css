@@ -22,8 +22,10 @@
 
 * { box-sizing: border-box; }
 
+html { overflow-x: hidden; }
 body.v2 {
   margin: 0;
+  overflow-x: hidden;
   font-family: var(--fuente);
   color: var(--texto);
   background: var(--fondo);
@@ -154,23 +156,23 @@ body.v2 {
 @media (max-width: 991px) {
   .v2-menu { display: none; }
   .v2-burger { display: block; }
+  .v2-nav-actions .v2-btn--primario { display: none; }
 }
 
 /* ---------- Menú móvil (offcanvas) ---------- */
 .v2-offcanvas {
   position: fixed;
-  top: 0; right: 0;
+  top: 0; right: -100%;
   width: min(320px, 85vw);
   height: 100%;
   background: #fff;
   z-index: 100;
-  transform: translateX(100%);
-  transition: transform .25s ease;
+  transition: right .25s ease;
   box-shadow: -10px 0 30px rgba(0,0,0,.15);
   padding: 24px;
   overflow-y: auto;
 }
-.v2-offcanvas.abierto { transform: translateX(0); }
+.v2-offcanvas.abierto { right: 0; }
 .v2-offcanvas-overlay {
   position: fixed; inset: 0; background: rgba(20,15,14,.5);
   z-index: 99; display: none;
@@ -203,7 +205,7 @@ body.v2 {
 .v2-hero-acciones .v2-btn--fantasma { color: #fff; border-color: rgba(255,255,255,.6); }
 .v2-hero-acciones .v2-btn--fantasma:hover { background: rgba(255,255,255,.12); }
 .v2-hero-img { position: relative; }
-.v2-hero-img img { border-radius: 20px; box-shadow: 0 24px 50px rgba(0,0,0,.35); }
+.v2-hero-img img { width: 100%; max-height: 420px; object-fit: contain; border-radius: 20px; box-shadow: 0 24px 50px rgba(0,0,0,.35); background:#fff; }
 
 @media (max-width: 900px) {
   .v2-hero .v2-container { grid-template-columns: 1fr; text-align: center; padding-top: 48px; padding-bottom: 48px; }
@@ -258,16 +260,16 @@ body.v2 {
    reemplaza lo esencial de Bootstrap sin cargar el framework completo. ---------- */
 .v2 .container { max-width: var(--max-ancho); margin: 0 auto; padding: 0 24px; }
 .v2 .row { display: flex; flex-wrap: wrap; margin: 0 -12px; }
-.v2 .row > [class*="col-"] { padding: 0 12px; width: 100%; }
+.row > [class*="col-"] { padding: 0 12px; width: 100%; }
 @media (min-width: 768px) {
-  .v2 .col-md-6 { width: 50%; }
+  .row > .col-md-6 { width: 50%; }
 }
 @media (min-width: 992px) {
-  .v2 .col-lg-3 { width: 25%; }
-  .v2 .col-lg-4 { width: 33.3333%; }
-  .v2 .col-lg-6 { width: 50%; }
-  .v2 .col-lg-8 { width: 66.6666%; }
-  .v2 .col-lg-12 { width: 100%; }
+  .row > .col-lg-3 { width: 25%; }
+  .row > .col-lg-4 { width: 33.3333%; }
+  .row > .col-lg-6 { width: 50%; }
+  .row > .col-lg-8 { width: 66.6666%; }
+  .row > .col-lg-12 { width: 100%; }
   .v2 .m-auto { margin-left: auto; margin-right: auto; }
 }
 .v2 [class^="space"] { display: block; }
@@ -305,6 +307,65 @@ body.v2 {
 }
 .v2 .vl-btn1:hover { background: var(--rojo-oscuro); }
 .v2 .maps-area img { border-radius: var(--radio); }
+
+/* ---------- Disciplina de imágenes: todo visual va en un marco
+   de proporción fija, nunca "a lo que salga" ---------- */
+.v2-media-frame {
+  position: relative;
+  border-radius: var(--radio);
+  overflow: hidden;
+  box-shadow: var(--sombra);
+  aspect-ratio: 4 / 3;
+  background: var(--fondo-calido);
+}
+.v2-media-frame--tall { aspect-ratio: 3 / 4; }
+.v2-media-frame--wide { aspect-ratio: 16 / 9; }
+.v2-media-frame img {
+  width: 100%; height: 100%;
+  object-fit: cover;
+  transition: transform .5s ease;
+}
+.v2-media-frame:hover img { transform: scale(1.04); }
+
+.v2-resultado { margin-top: 18px; }
+.v2-resultado:empty { display: none; }
+
+/* ---------- Micro-interacciones ---------- */
+html { scroll-behavior: smooth; }
+.v2-menu > li > a {
+  position: relative;
+}
+.v2-menu > li > a::after {
+  content: "";
+  position: absolute; left: 0; bottom: 0;
+  width: 0; height: 2px; background: var(--rojo);
+  transition: width .25s ease;
+}
+.v2-menu > li > a:hover::after { width: 100%; }
+
+.v2-card-icono { transition: transform .3s ease, background .3s ease; }
+.v2-card:hover .v2-card-icono { transform: scale(1.1) rotate(-4deg); background: var(--rojo); }
+.v2-card:hover .v2-card-icono img { filter: brightness(0) invert(1); }
+
+@keyframes v2-entrada {
+  from { opacity: 0; transform: translateY(24px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+.v2-hero h1 { animation: v2-entrada .7s ease both; }
+.v2-hero p { animation: v2-entrada .7s ease .1s both; }
+.v2-hero-acciones { animation: v2-entrada .7s ease .2s both; }
+.v2-hero-img { animation: v2-entrada .8s ease .15s both; }
+
+/* ---------- Responsive: ajustes finos adicionales ---------- */
+@media (max-width: 640px) {
+  .v2-container { padding: 0 18px; }
+  .v2-section { padding: 48px 0; }
+  .v2-topbar .v2-container { justify-content: center; text-align: center; }
+  .v2-hero .v2-container { padding-top: 36px; padding-bottom: 36px; }
+  .v2-card { padding: 24px 20px; }
+  .v2-footer-grid { grid-template-columns: 1fr; text-align: center; }
+  .v2-footer-bottom { flex-direction: column; text-align: center; }
+}
 
 /* ---------- WhatsApp flotante ---------- */
 .v2-whatsapp {

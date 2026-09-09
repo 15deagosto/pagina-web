@@ -32,8 +32,8 @@ function arreglar_mojibake($texto) {
                 </div>-->
                 <br>
                 <div class="images-area">
-                    <div class="img1  image-anime reveal">
-                        <img src="assets/img/img-servicios-05.jpg" alt="">
+                    <div class="v2-media-frame v2-media-frame--tall v2-reveal">
+                        <img src="assets/img/img-servicios-05.jpg" alt="Agencia Cooperativa 15 de Agosto">
                     </div>
                 </div>
             </div>

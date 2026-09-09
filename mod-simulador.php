@@ -2,8 +2,8 @@
 <div class="container contact-inner-area">
     <div class="row">
         <div class="col-lg-6">
-            <div class="maps-area">
-                <img src="assets/img/img-simuladores.jpg">
+            <div class="v2-media-frame v2-media-frame--tall v2-reveal">
+                <img src="assets/img/img-simuladores.jpg" alt="Simulador de crédito">
             </div>
         </div>
 
@@ -62,10 +62,11 @@
                         <div class="col-lg-12" style="margin-bottom: 5px;">
                             <div class="space16"></div>
                             <div class="input-area">
-                                <button onclick="abrirModal()"  type="button" class="vl-btn1" style="font-size: 20px;">CALCULAR AHORA</button>
+                                <button onclick="calcularcredito()" type="button" class="vl-btn1" style="font-size: 20px;">CALCULAR AHORA</button>
                             </div>
                         </div>
                     </form>
+                    <div id="resultado" class="v2-resultado"></div>
                 </div>
             </div>
         </div>
