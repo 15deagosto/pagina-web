@@ -1,5 +1,16 @@
 <?php
 $textnosotros = $fnindex->fnindex_rtextosxtipo(5);
+
+// Corrige texto guardado con doble codificación UTF-8 (bug histórico de la BD,
+// no del código nuevo) sin tocar los datos originales.
+function arreglar_mojibake($texto) {
+    $mapa = array(
+        'ÃÂ¡' => 'á', 'ÃÂ©' => 'é', 'ÃÂ­' => 'í', 'ÃÂ³' => 'ó', 'ÃÂº' => 'ú', 'ÃÂ±' => 'ñ',
+        'Ã¡' => 'á', 'Ã©' => 'é', 'Ã­' => 'í', 'Ã³' => 'ó', 'Ãº' => 'ú', 'Ã±' => 'ñ',
+        'Â ' => ' ', 'Â' => '',
+    );
+    return preg_replace('/\s{2,}/', ' ', strtr($texto, $mapa));
+}
 ?>
 <div class="container">
     <div class="row">
@@ -39,7 +50,7 @@ $textnosotros = $fnindex->fnindex_rtextosxtipo(5);
                         <div class="text">
                             <a href="#" style="font-size: 24px;color:#000;">Misión</a>
                             <div class="space16"></div>
-                            <p style="font-size: 18px;"><?php echo ($textnosotros[0]['car1_texto']); ?></p>
+                            <p style="font-size: 18px;"><?php echo arreglar_mojibake($textnosotros[0]['car1_texto']); ?></p>
                         </div>
                     </div>
                 </div>
@@ -53,7 +64,7 @@ $textnosotros = $fnindex->fnindex_rtextosxtipo(5);
                         <div class="text">
                             <a href="#" style="font-size: 24px;color:#000;">Visión</a>
                             <div class="space16"></div>
-                            <p style="font-size: 18px;"><?php echo $textnosotros[0]['car2_texto']; ?></p>
+                            <p style="font-size: 18px;"><?php echo arreglar_mojibake($textnosotros[0]['car2_texto']); ?></p>
                         </div>
                     </div>
                 </div>

@@ -5,247 +5,107 @@ require './funciones/fn-index.php';
 $con = new Conecciones();
 $fncredito = new Fn_credito();
 $fnindex = new Fn_index();
-//$listcredito = $fncredito->fncredito_xget_listcredito();
 $slider = $fncredito->fnindex_rslider();
+$primerSlide = $slider ? $slider->fetch_assoc() : null;
 ?>
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
     <head>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>Inicio - 15 de Agosto Cooperativa de Ahorro y Crédito</title>
 
-        <!--=====FAB ICON=======-->
         <link rel="shortcut icon" href="assets/img/favicon-coop.png" type="image/x-icon">
 
-        <!--===== CSS LINK =======-->
-        <link rel="stylesheet" href="assets/css/plugins/bootstrap.min.css">
-        <link rel="stylesheet" href="assets/css/plugins/aos.css">
-        <link rel="stylesheet" href="assets/css/plugins/fontawesome.css">
-        <link rel="stylesheet" href="assets/css/plugins/magnific-popup.css">
-        <link rel="stylesheet" href="assets/css/plugins/owlcarousel.min.css">
-        <link rel="stylesheet" href="assets/css/plugins/sidebar.css">
-        <link rel="stylesheet" href="assets/css/plugins/slick-slider.css">
-        <link rel="stylesheet" href="assets/css/plugins/nice-select.css">
-        <link rel="stylesheet" href="assets/css/plugins/swiper-bundle.css">
-        <link rel="stylesheet" href="assets/css/main.css">
+        <!-- Solo lo esencial: sistema visual propio + iconos. Sin Bootstrap/AOS/GSAP/Swiper/owlcarousel/etc. -->
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-        <link rel="stylesheet" href="assets/css/custom.css">
-        <!--=====  JS SCRIPT LINK =======-->
-        <script src="assets/js/plugins/jquery-3-7-1.min.js"></script>
+        <link rel="stylesheet" href="assets/css/site-v2.css">
     </head>
-    <body>
+    <body class="v2">
 
-        <!--===== PRELOADER STARTS =======-->
-        <div class="preloader">
-            <img src="assets/img/logo/logo2.png">
-            <div class="loader">
-            </div>
-        </div>
-        <!--===== PRELOADER ENDS =======-->
+        <?php include 'header-v2.php'; ?>
 
-        <!--===== PROGRESS STARTS=======-->
-        <div class="paginacontainer">
-            <div class="progress-wrap">
-                <svg class="progress-circle svg-content" width="100%" height="100%" viewBox="-1 -1 102 102">
-                <path d="M50,1 a49,49 0 0,1 0,98 a49,49 0 0,1 0,-98"/>
-                </svg>
-            </div>
-        </div>
-        <!--===== PROGRESS ENDS=======-->
-
-        <!--=====HEADER START=======-->
-        <header class="homepage2-body">
-            <?php include 'header.php'; ?>
-        </header>
-        <!--=====HEADER END =======-->
-
-        <!--===== MOBILE HEADER STARTS =======-->
-        <div class="homepage2-body">
-            <div class="vl-offcanvas">
-                <div class="vl-offcanvas-wrapper">
-                    <div class="vl-offcanvas-header d-flex justify-content-between align-items-center mb-90">
-                        <div class="vl-offcanvas-logo">
-                            <a href="index.php"><img src="assets/img/logo/logo2.png" alt=""></a>
-                        </div>
-                        <div class="vl-offcanvas-close">
-                            <button class="vl-offcanvas-close-toggle"><i class="fa-solid fa-xmark"></i></button>
-                        </div>
+        <!-- ===== HERO ===== -->
+        <section class="v2-hero">
+            <div class="v2-container">
+                <div>
+                    <h1>Tu cooperativa de confianza, cerca de ti</h1>
+                    <p>Ahorra, invierte y accede a crédito con el respaldo de una cooperativa regulada por la SEPS, pensada para acompañarte en cada meta.</p>
+                    <div class="v2-hero-acciones">
+                        <a href="login.php" class="v2-btn v2-btn--primario">15 de Agosto Virtual</a>
+                        <a href="simulador-credito.php" class="v2-btn v2-btn--fantasma">Simular un crédito</a>
                     </div>
-
-                    <div class="vl-offcanvas-menu d-lg-none mb-40">
-                        <nav></nav>
-                    </div>
-
-                    <!--                    <div class="space20"></div>
-                                        <div class="vl-offcanvas-info">
-                                            <h3 class="vl-offcanvas-sm-title">Contact Us</h3>
-                                            <div class="space20"></div>
-                                            <span><a href="#"> <i class="fa-regular fa-envelope"></i> +57 9954 6476</a></span>
-                                            <span><a href="#"><i class="fa-solid fa-phone"></i> hello@exdos.com</a></span>
-                                            <span><a href="#"><i class="fa-solid fa-location-dot"></i> Bhemeara,Kushtia</a></span>
-                                        </div>-->
-                    <div class="space20"></div>
-                    <div class="vl-offcanvas-social">
-                        <h3 class="vl-offcanvas-sm-title">Síguenos en</h3>
-                        <div class="space20"></div>
-                        <a href="#"><i class="fab fa-facebook-f"></i></a>
-                        <a href="#"><i class="fab fa-twitter"></i></a>
-                        <a href="#"><i class="fab fa-linkedin-in"></i></a>
-                        <a href="#"><i class="fab fa-instagram"></i></a>
-                    </div>
-
+                </div>
+                <div class="v2-hero-img">
+                    <?php if ($primerSlide && !empty($primerSlide['img_slider'])) { ?>
+                        <img src="assets/img/<?php echo $primerSlide['img_slider'] ?>" alt="Cooperativa 15 de Agosto">
+                    <?php } else { ?>
+                        <img src="assets/img/logo/logo2.png" alt="Cooperativa 15 de Agosto">
+                    <?php } ?>
                 </div>
             </div>
-            <div class="vl-offcanvas-overlay"></div>
-        </div>
-        <!--===== MOBILE HEADER STARTS =======-->
+        </section>
 
-        <!--===== HERO AREA STARTS =======-->
-        <div class="hero5-slider-section">
-            <?php include './mod-slider.php' ?>
-        </div>
-
-        <div class="testimonial-arrows">
-            <div class="testimonial-prev-arrow">
-                <button><i class="fa-solid fa-angle-left"></i></button>
+        <!-- ===== ACCESOS RÁPIDOS ===== -->
+        <section class="v2-section">
+            <div class="v2-container">
+                <?php include './mod-enlaces.php' ?>
             </div>
-            <div class="testimonial-next-arrow">
-                <button><i class="fa-solid fa-angle-right"></i></button>
-            </div>
-        </div>
-        <!--===== HERO AREA ENDS =======-->
+        </section>
 
-        <!--===== BRAND AREA STARTS =======-->
-        <div class="brand1-section-area sp2" style="background: #c0c0c0;">
-            <?php include './mod-enlaces.php' ?>
-        </div>
-        <!--===== BRAND AREA ENDS =======-->
-        <!--===== ABOUT AREA STARTS =======-->
-        <div class="about2-section-area sp1">
+        <!-- ===== NOSOTROS ===== -->
+        <section class="v2-section v2-section--suave">
             <?php include './mod-about-us.php' ?>
-        </div>
-        <!--===== ABOUT AREA ENDS =======-->
+        </section>
 
-        <!--===== SERVICE AREA STARTS =======-->
-        <div class="service3-section-area sp2" style="background-image: url(assets/img/all-images/bg/bg3.png); background-position: center; background-repeat: no-repeat; background-size: cover;">
-            <?php include './mod-servicios.php' ?>
-        </div>
-        <!--===== SERVICE AREA ENDS =======-->
+        <!-- ===== SERVICIOS ===== -->
+        <section class="v2-section">
+            <?php include './mod-servicios-v2.php' ?>
+        </section>
 
-        <!--===== ABOUT AREA STARTS =======-->
-        <div class="about4-section-area sp1">
+        <!-- ===== SIMULADOR ===== -->
+        <section class="v2-section v2-section--suave">
             <?php include './mod-simulador.php' ?>
-        </div>
-        <!--===== ABOUT AREA ENDS =======-->
+        </section>
 
-
-        <!--===== TESTIMONIAL AREA STARTS =======-->
-        <div class="testimonial4-section-area sp1" style="background-image: url(assets/img/all-images/bg/fondo-empresa-004.png);background-size: contain;background: #f2f2f2;">
-            <?php include './mod-testimonio.php' ?>
-        </div>
-        <!--===== TESTIMONIAL AREA ENDS =======-->
-
-
-
-
-        <!--===== BLOG AREA STARTS =======-->
-        <div class="vl-blog-3-area sp2">
+        <!-- ===== NOTICIAS ===== -->
+        <section class="v2-section">
             <?php include './mod-noticia.php' ?>
-        </div>
-        <!--===== BLOG AREA ENDS =======-->
+        </section>
 
-        <!--===== BLOG AREA STARTS =======-->
-        <div class="vl-blog-3-area sp2">
-            <?php include './mod-cosede.php' ?>
-        </div>
-        <!--===== BLOG AREA ENDS =======-->
-
-        <!--===== CTA AREA STARTS =======-->
-        <div class="cta4-section-area sp4" style="background-image: url(assets/img/all-images/bg/fondo-006.png); background-position: center; background-repeat: no-repeat; background-size: cover;">
-            <div class="container">
-                <div class="row">
-                    <div class="col-lg-5">
-                        <div class="cta-header">
-                            <div class="space20"></div>
-                            <h2 class="text-anime-style-3">Descarga nuestra App</h2><br><br>
-                            <h5 style="text-transform: none;font-size: 24px;
-                                line-height: 30px;"> Explora un universo innovador de oportunidades digitales ilimitadas. </h5>
-                        </div>
-                    </div>
-                    <div class="col-lg-1"></div>
-                    <div class="col-lg-6">
-                        <div class="row">
-                            <div class="col-lg-6 col-md-6">
-                                <div class="cta-author-area">
-                                    <div class="icons">
-                                        <img style="width: 60%;" src="assets/img/google-play.png" alt="">
-                                    </div>
-                                    <div class="text">
-                      <!--                <p>Llámanos 24/7</p>-->
-                                        <a href="#" style="font-size: 24px;">Google Play</a>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <div class="col-lg-6 col-md-6">
-                                <div class="cta-author-area">
-                                    <div class="icons">
-                                        <img src="assets/img/app-store.png"  style="width: 60%;" alt="">
-                                    </div>
-                                    <div class="text">
-                      <!--                <p>Llámanos 24/7</p>-->
-                                        <a href="#" style="font-size: 24px;">App Store</a>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
+        <!-- ===== RESPALDO REGULATORIO ===== -->
+        <section class="v2-section v2-section--suave">
+            <div class="v2-container">
+                <div class="v2-kicker">Tu dinero, protegido</div>
+                <h2 class="v2-titulo">Respaldo y transparencia</h2>
+                <div style="display:flex; gap:40px; flex-wrap:wrap; align-items:center; margin-top:20px;">
+                    <img src="assets/img/Uafes_1.webp" style="max-height:90px;" alt="UAFE">
+                    <img src="assets/img/norma_cosede.webp" style="max-height:90px;" alt="COSEDE">
                 </div>
             </div>
-        </div>
-        <!--===== CTA AREA ENDS =======-->
-        <!--        <button onclick="abrirModal()">Abrir Modal</button>-->
-        <!-- Modal -->
-        <div id="modalSimulador" class="modal">
-            <div class="modal-content">
-                <span class="cerrar" onclick="cerrarModal()">&times;</span>
-                <h1 style="font-weight: 800; text-align: center !important">Simulador de Crédito</h1>
-<!--                <p style="text-align: center !important">Aquí puedes colocar tu formulario o resultado del simulador.</p>-->
-                <div id="resultado"></div> 
+        </section>
+
+        <!-- ===== DESCARGA APP ===== -->
+        <section class="v2-section" style="background: linear-gradient(135deg, var(--rojo-oscuro), var(--rojo)); color:#fff;">
+            <div class="v2-container" style="display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:24px;">
+                <div>
+                    <h2 class="v2-titulo" style="color:#fff;">Descarga nuestra App</h2>
+                    <p style="opacity:.9; max-width:480px;">Explora un universo de oportunidades digitales, cuando quieras y desde donde quieras.</p>
+                </div>
+                <div style="display:flex; gap:20px;">
+                    <a href="#"><img src="assets/img/google-play.png" style="height:50px;" alt="Google Play"></a>
+                    <a href="#"><img src="assets/img/app-store.png" style="height:50px;" alt="App Store"></a>
+                </div>
             </div>
-        </div>
-        <a href="javascript:void(0)" type="button" class="whats-btn" onclick="whatsapo()">
-            <i class="fab fa-3x fa-whatsapp"></i>
-            <!--593984185566-->
+        </section>
+
+        <a href="javascript:void(0)" onclick="whatsapo()" class="v2-whatsapp" aria-label="WhatsApp">
+            <i class="fab fa-whatsapp"></i>
         </a>
 
-        
-        <!--===== FOOTER AREA STARTS =======-->
-        <div class="vl-footer2-section-area">
-            <?php include './footer.php' ?>
-        </div>
-        <!--===== FOOTER AREA ENDS =======-->
+        <?php include './footer-v2.php' ?>
 
-        <!--===== JS SCRIPT LINK =======-->
-        <script src="assets/js/plugins/bootstrap.min.js"></script>
-        <script src="assets/js/plugins/fontawesome.js"></script>
-        <script src="assets/js/plugins/aos.js"></script>
-        <script src="assets/js/plugins/counter.js"></script>
-        <script src="assets/js/plugins/gsap.min.js"></script>
-        <script src="assets/js/plugins/ScrollTrigger.min.js"></script>
-        <script src="assets/js/plugins/Splitetext.js"></script>
-        <script src="assets/js/plugins/SmoothScroll.js"></script>
-        <script src="assets/js/plugins/sidebar.js"></script>
-        <script src="assets/js/plugins/magnific-popup.js"></script>
-        <script src="assets/js/plugins/mobilemenu.js"></script>
-        <script src="assets/js/plugins/owlcarousel.min.js"></script>
-        <script src="assets/js/plugins/nice-select.js"></script>
-        <script src="assets/js/plugins/waypoints.js"></script>
-        <script src="assets/js/plugins/slick-slider.js"></script>
-        <script src="assets/js/plugins/circle-progress.js"></script>
-        <script src="assets/js/plugins/swiper.js"></script>
-        <script src="assets/js/main.js"></script>
-        <script src="assets/js-index.js"></script>
+        <script src="assets/js/site-v2.js"></script>
+        <script src="assets/js/js-index.js"></script>
     </body>
 </html>
