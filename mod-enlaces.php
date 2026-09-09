@@ -1,61 +1,20 @@
-<div class="container">
-
-    <div class="row">
-        <div class="col-lg-3 col-md-6" data-aos="zoom-in-up" data-aos-duration="700">
-            <a href="#">
-                <div class="brand-box" style="display: flex; cursor: pointer">
-                    <div class="icons" style="
-                         width: 130px;
-                         border-radius: 50%;
-                         padding: 5px;">
-                        <img src="assets/img/icon-inversiones-01.png" style="height: 70px;" alt="">
-                    </div>
-                    <h5 style="font-weight: bold; color: #3e3f40;margin-top: 20px;font-size: 1.4rem;">Inversiones</h5>
-                </div>
-            </a>
-        </div>
-        <div class="col-lg-3 col-md-6" data-aos="zoom-in-up" data-aos-duration="700">
-            <a href="servicios.php">
-                <div class="brand-box" style="display: flex; cursor: pointer">
-                    <div class="icons" style="
-                         width: 130px;
-                         border-radius: 50%;
-                         padding: 5px;">
-                        <img src="assets/img/icon-ahorrro-02.png" style="height: 70px;" alt="">
-                    </div>
-                    <h5 style="font-weight: bold; color: #3e3f40;margin-top: 20px;font-size: 1.4rem;">Ahorro programado</h5>
-                </div>
-            </a>
-        </div>
-
-        <div class="col-lg-3 col-md-6" data-aos="zoom-in-up" data-aos-duration="700">
-            <a href="servicios.php">
-                <div class="brand-box" style="display: flex; cursor: pointer">
-                    <div class="icons" style="
-                         width: 130px;
-                         border-radius: 50%;
-                         padding: 5px;">
-                        <img src="assets/img/icon-servicios-02.png" style="height: 70px;" alt="">
-                    </div>
-                    <h5 style="font-weight: bold; color: #3e3f40;margin-top: 20px;font-size: 1.4rem;">Servicios</h5>
-                </div>
-            </a>
-        </div>
-
-        <div class="col-lg-3 col-md-6" data-aos="zoom-in-up" data-aos-duration="700">
-            <a href="servicios.php">
-                <div class="brand-box" style="display: flex; cursor: pointer">
-                    <div class="icons" style="
-                         width: 130px;
-                         border-radius: 50%;
-                         padding: 5px;">
-                        <img src="assets/img/icon-pagos-02.png" style="height: 70px;" alt="">
-                    </div>
-                    <h5 style="font-weight: bold; color: #3e3f40;margin-top: 20px;font-size: 1.4rem;">Pagos</h5>
-                </div>
-            </a>
-        </div>
-
-
-    </div>
+<div class="max-w-7xl mx-auto grid sm:grid-cols-2 lg:grid-cols-4 gap-5">
+    <?php
+    $enlaces = [
+        ['icon' => 'icon-inversiones-01.png', 'titulo' => 'Inversiones', 'link' => 'detprod-inversion.php'],
+        ['icon' => 'icon-ahorrro-02.png', 'titulo' => 'Ahorro programado', 'link' => 'servicios.php'],
+        ['icon' => 'icon-servicios-02.png', 'titulo' => 'Servicios', 'link' => 'servicios.php'],
+        ['icon' => 'icon-pagos-02.png', 'titulo' => 'Pagos', 'link' => 'servicios.php'],
+    ];
+    foreach ($enlaces as $idx => $e) {
+        ?>
+        <a href="<?php echo $e['link'] ?>" class="group flex items-center gap-4 bg-white border border-neutral-100 rounded-2xl p-5 shadow-soft hover:shadow-softhover hover:-translate-y-1 transition-all duration-300" data-aos="zoom-in" data-aos-delay="<?php echo $idx * 80 ?>">
+            <div class="w-16 h-16 rounded-full bg-rojo-light flex items-center justify-center flex-shrink-0 group-hover:bg-rojo transition-colors">
+                <img src="assets/img/<?php echo $e['icon'] ?>" class="w-9 h-9 group-hover:brightness-0 group-hover:invert transition-all" alt="">
+            </div>
+            <span class="font-bold text-neutral-800 text-lg"><?php echo $e['titulo'] ?></span>
+        </a>
+        <?php
+    }
+    ?>
 </div>
