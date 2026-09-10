@@ -5,6 +5,7 @@ require './funciones/fn-index.php';
 $con = new Conecciones();
 $fncredito = new Fn_credito();
 $fnindex = new Fn_index();
+require_once './funciones/fn-utilidades.php';
 $educafinan = $fnindex->fnindex_reducacion_financiera_alles();
 ?>
 <!DOCTYPE html>
@@ -115,9 +116,9 @@ $educafinan = $fnindex->fnindex_reducacion_financiera_alles();
                                         </ul>
                                     </div>
                                     <div class="space24"></div>
-                                    <h4 class="vl-blog-1-title"><a href="detalle-educacion.php?id=<?php echo ($menueducafinan['id_edfi']) ?>" style="color: #a31a16;"><?php echo utf8_encode($menueducafinan['titulo_edfi']) ?></a></h4>
+                                    <h4 class="vl-blog-1-title"><a href="detalle-educacion.php?id=<?php echo ($menueducafinan['id_edfi']) ?>" style="color: #a31a16;"><?php echo arreglar_mojibake(utf8_encode($menueducafinan['titulo_edfi'])) ?></a></h4>
                                     <div class="space16"></div>
-                                    <p><?php echo utf8_encode($menueducafinan['resumen_edfi']) ?></p>
+                                    <p><?php echo arreglar_mojibake(utf8_encode($menueducafinan['resumen_edfi'])) ?></p>
                                     <div class="space24"></div>
                                     <div class="vl-blog-1-icon">
                                         <img class="img-bg-service" src="assets/img/all-images/bg/dot-bg.png">

@@ -1,7 +1,7 @@
 <?php
 require './controler/conexion.php';
 include './fn/fn-credito.php';
-require './funciones/fn-index.php';
+require './funciones/fn-index.php'; require_once './funciones/fn-utilidades.php';
 $con = new Conecciones();
 $fncredito = new Fn_credito();
 $fnindex = new Fn_index();
@@ -13,7 +13,7 @@ $deteducafinan = $fnindex->fnindex_reducacion_financiera_x($id);
     <head>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title> <?php echo utf8_encode($deteducafinan[0]['titulo_edfi']) ?> - 15 de Agosto Cooperativa de Ahorro y Crédito</title>
+        <title> <?php echo arreglar_mojibake(utf8_encode($deteducafinan[0]['titulo_edfi'])) ?> - 15 de Agosto Cooperativa de Ahorro y Crédito</title>
 
         <!--=====FAB ICON=======-->
         <link rel="shortcut icon" href="assets/img/favicon-coop.png" type="image/x-icon">
@@ -52,9 +52,9 @@ $deteducafinan = $fnindex->fnindex_reducacion_financiera_x($id);
                 <div class="row">
                     <div class="col-lg-12 m-auto">
                         <div class="inner-header text-center">
-                            <h2 style="font-size: 65px;"><?php echo utf8_encode($deteducafinan[0]['titulo_edfi']) ?></h2>
+                            <h2 style="font-size: 65px;"><?php echo arreglar_mojibake(utf8_encode($deteducafinan[0]['titulo_edfi'])) ?></h2>
                             <div class="space24"></div>
-                            <a href="index.php">Inicio <i class="fa-solid fa-angle-right"></i> <span><?php echo utf8_encode($deteducafinan[0]['titulo_edfi']) ?></span></a>
+                            <a href="index.php">Inicio <i class="fa-solid fa-angle-right"></i> <span><?php echo arreglar_mojibake(utf8_encode($deteducafinan[0]['titulo_edfi'])) ?></span></a>
                         </div>
                     </div>
                 </div>
@@ -87,9 +87,9 @@ $deteducafinan = $fnindex->fnindex_reducacion_financiera_x($id);
         <div class="row">
             <div class="col-lg-8">
                 <div class="blog-main-detailsarea rightpadding">
-                    <h3><?php echo utf8_encode($deteducafinan[0]['titulo_edfi']) ?></h3>
+                    <h3><?php echo arreglar_mojibake(utf8_encode($deteducafinan[0]['titulo_edfi'])) ?></h3>
                     <div class="space16"></div>
-                    <p><?php echo utf8_encode($deteducafinan[0]['resumen_edfi']) ?></p>
+                    <p><?php echo arreglar_mojibake(utf8_encode($deteducafinan[0]['resumen_edfi'])) ?></p>
                     <div class="space32"></div>
                     <div class="img1">
                         <img src="assets/img/<?php echo utf8_encode($deteducafinan[0]['imagen_edfi']) ?>" alt="">
@@ -106,7 +106,7 @@ $deteducafinan = $fnindex->fnindex_reducacion_financiera_x($id);
                         
                     </ul>
                     <div class="space32"></div>
-                    <?php echo utf8_encode($deteducafinan[0]['descripcion_edfi']) ?>
+                    <?php echo arreglar_mojibake(utf8_encode($deteducafinan[0]['descripcion_edfi'])) ?>
                     <div class="tags-social">
                         <div class="tags">
                             <ul>

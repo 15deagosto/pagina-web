@@ -87,7 +87,13 @@ $dettexto = $fnindex->fnindex_rtextosxtipo(8);
                     <div class="col-lg-12">
                         <div class="row body-form form title d-flex align-items-center">
                             <div class="col-lg-12 col-md-12 col-sm-12 text-sm-start text-justify wow fadeInLeft" data-wow-delay="300ms" style="text-align: justify !important; visibility: visible; animation-delay: 300ms; animation-name: fadeInLeft;">
-                                <?php echo utf8_encode($dettexto[0]['texto_texto']) ?>
+                                <?php
+                                if (!empty($dettexto[0]['texto_texto'])) {
+                                    echo utf8_encode($dettexto[0]['texto_texto']);
+                                } else {
+                                    echo '<p class="text-neutral-500">Conoce todos nuestros servicios: pago de convenios, transferencias, cobro de bono, recaudaciones y más, disponibles en todas nuestras agencias.</p>';
+                                }
+                                ?>
                             </div>  
                         </div>
                     </div>

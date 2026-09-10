@@ -1504,6 +1504,7 @@ class Fn_index {
                 'titulo_edfi' => $menu['titulo_edfi'],
                 'url_edfi' => $menu['url_edfi'],
                 'fecha_edfi' => $menu['fecha_edfi'],
+                'resumen_edfi' => $menu['resumen_edfi'],
                 'descripcion_edfi' => $menu['descripcion_edfi'],
                 'orden_edfi' => $menu['orden_edfi'],
                 'imagen_edfi' => $menu['imagen_edfi'],

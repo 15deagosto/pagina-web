@@ -2,6 +2,7 @@
 require './controler/conexion.php';
 include './fn/fn-credito.php';
 require './funciones/fn-index.php';
+require_once './funciones/fn-utilidades.php';
 $con = new Conecciones();
 $fncredito = new Fn_credito();
 $fnindex = new Fn_index();
@@ -107,14 +108,14 @@ $listcredito = $fnindex->fnindex_rproducto_xtipo(5);
                                                     <a href="#"><img style="width:70px;" src="assets/img/icon-money.png">  </a>
                                                 </li>
                                                 <li style="margin-top: 20px;">
-                                                    <h4 class="vl-blog-1-title"><a style="color: #a31a16; font-weight: bold; font-size: 1.7rem;" href="detprod-credito-micro.php?id=<?php echo ($menucredito['id_prod']) ?>" style="color: #a31a16;"><?php echo utf8_encode($menucredito['nombre_prod']) ?></a></h4>
+                                                    <h4 class="vl-blog-1-title"><a style="color: #a31a16; font-weight: bold; font-size: 1.7rem;" href="detprod-credito-micro.php?id=<?php echo ($menucredito['id_prod']) ?>" style="color: #a31a16;"><?php echo arreglar_mojibake(utf8_encode($menucredito['nombre_prod'])) ?></a></h4>
                                                 </li>
                                             </ul>
                                         </div>
                                         <div class="space24"></div>
 
                                         <div class="space16"></div>
-                                        <p style="text-align: justify;"><?php echo utf8_encode($menucredito['descripcion_prod']) ?></p>
+                                        <p style="text-align: justify;"><?php echo arreglar_mojibake(utf8_encode($menucredito['descripcion_prod'])) ?></p>
                                         <div class="space24"></div>
                                     </div>
                                 </div>
