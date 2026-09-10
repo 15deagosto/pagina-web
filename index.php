@@ -69,7 +69,7 @@ if ($slider) {
             <div class="blob w-72 h-72 bg-white/20 -top-10 -right-10"></div>
             <div class="blob w-96 h-96 bg-rojo-dark/40 bottom-0 left-1/3"></div>
 
-            <div class="relative max-w-7xl mx-auto px-6 py-16 md:py-24 grid md:grid-cols-2 gap-10 items-center">
+            <div class="relative max-w-7xl mx-auto px-6 pt-16 md:pt-20 pb-10 text-center">
                 <div data-aos="fade-up" data-aos-duration="700">
                     <span class="inline-flex items-center gap-2 glass px-4 py-1.5 rounded-full text-xs font-semibold tracking-wide uppercase mb-6">
                         <i class="fa-solid fa-shield-halved"></i> Regulados por la SEPS -- Segmento 2
@@ -77,27 +77,29 @@ if ($slider) {
                     <h1 class="text-4xl md:text-6xl font-extrabold leading-tight mb-6">
                         Tu cooperativa de <span class="text-gradient">confianza</span>, cerca de ti
                     </h1>
-                    <p class="text-lg text-white/90 max-w-md mb-8">Ahorra, invierte y accede a crédito con el respaldo de una cooperativa pensada para acompañarte en cada meta.</p>
-                    <div class="flex flex-wrap gap-4">
+                    <p class="text-lg text-white/90 max-w-xl mx-auto mb-8">Ahorra, invierte y accede a crédito con el respaldo de una cooperativa pensada para acompañarte en cada meta.</p>
+                    <div class="flex flex-wrap gap-4 justify-center">
                         <a href="login.php" class="bg-white text-rojo font-bold px-7 py-3.5 rounded-full shadow-softhover hover:-translate-y-1 hover:shadow-xl transition-all">15 de Agosto Virtual</a>
                         <a href="simulador-credito.php" class="glass font-bold px-7 py-3.5 rounded-full hover:bg-white/20 transition-all">Simular un crédito</a>
                     </div>
                 </div>
+            </div>
 
+            <div class="relative max-w-7xl mx-auto px-6 pb-16 md:pb-24">
                 <div class="relative" data-aos="zoom-in" data-aos-duration="800" data-aos-delay="150">
-                    <div class="relative rounded-3xl overflow-hidden shadow-2xl aspect-[4/3] bg-white/10">
+                    <div class="relative rounded-3xl overflow-hidden shadow-2xl aspect-[16/5] md:aspect-[21/6] bg-white">
                         <?php foreach ($slides as $i => $slide) { ?>
                             <div class="hero-slide absolute inset-0 <?php echo $i === 0 ? 'activa' : ''; ?>" data-slide="<?php echo $i ?>">
                                 <?php
                                 $url = trim($slide['url_slider'] ?? '');
                                 $esLinkValido = strlen($url) > 4;
                                 if ($esLinkValido) { ?><a href="<?php echo htmlspecialchars($url) ?>" target="_blank"><?php } ?>
-                                <img src="assets/img/<?php echo htmlspecialchars($slide['img_slider']) ?>" alt="Cooperativa 15 de Agosto" class="w-full h-full object-cover">
+                                <img src="assets/img/<?php echo htmlspecialchars($slide['img_slider']) ?>" alt="Cooperativa 15 de Agosto" class="w-full h-full object-contain">
                                 <?php if ($esLinkValido) { ?></a><?php } ?>
                             </div>
                         <?php } ?>
                         <?php if (empty($slides)) { ?>
-                            <img src="assets/img/logo/logo2.png" alt="Cooperativa 15 de Agosto" class="w-full h-full object-contain bg-white p-10">
+                            <img src="assets/img/logo/logo2.png" alt="Cooperativa 15 de Agosto" class="w-full h-full object-contain p-10">
                         <?php } ?>
                     </div>
                     <?php if (count($slides) > 1) { ?>
