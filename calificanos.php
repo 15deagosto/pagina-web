@@ -1,144 +1,81 @@
 <?php
 require './controler/conexion.php';
-include './fn/fn-credito.php';
 require './funciones/fn-index.php';
-$con = new Conecciones();
-$fncredito = new Fn_credito();
 $fnindex = new Fn_index();
+$tituloPagina = 'Califícanos';
 ?>
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
     <head>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>Inicio - 15 de Agosto Cooperativa de Ahorro y Crédito</title>
-
-        <!--=====FAB ICON=======-->
+        <title>Califícanos - 15 de Agosto Cooperativa de Ahorro y Crédito</title>
         <link rel="shortcut icon" href="assets/img/favicon-coop.png" type="image/x-icon">
-
         <?php include "head-v2.php"; ?>
     </head>
-    <body class="v2">
+    <body class="v2 bg-white text-neutral-800">
 
-        <!--===== PRELOADER STARTS =======-->
-        <div class="preloader">
-            <img src="assets/img/logo/logo2.png">
-            <div class="loader"></div>
-        </div>
-        <!--===== PRELOADER ENDS =======-->
+        <?php include 'header.php'; ?>
+        <?php include './partial-hero-interno.php'; ?>
 
-        <!--===== PROGRESS STARTS=======-->
-        <div class="paginacontainer">
-            <div class="progress-wrap">
-                <svg class="progress-circle svg-content" width="100%" height="100%" viewBox="-1 -1 102 102">
-                <path d="M50,1 a49,49 0 0,1 0,98 a49,49 0 0,1 0,-98"/>
-                </svg>
+        <section class="py-16 md:py-24 max-w-xl mx-auto px-6">
+            <div class="text-center mb-10" data-aos="fade-up">
+                <div class="text-rojo font-bold uppercase text-xs tracking-widest mb-2">Tu opinión importa</div>
+                <h2 class="text-3xl font-extrabold mb-3">Ayúdanos a mejorar</h2>
+                <p class="text-neutral-500 text-sm">Trabajamos diariamente para brindarte un servicio seguro, transparente y de calidad. Cuéntanos cómo fue tu experiencia; la información se trata de forma confidencial.</p>
             </div>
-        </div>
-        <!--===== PROGRESS ENDS=======-->
 
-        <!--=====HEADER START=======-->
-        <header class="homepage2-body">
-            <?php include 'header.php'; ?>
-        </header>
-        <!--=====HEADER END =======-->
-
-        
-
-        <!--===== HERO AREA STARTS =======-->
-        <div class="inner-pages-section-area" style="background-image: url(assets/img/all-images/bg/bg-header-002.png); background-position: center; background-repeat: no-repeat; background-size: cover;">
-            <div class="container">
-                <div class="row">
-                    <div class="col-lg-12 m-auto">
-                        <div class="inner-header text-center">
-                            <h2 style="font-size: 65px;">Ayúdanos a mejorar</h2>
-                            <div class="space24"></div>
-                            <a href="index.php">Inicio <i class="fa-solid fa-angle-right"></i> <span>Ayúdanos a mejorar</span></a>
-                        </div>
-                    </div>
+            <form id="formularioContacto" class="space-y-6 bg-white border border-neutral-100 rounded-3xl shadow-soft p-6 md:p-8" data-aos="fade-up">
+                <input type="hidden" name="iopc" value="3">
+                <div>
+                    <label class="block font-semibold text-sm mb-2">Sucursal visitada*</label>
+                    <select name="agencia_eval" required class="w-full border border-neutral-200 rounded-xl px-4 py-3 focus:outline-none focus:border-rojo transition-colors">
+                        <option value="">Seleccione una sucursal</option>
+                        <?php
+                        $detagencia = $fnindex->fnindex_ragencia();
+                        while ($menuagencia = $detagencia->fetch_assoc()) {
+                            ?>
+                            <option value="<?php echo htmlspecialchars($menuagencia['nombre_nosotros']) ?>"><?php echo htmlspecialchars($menuagencia['nombre_nosotros']) ?></option>
+                            <?php } ?>
+                    </select>
                 </div>
-                <div class="row d-flex align-items-center">
-                    <div class="col-lg-8 col-md-12 col-sm-12 col-xs-12">
-                        <!--===============spacing==============-->
-                        <div class="pd_top_80"></div>
-                        <!--===============spacing==============-->
 
-                        <!--===============spacing==============-->
-                        <div class="pd_bottom_80"></div>
-                        <!--===============spacing==============-->
-                    </div>
-                    <div class="col-lg-4 hidden-md image_column">
-                        <div class="slider_image margin_extra" style="position: absolute;
-                             text-align: right;margin: -250px -158px -330px 0px !important;">
-                            <img style="max-width: 45%;
-                                 height: auto;" src="assets/img/all-images/about/cal-img.png" class="img-fluid" alt="slider image">
-                        </div>
+                <div>
+                    <label class="block font-semibold text-sm mb-3">¿Cómo califica la atención recibida?*</label>
+                    <div class="flex gap-2 text-3xl" id="rating-stars">
+                        <?php for ($i = 1; $i <= 5; $i++) { ?>
+                            <label class="cursor-pointer text-neutral-300 star" data-valor="<?php echo $i ?>">
+                                <input type="radio" name="rating_eval" value="<?php echo $i ?>" class="hidden" required>★
+                            </label>
+                        <?php } ?>
                     </div>
                 </div>
 
-            </div>
-        </div>
-        <!--===== HERO AREA ENDS =======-->
-        <!--===== CONTACT AREA STARTS =======-->
-        <div class="contact-inner-area sp2">
-            <div class="container">
-                <div class="row">
-                    <form id="formEvaluacion">
-                        <div class="col-lg-12">
-                            <label class="mb-2" style="font-size: 1.1rem;">En nuestra Cooperativa de Ahorro y Crédito trabajamos diariamente para brindarle un servicio seguro, transparente y de calidad. Su opinión es fundamental para continuar fortaleciendo nuestros procesos y mejorar la experiencia de atención en cada una de nuestras sucursales.</label> 
-                           <label class="mb-2" style="font-size: 1.1rem;">Le invitamos a dedicar unos minutos para evaluar el servicio recibido. La información proporcionada será tratada con confidencialidad y utilizada exclusivamente con fines de mejora continua.</label> 
-                        </div>
-                        <div class="col-lg-12" style="margin-top: 20px;">
-                            <label class="mb-2" style="font-size: 1.1rem; font-weight: 600">Sucursal visitada:</label>
-                            <select required>
-                                <option value="">Seleccione una sucursal</option>
-                               <?php
-                            $detagencia = $fnindex->fnindex_ragencia();
-                            while ($menuagencia = $detagencia->fetch_assoc()) {
-                                ?>
-                                <option value="<?php echo $menuagencia['id_nosotros'] ?>"><?php echo $menuagencia['nombre_nosotros'] ?></option>
-                                 <?php } ?>
-                            </select>
-                        </div>
-                        <div class="col-lg-12">
-                            <label class="mb-2" style="font-size: 1.1rem;font-weight: 600">¿Cómo califica la atención recibida?</label>
-                            <div class="rating">
-                                <input type="radio" name="rating" value="5" id="5"><label for="5">★</label>
-                                <input type="radio" name="rating" value="4" id="4"><label for="4">★</label>
-                                <input type="radio" name="rating" value="3" id="3"><label for="3">★</label>
-                                <input type="radio" name="rating" value="2" id="2"><label for="2">★</label>
-                                <input type="radio" name="rating" value="1" id="1"><label for="1">★</label>
-                            </div>
-                        </div>
-                        <div class="col-lg-12 mt-20" style="margin-top: 40px;">
-                            <label class="mb-2" style="font-size: 1.1rem;font-weight: 600">Comentario adicional:</label>
-                            <textarea class="form-control" rows="4" placeholder="Escriba su comentario (opcional)"></textarea>
-                        </div>
-                        <div class="col-lg-12" style="margin-top: 40px;">
-                            <a onclick="enviarContacto()" type="button" class="vl-btn1">Enviar Evaluación</a>
-                        </div>
-
-
-
-
-
-                        <div class="success" id="mensaje"></div>
-
-                    </form>
-
+                <div>
+                    <label class="block font-semibold text-sm mb-2">Comentario adicional</label>
+                    <textarea name="comentario_eval" rows="4" placeholder="Escribe tu comentario (opcional)" class="w-full border border-neutral-200 rounded-xl px-4 py-3 focus:outline-none focus:border-rojo transition-colors"></textarea>
                 </div>
-                <div class="space60"></div>
 
-            </div>
-        </div>
-        <!--===== CONTACT AREA ENDS =======-->
+                <div id="resultado"></div>
+                <button onclick="enviarContacto()" type="button" class="w-full bg-rojo text-white font-bold py-3.5 rounded-full hover:bg-rojo-dark hover:-translate-y-0.5 transition-all shadow-soft">Enviar Evaluación</button>
+            </form>
+        </section>
 
-        <!--===== FOOTER AREA STARTS =======-->
-        <div class="vl-footer2-section-area">
-            <?php include './footer.php' ?>
-        </div>
-        <!--===== FOOTER AREA ENDS =======-->
-
+        <?php include './footer.php' ?>
         <?php include "scripts-v2.php"; ?>
-</body>
+        <script>
+            (function () {
+                var stars = document.querySelectorAll('#rating-stars .star');
+                stars.forEach(function (star) {
+                    star.addEventListener('click', function () {
+                        var valor = parseInt(star.dataset.valor);
+                        stars.forEach(function (s) {
+                            s.classList.toggle('text-rojo', parseInt(s.dataset.valor) <= valor);
+                            s.classList.toggle('text-neutral-300', parseInt(s.dataset.valor) > valor);
+                        });
+                    });
+                });
+            })();
+        </script>
+    </body>
 </html>

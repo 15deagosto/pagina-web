@@ -3,137 +3,53 @@ session_start();
 require './controler/conexion.php';
 require './funciones/fn-index.php';
 $fnindex = new Fn_index();
+$tituloPagina = 'Iniciar Sesión';
 ?>
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
     <head>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>Inicio - 15 de Agosto Cooperativa de Ahorro y Crédito</title>
-
-        <!--=====FAB ICON=======-->
+        <title>Iniciar Sesión - 15 de Agosto Cooperativa de Ahorro y Crédito</title>
         <link rel="shortcut icon" href="assets/img/favicon-coop.png" type="image/x-icon">
-
         <?php include "head-v2.php"; ?>
     </head>
-    <body class="v2">
+    <body class="v2 bg-white text-neutral-800">
 
-        <!--===== PRELOADER STARTS =======-->
-        <div class="preloader">
-            <div class="loader"></div>
-        </div>
-        <!--===== PRELOADER ENDS =======-->
+        <?php include 'header.php'; ?>
+        <?php include './partial-hero-interno.php'; ?>
 
-        <!--===== PROGRESS STARTS=======-->
-        <div class="paginacontainer">
-            <div class="progress-wrap">
-                <svg class="progress-circle svg-content" width="100%" height="100%" viewBox="-1 -1 102 102">
-                <path d="M50,1 a49,49 0 0,1 0,98 a49,49 0 0,1 0,-98"/>
-                </svg>
-            </div>
-        </div>
-        <!--===== PROGRESS ENDS=======-->
-
-        <!--=====HEADER START=======-->
-        <header class="homepage2-body">
-            <?php include 'header.php'; ?>
-        </header>
-        <!--=====HEADER END =======-->
-
-        
-
-        <!--===== HERO AREA STARTS =======-->
-        <div class="inner-pages-section-area" style="background-image: url(assets/img/all-images/bg/bg-header-002.png); background-position: center; background-repeat: no-repeat; background-size: cover;">
-            <div class="container">
-                <div class="row">
-                    <div class="col-lg-12 m-auto">
-                        <div class="inner-header text-center">
-                            <h2>Iniciar Sesión</h2>
-                            <div class="space24"></div>
-                            <a href="index.php">Inicio <i class="fa-solid fa-angle-right"></i> <span>Iniciar Sesión</span></a>
-                        </div>
+        <section class="py-16 md:py-24 max-w-md mx-auto px-6">
+            <div class="bg-white border border-neutral-100 rounded-3xl shadow-soft p-8 md:p-10" data-aos="fade-up">
+                <div class="text-center mb-8">
+                    <div class="w-14 h-14 rounded-2xl bg-rojo flex items-center justify-center mx-auto mb-4">
+                        <i class="fa-solid fa-user-lock text-white text-xl"></i>
                     </div>
-                </div>
-                <div class="row d-flex align-items-center">
-                    <div class="col-lg-8 col-md-12 col-sm-12 col-xs-12">
-                        <!--===============spacing==============-->
-                        <div class="pd_top_80"></div>
-                        <!--===============spacing==============-->
-
-                        <!--===============spacing==============-->
-                        <div class="pd_bottom_80"></div>
-                        <!--===============spacing==============-->
-                    </div>
-                    <div class="col-lg-4 hidden-md image_column">
-                        <div class="slider_image margin_extra" style="position: absolute;
-                             text-align: right;margin: -250px -158px -330px 0px !important;">
-                            <img style="max-width: 60%;
-                                 height: auto;" src="assets/img/all-images/about/cal-img.png" class="img-fluid" alt="slider image">
-                        </div>
-                    </div>
+                    <h2 class="text-2xl font-extrabold mb-1">Bienvenido de nuevo</h2>
+                    <p class="text-neutral-500 text-sm">Ingresa tus credenciales para continuar</p>
                 </div>
 
+                <?php if (isset($_GET['msg'])) { ?>
+                    <div class="bg-rojo-light text-rojo text-sm font-semibold rounded-xl px-4 py-3 mb-6 text-center"><?php echo htmlspecialchars($_GET['msg']) ?></div>
+                <?php } ?>
+
+                <form action="sesiones/sesion.php" method="post" class="space-y-5">
+                    <input type="hidden" value="1">
+                    <div>
+                        <label class="block font-semibold text-sm mb-2">Usuario</label>
+                        <input id="email" name="usernames" type="email" placeholder="ejemplo@mail.com" required class="w-full border border-neutral-200 rounded-xl px-4 py-3 focus:outline-none focus:border-rojo transition-colors">
+                    </div>
+                    <div>
+                        <label class="block font-semibold text-sm mb-2">Contraseña</label>
+                        <input name="passs" id="tp_password" type="password" placeholder="Mínimo 6 caracteres" required class="w-full border border-neutral-200 rounded-xl px-4 py-3 focus:outline-none focus:border-rojo transition-colors">
+                    </div>
+                    <div id="resultado"></div>
+                    <button type="submit" class="w-full bg-rojo text-white font-bold py-3.5 rounded-full hover:bg-rojo-dark hover:-translate-y-0.5 transition-all shadow-soft">Iniciar Sesión</button>
+                </form>
             </div>
-        </div>
-        <!--===== HERO AREA ENDS =======-->
+        </section>
 
-        <!--===== CONTACT AREA STARTS =======-->
-        <div class="contact-inner-area sp2">
-            <div class="container">
-                <div class="row">
-
-                    <form action="sesiones/sesion.php" method="post">
-                        <div class="col-lg-12">
-                            <div class="contact-header-area heading1">
-                                <center><h5>Dashboard</h5></center>
-                                <div class="space16"></div>
-                                <center><h2>Iniciar Sesión</h2></center>
-                                <div class="space16"></div>
-                                <center><p>Ingresa tus credenciales a continuación.</p></center>
-                                <div class="row" style="margin-top: 30px;
-  padding-left: 20%;
-  padding-right: 20%;">
-                                    <div class="col-lg-12">
-                                        <b><p>Usuario: </p> </b>
-                                        <div class="input-area">
-                                            <input type="hidden" value="1">
-                                            <input id="email" name="usernames"  type="email" placeholder="ejemplo@mail.com">
-                                        </div>
-                                    </div>
-
-                                    <div class="col-lg-12">
-                                        <b><p>Contraseña: </p> </b>
-                                        <div class="input-area">
-                                            <input name="passs" id="tp_password" type="password" placeholder="Min. 6 character">
-                                        </div>
-                                    </div>
-
-                                    <div class="col-lg-12" id="resultado"></div>
-                                    <div class="col-lg-12">
-                                        <div class="space16"></div>
-                                        <div class="input-area">
-                                            <button type="submit" class="vl-btn1">Iniciar Sesión</button>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </form>
-                </div>
-                <div class="space60"></div>
-                
-            </div>
-        </div>
-        <!--===== CONTACT AREA ENDS =======-->
-
-      
-
-        <!--===== FOOTER AREA STARTS =======-->
-        <div class="vl-footer2-section-area">
-            <?php include './footer.php' ?>
-        </div>
-        <!--===== FOOTER AREA ENDS =======-->
-
+        <?php include './footer.php' ?>
         <?php include "scripts-v2.php"; ?>
-</body>
+    </body>
 </html>

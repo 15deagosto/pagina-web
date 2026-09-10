@@ -5,6 +5,7 @@ if ($iopc == 1) {
 
     $nombre_contacto = $_POST['nombre_contacto'];
     $apellido_contacto = $_POST['apellido_contacto'];
+    $email_contacto = $_POST['email_contacto'];
     $telefono_contacto = $_POST['telefono_contacto'];
     $texto_contacto = $_POST['texto_contacto'];
     $observacion_contacto = $_POST['observacion_contacto'];
@@ -93,12 +94,10 @@ if ($iopc == 1) {
         $encabezados = "MIME-Version: 1.0" . "\r\n";
 # ojo, es una concatenación:
         $encabezados .= "Content-type:text/html; charset=UTF-8" . "\r\n";
-        $encabezados .= 'From:  Coac 15 de agosto <cooperativa15deagosto.fin.e>' . "\r\n";
-# emails produccion
-//$emails = 'ventas2@guanteradelvalle.com';
-        $emails = 'calidad@supaysoft.net';
-# emails prueba
-//$emails = 'calidad@supaysoft.net,calidad@supaysoft.net';
+        $encabezados .= 'From:  Coac 15 de agosto <noreply@cooperativa15deagosto.fin.ec>' . "\r\n";
+        // TODO: confirmar con la cooperativa el correo real que debe recibir estos
+        // mensajes (antes apuntaba a la empresa desarrolladora del sitio).
+        $emails = 'info@coop15deagosto.fin.ec';
         $resultado = mail($emails, $subject, $html, $encabezados); #Mandar al final los encabezados
         if ($resultado) {
             echo '<div style="margin-top:20px;background:#edffed; padding: 5px 10px;">Mensaje enviado correctamente, en la brevedad de lo posible uno de nuestros asesores responderá a tu mensaje.</div>';
@@ -204,12 +203,10 @@ if ($iopc == 2) {
         $encabezados = "MIME-Version: 1.0" . "\r\n";
 # ojo, es una concatenación:
         $encabezados .= "Content-type:text/html; charset=UTF-8" . "\r\n";
-        $encabezados .= 'From:  Coac 15 de agosto <cooperativa15deagosto.fin.e>' . "\r\n";
-# emails produccion
-//$emails = 'ventas2@guanteradelvalle.com';
-        $emails = 'calidad@supaysoft.net';
-# emails prueba
-//$emails = 'calidad@supaysoft.net,calidad@supaysoft.net';
+        $encabezados .= 'From:  Coac 15 de agosto <noreply@cooperativa15deagosto.fin.ec>' . "\r\n";
+        // TODO: confirmar con la cooperativa el correo real que debe recibir estos
+        // mensajes (antes apuntaba a la empresa desarrolladora del sitio).
+        $emails = 'info@coop15deagosto.fin.ec';
         $resultado = mail($emails, $subject, $html, $encabezados); #Mandar al final los encabezados
         if ($resultado) {
             echo '<div style="margin-top:20px;background:#edffed; padding: 5px 10px;">Mensaje enviado correctamente, en la brevedad de lo posible uno de nuestros asesores responderá a tu mensaje.</div>';
@@ -224,3 +221,35 @@ if ($iopc == 2) {
     }
 }
 
+
+
+if ($iopc == 3) {
+    $agencia_eval = $_POST['agencia_eval'];
+    $rating_eval = $_POST['rating_eval'];
+    $comentario_eval = $_POST['comentario_eval'];
+    if (!empty($agencia_eval) && !empty($rating_eval)) {
+        $html = '<html><head><meta charset="UTF-8"></head><body>'
+                . '<h2>Nueva evaluacion de servicio</h2>'
+                . '<p><strong>Sucursal:</strong> ' . htmlspecialchars($agencia_eval) . '</p>'
+                . '<p><strong>Calificacion:</strong> ' . htmlspecialchars($rating_eval) . ' / 5</p>'
+                . '<p><strong>Comentario:</strong><br>' . nl2br(htmlspecialchars($comentario_eval)) . '</p>'
+                . '</body></html>';
+        $subject = 'Nueva evaluacion de servicio';
+        $encabezados = "MIME-Version: 1.0" . "\r\n";
+        $encabezados .= "Content-type:text/html; charset=UTF-8" . "\r\n";
+        $encabezados .= 'From:  Coac 15 de agosto <noreply@cooperativa15deagosto.fin.ec>' . "\r\n";
+        // TODO: confirmar con la cooperativa el correo real que debe recibir las evaluaciones.
+        $emails = 'info@coop15deagosto.fin.ec';
+        $resultado = mail($emails, $subject, $html, $encabezados);
+        if ($resultado) {
+            echo '<div style="margin-top:20px;background:#edffed; padding: 5px 10px;">Gracias por tu evaluacion.</div>';
+            return 1;
+        } else {
+            echo '<div style="margin-top:20px;background:#f6d9d8; padding: 5px 10px;">Ocurrio un inconveniente al enviar tu evaluacion.</div>';
+            return 2;
+        }
+    } else {
+        echo '<div style="margin-top:20px;background:#f6d9d8; padding: 5px 10px;">Selecciona una sucursal y una calificacion.</div>';
+        return 2;
+    }
+}
