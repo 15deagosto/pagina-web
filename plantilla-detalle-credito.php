@@ -40,7 +40,7 @@ $desc = arreglar_mojibake($desc);
         <section class="py-16 max-w-7xl mx-auto px-6 grid md:grid-cols-2 gap-12 items-center">
             <div class="grid grid-cols-2 gap-4" data-aos="fade-right">
                 <img src="assets/img/img-producto-ahorro-01.jpg" class="rounded-2xl shadow-soft mt-8" alt="">
-                <img src="assets/img/img-producto-ahorro-02.jpg" class="rounded-2xl shadow-soft" alt="">
+                <img src="assets/img/img-producto-ahorro-02.jpg" class="rounded-2xl shadow-soft mt-8" alt="">
             </div>
             <div data-aos="fade-left">
                 <div class="text-rojo font-bold uppercase text-xs tracking-widest mb-2">Crédito</div>
