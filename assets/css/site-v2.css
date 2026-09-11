@@ -35,6 +35,15 @@ html { overflow-x: hidden; }
 }
 .v2 .slider_image.margin_extra img { max-width: 220px !important; margin: 0 auto; }
 .v2 .inner-pages-section-area { position: relative; overflow: hidden; padding: 48px 0; }
+/* Páginas de texto legal/institucional: limitar ancho para lectura cómoda */
+.v2 .body-form.form.title {
+  max-width: 860px;
+  margin: 0 auto;
+  padding: 56px 24px;
+  line-height: 1.7;
+}
+.v2 .body-form.form.title h5 { margin-top: 28px; font-size: 17px; }
+.v2 .body-form.form.title p { margin-bottom: 14px; color: #443f3c; }
 .v2 .image_column { display: flex; align-items: flex-end; justify-content: center; }
 body.v2 {
   margin: 0;
