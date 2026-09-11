@@ -5,6 +5,7 @@ require './funciones/fn-index.php';
 $con = new Conecciones();
 $fncredito = new Fn_credito();
 $fnindex = new Fn_index();
+require_once './funciones/fn-utilidades.php';
 //$listcredito = $fncredito->fncredito_xget_listcredito();
 //$slider = $fncredito->fnindex_rslider();
 ?>
@@ -144,7 +145,7 @@ $fnindex = new Fn_index();
                                     </ul>
                                 </div>
                                 <div class="space24"></div>
-                                <h4 class="vl-blog-1-title"><a href="documentos/<?php echo ($menudocumento['url_doc']) ?>"> <?php echo ($menudocumento['titulo_doc']) ?></a></h4>
+                                <h4 class="vl-blog-1-title"><a href="documentos/<?php echo ($menudocumento['url_doc']) ?>"> <?php echo arreglar_mojibake($menudocumento['titulo_doc']) ?></a></h4>
                             </div>
                         
                         </div>
@@ -200,7 +201,7 @@ $fnindex = new Fn_index();
                                     </ul>
                                 </div>
                                 <div class="space24"></div>
-                                <h4 class="vl-blog-1-title"><a href="documentos/<?php echo ($menudocumento['url_doc']) ?>"> <?php echo ($menudocumento['titulo_doc']) ?></a></h4>
+                                <h4 class="vl-blog-1-title"><a href="documentos/<?php echo ($menudocumento['url_doc']) ?>"> <?php echo arreglar_mojibake($menudocumento['titulo_doc']) ?></a></h4>
                             </div>
                         
                         </div>
@@ -255,7 +256,7 @@ $fnindex = new Fn_index();
                                     </ul>
                                 </div>
                                 <div class="space24"></div>
-                                <h4 class="vl-blog-1-title"><a href="documentos/<?php echo ($menudocumento['url_doc']) ?>"> <?php echo ($menudocumento['titulo_doc']) ?></a></h4>
+                                <h4 class="vl-blog-1-title"><a href="documentos/<?php echo ($menudocumento['url_doc']) ?>"> <?php echo arreglar_mojibake($menudocumento['titulo_doc']) ?></a></h4>
                             </div>
                         
                         </div>

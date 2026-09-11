@@ -171,7 +171,7 @@ $fnindex = new Fn_index();
                                 <p>100% Presencial</p>
                             </div>
                             <div style="margin-top: 50px;background: #791a2e; padding: 15px;border-radius: 20px;text-align: center;">
-                                <p style="color: #fff;">Si cumples con el perfil envia tu hoja de vida en formato PDF al correo: seleccion@coooperativa15deagosto.fin.ec o al 098 217 1003</p>
+                                <p style="color: #fff;">Si cumples con el perfil envia tu hoja de vida en formato PDF al correo: seleccion@cooperativa15deagosto.fin.ec o al 098 217 1003</p>
                             </div>
                            
                         </div>
