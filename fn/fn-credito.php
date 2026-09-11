@@ -2,69 +2,6 @@
 
 class Fn_credito {
 
-    function fncredito_xget_producto($id) {
-        $productos = [
-            'credito' => [
-                [
-                    'nombre' => 'Crédito Personal Express',
-                    'descripcion' => 'Crédito de consumo para necesidades personales',
-                    'beneficios' => ['Desembolso rápido', 'Tasa preferencial', 'Sin garantía'],
-                    'valor_minimo' => 1000000,
-                    'valor_maximo' => 50000000,
-                    'requisitos' => ['Copia de cédula', 'Certificado laboral', 'Extractos bancarios'],
-                    'rangos_montos' => [
-                        ['min' => 1000000, 'max' => 10000000, 'tasa' => 1.5],
-                        ['min' => 10000001, 'max' => 30000000, 'tasa' => 1.8],
-                        ['min' => 30000001, 'max' => 50000000, 'tasa' => 2.0]
-                    ]
-                ],
-                [
-                    'nombre' => 'Crédito Hipotecario',
-                    'descripcion' => 'Financiamiento para vivienda',
-                    'beneficios' => ['Plazo hasta 20 años', 'Tasa fija', 'Abonos extraordinarios'],
-                    'valor_minimo' => 50000000,
-                    'valor_maximo' => 500000000,
-                    'requisitos' => ['Estudio de crédito', 'Avalúo', 'Contrato de compraventa'],
-                    'rangos_montos' => [
-                        ['min' => 50000000, 'max' => 200000000, 'tasa' => 0.8],
-                        ['min' => 200000001, 'max' => 500000000, 'tasa' => 0.9]
-                    ]
-                ]
-            ],
-            'ahorro' => [
-                [
-                    'nombre' => 'Cuenta de Ahorros Regular',
-                    'descripcion' => 'Cuenta básica para ahorro personal',
-                    'beneficios' => ['Liquidez inmediata', 'Tarjeta débito', 'Sin costo de manejo'],
-                    'valor_minimo' => 0,
-                    'valor_maximo' => 1000000000,
-                    'requisitos' => ['Documento de identidad', 'Firma de formularios'],
-                    'rangos_montos' => [
-                        ['min' => 0, 'max' => 10000000, 'tasa_interes' => 0.5],
-                        ['min' => 10000001, 'max' => 50000000, 'tasa_interes' => 1.0],
-                        ['min' => 50000001, 'max' => 1000000000, 'tasa_interes' => 1.5]
-                    ]
-                ]
-            ],
-            'inversiones' => [
-                [
-                    'nombre' => 'Fondo de Inversión Moderado',
-                    'descripcion' => 'Fondo diversificado con riesgo moderado',
-                    'beneficios' => ['Diversificación', 'Rentabilidad histórica 8%', 'Profesionales gestionando'],
-                    'valor_minimo' => 5000000,
-                    'valor_maximo' => 1000000000,
-                    'requisitos' => ['Perfil de riesgo', 'Declaración de renta', 'Experiencia previa'],
-                    'rangos_montos' => [
-                        ['min' => 5000000, 'max' => 50000000, 'comision' => 1.5],
-                        ['min' => 50000001, 'max' => 200000000, 'comision' => 1.2],
-                        ['min' => 200000001, 'max' => 1000000000, 'comision' => 0.9]
-                    ]
-                ]
-            ]
-        ];
-        return $productos;
-    }
-
     function fncredito_xget_credito($id) {
         if ($id == 1) {
             $titulo = 'Crédito Socio Fiel';

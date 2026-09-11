@@ -2,11 +2,11 @@
 require_once './controler/conexion.php';
 require_once './funciones/fn-index.php';
 $fnindex = new Fn_index();
-include './fn/fn-credito.php';
+require_once './funciones/fn-utilidades.php';
 $id = $_GET['id'];
-$fn_credito = new Fn_credito();
-$titulo = $fn_credito->fncredito_xget_credito($id);
-$desc = $fn_credito->fncredito_xdescget_credito($id);
+$detproducto = $fnindex->fnindex_rproducto_xtextoses($id);
+$titulo = !empty($detproducto[0]['nombre_prod']) ? arreglar_mojibake(utf8_encode($detproducto[0]['nombre_prod'])) : 'Crédito';
+$desc = !empty($detproducto[0]['descripcion_prod']) ? arreglar_mojibake(utf8_encode($detproducto[0]['descripcion_prod'])) : '';
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -389,7 +389,7 @@ $desc = $fn_credito->fncredito_xdescget_credito($id);
 <!--===== SERVICE AREA ENDS =======-->
         <!--===== ABOUT AREA STARTS =======-->
 <div class="about4-section-area sp1">
-    <?php include './mod-simulador-credito.php' ?>
+    <?php include './mod-simulador.php' ?>
 </div>
 <!--===== ABOUT AREA ENDS =======-->
         <!--===== FOOTER AREA STARTS =======-->

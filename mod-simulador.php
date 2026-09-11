@@ -1,6 +1,17 @@
 <?php
 require_once './funciones/fn-utilidades.php';
 $listproducto = $fnindex->fnindex_rproducto_xtipo(5);
+// El motor de cálculo (fn-calcula-credito.php) trabaja con códigos de texto
+// por tipo de crédito, no con el id numérico del producto -- este mapa
+// conecta cada producto activo con el código que sí reconoce.
+$mapaTipoCredito = [
+    116 => 'SOCIOFIEL',
+    118 => 'MICROEMPRENDEDOR',
+    119 => 'MICROVIP',
+    114 => 'CREDIPUNTOS',
+    113 => 'MUJEREMPRENDEDORA',
+    120 => 'FACILITO',
+];
 ?>
 <div class="max-w-7xl mx-auto px-6">
     <div class="grid md:grid-cols-2 gap-12 items-center">
@@ -21,8 +32,13 @@ $listproducto = $fnindex->fnindex_rproducto_xtipo(5);
                 <div>
                     <label class="block font-semibold mb-2">Seleccione un producto</label>
                     <select name="tipocred_calcula" class="w-full border border-neutral-200 rounded-xl px-4 py-3 focus:outline-none focus:border-rojo transition-colors">
-                        <?php while ($menulistprod = $listproducto->fetch_assoc()) { ?>
-                            <option value="<?php echo $menulistprod['id_prod'] ?>"> <?php echo arreglar_mojibake(utf8_encode($menulistprod['nombre_prod'])) ?></option>
+                        <?php
+                        while ($menulistprod = $listproducto->fetch_assoc()) {
+                            if (!isset($mapaTipoCredito[$menulistprod['id_prod']])) {
+                                continue;
+                            }
+                            ?>
+                            <option value="<?php echo $mapaTipoCredito[$menulistprod['id_prod']] ?>"> <?php echo arreglar_mojibake(utf8_encode($menulistprod['nombre_prod'])) ?></option>
                         <?php } ?>
                     </select>
                 </div>

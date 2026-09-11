@@ -31,9 +31,10 @@
                             <li><a href="consumo.php?id=1" class="block px-2 py-1.5 rounded-lg hover:bg-rojo-light hover:text-rojo text-sm">Consumo</a></li>
                             <?php
                             $mapaCredito = [
-                                116 => 'detprod-credito-1.php', 111 => 'detprod-credito-2.php', 115 => 'detprod-credito-3.php',
+                                116 => 'detprod-credito-1.php', 115 => 'detprod-credito-3.php',
                                 120 => 'detprod-credito-4.php', 118 => 'detprod-credito-7.php', 119 => 'detprod-credito-8.php',
                                 114 => 'detprod-credito-9.php', 113 => 'detprod-credito-10.php',
+                                51 => 'detprod-credito-micro.php',
                             ];
                             $detprod = $fnindex->fnindex_rproducto_xtipo(5);
                             while ($menudetprod = $detprod->fetch_assoc()) {
@@ -102,6 +103,29 @@
     </div>
     <ul class="space-y-1 text-base font-semibold">
         <li><a href="index.php" class="block py-3 border-b border-neutral-100">Inicio</a></li>
+        <li class="border-b border-neutral-100">
+            <details>
+                <summary class="cursor-pointer list-none flex items-center justify-between py-3">Productos <i class="fa-solid fa-chevron-down text-xs text-rojo"></i></summary>
+                <ul class="pb-3 pl-3 space-y-1 text-sm font-normal">
+                    <li><a href="microcredito.php?id=1" class="block py-2">Microcrédito</a></li>
+                    <li><a href="consumo.php?id=1" class="block py-2">Consumo</a></li>
+                    <?php
+                    $detprodm = $fnindex->fnindex_rproducto_xtipo(2);
+                    while ($menudetprodm = $detprodm->fetch_assoc()) {
+                        ?>
+                        <li><a href="detprod-inversion-vencimiento.php?id=<?php echo $menudetprodm['id_prod'] ?>" class="block py-2">Inversión: <?php echo arreglar_mojibake(utf8_encode($menudetprodm['nombre_prod'])) ?></a></li>
+                        <?php
+                    }
+                    $detprodm = $fnindex->fnindex_rproducto_xtipo(3);
+                    while ($menudetprodm = $detprodm->fetch_assoc()) {
+                        ?>
+                        <li><a href="detprod-ahorro.php?id=<?php echo $menudetprodm['id_prod'] ?>" class="block py-2">Ahorro: <?php echo arreglar_mojibake(utf8_encode($menudetprodm['nombre_prod'])) ?></a></li>
+                        <?php
+                    }
+                    ?>
+                </ul>
+            </details>
+        </li>
         <li><a href="servicios.php" class="block py-3 border-b border-neutral-100">Servicios</a></li>
         <li><a href="nuestra-coop.php" class="block py-3 border-b border-neutral-100">Conózcanos</a></li>
         <li><a href="educacion-financiera.php" class="block py-3 border-b border-neutral-100">Educación Financiera</a></li>

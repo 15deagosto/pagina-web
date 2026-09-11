@@ -32,7 +32,7 @@ $tituloPagina = $titulo;
             <div data-aos="fade-left">
                 <div class="text-rojo font-bold uppercase text-xs tracking-widest mb-2">Ahorro</div>
                 <h2 class="text-3xl font-extrabold mb-4"><?php echo $titulo ?></h2>
-                <p class="text-neutral-500 leading-relaxed mb-6">Encuentra la cuenta de ahorro que se ajusta a tus metas, con el respaldo de una cooperativa regulada por la SEPS.</p>
+                <p class="text-neutral-500 leading-relaxed mb-6"><?php echo $desc ?></p>
                 <a href="login.php" class="bg-rojo text-white font-bold px-7 py-3 rounded-full hover:bg-rojo-dark transition-all inline-flex items-center gap-2">Abrir esta cuenta <i class="fa-solid fa-arrow-right"></i></a>
             </div>
         </section>
