@@ -146,8 +146,8 @@ if ($slider) {
                 </div>
                 <h2 class="text-3xl font-extrabold mb-6">Respaldo y transparencia</h2>
                 <div class="flex gap-10 flex-wrap items-center">
-                    <img src="assets/img/Uafes_1.webp" class="max-h-20" alt="UAFE">
-                    <img src="assets/img/norma_cosede.webp" class="max-h-20" alt="COSEDE">
+                    
+                    <img src="assets/img/norma_cosede.webp" class="max-h-50" alt="COSEDE">
                 </div>
             </div>
         </section>
