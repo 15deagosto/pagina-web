@@ -66,8 +66,8 @@ if ($slider) {
 
         <!-- ===== HERO: carrusel real + glassmorphism ===== -->
         <section class="relative overflow-hidden bg-gradient-to-br from-rojo via-rojo to-rojo-dark text-white">
-            <div class="blob w-72 h-72 bg-white/20 -top-10 -right-10"></div>
-            <div class="blob w-96 h-96 bg-rojo-dark/40 bottom-0 left-1/3"></div>
+            <div class="blob w-72 h-72 bg-white/20 -top-10 -right-10 blur-[80px] animate-pulse"></div>
+            <div class="blob w-96 h-96 bg-black/20 bottom-0 left-1/3 blur-[100px]"></div>
 
             <div class="relative max-w-7xl mx-auto px-6 pt-16 md:pt-20 pb-10 text-center">
                 <div data-aos="fade-up" data-aos-duration="700">
@@ -79,15 +79,15 @@ if ($slider) {
                     </h1>
                     <p class="text-lg text-white/90 max-w-xl mx-auto mb-8">Ahorra, invierte y accede a crédito con el respaldo de una cooperativa pensada para acompañarte en cada meta.</p>
                     <div class="flex flex-wrap gap-4 justify-center">
-                        <a href="login.php" class="bg-white text-rojo font-bold px-7 py-3.5 rounded-full shadow-softhover hover:-translate-y-1 hover:shadow-xl transition-all">15 de Agosto Virtual</a>
-                        <a href="simulador-credito.php" class="glass font-bold px-7 py-3.5 rounded-full hover:bg-white/20 transition-all">Simular un crédito</a>
+                        <a href="login.php" class="bg-white text-rojo font-bold px-7 py-3.5 rounded-full shadow-softhover hover:-translate-y-1 hover:shadow-xl transition-all duration-300 ease-out">15 de Agosto Virtual</a>
+                        <a href="simulador-credito.php" class="glass font-bold px-7 py-3.5 rounded-full hover:bg-white/20 transition-all duration-300 ease-out">Simular un crédito</a>
                     </div>
                 </div>
             </div>
 
             <div class="relative max-w-7xl mx-auto px-6 pb-16 md:pb-24">
                 <div class="relative" data-aos="zoom-in" data-aos-duration="800" data-aos-delay="150">
-                    <div class="relative rounded-3xl overflow-hidden shadow-2xl aspect-[16/5] md:aspect-[21/6] bg-white">
+                    <div class="relative rounded-3xl overflow-hidden shadow-2xl h-48 sm:h-64 md:h-80 lg:h-[400px] w-full bg-white transition-all duration-300">
                         <?php foreach ($slides as $i => $slide) { ?>
                             <div class="hero-slide absolute inset-0 <?php echo $i === 0 ? 'activa' : ''; ?>" data-slide="<?php echo $i ?>">
                                 <?php
@@ -99,7 +99,7 @@ if ($slider) {
                             </div>
                         <?php } ?>
                         <?php if (empty($slides)) { ?>
-                            <img src="assets/img/logo/logo2.png" alt="Cooperativa 15 de Agosto" class="w-full h-full object-contain p-10">
+                            <img src="assets/img/logo/logo2.png" alt="Cooperativa 15 de Agosto" class="w-full h-full object-cover w-full h-full">
                         <?php } ?>
                     </div>
                     <?php if (count($slides) > 1) { ?>
@@ -166,7 +166,8 @@ if ($slider) {
             </div>
         </section>
 
-        <a href="javascript:void(0)" onclick="whatsapo()" class="fixed bottom-6 right-6 z-50 w-14 h-14 rounded-full bg-[#25D366] text-white flex items-center justify-center text-2xl shadow-xl hover:scale-110 transition-transform" aria-label="WhatsApp">
+        <a href="javascript:void(0)" onclick="whatsapo()" class="fixed bottom-6 right-6 z-50 w-14 h-14 rounded-full bg-[#25D366] 
+        text-white flex items-center justify-center text-2xl shadow-xl hover:scale-110 animate-bounce transition-transform" style="animation-duration: 3s;" aria-label="WhatsApp">
             <i class="fab fa-whatsapp"></i>
         </a>
 
