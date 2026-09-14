@@ -72,7 +72,7 @@ if ($slider) {
             <div class="relative max-w-7xl mx-auto px-6 pt-16 md:pt-20 pb-10 text-center">
                 <div data-aos="fade-up" data-aos-duration="700">
                     <span class="inline-flex items-center gap-2 glass px-4 py-1.5 rounded-full text-xs font-semibold tracking-wide uppercase mb-6">
-                        <i class="fa-solid fa-shield-halved"></i> Regulados por la SEPS -- Segmento 2
+                        <i class="fa-solid fa-shield-halved"></i> Regulados por la SEPS
                     </span>
                     <h1 class="text-4xl md:text-6xl font-extrabold leading-tight mb-6">
                         Tu cooperativa de <span class="text-gradient">confianza</span>, cerca de ti
