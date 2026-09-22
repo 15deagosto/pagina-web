@@ -6,34 +6,36 @@ require_once './funciones/fn-utilidades.php';
 $con = new Conecciones();
 $fncredito = new Fn_credito();
 $fnindex = new Fn_index();
-$fn_credito = new Fn_credito();
-$educafinan = $fnindex->fnindex_reducacion_financiera_alles();
 $listcredito = $fnindex->fnindex_rproducto_xtipo(5);
+$listproducto = $fnindex->fnindex_rproducto_xtipo(5);
+
+$mapaTipoCredito = [
+    116 => 'SOCIOFIEL',
+    118 => 'MICROEMPRENDEDOR',
+    119 => 'MICROVIP',
+    114 => 'CREDIPUNTOS',
+    113 => 'MUJEREMPRENDEDORA',
+    120 => 'FACILITO',
+];
 ?>
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
     <head>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>Microcréditos - 15 de Agosto Cooperativa de Ahorro y Crédito</title>
-
-        <!--=====FAB ICON=======-->
         <link rel="shortcut icon" href="assets/img/favicon-coop.png" type="image/x-icon">
-
         <?php include "head-v2.php"; ?>
-<link rel="stylesheet" href="https://unpkg.com/flickity@2/dist/flickity.min.css">
-        <link rel="stylesheet" href="https://unpkg.com/flickity@2/dist/flickity.min.css">
     </head>
-    <body class="v2">
+    <body class="v2 bg-white text-neutral-800">
 
-        <!--===== PRELOADER STARTS =======-->
+        <!--===== PRELOADER =======-->
         <div class="preloader">
             <img src="assets/img/logo/logo2.png">
             <div class="loader"></div>
         </div>
-        <!--===== PRELOADER ENDS =======-->
 
-        <!--===== PROGRESS STARTS=======-->
+        <!--===== PROGRESS =======-->
         <div class="paginacontainer">
             <div class="progress-wrap">
                 <svg class="progress-circle svg-content" width="100%" height="100%" viewBox="-1 -1 102 102">
@@ -41,139 +43,233 @@ $listcredito = $fnindex->fnindex_rproducto_xtipo(5);
                 </svg>
             </div>
         </div>
-        <!--===== PROGRESS ENDS=======-->
 
-        <!--=====HEADER START=======-->
         <header class="homepage2-body">
             <?php include 'header.php'; ?>
         </header>
-        <!--=====HEADER END =======-->
 
-        
-
-        <!--===== HERO AREA STARTS =======-->
-        <div class="inner-pages-section-area" style="background-image: url(assets/img/banner-credito.jpg); background-position: center; background-repeat: no-repeat; background-size: contain;">
-            <div class="container">
-                <div class="row">
-                    <div class="col-lg-3 m-auto">
-                    </div>
-                    <div class="col-lg-9 m-auto">
-                        <div class="inner-header text-center">
-                            <h2 style="font-size: 65px;">Microcréditos</h2>
-                            <div class="space24"></div>
-                            <a href="index.php">Inicio <i class="fa-solid fa-angle-right"></i> <span>Microcréditos</span></a>
+        <!--===== HERO AREA =======-->
+        <div class="w-full bg-gradient-to-r from-neutral-50 to-neutral-100 bg-center bg-cover bg-no-repeat h-[240px] md:h-[280px] flex items-center border-b border-neutral-100" style="background-image: url(assets/img/banner-credito.jpg);">
+            <div class="max-w-7xl mx-auto px-6 w-full">
+                <div class="grid grid-cols-1 lg:grid-cols-12 items-center">
+                    <div class="lg:col-span-4"></div>
+                    <div class="lg:col-span-8 text-center lg:text-left">
+                        <h2 class="text-4xl md:text-5xl font-black text-neutral-900 tracking-tight mb-2">Microcréditos</h2>
+                        <div class="text-sm font-bold text-neutral-600">
+                            <a href="index.php" class="hover:text-[#a31a16] transition-colors">Inicio</a> 
+                            <i class="fa-solid fa-angle-right text-xs mx-2 opacity-60"></i> 
+                            <span class="text-[#a31a16]">Microcréditos</span>
                         </div>
                     </div>
                 </div>
-                <div class="row d-flex align-items-center">
-                    <div class="col-lg-8 col-md-12 col-sm-12 col-xs-12">
-                        <!--===============spacing==============-->
-                        <div class="pd_top_80"></div>
-                        <!--===============spacing==============-->
+            </div>
+        </div>
 
-                        <!--===============spacing==============-->
-                        <div class="pd_bottom_80"></div>
-                        <!--===============spacing==============-->
+        <!-- ===== BLOQUE 1: REQUISITOS GENERALES PRIMERO ===== -->
+        <section class="py-16 md:py-20 bg-neutral-50/50">
+            <div class="max-w-7xl mx-auto px-6 grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+                
+                <div class="lg:col-span-5 relative" data-aos="fade-right">
+                    <div class="absolute -inset-4 bg-gradient-to-tr from-[#a31a16]/10 to-transparent rounded-[40px] blur-xl opacity-60 pointer-events-none"></div>
+                    <div class="relative rounded-[32px] overflow-hidden shadow-xl border border-neutral-200/50 bg-white p-2">
+                        <img src="assets/img/all-images/about/cal-img.png" alt="Requisitos" class="w-full h-auto rounded-[24px] object-cover">
                     </div>
-                    <!--                    <div class="col-lg-4 hidden-md image_column">
-                                            <div class="slider_image margin_extra" style="position: absolute;
-                                                 text-align: right;margin: -250px -158px -330px 0px !important;">
-                                                <img style="max-width: 45%;
-                                                     height: auto;" src="assets/img/all-images/about/cal-img.png" class="img-fluid" alt="slider image">
-                                            </div>
-                                        </div>-->
+                </div>
+
+                <div class="lg:col-span-7" data-aos="fade-left">
+                    <div class="text-[#a31a16] font-bold uppercase text-xs tracking-widest mb-2 flex items-center gap-2">
+                        <span class="w-6 h-0.5 bg-[#a31a16] inline-block"></span> Documentación Requerida
+                    </div>
+                    <h2 class="text-3xl font-black text-neutral-800 tracking-tight mb-8">
+                        Requisitos para tu <span class="text-[#a31a16]">Crédito</span>
+                    </h2>
+
+                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-5">
+                        <div class="flex gap-4 items-start bg-white p-4 rounded-2xl border border-neutral-100 shadow-sm">
+                            <div class="w-9 h-9 rounded-xl bg-[#a31a16]/5 flex items-center justify-center text-[#a31a16] shrink-0 shadow-inner"><i class="fa-solid fa-address-card text-sm"></i></div>
+                            <div>
+                                <h4 class="font-bold text-neutral-800 text-sm mb-0.5">Identificación Oficial</h4>
+                                <p class="text-xs text-neutral-500 leading-normal">Cédula de identidad original y papeleta de votación actualizada (Socio y cónyuge).</p>
+                            </div>
+                        </div>
+                        <div class="flex gap-4 items-start bg-white p-4 rounded-2xl border border-neutral-100 shadow-sm">
+                            <div class="w-9 h-9 rounded-xl bg-[#a31a16]/5 flex items-center justify-center text-[#a31a16] shrink-0 shadow-inner"><i class="fa-solid fa-file-invoice-dollar text-sm"></i></div>
+                            <div>
+                                <h4 class="font-bold text-neutral-800 text-sm mb-0.5">Respaldo de Ingresos</h4>
+                                <p class="text-xs text-neutral-500 leading-normal">Documentación que certifique tus ingresos o la actividad de tu negocio/microempresa.</p>
+                            </div>
+                        </div>
+                        <div class="flex gap-4 items-start bg-white p-4 rounded-2xl border border-neutral-100 shadow-sm">
+                            <div class="w-9 h-9 rounded-xl bg-[#a31a16]/5 flex items-center justify-center text-[#a31a16] shrink-0 shadow-inner"><i class="fa-solid fa-receipt text-sm"></i></div>
+                            <div>
+                                <h4 class="font-bold text-neutral-800 text-sm mb-0.5">Servicio Básico</h4>
+                                <p class="text-xs text-neutral-500 leading-normal">Planilla de agua, luz o teléfono del último mes del domicilio o local.</p>
+                            </div>
+                        </div>
+                        <div class="flex gap-4 items-start bg-white p-4 rounded-2xl border border-neutral-100 shadow-sm">
+                            <div class="w-9 h-9 rounded-xl bg-[#a31a16]/5 flex items-center justify-center text-[#a31a16] shrink-0 shadow-inner"><i class="fa-solid fa-map-location-dot text-sm"></i></div>
+                            <div>
+                                <h4 class="font-bold text-neutral-800 text-sm mb-0.5">Ubicación y Croquis</h4>
+                                <p class="text-xs text-neutral-500 leading-normal">Croquis detallado de la dirección del domicilio para verificación de campo.</p>
+                            </div>
+                        </div>
+                    </div>
                 </div>
 
             </div>
-        </div>
-        <!--===== HERO AREA ENDS =======-->
+        </section>
+        <!-- ===== 🧮 BLOQUE 2: SIMULADOR INTERACTIVO INCRUSTADO EN VIVO ===== -->
+        <section class="py-16 md:py-24 bg-white border-t border-b border-neutral-100">
+            <div class="max-w-7xl mx-auto px-6">
+                <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+                    
+                    <!-- Formulario de Entrada (Lado Izquierdo) -->
+                    <div class="lg:col-span-7" data-aos="fade-right">
+                        <div class="text-[#a31a16] font-bold uppercase text-xs tracking-widest mb-3 flex items-center gap-2">
+                            <span class="w-6 h-0.5 bg-[#a31a16] inline-block"></span> Proyección Inmediata
+                        </div>
+                        <h2 class="text-3xl font-black text-neutral-800 tracking-tight mb-4">Simula tus cuotas <span class="text-[#a31a16]">en tiempo real</span></h2>
+                        <p class="text-neutral-500 text-xs md:text-sm mb-8 leading-relaxed">Proyecta tu inversión financiera al instante. Selecciona el tipo de microcrédito, ingresa el valor que requieres y obtén tu tabla de amortización de forma directa.</p>
 
-        <!--===== BLOG AREA STARTS =======-->
-        <div class="vl-blog-1-area sp2" style="margin-top:80px;">
-            <div class="container">
-                <div class="row">
-                    <div class="carousel" data-flickity='{ "wrapAround": true, "groupCells": 2}'>
-                          <?php
-                while ($menucredito = $listcredito->fetch_assoc()) {
-                    ?>
-                        <div class="carousel-cell">
-                                <div class="vl-blog-1-item">
-                                    <div class="vl-blog-1-thumb image-anime">
-                                        <img src="assets/img/img-item-educacion-02.jpg" alt="">
-                                    </div>
-                                    <div class="vl-blog-1-content">
-                                        <div class="vl-blog-meta" style="justify-content: center;display: flex;">
-                                            <ul style="display: grid;text-align: center;">
-                                                <li>
-                                                    <a href="#"><img style="width:70px;" src="assets/img/icon-money.png">  </a>
-                                                </li>
-                                                <li style="margin-top: 20px;">
-                                                    <h4 class="vl-blog-1-title"><a style="color: #a31a16; font-weight: bold; font-size: 1.7rem;" href="detprod-credito-micro.php?id=<?php echo ($menucredito['id_prod']) ?>" style="color: #a31a16;"><?php echo arreglar_mojibake(utf8_encode($menucredito['nombre_prod'])) ?></a></h4>
-                                                </li>
-                                            </ul>
-                                        </div>
-                                        <div class="space24"></div>
-
-                                        <div class="space16"></div>
-                                        <p style="text-align: justify;"><?php echo arreglar_mojibake(utf8_encode($menucredito['descripcion_prod'])) ?></p>
-                                        <div class="space24"></div>
-                                    </div>
+                        <form method="POST" id="formularioCredito" class="bg-neutral-50 rounded-3xl p-6 md:p-8 border border-neutral-100 grid grid-cols-1 sm:grid-cols-2 gap-5 shadow-sm">
+                            <input type="hidden" name="tasa_calcula" value="">
+                            
+                            <div class="flex flex-col gap-2 sm:col-span-2">
+                                <label class="font-extrabold text-neutral-700 text-sm"><i class="fa-solid fa-layer-group text-[#a31a16] mr-1"></i> Línea de Crédito</label>
+                                <select name="tipocred_calcula" class="w-full bg-white border border-neutral-200 focus:border-[#a31a16]/40 rounded-xl px-4 py-3 text-neutral-800 font-semibold outline-none text-sm cursor-pointer">
+                                    <?php while ($menulistprod = $listproducto->fetch_assoc()) { 
+                                        if (!isset($mapaTipoCredito[$menulistprod['id_prod']])) continue; ?>
+                                        <option value="<?php echo $mapaTipoCredito[$menulistprod['id_prod']] ?>"><?php echo arreglar_mojibake(utf8_encode($menulistprod['nombre_prod'])) ?></option>
+                                    <?php } ?>
+                                </select>
+                            </div>
+                            <div class="flex flex-col gap-2">
+                                <label class="font-extrabold text-neutral-700 text-sm"><i class="fa-solid fa-money-bill-wave text-[#a31a16] mr-1"></i> Monto solicitado*</label>
+                                <div class="relative">
+                                    <span class="absolute left-4 top-1/2 -translate-y-1/2 font-bold text-neutral-400">$</span>
+                                    <input name="monto_calcula" id="monto_calcula" type="text" placeholder="Ej: 5000" required class="w-full bg-white border border-neutral-200 focus:border-[#a31a16]/40 rounded-xl pl-8 pr-4 py-3 text-neutral-800 font-semibold outline-none text-sm">
                                 </div>
-                            <br><br><br><br>
-                        </div>
-                           <?php } ?>
-                        
+                                <span id="error_monto" class="hidden text-xs font-bold text-red-600 mt-1"><i class="fa-solid fa-circle-exclamation"></i> El monto mínimo de simulación permitido es $1,000.</span>
+                            </div>
+                            <div class="flex flex-col gap-2">
+                                <label class="font-extrabold text-neutral-700 text-sm"><i class="fa-solid fa-calendar-days text-[#a31a16] mr-1"></i> Plazo estimado*</label>
+                                <div class="relative">
+                                    <input name="plazo_calcula" type="text" placeholder="Ej: 24" required class="w-full bg-white border border-neutral-200 focus:border-[#a31a16]/40 rounded-xl px-4 py-3 text-neutral-800 font-semibold outline-none text-sm">
+                                    <span class="absolute right-4 top-1/2 -translate-y-1/2 font-bold text-xs text-neutral-400 uppercase">Meses</span>
+                                </div>
+                            </div>
+                            <div class="flex flex-col gap-2 sm:col-span-2">
+                                <label class="font-extrabold text-neutral-700 text-sm"><i class="fa-solid fa-chart-pie text-[#a31a16] mr-1"></i> Amortización*</label>
+                                <select name="tipoamortiza" class="w-full bg-white border border-neutral-200 focus:border-[#a31a16]/40 rounded-xl px-4 py-3 text-neutral-800 font-semibold outline-none text-sm cursor-pointer">
+                                    <option value="1">Cuotas Fijas (Sistema Francés)</option>
+                                    <option value="2">Cuotas Variables (Sistema Alemán)</option>
+                                </select>
+                            </div>
+                            <div class="sm:col-span-2 pt-2">
+                                <button id="btn_calcular_master" onclick="calcularcredito()" type="button" class="w-full bg-[#a31a16] hover:bg-[#7a1310] text-white font-extrabold py-3.5 rounded-xl shadow-md transition-all uppercase text-xs tracking-wide"><i class="fa-solid fa-calculator"></i> CALCULAR AHORA</button>
+                            </div>
+                        </form>
                     </div>
 
+                    <!-- Tarjeta de Resultados Esmerilada (Lado Derecho) -->
+                    <div class="lg:col-span-5 relative" data-aos="fade-left">
+                        <div class="absolute -inset-4 bg-gradient-to-tr from-[#a31a16]/10 to-transparent rounded-[40px] blur-xl opacity-60 pointer-events-none"></div>
+                        <div class="relative rounded-[32px] overflow-hidden shadow-2xl bg-gradient-to-br from-[#7a1310] to-[#a31a16] p-6 text-white min-h-[380px] flex flex-col justify-between border border-white/10">
+                            <div class="absolute inset-0 opacity-10 bg-[radial-gradient(#fff_1px,transparent_1px)] [background-size:16px_16px] pointer-events-none"></div>
+                            <div class="relative z-10 flex justify-between items-start">
+                                <div>
+                                    <p class="text-[9px] uppercase tracking-widest text-white/60 font-black mb-0.5">COAC 15 de Agosto</p>
+                                    <h3 class="text-lg font-black tracking-tight">Proyección Calculada</h3>
+                                </div>
+                                <div class="w-9 h-9 rounded-xl bg-white/10 backdrop-blur-md border border-white/20 flex items-center justify-center text-white"><i class="fa-solid fa-vault text-sm"></i></div>
+                            </div>
 
+                            <div id="resultado" class="text-white bg-white/5 backdrop-blur-sm border border-white/10 rounded-2xl p-4 min-h-[200px] flex flex-col justify-center overflow-hidden [&_br]:hidden [&_table]:w-full [&_table]:flex [&_table]:flex-col [&_td]:w-full [&_td]:block [&_td]:p-0 [&_td]:text-xs [&_span.text-rojo]:text-[#ffd9d6] [&_span]:inline-block [&_span]:font-black [&_span]:text-2xl [&_span]:my-1 [&_span]:text-white [&_b]:hidden [&_font]:hidden">
+                                <div class="text-center p-2">
+                                    <div class="w-10 h-10 rounded-full bg-white/10 flex items-center justify-center mx-auto mb-2 text-white"><i class="fa-solid fa-chart-line"></i></div>
+                                    <p class="text-[11px] text-white/70 font-medium leading-relaxed">Ingrese los datos requeridos y presione calcular para ver su proyección.</p>
+                                </div>
+                            </div>
 
-                    <!--                    <div class="col-lg-12">
-                                            <div class="space18"></div>
-                                            <div class="pagination-area">
-                                                <nav aria-label="Page navigation example">
-                                                    <ul class="pagination">
-                                                        <li class="page-item">
-                                                            <a class="page-link" href="#" aria-label="Previous">
-                                                                <i class="fa-solid fa-angle-left"></i>
-                                                            </a>
-                                                        </li>
-                                                        <li class="page-item"><a class="page-link" href="#">1</a></li>
-                                                        <li class="page-item"><a class="page-link" href="#">2</a></li>
-                                                        <li class="page-item"><a class="page-link" href="#">...</a></li>
-                                                        <li class="page-item"><a class="page-link" href="#">12</a></li>
-                                                        <li class="page-item">
-                                                            <a class="page-link" href="#" aria-label="Next">
-                                                                <i class="fa-solid fa-angle-right"></i>
-                                                            </a>
-                                                        </li>
-                                                    </ul>
-                                                </nav>
-                                            </div>
-                                        </div>-->
+                            <div class="relative z-10 pt-3 border-t border-white/10 flex justify-between items-center text-left text-[11px]">
+                                <p class="font-bold text-white/80">Valores sujetos a evaluación de riesgo</p>
+                                <img src="assets/img/favicon-coop.png" class="h-6 opacity-30 filter brightness-0 invert" alt="COAC">
+                            </div>
+                        </div>
+                    </div>
+
                 </div>
             </div>
-        </div>
-        <div style="height: 150px;">
+        </section>
+        <!-- ===== BLOQUE 3: LÍNEAS DE CRÉDITO DISPONIBLES EN LA COOPERATIVA ===== -->
+        <div class="max-w-7xl mx-auto px-6 py-16 md:py-24">
+            <div class="text-center max-w-3xl mx-auto mb-16" data-aos="fade-up">
+                <span class="inline-flex items-center gap-2 bg-[#a31a16]/5 text-[#a31a16] border border-[#a31a16]/10 px-4 py-1.5 rounded-full text-xs font-bold tracking-wide uppercase mb-3">
+                    <i class="fa-solid fa-layer-group"></i> Portafolio de Productos
+                </span>
+                <h2 class="text-3xl md:text-4xl font-black text-neutral-800 tracking-tight">Nuestras Líneas de Microcrédito</h2>
+            </div>
 
-        </div>
-        <!--===== BLOG AREA ENDS =======-->
-
-        <!-- Modal -->
-        <div id="modalSimulador" class="modal">
-            <div class="modal-content">
-                <span class="cerrar" onclick="cerrarModal()">&times;</span>
-                <h1 style="font-weight: 800; text-align: center !important">Simulador de Crédito</h1>
-<!--                <p style="text-align: center !important">Aquí puedes colocar tu formulario o resultado del simulador.</p>-->
-                <div id="resultado"></div> 
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <?php while ($menucredito = $listcredito->fetch_assoc()) { ?>
+                    <div class="group bg-white border border-neutral-100 rounded-3xl p-8 shadow-soft hover:shadow-softhover hover:-translate-y-2 transition-all duration-300 flex flex-col justify-between h-[360px]" data-aos="fade-up">
+                        <div>
+                            <div class="w-14 h-14 rounded-2xl bg-[#a31a16]/5 flex items-center justify-center text-[#a31a16] group-hover:bg-[#a31a16] group-hover:text-white transition-all duration-300 shadow-sm mb-6">
+                                <img style="width:32px;" src="assets/img/icon-money.png" class="group-hover:brightness-0 group-hover:invert transition-all" alt="Icon">
+                            </div>
+                            <h3 class="text-xl font-black tracking-tight text-neutral-800 mb-3 group-hover:text-[#a31a16] transition-colors">
+                                <?php echo arreglar_mojibake(utf8_encode($menucredito['nombre_prod'])) ?>
+                            </h3>
+                            <p class="text-xs text-neutral-500 leading-relaxed text-justify line-clamp-4">
+                                <?php echo arreglar_mojibake(utf8_encode($menucredito['descripcion_prod'])) ?>
+                            </p>
+                        </div>
+                        <div class="pt-4 border-t border-neutral-50 flex items-center justify-between">
+                            <span class="text-[10px] font-black text-neutral-400 uppercase tracking-wider">Aprobación Ágil</span>
+                            <a href="detprod-credito-micro.php?id=<?php echo $menucredito['id_prod'] ?>" class="inline-flex items-center justify-center w-10 h-10 rounded-full bg-neutral-50 text-neutral-400 group-hover:bg-[#a31a16] group-hover:text-white transition-all duration-300">
+                                <i class="fa-solid fa-chevron-right text-sm"></i>
+                            </a>
+                        </div>
+                    </div>
+                <?php } ?>
             </div>
         </div>
-        <!--===== FOOTER AREA STARTS =======-->
+
         <div class="vl-footer2-section-area">
             <?php include './footer.php' ?>
         </div>
-        <!--===== FOOTER AREA ENDS =======-->
 
         <?php include "scripts-v2.php"; ?>
-<script src="https://unpkg.com/flickity@2/dist/flickity.pkgd.min.js"></script>
-</body>
+        
+        <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            const inputMonto = document.getElementById('monto_calcula');
+            const labelError = document.getElementById('error_monto');
+            const btnCalcular = document.getElementById('btn_calcular_master');
+            if (inputMonto && labelError && btnCalcular) {
+                inputMonto.addEventListener('input', function() {
+                    let montoTexto = inputMonto.value.trim();
+                    let montoNum = parseFloat(montoTexto.replace(/[,.]/g, ''));
+                    if (montoTexto === "" || (!isNaN(montoNum) && montoNum >= 1000)) {
+                        labelError.classList.add('hidden');
+                        inputMonto.classList.remove('border-red-500', 'bg-red-50/50');
+                        btnCalcular.disabled = false;
+                        btnCalcular.classList.remove('opacity-50', 'cursor-not-allowed');
+                        btnCalcular.setAttribute('onclick', 'calcularcredito()');
+                    } else {
+                        labelError.classList.remove('hidden');
+                        inputMonto.classList.add('border-red-500', 'bg-red-50/50');
+                        btnCalcular.disabled = true;
+                        btnCalcular.classList.add('opacity-50', 'cursor-not-allowed');
+                        btnCalcular.removeAttribute('onclick');
+                    }
+                });
+            }
+        });
+        </script>
+    </body>
 </html>
+
+
+
+
