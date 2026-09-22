@@ -6,10 +6,10 @@ require_once __DIR__ . '/config.local.php';
 // 15 de Agosto. Pendiente de confirmar con el usuario los valores
 // correctos antes de desplegar a producción (ver EMAILRECLAMOSARAS,
 // que es el canal de denuncias SARAS -- prioridad alta de corregir).
-define ("URLPRINCIPAL","https://sumakkawsay.fin.ec/");
+define ("URLPRINCIPAL","http://localhost/cooperativa15deagosto_local/pagina-web/");
 define ("URLIMAGEN","https://www.sumakkawsay.fin.ec/images/logo-sumakkawsay-02.png");
 define ("EMAILTEST_1","sistemas@supaysoft.net");
-define ("EMPRESA","Cooperativa de Ahorro y crédito Sumak Kawsay");
+define ("EMPRESA","Cooperativa de Ahorro y crédito 15 de Agosto");
 define ("TELFEMPRESA","03 2809 624");
 define ("EMAILPROSPECCION","prospeccion@sumakkawsay.fin.ec");
 define ("EDUCACIONFINANCIERA","educacion@sumakkawsay.fin.ec");

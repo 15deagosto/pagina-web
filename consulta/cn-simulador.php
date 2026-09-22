@@ -61,9 +61,9 @@ if ($opc == 2) {
     $tipo_credito = $_POST['tipo_credito'];
     $valor_credito = str_replace([',', '.'], '', $valor_credito);
     $tupla2 = $fnsimulador->fn_rproducto_xid($tipo_credito);
-    $interes=$tupla2[0]['int_prod'];
-    $segurodegrav=$tupla2[0]['segurograv_prod'];
-    $cuota_credito=0;
+    $interes = !empty($tupla2) ? $tupla2[0]['int_prod'] : 0;
+    $segurodegrav = !empty($tupla2) ? $tupla2[0]['segurograv_prod'] : 0;
+    $cuota_credito = 0;
     if($valor_credito!="" && $valor_credito>0 && $tiempo_credito!=0 && count($tupla2)>0){
         $interestotal=(($interes/100)/2)*($tiempo_credito/12);
     $valortotalinteres=($valor_credito*$interestotal)+$valor_credito;
@@ -73,23 +73,49 @@ if ($opc == 2) {
     $cuota_credito=$valorcuota+$valorgravament+$ahorroprog;
     }
     
-//    $json_data = $fnwbsimulador->fnwbsimulador_tabla_credito($valor_credito, $tiempo_credito,
-//            $tipo_credito);
+if ($valor_credito != "" && $valor_credito > 0 && $tiempo_credito != 0 && count($tupla2) > 0) {
+        $interestotal = (($interes / 100) / 2) * ($tiempo_credito / 12);
+        $valortotalinteres = ($valor_credito * $interestotal) + $valor_credito;
+        $valorgravament = ($segurodegrav * $valor_credito) / 1000;
+        $ahorroprog = 10;
+        $valorcuota = $valortotalinteres / $tiempo_credito;
+        $cuota_credito = $valorcuota + $valorgravament + $ahorroprog;
+    }
     
-//    if (count($json_data['tablaPresuntivaPrestamoParaImpresionDetalles']) > 0) {
-//        $cuota_credito = $json_data['tablaPresuntivaPrestamoParaImpresionDetalles'][$tiempo_credito-1]['totalCuota'];
-//    } else {
-//        $cuota_credito = 0;
-//        echo $json_data['response'];
-//    }
-    
-    ?>
-    <h4 class="darkcolor bottom20 whitetext" style="color:#767676 !important;">Cuota Mensual</h4>
-    <h1 class="darkcolor bottom20 whitetext" style="color:#213e97 !important; font-weight: bold;">$ <?php echo number_format($cuota_credito, 2) ?></h1>
-    <h4 class="darkcolor bottom20 whitetext" style="color:#767676 !important;">Las mejores tasas de interés %</h4>
-    <span class="darkcolor bottom20 whitetext" style="color:#767676 !important;">
-        * Cálculo de la cuota NO INCLUYE valores de seguros *</span>
-    <?php
+    // EVALUACIÓN DE CONTROL TRANSACCIONAL: Si el cálculo falló o da cero, pintamos una alerta limpia e institucional
+    if ($cuota_credito <= 0 || empty($tupla2)) {
+        ?>
+        <div class="text-center p-4 w-full bg-[#7a1310]/40 border border-white/10 rounded-2xl shadow-inner animate-[fadeIn_0.3s_ease-out]">
+            <div class="w-11 h-11 rounded-full bg-white/10 flex items-center justify-center mx-auto mb-3 text-[#ffd9d6] border border-white/10">
+                <i class="fa-solid fa-triangle-exclamation text-lg"></i>
+            </div>
+            <h4 class="font-black text-sm mb-1.5 text-white tracking-tight uppercase">Restricción de Parámetros</h4>
+            <p class="text-xs text-white/80 leading-relaxed font-medium px-2">El monto o plazo ingresado está fuera de los límites permitidos para este producto financiero. Por favor, verifique los valores de simulación.</p>
+        </div>
+        <?php
+    } else {
+       
+        ?>
+        <div class="w-full flex flex-col md:flex-row gap-6 items-center md:items-start text-left">
+            <!-- Bloque Izquierdo: Valor Grande de la Cuota -->
+            <div class="w-full md:w-1/2 flex flex-col justify-center">
+                <h4 class="text-xs uppercase font-bold tracking-widest text-white/60 mb-1">Cuota Mensual</h4>
+                <h1 class="text-3xl md:text-4xl font-black text-white tracking-tight mb-2">$ <?php echo number_format($cuota_credito, 2) ?></h1>
+                <p class="text-xs font-semibold text-[#ffd9d6] bg-white/5 border border-white/10 rounded-lg px-2.5 py-1 inline-block self-start">Tasa aplicada: <?php echo number_format($interes, 2) ?>% Anual</p>
+            </div>
+            
+            <!-- Línea Divisoria Vertical Fina -->
+            <div class="hidden md:block w-px bg-white/10 self-stretch my-2"></div>
+            
+            <!-- Bloque Derecho: Información y Nota de Responsabilidad -->
+            <div class="w-full md:w-1/2 text-xs text-white/70 leading-relaxed pt-1">
+                <p class="font-bold text-white/90 mb-1">Nota Informativa:</p>
+                <p class="mb-2">El valor proyectado representa una cuota aproximada de amortización mensual bajo las mejores tasas del mercado.</p>
+                <p class="text-[10px] text-white/40 italic">* El cálculo referencial de la cuota no incluye valores adicionales de seguros de desgravamen o administrativos.</p>
+            </div>
+        </div>
+        <?php
+    }
 }
 //enviar datos de credito
 if ($opc == 3) {

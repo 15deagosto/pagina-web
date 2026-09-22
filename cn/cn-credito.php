@@ -1,4 +1,5 @@
 <?php
+error_reporting(0);
 include '../fn/fn-calcula-credito.php';
 include '../fn/fn-credito.php';
 $fn_calculacredito = new Fn_calculacredito();
