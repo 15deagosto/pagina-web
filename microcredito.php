@@ -118,7 +118,7 @@ $mapaTipoCredito = [
 
             </div>
         </section>
-        <!-- ===== 🧮 BLOQUE 2: SIMULADOR INTERACTIVO INCRUSTADO EN VIVO ===== -->
+        <!-- =====  BLOQUE 2: SIMULADOR INTERACTIVO INCRUSTADO EN VIVO ===== -->
         <section class="py-16 md:py-24 bg-white border-t border-b border-neutral-100">
             <div class="max-w-7xl mx-auto px-6">
                 <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
