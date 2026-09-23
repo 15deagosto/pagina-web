@@ -19,7 +19,7 @@ $tituloPagina = 'Contacto';
         <?php include 'header.php'; ?>
         <?php include './partial-hero-interno.php'; ?>
 
-        <!-- ===== CENTRO DE ATENCIÓN Y SOPORTE v3.5 ===== -->
+        <!-- ===== CENTRO DE ATENCIÓN Y SOPORTE  ===== -->
         <section class="py-16 md:py-24 max-w-7xl mx-auto px-6">
             <div class="grid lg:grid-cols-12 gap-12 items-start">
                 

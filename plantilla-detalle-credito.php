@@ -78,11 +78,11 @@ $codigoCalculo = isset($mapaInversowB[$titulo]) ? $mapaInversowB[$titulo] : 'SOC
                 </div>
             </div>
         </section>
-        <!-- ===== CONDICIONES DINÁMICAS OPTIMIZADAS v3.0 ===== -->
+        <!-- ===== CONDICIONES DINÁMICAS OPTIMIZADAS ===== -->
         <section class="bg-neutral-50/50 py-16 border-t border-b border-neutral-100">
             <div class="max-w-7xl mx-auto px-6 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
                 <?php
-                // 🌟 CORREGIDO: Usamos iconos de FontAwesome estables para que las condiciones reales carguen perfectas
+                // CORREGIDO: Usamos iconos de FontAwesome estables para que las condiciones reales carguen perfectas
                 $condiciones = [
                     ['icon' => 'fa-solid fa-money-bill-wave', 'label' => 'Monto', 'texto' => $montoTexto],
                     ['icon' => 'fa-solid fa-calendar-days', 'label' => 'Plazo', 'texto' => $plazoTexto],
@@ -136,7 +136,7 @@ $codigoCalculo = isset($mapaInversowB[$titulo]) ? $mapaInversowB[$titulo] : 'SOC
                 </ul>
             </div>
         </section>
-        <!-- ===== 🧮 SECCIÓN 3: SIMULADOR INTERACTIVO INYECTADO DIRECTAMENTE ===== -->
+        <!-- ===== SECCIÓN 3: SIMULADOR INTERACTIVO INYECTADO DIRECTAMENTE ===== -->
         <section class="py-16 md:py-24 bg-white border-t border-neutral-100">
             <div class="max-w-7xl mx-auto px-6">
                 <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">

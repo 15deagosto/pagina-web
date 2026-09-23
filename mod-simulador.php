@@ -34,7 +34,7 @@ $mapaTipoCredito = [
             <form method="POST" id="formularioCredito" class="bg-white rounded-3xl p-6 md:p-8 shadow-soft border border-neutral-100 grid grid-cols-1 sm:grid-cols-2 gap-6">
                 <input type="hidden" name="tasa_calcula" value="">
 
-                <!-- 🏛️ 1. SELECCIÓN DE PRODUCTO -->
+                <!-- 1. SELECCIÓN DE PRODUCTO -->
                 <div class="flex flex-col gap-2 sm:col-span-2">
                     <label class="font-extrabold text-neutral-700 text-sm flex items-center gap-2">
                         <i class="fa-solid fa-layer-group text-[#a31a16]"></i> Seleccione un producto financiero
@@ -53,7 +53,7 @@ $mapaTipoCredito = [
                     </select>
                 </div>
 
-                <!-- 💰 2. INGRESO DE MONTO CON MENSAJE DE ERROR INTEGRADO -->
+                <!-- 2. INGRESO DE MONTO CON MENSAJE DE ERROR INTEGRADO -->
                 <div class="flex flex-col gap-2">
                     <label class="font-extrabold text-neutral-700 text-sm flex items-center gap-2">
                         <i class="fa-solid fa-money-bill-wave text-[#a31a16]"></i> Monto total solicitado*
@@ -62,13 +62,13 @@ $mapaTipoCredito = [
                         <span class="absolute left-4 top-1/2 -translate-y-1/2 font-bold text-neutral-400">$</span>
                         <input name="monto_calcula" id="monto_calcula" type="text" placeholder="Ej: 5000" required class="w-full bg-neutral-50 border border-neutral-200 focus:border-[#a31a16]/40 focus:bg-white rounded-xl pl-8 pr-4 py-3.5 text-neutral-800 font-semibold outline-none transition-all">
                     </div>
-                    <!-- 🚨 ALERTA ROJA EN LETRAS PEQUEÑAS (Oculta por defecto) -->
+                    <!--ALERTA ROJA EN LETRAS PEQUEÑAS (Oculta por defecto) -->
                     <span id="error_monto" class="hidden text-xs font-bold text-red-600 mt-1 flex items-center gap-1">
                         <i class="fa-solid fa-circle-exclamation"></i> El monto mínimo de simulación permitido es $3,150.
                     </span>
                 </div>
 
-                <!-- 📅 3. INGRESO DE TIEMPO (PLAZO) -->
+                <!-- 3. INGRESO DE TIEMPO (PLAZO) -->
                 <div class="flex flex-col gap-2">
                     <label class="font-extrabold text-neutral-700 text-sm flex items-center gap-2">
                         <i class="fa-solid fa-calendar-days text-[#a31a16]"></i> Tiempo estimado (Plazo)*
@@ -79,7 +79,7 @@ $mapaTipoCredito = [
                     </div>
                 </div>
 
-                <!-- 📊 4. TIPO DE AMORTIZACIÓN -->
+                <!-- 4. TIPO DE AMORTIZACIÓN -->
                 <div class="flex flex-col gap-2 sm:col-span-2">
                     <label class="font-extrabold text-neutral-700 text-sm flex items-center gap-2">
                         <i class="fa-solid fa-chart-pie text-[#a31a16]"></i> Tipo de amortización*
@@ -90,7 +90,7 @@ $mapaTipoCredito = [
                     </select>
                 </div>
 
-                <!-- 🚀 BOTÓN CALCULAR -->
+                <!-- BOTÓN CALCULAR -->
                 <div class="sm:col-span-2 mt-2">
                     <button id="btn_calcular_master" onclick="calcularcredito()" type="button" class="w-full bg-[#a31a16] hover:bg-[#7a1310] text-white font-extrabold py-4 rounded-xl shadow-lg hover:shadow-[#a31a16]/20 hover:-translate-y-0.5 transition-all duration-300 flex items-center justify-center gap-2 tracking-wide uppercase text-sm">
                         <i class="fa-solid fa-calculator"></i> CALCULAR AHORA
@@ -117,7 +117,7 @@ $mapaTipoCredito = [
                         </div>
                     </div>
 
-                    <!-- 🎯 CONTENEDOR TOTALMENTE LIMPIO Y REPARADO (Ícono perfecto) -->
+                    <!-- CONTENEDOR TOTALMENTE LIMPIO Y REPARADO (Ícono perfecto) -->
                     <div id="resultado" class="text-white bg-white/5 backdrop-blur-sm border border-white/10 rounded-2xl p-5 min-h-[260px] flex flex-col justify-center
                         [&_br]:hidden
                         [&_table]:w-full [&_table]:flex [&_table]:flex-col md:[&_table]:flex-row [&_table]:gap-4 [&_table]:items-start
@@ -185,7 +185,7 @@ document.addEventListener("DOMContentLoaded", function() {
             let errorMontoMsg = "";
             let errorPlazoMsg = "";
 
-            // 🏛️ 1. VALIDACIÓN DE CAMPOS VACÍOS (Si el usuario borra todo)
+            // 1. VALIDACIÓN DE CAMPOS VACÍOS (Si el usuario borra todo)
             if (montoTexto === "") {
                 errorMontoMsg = "Por favor, ingrese el monto solicitado.";
             }
@@ -193,8 +193,8 @@ document.addEventListener("DOMContentLoaded", function() {
                 errorPlazoMsg = "Por favor, ingrese el plazo en meses.";
             }
 
-                        // 🏛️ =========================================================
-            // POLÍTICAS DINÁMICAS POR PRODUCTO (Ajustadas a tu Core real)
+                        // =========================================================
+            // POLÍTICAS DINÁMICAS POR PRODUCTO 
             // =========================================================
             if (productoActual === "CREDIPUNTOS") {
                 // Validación de Monto para Credi Puntos (Mínimo real institucional $500, Máximo $1,000)
@@ -223,7 +223,7 @@ document.addEventListener("DOMContentLoaded", function() {
             }
 
 
-            // 🚨 APLICAR VISUALIZACIÓN DE ERRORES DEL MONTO
+            // APLICAR VISUALIZACIÓN DE ERRORES DEL MONTO
             if (errorMontoMsg !== "") {
                 labelErrorMonto.innerHTML = `<i class="fa-solid fa-circle-exclamation"></i> ${errorMontoMsg}`;
                 labelErrorMonto.classList.remove('hidden');
@@ -233,7 +233,7 @@ document.addEventListener("DOMContentLoaded", function() {
                 inputMonto.classList.remove('border-red-500', 'bg-red-50/50');
             }
 
-            // 🚨 APLICAR VISUALIZACIÓN DE ERRORES DEL PLAZO (MESES)
+            // APLICAR VISUALIZACIÓN DE ERRORES DEL PLAZO (MESES)
             if (errorPlazoMsg !== "") {
                 labelErrorPlazo.innerHTML = `<i class="fa-solid fa-circle-exclamation"></i> ${errorPlazoMsg}`;
                 labelErrorPlazo.classList.remove('hidden');

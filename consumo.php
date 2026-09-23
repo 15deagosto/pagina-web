@@ -54,7 +54,7 @@ $mapaTipoCredito = [
                 <div class="grid grid-cols-1 lg:grid-cols-12 items-center">
                     <div class="lg:col-span-4"></div>
                     <div class="lg:col-span-8 text-center lg:text-left">
-                        <!-- 🌟 CORREGIDO: Ahora dice Créditos de Consumo formalmente -->
+                      
                         <h2 class="text-4xl md:text-5xl font-black text-neutral-900 tracking-tight mb-2">Créditos de Consumo</h2>
                         <div class="text-sm font-bold text-neutral-600">
                             <a href="index.php" class="hover:text-[#a31a16] transition-colors">Inicio</a> 
@@ -85,7 +85,7 @@ $mapaTipoCredito = [
                         Requisitos para tu <span class="text-[#a31a16]">Crédito de Consumo</span>
                     </h2>
 
-                    <!-- 🌟 AJUSTADO: Requisitos específicos para empleados con Roles de Pago -->
+                    <!--AJUSTADO: Requisitos específicos para empleados con Roles de Pago -->
                     <div class="grid grid-cols-1 sm:grid-cols-2 gap-5">
                         <div class="flex gap-4 items-start bg-white p-4 rounded-2xl border border-neutral-100 shadow-sm hover:border-[#a31a16]/20 transition-all">
                             <div class="w-9 h-9 rounded-xl bg-[#a31a16]/5 flex items-center justify-center text-[#a31a16] shrink-0 shadow-inner"><i class="fa-solid fa-address-card text-sm"></i></div>

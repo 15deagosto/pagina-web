@@ -43,9 +43,9 @@ $tituloPagina = $titulo;
                 <!-- ===== DESCRIPCIÓN EDITORIAL CORREGIDA: Imágenes completas sin recortes v6.0 ===== -->
         <section class="py-16 max-w-7xl mx-auto px-6 grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
             
-            <!-- 🟢 CONTENEDOR MAESTRO REPARADO: Dividimos la pantalla en 6 y 6 columnas perfectas de Tailwind -->
+            <!-- CONTENEDOR MAESTRO REPARADO: Dividimos la pantalla en 6 y 6 columnas perfectas de Tailwind -->
             <div class="lg:col-span-6 grid grid-cols-2 gap-4 sm:gap-6 items-center" data-aos="fade-right">
-                <!-- 🌟 CORREGIDO: Usamos object-contain y eliminamos alturas fijas para que el arte se vea COMPLETO con sus textos abajo -->
+                <!-- CORREGIDO: Usamos object-contain y eliminamos alturas fijas para que el arte se vea COMPLETO con sus textos abajo -->
                 <div class="w-full overflow-hidden transition-all duration-300">
                     <img src="assets/img/img-producto-ahorro-01.jpg" class="w-full h-auto object-contain rounded-2xl shadow-soft hover:scale-[1.02] transition-transform duration-500" alt="COAC">
                 </div>
@@ -54,7 +54,7 @@ $tituloPagina = $titulo;
                 </div>
             </div>
             
-            <!-- CONTENEDOR DE TEXTOS DERECHO (Perfectamente alineado a su mitad) -->
+            <!-- CONTENEDOR DE TEXTOS DERECHO  -->
             <div class="lg:col-span-6" data-aos="fade-left">
                 <div class="text-[#a31a16] font-bold uppercase text-xs tracking-widest mb-2 flex items-center gap-2">
                     <span class="w-6 h-0.5 bg-[#a31a16] inline-block"></span> Plan de Capitalización
@@ -67,7 +67,7 @@ $tituloPagina = $titulo;
             </div>
         </section>
 
-        <!-- ===== 📊 SECCIÓN 2: CARACTERÍSTICAS FINANCIERAS CON FÓRMULA UNIFICADA ===== -->
+        <!-- ===== SECCIÓN 2: CARACTERÍSTICAS FINANCIERAS CON FÓRMULA UNIFICADA ===== -->
         <section class="bg-neutral-50/50 py-16 md:py-24 border-t border-b border-neutral-100">
             <div class="max-w-7xl mx-auto px-6">
                 <div class="text-center mb-16" data-aos="fade-up">
@@ -79,7 +79,7 @@ $tituloPagina = $titulo;
                 
                 <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
                     <?php
-                    // 🌟 CORREGIDO: Mapeamos íconos vectoriales estables FontAwesome que unifican el color de inmediato
+                    // CORREGIDO: Mapeamos íconos vectoriales estables FontAwesome que unifican el color de inmediato
                     $caracteristicas = [
                         ['icon' => 'fa-solid fa-vault', 'titulo' => 'Tu dinero siempre seguro', 'texto' => 'Maneja tus ahorros y depósitos cotidianos con total respaldo institucional.'],
                         ['icon' => 'fa-solid fa-layer-group', 'titulo' => 'Todo en un solo lugar', 'texto' => 'Recibe transferencias, salarios o subsidios sin comisiones ocultas.'],
@@ -92,7 +92,7 @@ $tituloPagina = $titulo;
                         ?>
                         <div class="group bg-white rounded-3xl p-8 shadow-soft border border-neutral-100 hover:border-[#a31a16]/20 hover:-translate-y-2 hover:shadow-softhover transition-all duration-300 flex flex-col justify-between h-64" data-aos="zoom-in" data-aos-delay="<?php echo $idx * 60 ?>">
                             <div class="relative z-10">
-                                <!-- 🌟 LA FÓRMULA GANADORA: Caja rosa suave y text-rojo nativo en reposo. En hover pasa a rojo sólido e icono blanco impecable -->
+                                <!-- LA FÓRMULA GANADORA: Caja rosa suave y text-rojo nativo en reposo. En hover pasa a rojo sólido e icono blanco impecable -->
                                 <div class="w-12 h-12 rounded-xl bg-[#a31a16]/5 flex items-center justify-center mb-5 text-[#a31a16] border border-neutral-100 group-hover:bg-[#a31a16] group-hover:text-white group-hover:border-[#a31a16]/20 shadow-sm transition-all duration-300 shrink-0">
                                     <i class="<?php echo $c['icon'] ?> text-base transition-transform duration-300 group-hover:scale-110"></i>
                                 </div>
@@ -107,7 +107,7 @@ $tituloPagina = $titulo;
             </div>
         </section>
 
-        <!-- ===== ⚖️ SECCIÓN 3: REQUISITOS GENERALES DE APERTURA DE CUENTAS ===== -->
+        <!-- ===== SECCIÓN 3: REQUISITOS GENERALES DE APERTURA DE CUENTAS ===== -->
         <section class="py-16 md:py-24 max-w-7xl mx-auto px-6 grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
             <div class="lg:col-span-7" data-aos="fade-right">
                 <div class="text-[#a31a16] font-bold uppercase text-xs tracking-widest mb-2 flex items-center gap-2">

@@ -75,7 +75,7 @@ $tituloPagina = $titulo_inv;
                 </div>
             </div>
         </section>
-        <!--===== 📈 SECCIÓN 2: PARÁMETROS TÉCNICOS ESPECÍFICOS ===== -->
+        <!--===== SECCIÓN 2: PARÁMETROS TÉCNICOS ESPECÍFICOS ===== -->
         <section class="py-16 bg-neutral-50/50 border-t border-b border-neutral-100">
             <div class="max-w-7xl mx-auto px-6">
                 <div class="text-center max-w-2xl mx-auto mb-12" data-aos="fade-up">
@@ -112,7 +112,7 @@ $tituloPagina = $titulo_inv;
             </div>
         </section>
 
-        <!-- ===== ⚖️ SECCIÓN 3: REQUISITOS GENERALES DE APERTURA ===== -->
+        <!-- ===== SECCIÓN 3: REQUISITOS GENERALES DE APERTURA ===== -->
         <section class="py-16 md:py-24 max-w-7xl mx-auto px-6 grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
             <div class="lg:col-span-7" data-aos="fade-right">
                 <div class="text-[#a31a16] font-bold uppercase text-xs tracking-widest mb-2 flex items-center gap-2">
