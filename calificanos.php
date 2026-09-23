@@ -36,7 +36,7 @@ $tituloPagina = 'Califícanos';
             <?php include 'header.php'; ?>
         </header>
 
-        <!-- ===== 🖼️ HERO AREA UNIFICADA: Gradiente Rojo Corporativo v4.0 ===== -->
+        <!-- ===== HERO AREA UNIFICADA: Gradiente Rojo Corporativo v4.0 ===== -->
         <div class="w-full bg-gradient-to-br from-[#7a1310] to-[#a31a16] h-[220px] md:h-[260px] flex items-center border-b border-[#7a1310]/20 shadow-inner">
             <div class="max-w-7xl mx-auto px-6 w-full text-center">
                 <div data-aos="fade-up" data-aos-duration="800">
