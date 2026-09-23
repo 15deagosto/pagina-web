@@ -1,35 +1,44 @@
 <?php 
 require_once './controler/conexion.php';
 require_once './funciones/fn-index.php';
-$fnindex = new Fn_index();
 require_once './funciones/fn-utilidades.php';
-$id = $_GET['id'];
+$fnindex = new Fn_index();
+
+// 🎯 CAPTURA ALFA: Leemos el ID que viaja en la URL desde el Mega Menú
+$id = isset($_GET['id']) ? intval($_GET['id']) : 116;
 $detproducto = $fnindex->fnindex_rproducto_xtextoses($id);
-$titulo = !empty($detproducto[0]['nombre_prod']) ? arreglar_mojibake(utf8_encode($detproducto[0]['nombre_prod'])) : 'Crédito';
-$desc = !empty($detproducto[0]['descripcion_prod']) ? arreglar_mojibake(utf8_encode($detproducto[0]['descripcion_prod'])) : '';
+
+$titulo = !empty($detproducto[0]['nombre_prod']) ? arreglar_mojibake(utf8_encode($detproducto[0]['nombre_prod'])) : 'Crédito Especial';
+$desc = !empty($detproducto[0]['descripcion_prod']) ? arreglar_mojibake(utf8_encode($detproducto[0]['descripcion_prod'])) : 'Línea de financiamiento adaptada para impulsar tus metas personales o comerciales.';
+$interes_base = !empty($detproducto[0]['int_prod']) ? number_format($detproducto[0]['int_prod'], 2) : '15.00';
+
+$mapaTipoCredito = [
+    116 => 'SOCIOFIEL',
+    118 => 'MICROEMPRENDEDOR',
+    119 => 'MICROVIP',
+    114 => 'CREDIPUNTOS',
+    113 => 'MUJEREMPRENDEDORA',
+    120 => 'FACILITO',
+];
 ?>
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
     <head>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>Inicio - 15 de Agosto Cooperativa de Ahorro y Crédito</title>
-
-        <!--=====FAB ICON=======-->
+        <title><?php echo $titulo ?> - COAC 15 de Agosto</title>
         <link rel="shortcut icon" href="assets/img/favicon-coop.png" type="image/x-icon">
-
         <?php include "head-v2.php"; ?>
     </head>
-    <body class="v2">
+    <body class="v2 bg-white text-neutral-800">
 
-        <!--===== PRELOADER STARTS =======-->
+        <!--===== PRELOADER =======-->
         <div class="preloader">
             <img src="assets/img/logo/logo2.png">
             <div class="loader"></div>
         </div>
-        <!--===== PRELOADER ENDS =======-->
 
-        <!--===== PROGRESS STARTS=======-->
+        <!--===== PROGRESS =======-->
         <div class="paginacontainer">
             <div class="progress-wrap">
                 <svg class="progress-circle svg-content" width="100%" height="100%" viewBox="-1 -1 102 102">
@@ -37,367 +46,227 @@ $desc = !empty($detproducto[0]['descripcion_prod']) ? arreglar_mojibake(utf8_enc
                 </svg>
             </div>
         </div>
-        <!--===== PROGRESS ENDS=======-->
 
-        <!--=====HEADER START=======-->
         <header class="homepage2-body">
             <?php include 'header.php'; ?>
         </header>
-        <!--=====HEADER END =======-->
 
-        
-        <!--===== HERO AREA STARTS =======-->
-        <div class="inner-pages-section-area" style="background-image: url(assets/img/banner-credito.jpg); background-position: center; background-repeat: no-repeat; background-size: contain;">
-            <div class="container">
-                <div class="row">
-                    <div class="col-lg-3 m-auto">
-                    </div>
-                    <div class="col-lg-9 m-auto">
-                        <div class="inner-header text-center">
-                            <h2 style="font-size: 65px;"><?php echo $titulo ?></h2>
-                            <div class="space24"></div>
-                            <a href="index.php">Inicio <i class="fa-solid fa-angle-right"></i> <span><?php echo $titulo ?></span></a>
+        <!--===== HERO AREA REPARADA SIN RECORTES =======-->
+        <div class="w-full bg-gradient-to-r from-neutral-50 to-neutral-100 bg-center bg-cover bg-no-repeat h-[240px] md:h-[280px] flex items-center border-b border-neutral-100" style="background-image: url(assets/img/banner-credito.jpg);">
+            <div class="max-w-7xl mx-auto px-6 w-full">
+                <div class="grid grid-cols-1 lg:grid-cols-12 items-center">
+                    <div class="lg:col-span-4"></div>
+                    <div class="lg:col-span-8 text-center lg:text-left drop-shadow-sm">
+                        <h2 class="text-3xl md:text-5xl font-black text-neutral-900 tracking-tight mb-2"><?php echo $titulo ?></h2>
+                        <div class="text-sm font-bold text-neutral-600">
+                            <a href="index.php" class="hover:text-[#a31a16] transition-colors">Inicio</a> 
+                            <i class="fa-solid fa-angle-right text-xs mx-2 opacity-60"></i> 
+                            <span class="text-[#a31a16]"><?php echo $titulo ?></span>
                         </div>
-                    </div>
-                </div>
-                <div class="row d-flex align-items-center">
-                    <div class="col-lg-8 col-md-12 col-sm-12 col-xs-12">
-                        <!--===============spacing==============-->
-                        <div class="pd_top_80"></div>
-                        <!--===============spacing==============-->
-
-                        <!--===============spacing==============-->
-                        <div class="pd_bottom_80"></div>
-                        <!--===============spacing==============-->
-                    </div>
-<!--                    <div class="col-lg-4 hidden-md image_column">
-                        <div class="slider_image margin_extra" style="position: absolute;
-                             text-align: right;margin: -250px -158px -330px 0px !important;">
-                            <img style="max-width: 45%;
-                                 height: auto;" src="assets/img/all-images/about/cal-img.png" class="img-fluid" alt="slider image">
-                        </div>
-                    </div>-->
-                </div>
-
-            </div>
-        </div>
-        <!--===== HERO AREA ENDS =======-->
-
-        <!--===== ABOUT AREA STARTS =======-->
-        <div class="about5-section-area sp1">
-            <div class="container">
-                <div class="row align-items-center">
-                    <div class="col-lg-6">
-                        <div class="row">
-                            <div class="col-lg-6 col-md-6" data-aos="fade-up" data-aos-duration="1000">
-                                <div class="img1">
-                                    <img src="assets/img/all-images/about/about-img7.png" alt="">
-                                </div>
-                            </div>
-
-                            <div class="col-lg-6 col-md-6" data-aos="fade-up" data-aos-duration="1100">
-                                <div class="space60 d-lg-block d-none"></div>
-                                <div class="img1">
-                                    <img src="assets/img/all-images/about/about-img8.png" alt="">
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="col-lg-6">
-                        <div class="about-header heading5">
-                            <h5 data-aos="fade-left" data-aos-duration="800">Crédito</h5>
-                            <div class="space16"></div>
-                            <h2 class="text-anime-style-3"><?php echo $titulo ?></h2>
-                            <div class="space16"></div>
-                            <p data-aos="fade-left" data-aos-duration="900"><?php echo $desc ?></p>
-                            <div class="space32"></div>
-                            <div class="btn-area1" data-aos="fade-left" data-aos-duration="1000">
-                                <a href="#" class="vl-btn5"><span class="text">Conocer más</span><span class="arrow"><i class="fa-solid fa-arrow-right"></i></span></a>
-                            </div>
-                        </div>
-                        <div class="space48"></div>
-
                     </div>
                 </div>
             </div>
         </div>
-        <!--===== ABOUT AREA ENDS =======-->
-         <!--===== SERVICE AREA STARTS =======-->
-<div class="service3-section-area sp2" style="background-image: url(assets/img/all-images/bg/bg3.png); background-position: center; background-repeat: no-repeat; background-size: cover;">
-  <div class="container">
-    <div class="row">
-      <div class="col-lg-6 m-auto">
-        <div class="heading3 text-center space-margin60">
-          <h5>crédito</h5>
-          <div class="space16"></div>
-          <h2 class="text-anime-style-3">Características crédito</h2>
-        </div>
-      </div>
-    </div>
 
-    <div class="row">
-      <div class="col-lg-4 col-md-6" data-aos="zoom-in-up" data-aos-duration="800">
-        <div class="service3-single-boxarea">
-          <div class="icons">
-            <img src="assets/img/icons/service7.svg" alt="">
-          </div>
-          <div class="space24"></div>
-          <div class="content">
-            <a href="#">Característica  #1</a>
-            <div class="space16"></div>
-            <p>Debt Restructuring Services designed to help businesses manage their debt more effectively, providing relief.</p>
-            <div class="space24"></div>
-          </div>
-          <img class="img-bg-service" src="assets/img/all-images/bg/dot-bg.png">
-        </div>
-      </div>
+        <!--===== SECCIÓN EDITORIAL: DETALLE EXCLUSIVO DEL PRODUCTO ===== -->
+        <section class="py-16 md:py-24 max-w-7xl mx-auto px-6 grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+            <div class="lg:col-span-6 relative" data-aos="fade-right">
+                <div class="absolute -inset-4 bg-gradient-to-tr from-[#a31a16]/10 to-transparent rounded-[40px] blur-xl opacity-60 pointer-events-none"></div>
+                <div class="relative rounded-[32px] overflow-hidden shadow-xl border border-neutral-100 p-2 bg-white">
+                    <img src="assets/img/all-images/about/about-img7.png" alt="" class="w-full h-auto rounded-[24px] object-cover">
+                </div>
+            </div>
 
-      <div class="col-lg-4 col-md-6" data-aos="zoom-in-up" data-aos-duration="900">
-        <div class="service3-single-boxarea">
-          <div class="icons">
-            <img src="assets/img/icons/service8.svg" alt="">
-          </div>
-          <div class="space24"></div>
-          <div class="content">
-            <a href="service-single.html">Característica  #2</a>
-            <div class="space16"></div>
-            <p>Financial Strategy & Advisory service is designed help businesses  all sizes make informed, strategic decisions.</p>
-            <div class="space24"></div>
-          </div>
-          <img class="img-bg-service" src="assets/img/all-images/bg/dot-bg.png">
-        </div>
-      </div>
+            <div class="lg:col-span-6" data-aos="fade-left">
+                <div class="text-[#a31a16] font-bold uppercase text-xs tracking-widest mb-3 flex items-center gap-2">
+                    <span class="w-6 h-0.5 bg-[#a31a16] inline-block"></span> Portafolio Institucional
+                </div>
+                <h2 class="text-3xl md:text-4xl font-black text-neutral-800 tracking-tight mb-4"><?php echo $titulo ?></h2>
+                <p class="text-neutral-500 text-sm md:text-base leading-relaxed text-justify mb-6 font-medium"><?php echo $desc ?></p>
+                <div class="inline-flex items-center gap-2 bg-[#a31a16]/5 border border-[#a31a16]/10 rounded-xl px-4 py-2 text-xs font-bold text-[#a31a16]">
+                    <i class="fa-solid fa-percent text-sm"></i> Tasa aplicada desde el <?php echo $interes_base; ?>% Anual
+                </div>
+            </div>
+        </section>
+        <!--===== 🏛️ SECCIÓN 2: REQUISITOS FILTRADOS POR POLÍTICA DE RIESGO ===== -->
+        <section class="py-16 md:py-20 bg-neutral-50/50 border-t border-b border-neutral-100">
+            <div class="max-w-7xl mx-auto px-6 grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+                
+                <div class="lg:col-span-7" data-aos="fade-right">
+                    <div class="text-[#a31a16] font-bold uppercase text-xs tracking-widest mb-2 flex items-center gap-2">
+                        <span class="w-6 h-0.5 bg-[#a31a16] inline-block"></span> Carpeta de Solicitud
+                    </div>
+                    <h2 class="text-3xl font-black text-neutral-800 tracking-tight mb-8">Requisitos Necesarios</h2>
 
-      <div class="col-lg-4 col-md-6" data-aos="zoom-in-up" data-aos-duration="1000">
-        <div class="service3-single-boxarea">
-          <div class="icons">
-            <img src="assets/img/icons/service9.svg" alt="">
-          </div>
-          <div class="space24"></div>
-          <div class="content">
-            <a href="service-single.html">Característica  #3</a>
-            <div class="space16"></div>
-            <p>We stay updated the latest tax laws & policies helping you navigate complex tax landscapes our personalized.</p>
-            <div class="space24"></div>
-          </div>
-          <img class="img-bg-service" src="assets/img/all-images/bg/dot-bg.png">
-        </div>
-      </div>
+                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-5">
+                        <div class="flex gap-4 items-start bg-white p-4 rounded-2xl border border-neutral-100 shadow-sm">
+                            <div class="w-9 h-9 rounded-xl bg-[#a31a16]/5 flex items-center justify-center text-[#a31a16] shrink-0 shadow-inner"><i class="fa-solid fa-address-card text-sm"></i></div>
+                            <div>
+                                <h4 class="font-bold text-neutral-800 text-sm mb-0.5">Identificación</h4>
+                                <p class="text-xs text-neutral-500 leading-normal">Cédula original y papeleta de votación actualizada (Socio y cónyuge).</p>
+                            </div>
+                        </div>
 
-      <div class="col-lg-4 col-md-6" data-aos="zoom-in-up" data-aos-duration="1100">
-        <div class="service3-single-boxarea">
-          <div class="icons">
-            <img src="assets/img/icons/service10.svg" alt="">
-          </div>
-          <div class="space24"></div>
-          <div class="content">
-            <a href="service-single.html">Característica  #4</a>
-            <div class="space16"></div>
-            <p>Managing is key preserving business’s financial stability Risk Management  & Mitigation service help you identify.</p>
-            <div class="space24"></div>
-          </div>
-          <img class="img-bg-service" src="assets/img/all-images/bg/dot-bg.png">
-        </div>
-      </div>
+                        <!-- 🧠 DISCRIMINADOR LÓGICO FINANCIERO: Filtra si es consumo (Socio Fiel/VIP) o microcrédito comercial -->
+                        <?php if ($id == 116 || $id == 119 || $id == 120) { ?>
+                            <div class="flex gap-4 items-start bg-white p-4 rounded-2xl border border-neutral-100 shadow-sm">
+                                <div class="w-9 h-9 rounded-xl bg-[#a31a16]/5 flex items-center justify-center text-[#a31a16] shrink-0 shadow-inner"><i class="fa-solid fa-file-invoice-dollar text-sm"></i></div>
+                                <div>
+                                    <h4 class="font-bold text-neutral-800 text-sm mb-0.5">Estabilidad Laboral</h4>
+                                    <p class="text-xs text-neutral-500 leading-normal">Últimos 3 roles de pago firmados por la empresa o mecanizado del IESS.</p>
+                                </div>
+                            </div>
+                        <?php } else { ?>
+                            <div class="flex gap-4 items-start bg-white p-4 rounded-2xl border border-neutral-100 shadow-sm">
+                                <div class="w-9 h-9 rounded-xl bg-[#a31a16]/5 flex items-center justify-center text-[#a31a16] shrink-0 shadow-inner"><i class="fa-solid fa-store text-sm"></i></div>
+                                <div>
+                                    <h4 class="font-bold text-neutral-800 text-sm mb-0.5">Sustento de Comercio</h4>
+                                    <p class="text-xs text-neutral-500 leading-normal">RUC, RISE, Régimen RIMPE o facturas de compras que certifiquen tu negocio.</p>
+                                </div>
+                            </div>
+                        <?php } ?>
 
-      <div class="col-lg-4 col-md-6" data-aos="zoom-in-up" data-aos-duration="1200">
-        <div class="service3-single-boxarea">
-          <div class="icons">
-            <img src="assets/img/icons/service11.svg" alt="">
-          </div>
-          <div class="space24"></div>
-          <div class="content">
-            <a href="service-single.html">Característica  #5</a>
-            <div class="space16"></div>
-            <p>Business Growth Planning service is tailored companies sustainable, scalable growth analyze current.</p>
-            <div class="space24"></div>
-          </div>
-          <img class="img-bg-service" src="assets/img/all-images/bg/dot-bg.png">
-        </div>
-      </div>
+                        <div class="flex gap-4 items-start bg-white p-4 rounded-2xl border border-neutral-100 shadow-sm">
+                            <div class="w-9 h-9 rounded-xl bg-[#a31a16]/5 flex items-center justify-center text-[#a31a16] shrink-0 shadow-inner"><i class="fa-solid fa-receipt text-sm"></i></div>
+                            <div>
+                                <h4 class="font-bold text-neutral-800 text-sm mb-0.5">Servicio Básico</h4>
+                                <p class="text-xs text-neutral-500 leading-normal">Última planilla de agua, luz o teléfono del domicilio o establecimiento.</p>
+                            </div>
+                        </div>
 
-      <div class="col-lg-4 col-md-6" data-aos="zoom-in-up" data-aos-duration="1300">
-        <div class="service3-single-boxarea">
-          <div class="icons">
-            <img src="assets/img/icons/service12.svg" alt="">
-          </div>
-          <div class="space24"></div>
-          <div class="content">
-            <a href="service-single.html">Característica  #6</a>
-            <div class="space16"></div>
-            <p>Maintaining a healthy cash is critical  business success. Cash Optimization service provides in-depth analysis.</p>
-            <div class="space24"></div>
-          </div>
-          <img class="img-bg-service" src="assets/img/all-images/bg/dot-bg.png">
-        </div>
-      </div>
-    </div>
-  </div>
-</div>
-<!--===== SERVICE AREA ENDS =======-->
-<!--===== ABOUT AREA STARTS =======-->
-<div class="about3-section-area sp1">
-  <div class="container">
-    <div class="row align-items-center">
-      <div class="col-lg-6">
-        <div class="about-images-area">
-          <img src="assets/img/elements/elements18.png" alt="" class="elements18">
-          <div class="img1 text-end reveal">
-            <img src="assets/img/all-images/about/about-img4.png" alt="">
-          </div>
-          <div class="img2 reveal">
-            <img src="assets/img/all-images/about/about-img5.png" alt="">
-          </div>
-        </div>
-      </div>
+                        <div class="flex gap-4 items-start bg-white p-4 rounded-2xl border border-neutral-100 shadow-sm">
+                            <div class="w-9 h-9 rounded-xl bg-[#a31a16]/5 flex items-center justify-center text-[#a31a16] shrink-0 shadow-inner"><i class="fa-solid fa-map-location-dot text-sm"></i></div>
+                            <div>
+                                <h4 class="font-bold text-neutral-800 text-sm mb-0.5">Croquis y Ubicación</h4>
+                                <p class="text-xs text-neutral-500 leading-normal">Dirección exacta dibujada para las inspecciones técnicas de campo.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
 
-      <div class="col-lg-6">
-        <div class="heading3">
-          <div class="space16"></div>
-          <h2 class="text-anime-style-3">Requisitos</h2>
-          <div class="space16"></div>
-          <p data-aos="fade-left" data-aos-duration="900">We believe that every business deserves a strong financial foundation. With decades of experience in the industry, our team is dedicated to providing personalized, strategic financial solutions that help our clients thrive.</p>
-          <div class="space16"></div>
-          <ul data-aos="fade-left" data-aos-duration="1000">
-            <li><img src="assets/img/icons/arrow1.svg" alt=""> Solicitud de crédito</li>
-            <li><img src="assets/img/icons/arrow1.svg" alt=""> Documentos de identidad</li>
-            <li><img src="assets/img/icons/arrow1.svg" alt=""> Justificativo de ingreso</li>
-          </ul>
-          <div class="space32"></div>
-          <div class="btn-area1" data-aos="fade-left" data-aos-duration="1100">
-            <a href="service.html" class="vl-btn3">Request A Service</a>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-</div>
-<!--===== ABOUT AREA ENDS =======-->
-        <!--===== SERVICE AREA STARTS =======-->
-<div class="service3-section-area sp2" style="background-image: url(assets/img/all-images/bg/bg3.png); background-position: center; background-repeat: no-repeat; background-size: cover;">
-  <div class="container">
-    <div class="row">
-      <div class="col-lg-6 m-auto">
-        <div class="heading3 text-center space-margin60">
-          <h5>crédito</h5>
-          <div class="space16"></div>
-          <h2 class="text-anime-style-3">Características crédito</h2>
-        </div>
-      </div>
-    </div>
+                <div class="lg:col-span-5 relative" data-aos="fade-left">
+                    <div class="absolute -inset-4 bg-gradient-to-tr from-[#a31a16]/10 to-transparent rounded-[40px] blur-xl opacity-60 pointer-events-none"></div>
+                    <div class="relative rounded-[32px] overflow-hidden shadow-xl border border-neutral-100 p-2 bg-white">
+                        <img src="assets/img/all-images/about/about-img4.png" alt="" class="w-full h-auto rounded-[24px] object-cover">
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!--===== 🧮 SECCIÓN 3: SIMULADOR INTERACTIVO MAQUETADO DE FORMA NATIVA ===== -->
+        <section class="py-16 md:py-24 bg-white">
+            <div class="max-w-7xl mx-auto px-6">
+                <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+                    
+                    <!-- Formulario de Simulación Corregido -->
+                    <div class="lg:col-span-7" data-aos="fade-right">
+                        <div class="text-[#a31a16] font-bold uppercase text-xs tracking-widest mb-3 flex items-center gap-2">
+                            <span class="w-6 h-0.5 bg-[#a31a16] inline-block"></span> Proyección en tiempo real
+                        </div>
+                        <h2 class="text-3xl font-black text-neutral-800 tracking-tight mb-4">Simula tu cuota para <span class="text-[#a31a16]"><?php echo $titulo; ?></span></h2>
+                        <p class="text-neutral-500 text-xs md:text-sm mb-8 leading-relaxed">Proyecta los linderos de tu amortización mensual. Los cálculos se procesan bajo la tasa referencial asignada en el Core para esta línea de crédito.</p>
 
-    <div class="row">
-      <div class="col-lg-4 col-md-6" data-aos="zoom-in-up" data-aos-duration="800">
-        <div class="service3-single-boxarea">
-          <div class="icons">
-            <img src="assets/img/icons/service7.svg" alt="">
-          </div>
-          <div class="space24"></div>
-          <div class="content">
-            <a href="#">Característica  #1</a>
-            <div class="space16"></div>
-            <p>Debt Restructuring Services designed to help businesses manage their debt more effectively, providing relief.</p>
-            <div class="space24"></div>
-          </div>
-          <img class="img-bg-service" src="assets/img/all-images/bg/dot-bg.png">
-        </div>
-      </div>
+                        <form method="POST" id="formularioCredito" class="bg-neutral-50 rounded-3xl p-6 md:p-8 border border-neutral-100 grid grid-cols-1 sm:grid-cols-2 gap-5 shadow-sm">
+                            <!-- Inyectamos dinámicamente el código de texto que espera el AJAX transaccional -->
+                            <input type="hidden" name="tipocred_calcula" value="<?php echo !empty($mapaTipoCredito[$id]) ? $mapaTipoCredito[$id] : 'SOCIOFIEL'; ?>">
+                            <input type="hidden" name="tasa_calcula" value="">
+                            
+                            <div class="flex flex-col gap-2 sm:col-span-2">
+                                <label class="font-extrabold text-neutral-700 text-sm"><i class="fa-solid fa-chart-line text-[#a31a16] mr-1"></i> Tasa Referencial de Línea</label>
+                                <div class="w-full bg-white border border-neutral-200 rounded-xl px-4 py-3 text-neutral-800 font-extrabold text-sm shadow-inner-sm">
+                                    <?php echo $interes_base; ?>% Interés Efectivo Anual
+                                </div>
+                            </div>
+                            <div class="flex flex-col gap-2">
+                                <label class="font-extrabold text-neutral-700 text-sm"><i class="fa-solid fa-money-bill-wave text-[#a31a16] mr-1"></i> Valor requerido*</label>
+                                <div class="relative">
+                                    <span class="absolute left-4 top-1/2 -translate-y-1/2 font-bold text-neutral-400">$</span>
+                                    <input name="monto_calcula" id="monto_calcula" type="text" placeholder="Ej: 3000" required class="w-full bg-white border border-neutral-200 focus:border-[#a31a16]/40 rounded-xl pl-8 pr-4 py-3 text-neutral-800 font-semibold outline-none text-sm">
+                                </div>
+                                <span id="error_monto" class="hidden text-xs font-bold text-red-600 mt-1"><i class="fa-solid fa-circle-exclamation"></i> El monto mínimo de simulación es $1,000.</span>
+                            </div>
+                            <div class="flex flex-col gap-2">
+                                <label class="font-extrabold text-neutral-700 text-sm"><i class="fa-solid fa-calendar-days text-[#a31a16] mr-1"></i> Tiempo (Plazo)*</label>
+                                <div class="relative">
+                                    <input name="plazo_calcula" type="text" placeholder="Ej: 12" required class="w-full bg-white border border-neutral-200 focus:border-[#a31a16]/40 rounded-xl px-4 py-3 text-neutral-800 font-semibold outline-none text-sm">
+                                    <span class="absolute right-4 top-1/2 -translate-y-1/2 font-bold text-xs text-neutral-400 uppercase">Meses</span>
+                                </div>
+                            </div>
+                            <div class="flex flex-col gap-2 sm:col-span-2">
+                                <label class="font-extrabold text-neutral-700 text-sm"><i class="fa-solid fa-chart-pie text-[#a31a16] mr-1"></i> Sistema de Amortización*</label>
+                                <select name="tipoamortiza" class="w-full bg-white border border-neutral-200 focus:border-[#a31a16]/40 rounded-xl px-4 py-3 text-neutral-800 font-semibold outline-none text-sm cursor-pointer">
+                                    <option value="1">Cuotas Fijas (Sistema Francés)</option>
+                                    <option value="2">Cuotas Variables (Sistema Alemán)</option>
+                                </select>
+                            </div>
+                            <div class="sm:col-span-2 pt-2">
+                                <button id="btn_calcular_master" onclick="calcularcredito()" type="button" class="w-full bg-[#a31a16] hover:bg-[#7a1310] text-white font-extrabold py-3.5 rounded-xl shadow-md transition-all uppercase text-xs tracking-wide"><i class="fa-solid fa-calculator"></i> CALCULAR PROYECTACIÓN</button>
+                            </div>
+                        </form>
+                    </div>
 
-      <div class="col-lg-4 col-md-6" data-aos="zoom-in-up" data-aos-duration="900">
-        <div class="service3-single-boxarea">
-          <div class="icons">
-            <img src="assets/img/icons/service8.svg" alt="">
-          </div>
-          <div class="space24"></div>
-          <div class="content">
-            <a href="service-single.html">Característica  #2</a>
-            <div class="space16"></div>
-            <p>Financial Strategy & Advisory service is designed help businesses  all sizes make informed, strategic decisions.</p>
-            <div class="space24"></div>
-          </div>
-          <img class="img-bg-service" src="assets/img/all-images/bg/dot-bg.png">
-        </div>
-      </div>
+                    <!-- Caja Esmerilada de Cuotas Proyectadas -->
+                    <div class="lg:col-span-5 relative" data-aos="fade-left">
+                        <div class="absolute -inset-4 bg-gradient-to-tr from-[#a31a16]/10 to-transparent rounded-[40px] blur-xl opacity-60 pointer-events-none"></div>
+                        <div class="relative rounded-[32px] overflow-hidden shadow-2xl bg-gradient-to-br from-[#7a1310] to-[#a31a16] p-6 text-white min-h-[380px] flex flex-col justify-between border border-white/10">
+                            <div class="absolute inset-0 opacity-10 bg-[radial-gradient(#fff_1px,transparent_1px)] [background-size:16px_16px] pointer-events-none"></div>
+                            <div class="relative z-10 flex justify-between items-start">
+                                <div>
+                                    <p class="text-[9px] uppercase tracking-widest text-white/60 font-black mb-0.5">COAC 15 de Agosto</p>
+                                    <h3 class="text-lg font-black tracking-tight">Proyección Producida</h3>
+                                </div>
+                                <div class="w-9 h-9 rounded-xl bg-white/10 backdrop-blur-md border border-white/20 flex items-center justify-center text-white"><i class="fa-solid fa-vault text-sm"></i></div>
+                            </div>
 
-      <div class="col-lg-4 col-md-6" data-aos="zoom-in-up" data-aos-duration="1000">
-        <div class="service3-single-boxarea">
-          <div class="icons">
-            <img src="assets/img/icons/service9.svg" alt="">
-          </div>
-          <div class="space24"></div>
-          <div class="content">
-            <a href="service-single.html">Característica  #3</a>
-            <div class="space16"></div>
-            <p>We stay updated the latest tax laws & policies helping you navigate complex tax landscapes our personalized.</p>
-            <div class="space24"></div>
-          </div>
-          <img class="img-bg-service" src="assets/img/all-images/bg/dot-bg.png">
-        </div>
-      </div>
+                            <div id="resultado" class="text-white bg-white/5 backdrop-blur-sm border border-white/10 rounded-2xl p-4 min-h-[200px] flex flex-col justify-center overflow-hidden [&_br]:hidden [&_table]:w-full [&_table]:flex [&_table]:flex-col [&_td]:w-full [&_td]:block [&_td]:p-0 [&_td]:text-xs [&_span.text-rojo]:text-[#ffd9d6] [&_span]:inline-block [&_span]:font-black [&_span]:text-2xl [&_span]:my-1 [&_span]:text-white [&_b]:hidden [&_font]:hidden">
+                                <div class="text-center p-2">
+                                    <div class="w-10 h-10 rounded-full bg-white/10 flex items-center justify-center mx-auto mb-2 text-white"><i class="fa-solid fa-chart-line"></i></div>
+                                    <p class="text-[11px] text-white/70 font-medium leading-relaxed">Presione calcular proyectación para enlazar los Web Services dinámicos de tu base de datos.</p>
+                                </div>
+                            </div>
 
-      <div class="col-lg-4 col-md-6" data-aos="zoom-in-up" data-aos-duration="1100">
-        <div class="service3-single-boxarea">
-          <div class="icons">
-            <img src="assets/img/icons/service10.svg" alt="">
-          </div>
-          <div class="space24"></div>
-          <div class="content">
-            <a href="service-single.html">Característica  #4</a>
-            <div class="space16"></div>
-            <p>Managing is key preserving business’s financial stability Risk Management  & Mitigation service help you identify.</p>
-            <div class="space24"></div>
-          </div>
-          <img class="img-bg-service" src="assets/img/all-images/bg/dot-bg.png">
-        </div>
-      </div>
+                            <div class="relative z-10 pt-3 border-t border-white/10 flex justify-between items-center text-left text-[11px]">
+                                <p class="font-bold text-white/80">Valores sujetos a evaluación de riesgo</p>
+                                <img src="assets/img/favicon-coop.png" class="h-6 opacity-30 filter brightness-0 invert" alt="COAC">
+                            </div>
+                        </div>
+                    </div>
 
-      <div class="col-lg-4 col-md-6" data-aos="zoom-in-up" data-aos-duration="1200">
-        <div class="service3-single-boxarea">
-          <div class="icons">
-            <img src="assets/img/icons/service11.svg" alt="">
-          </div>
-          <div class="space24"></div>
-          <div class="content">
-            <a href="service-single.html">Característica  #5</a>
-            <div class="space16"></div>
-            <p>Business Growth Planning service is tailored companies sustainable, scalable growth analyze current.</p>
-            <div class="space24"></div>
-          </div>
-          <img class="img-bg-service" src="assets/img/all-images/bg/dot-bg.png">
-        </div>
-      </div>
+                </div>
+            </div>
+        </section>
 
-      <div class="col-lg-4 col-md-6" data-aos="zoom-in-up" data-aos-duration="1300">
-        <div class="service3-single-boxarea">
-          <div class="icons">
-            <img src="assets/img/icons/service12.svg" alt="">
-          </div>
-          <div class="space24"></div>
-          <div class="content">
-            <a href="service-single.html">Característica  #6</a>
-            <div class="space16"></div>
-            <p>Maintaining a healthy cash is critical  business success. Cash Optimization service provides in-depth analysis.</p>
-            <div class="space24"></div>
-          </div>
-          <img class="img-bg-service" src="assets/img/all-images/bg/dot-bg.png">
-        </div>
-      </div>
-    </div>
-  </div>
-</div>
-<!--===== SERVICE AREA ENDS =======-->
-        <!--===== ABOUT AREA STARTS =======-->
-<div class="about4-section-area sp1">
-    <?php include './mod-simulador.php' ?>
-</div>
-<!--===== ABOUT AREA ENDS =======-->
-        <!--===== FOOTER AREA STARTS =======-->
+        <!--===== FOOTER =======-->
         <div class="vl-footer2-section-area">
             <?php include './footer.php' ?>
         </div>
-        <!--===== FOOTER AREA ENDS =======-->
 
         <?php include "scripts-v2.php"; ?>
-</body>
+        
+        <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            const inputMonto = document.getElementById('monto_calcula');
+            const labelError = document.getElementById('error_monto');
+            const btnCalcular = document.getElementById('btn_calcular_master');
+            if (inputMonto && labelError && btnCalcular) {
+                inputMonto.addEventListener('input', function() {
+                    let montoTexto = inputMonto.value.trim();
+                    let montoNum = parseFloat(montoTexto.replace(/[,.]/g, ''));
+                    if (montoTexto === "" || (!isNaN(montoNum) && montoNum >= 1000)) {
+                        labelError.classList.add('hidden');
+                        inputMonto.classList.remove('border-red-500', 'bg-red-50/50');
+                        btnCalcular.disabled = false;
+                        btnCalcular.classList.remove('opacity-50', 'cursor-not-allowed');
+                        btnCalcular.setAttribute('onclick', 'calcularcredito()');
+                    } else {
+                        labelError.classList.remove('hidden');
+                        inputMonto.classList.add('border-red-500', 'bg-red-50/50');
+                        btnCalcular.disabled = true;
+                        btnCalcular.classList.add('opacity-50', 'cursor-not-allowed');
+                        btnCalcular.removeAttribute('onclick');
+                    }
+                });
+            }
+        });
+        </script>
+    </body>
 </html>
