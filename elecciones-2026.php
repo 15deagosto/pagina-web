@@ -1,31 +1,28 @@
 <?php
 require './controler/conexion.php';
 require './funciones/fn-index.php';
+require_once './funciones/fn-utilidades.php';
 $con = new Conecciones();
 $fnindex = new Fn_index();
-//$slider = $fncredito->fnindex_rslider();
+$tituloPagina = 'Elecciones 2026';
 ?>
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
     <head>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>Elecciones 2026 - 15 de Agosto Cooperativa de Ahorro y Crédito</title>
-
-        <!--=====FAB ICON=======-->
         <link rel="shortcut icon" href="assets/img/favicon-coop.png" type="image/x-icon">
-
         <?php include "head-v2.php"; ?>
     </head>
-    <body class="v2">
+    <body class="v2 bg-white text-neutral-800">
 
-        <!--===== PRELOADER STARTS =======-->
+        <!--===== PRELOADER =======-->
         <div class="preloader">
             <div class="loader"></div>
         </div>
-        <!--===== PRELOADER ENDS =======-->
 
-        <!--===== PROGRESS STARTS=======-->
+        <!--===== PROGRESS =======-->
         <div class="paginacontainer">
             <div class="progress-wrap">
                 <svg class="progress-circle svg-content" width="100%" height="100%" viewBox="-1 -1 102 102">
@@ -33,194 +30,163 @@ $fnindex = new Fn_index();
                 </svg>
             </div>
         </div>
-        <!--===== PROGRESS ENDS=======-->
 
-        <!--=====HEADER START=======-->
         <header class="homepage2-body">
             <?php include 'header.php'; ?>
         </header>
-        <!--=====HEADER END =======-->
 
-        
-        <!--===== HERO AREA STARTS =======-->
-        <div class="inner-pages-section-area" style="background-image: url(assets/img/all-images/bg/bg-header-002.png); background-position: center; background-repeat: no-repeat; background-size: cover;">
-            <div class="container">
-                <div class="row">
-                    <div class="col-lg-12 m-auto">
-                        <div class="inner-header text-center">
-                            <h2 style="font-size: 65px;">Elecciones 2026</h2>
-                            <div class="space24"></div>
-                            <a href="index.php">Inicio <i class="fa-solid fa-angle-right"></i> <span>Elecciones 2026</span></a>
-                        </div>
-                    </div>
-                </div>
-                <div class="row d-flex align-items-center">
-                    <div class="col-lg-8 col-md-12 col-sm-12 col-xs-12">
-                        <!--===============spacing==============-->
-                        <div class="pd_top_80"></div>
-                        <!--===============spacing==============-->
-
-                        <!--===============spacing==============-->
-                        <div class="pd_bottom_80"></div>
-                        <!--===============spacing==============-->
-                    </div>
-                    <div class="col-lg-4 hidden-md image_column">
-                        <div class="slider_image margin_extra" style="position: absolute;
-                             text-align: right;margin: -250px -158px -330px 0px !important;">
-                            <img style="max-width: 45%;
-                                 height: auto;" src="assets/img/all-images/about/cal-img.png" class="img-fluid" alt="slider image">
-                        </div>
-                    </div>
-                </div>
-
-            </div>
-        </div>
-        <!--===== HERO AREA ENDS =======-->
-
-        <!--===== ABOUT AREA STARTS =======-->
-        <div class="aboutinner2-section-area sp1" style="background: #c0c0c04d;">
-            <div class="container">
-                <div class="row align-items-center">
-                    <div class="col-lg-6">
-                        <div class="about-images-area">
-<!--                            <img style="width: 80px;" src="assets/img/elements/estadistica-nosotros.png" alt="" class="elements18">-->
-                            <div class="img1 reveal">
-                                <img src="assets/img/empresa-003.png" alt="">
-                            </div>
-                            <!--                            <div class="img2">
-                                                            <img src="assets/img/all-images/about/about-img5.png" alt="">
-                                                        </div>-->
-                        </div>
-                    </div>
-
-                    <div class="col-lg-6">
-                        <div class="heading1">
-                            <div class="space16"></div>
-                            <p data-aos="fade-left" data-aos-duration="900" style="text-align: justify;">
-                                La Cooperativa de Ahorro y Crédito de Agosto de 15 de Agosto existe gracias a la participación activa de sus socios. Nuestro propósito no es solo ofrecer servicios financieros; es impulsar el bienestar de nuestra comunidad, fortalecer la confianza y construir oportunidades para todos. Por eso, elegir a quienes nos representarán significa elegir quién liderará con transparencia, quién cuidará de nuestros recursos y quién continuará construyendo nuestro desarrollo colectivo.  
-                            </p>
-                            <div class="space16"></div>
-
-                            <div class="space32"></div>
-                        </div>
+        <!-- ===== 🖼️ HERO AREA UNIFICADA: Gradiente Rojo Corporativo v4.0 ===== -->
+        <div class="w-full bg-gradient-to-br from-[#7a1310] to-[#a31a16] h-[220px] md:h-[260px] flex items-center border-b border-[#7a1310]/20 shadow-inner">
+            <div class="max-w-7xl mx-auto px-6 w-full text-center">
+                <div data-aos="fade-up" data-aos-duration="800">
+                    <!-- Título Máster Blanco Impecable -->
+                    <h2 class="text-3xl md:text-5xl font-black text-white tracking-tight mb-3 drop-shadow-sm">
+                        Elecciones 2026
+                    </h2>
+                    <!-- Migas de Pan (Breadcrumbs) en Blanco y Rosa Suave -->
+                    <div class="text-xs md:text-sm font-bold text-white/70 tracking-wide">
+                        <a href="index.php" class="hover:text-white transition-colors">Inicio</a> 
+                        <i class="fa-solid fa-angle-right text-[10px] mx-2 opacity-50"></i> 
+                        <span class="text-[#ffd9d6] font-extrabold">Elecciones 2026</span>
                     </div>
                 </div>
             </div>
         </div>
-        <!--===== ABOUT AREA ENDS =======-->
 
-        <!--===== BLOG AREA STARTS =======-->
-        <div class="vl-blog-5-area sp2">
-            <div class="container">
-                <div class="row">
-                    <div class="col-lg-12 ">
-                        <div class="vl-blog-1-section-box heading5 space-margin60">
-                            <div class="space16"></div>
-                            <div style="display: flex;
-                                 padding-bottom: 15px !important;">
-                                <div style="height: 47px; width: 3px; background-color: #ba0001;margin-right: 15px;"><p></p>
-                                </div><h2 class="vl-section-title text-anime-style-3">Documentos y Reglamento </h2><br><br>
-                            </div>
-                        </div>
+
+        <!--===== NARRATIVA DEMOCRÁTICA INSTITUCIONAL ===== -->
+        <section class="py-16 md:py-24 bg-neutral-50/50 border-b border-neutral-100">
+            <div class="max-w-7xl mx-auto px-6 grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+                <div class="lg:col-span-6" data-aos="fade-right">
+                    <div class="absolute -inset-4 bg-gradient-to-tr from-[#a31a16]/10 to-transparent rounded-[40px] blur-xl opacity-60 pointer-events-none"></div>
+                    <div class="relative rounded-[32px] overflow-hidden shadow-xl border border-neutral-100 p-2 bg-white">
+                        <img src="assets/img/empresa-003.png" alt="COAC 15 de Agosto" class="w-full h-auto rounded-[24px] object-cover">
                     </div>
                 </div>
-                <div class="row">
-                    <div class="col-lg-6 col-md-12" data-aos="zoom-in-up" data-aos-duration="900">
-                        <div class="vl-blog-1-item">
-                            <div class="vl-blog-1-content" style="padding: 20px;">
-                                <h4 class="vl-blog-1-title"><a href="doc/LISTA_GANADORA_0.pdf" target="_blank"> Resultados Elecciones 2026</a></h4>
-                            </div>
-                        </div>
-                        <div class="vl-blog-1-item">
-                            <div class="vl-blog-1-content" style="padding: 20px;">
-                                <h4 class="vl-blog-1-title"><a href="doc/LISTA_CALIFICADA_COAC15AG.pdf" target="_blank">Lista Calificadas</a></h4>
-                            </div>
-                        </div>
-                        <div class="vl-blog-1-item">
-                            <div class="vl-blog-1-content" style="padding: 20px;">
-                                <h4 class="vl-blog-1-title"><a target="_blank" href="doc/REGLAMENTO-DE-ELECCIONES-1.pdf">Reglamentos de Elecciones</a></h4>
-                            </div>
-                        </div>
-                        <div class="vl-blog-1-item">
-                            <div class="vl-blog-1-content" style="padding: 20px;">
-                                <h4 class="vl-blog-1-title"><a target="_blank" href="doc/CONVOCATORIA.pdf">Convocatoria 2026</a></h4>
-                            </div>
-                        </div>
-                        <div class="vl-blog-1-item">
-                            <div class="vl-blog-1-content" style="padding: 20px;">
-                                <h4 class="vl-blog-1-title"><a target="_blank" href="doc/SOLICITUD_DE_INSCRIPCION_DE_LISTA.pdf">Formato de Inscripción de Listas </a></h4>
-                            </div>
-                        </div>
-                        <div class="vl-blog-1-item">
-                            <div class="vl-blog-1-content" style="padding: 20px;">
-                                <h4 class="vl-blog-1-title"><a target="_blank" href="doc/5_FICHA_INSCRIPCION.pdf">Ficha de Registro de Candidatos </a></h4>
-                            </div>
-                        </div>
-                        <div class="vl-blog-1-item">
-                            <div class="vl-blog-1-content" style="padding: 20px;">
-                                <h4 class="vl-blog-1-title"><a target="_blank" href="doc/3_DECLARACION_JURADA_CANDIDATOS.pdf">Formato de Declaración Jurada de Candidatos</a></h4>
-                            </div>
-                        </div>
-                        <div class="vl-blog-1-item">
-                            <div class="vl-blog-1-content" style="padding: 20px;">
-                                <h4 class="vl-blog-1-title"><a target="_blank" href="doc/5_INSTRUCTIVO_COAC15AG.pdf">Instructivo de Elecciones</a></h4>
-                            </div>
-                        </div>
-                        <div class="vl-blog-1-item">
-                            <div class="vl-blog-1-content" style="padding: 20px;">
-                                <h4 class="vl-blog-1-title"><a href="doc/LISTA_CALIFICADA_COAC15AG (1).pdf" target="_blank">Listas Calificadas Final</a></h4>
-                            </div>
-                        </div>
-                        <div class="vl-blog-1-item">
-                            <div class="vl-blog-1-content" style="padding: 20px;">
-                                <h4 class="vl-blog-1-title">
-                                    <a onclick="abrirRecinto()" style="cursor: pointer;" target="_blank">Recintos Electorales</a>
-                                </h4>
-                            </div>
-                        </div>
-                        <div class="vl-blog-1-item">
-                            <div class="vl-blog-1-content" style="padding: 20px;">
-                                <h4 class="vl-blog-1-title"><a target="_blank" href="doc/CALENDARIO.pdf">Calendarios</a></h4>
-                            </div>
-                        </div>
-                        <div class="vl-blog-1-item">
-                            <div class="vl-blog-1-content" style="padding: 20px;">
-                                <h4 class="vl-blog-1-title"><a target="_blank" href="doc/PROCLAMACION_LISTA1.pdf">Proclamación de Representantes Electos</a></h4>
-                            </div>
-                        </div>
+
+                <div class="lg:col-span-6" data-aos="fade-left">
+                    <div class="text-[#a31a16] font-bold uppercase text-xs tracking-widest mb-3 flex items-center gap-2">
+                        <span class="w-6 h-0.5 bg-[#a31a16] inline-block"></span> Participación Ciudadana COAC
                     </div>
-                    <div class="col-lg-6 col-md-12" data-aos="zoom-in-up" data-aos-duration="900">
-                        <img src="assets/img/persona_coop_001.png">
+                    <h2 class="text-3xl font-black text-neutral-800 tracking-tight mb-4">Gobernanza y Transparencia</h2>
+                    <p class="text-neutral-500 text-sm md:text-base leading-relaxed text-justify font-medium">
+                        La Cooperativa de Ahorro y Crédito 15 de Agosto existe gracias a la participación activa de sus socios. Nuestro propósito no es solo ofrecer servicios financieros; es impulsar el bienestar de nuestra comunidad, fortalecer la confianza y construir oportunidades para todos. Por eso, elegir a quienes nos representarán significa elegir quién liderará con transparencia, quién cuidará de nuestros recursos y quién continuará construyendo nuestro desarrollo colectivo.  
+                    </p>
+                </div>
+            </div>
+        </section>
+        <!-- ===== CATALOGO DE DOCUMENTOS DE TRANSPARENCIA ELECCIONES v3.0 ===== -->
+        <section class="py-16 md:py-24 max-w-7xl mx-auto px-6">
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-start">
+                
+                <!-- REJILLA DE TARJETAS DE DESCARGA (Lado Izquierdo - Ancho 7 de 12) -->
+                <div class="lg:col-span-7" data-aos="fade-right">
+                    <div class="flex items-center gap-3 mb-8">
+                        <div class="h-10 w-1 bg-[#a31a16] rounded-full"></div>
+                        <h2 class="text-2xl font-black text-neutral-800 tracking-tight">Documentos y Reglamento Oficial</h2>
                     </div>
 
+                    <!-- Grid Dinámico en 2 Columnas de PDFs corporativos -->
+                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                        
+                        <?php
+                        // Array limpio con la lista oficial de tus 12 PDFs y Recinto de la base de datos
+                        $documentos = [
+                            ['url' => 'doc/LISTA_GANADORA_0.pdf', 'titulo' => 'Resultados Elecciones 2026', 'is_modal' => false],
+                            ['url' => 'doc/LISTA_CALIFICADA_COAC15AG.pdf', 'titulo' => 'Listas Calificadas', 'is_modal' => false],
+                            ['url' => 'doc/REGLAMENTO-DE-ELECCIONES-1.pdf', 'titulo' => 'Reglamento de Elecciones', 'is_modal' => false],
+                            ['url' => 'doc/CONVOCATORIA.pdf', 'titulo' => 'Convocatoria 2026', 'is_modal' => false],
+                            ['url' => 'doc/SOLICITUD_DE_INSCRIPCION_DE_LISTA.pdf', 'titulo' => 'Formato Inscripción de Lista', 'is_modal' => false],
+                            ['url' => 'doc/5_FICHA_INSCRIPCION.pdf', 'titulo' => 'Ficha Registro Candidatos', 'is_modal' => false],
+                            ['url' => 'doc/3_DECLARACION_JURADA_CANDIDATOS.pdf', 'titulo' => 'Declaración Jurada Candidatos', 'is_modal' => false],
+                            ['url' => 'doc/5_INSTRUCTIVO_COAC15AG.pdf', 'titulo' => 'Instructivo de Elecciones', 'is_modal' => false],
+                            ['url' => 'doc/LISTA_CALIFICADA_COAC15AG (1).pdf', 'titulo' => 'Listas Calificadas Final', 'is_modal' => false],
+                            ['url' => '#', 'titulo' => 'Recintos Electorales', 'is_modal' => true],
+                            ['url' => 'doc/CALENDARIO.pdf', 'titulo' => 'Calendarios Oficiales', 'is_modal' => false],
+                            ['url' => 'doc/PROCLAMACION_LISTA1.pdf', 'titulo' => 'Proclamación Electos', 'is_modal' => false],
+                        ];
+
+                        foreach ($documentos as $idx => $doc) {
+                            $onClick = $doc['is_modal'] ? 'onclick="abrirRecinto()"' : '';
+                            $target = $doc['is_modal'] ? '' : 'target="_blank"';
+                            $href = $doc['is_modal'] ? 'javascript:void(0)' : $doc['url'];
+                        ?>
+                            <!-- TARJETA INDIVIDUAL DE DOCUMENTO -->
+                            <a href="<?php echo $href; ?>" <?php echo $target; ?> <?php echo $onClick; ?> class="group flex items-center justify-between p-4 bg-neutral-50 border border-neutral-100/80 rounded-2xl shadow-sm hover:border-[#a31a16]/20 hover:bg-white hover:-translate-y-0.5 transition-all duration-300">
+                                <div class="flex items-center gap-3.5 min-w-0">
+                                    <div class="w-10 h-10 rounded-xl bg-red-600/5 text-red-600 flex items-center justify-center shrink-0 border border-red-600/10 group-hover:bg-[#a31a16] group-hover:text-white transition-colors">
+                                        <i class="fa-solid fa-file-pdf text-sm"></i>
+                                    </div>
+                                    <span class="text-xs font-black text-neutral-700 leading-snug group-hover:text-[#a31a16] transition-colors truncate pr-2"><?php echo $doc['titulo']; ?></span>
+                                </div>
+                                <div class="w-7 h-7 rounded-lg bg-white text-neutral-400 border border-neutral-100 flex items-center justify-center group-hover:bg-[#a31a16]/5 group-hover:text-[#a31a16] transition-all">
+                                    <i class="fa-solid fa-download text-[10px]"></i>
+                                </div>
+                            </a>
+                        <?php } ?>
+
+                    </div>
+                </div>
+                <!-- PANEL FOTOGRÁFICO DE RESPALDO (Lado Derecho - Ancho 5 de 12) -->
+                <div class="lg:col-span-5" data-aos="fade-left">
+                    <div class="relative rounded-[32px] overflow-hidden shadow-xl border border-neutral-100 p-2 bg-neutral-50/50">
+                        <img src="assets/img/persona_coop_001.png" alt="Elecciones COAC" class="w-full h-auto rounded-[24px] object-cover hover:scale-[1.01] transition-transform duration-500">
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
+        <!-- ===== 🗺️ MODAL PRESTIGIO: RECINTOS ELECTORALES (EFECTO CRISTAL) ===== -->
+        <div id="modalRecinto" class="fixed inset-0 z-50 hidden bg-black/60 backdrop-blur-sm transition-opacity duration-300 flex items-center justify-center p-4">
+            <div class="relative bg-white rounded-[32px] max-w-2xl w-full p-6 shadow-2xl border border-neutral-100 transform scale-95 transition-transform duration-300 max-h-[90vh] overflow-y-auto">
+                
+                <!-- Encabezado del Modal -->
+                <div class="flex justify-between items-center mb-4 pb-3 border-b border-neutral-100">
+                    <div class="flex items-center gap-3">
+                        <div class="w-8 h-8 rounded-lg bg-[#a31a16]/10 text-[#a31a16] flex items-center justify-center text-sm shadow-inner"><i class="fa-solid fa-map-location-dot"></i></div>
+                        <h3 class="text-base font-black text-neutral-800 tracking-tight">Recintos Electorales Autorizados</h3>
+                    </div>
+                    <button onclick="cerrarRecinto()" class="w-8 h-8 rounded-full bg-neutral-50 text-neutral-400 hover:bg-[#a31a16]/5 hover:text-[#a31a16] flex items-center justify-center transition-all" aria-label="Cerrar">
+                        <i class="fa-solid fa-xmark text-base"></i>
+                    </button>
+                </div>
+
+                <!-- Imagen del Recinto Electoral -->
+                <div class="rounded-2xl overflow-hidden border border-neutral-100 shadow-inner bg-neutral-50 p-1">
+                    <img src="assets/img/recintos-electorales.jpeg" class="w-full h-auto rounded-xl object-contain mx-auto" alt="Mapa Recintos">
                 </div>
             </div>
         </div>
-        <!--===== BLOG AREA ENDS =======-->
-        <div id="modalRecinto" class="modal">
-            <div class="modal-content">
-                <span class="cerrar" onclick="cerrarRecinto()">&times;</span>
-                <!--<h1 style="font-weight: 800; text-align: center !important">Simulador de Crédito</h1>-->
-<!--                <p style="text-align: center !important">Aquí puedes colocar tu formulario o resultado del simulador.</p>-->
-                <img src="assets/img/recintos-electorales.jpeg">
-            </div>
-        </div>
+
         <script>
+        // Funciones nativas ultra ligeras para el despliegue del Modal
         function abrirRecinto() {
-    document.getElementById("modalRecinto").style.display = "block";
-    calcularcredito();
-}
+            const modal = document.getElementById("modalRecinto");
+            modal.classList.remove("hidden");
+            document.body.classList.add("overflow-hidden"); // Evita el scroll de fondo
+        }
 
-function cerrarRecinto() {
-    document.getElementById("modalRecinto").style.display = "none";
-}
+        function cerrarRecinto() {
+            const modal = document.getElementById("modalRecinto");
+            modal.classList.add("hidden");
+            document.body.classList.remove("overflow-hidden");
+        }
+
+        // Cerrar modal si el socio hace clic afuera de la caja blanca
+        window.onclick = function(event) {
+            const modal = document.getElementById("modalRecinto");
+            if (event.target == modal) {
+                cerrarRecinto();
+            }
+        }
         </script>
-        <!--===== FOOTER AREA STARTS =======-->
+
+        <!--===== FOOTER AREA =======-->
         <div class="vl-footer2-section-area">
             <?php include './footer.php' ?>
         </div>
-        <!--===== FOOTER AREA ENDS =======-->
 
         <?php include "scripts-v2.php"; ?>
-</body>
+    </body>
 </html>
