@@ -38,7 +38,7 @@ $tituloPagina = 'Protección de Datos';
             <?php include 'header.php'; ?>
         </header>
 
-        <!-- 🟥 1. LA FRANJA ROJA DE SIEMPRE: Gradiente Rojo Corporativo con Texto Blanco -->
+        <!-- 1. LA FRANJA ROJA DE SIEMPRE: Gradiente Rojo Corporativo con Texto Blanco -->
         <div class="w-full bg-gradient-to-br from-[#7a1310] to-[#a31a16] h-[200px] md:h-[240px] flex items-center border-b border-[#7a1310]/20 shadow-inner">
             <div class="max-w-7xl mx-auto px-6 w-full text-center">
                 <div data-aos="fade-up" data-aos-duration="800">
@@ -54,10 +54,10 @@ $tituloPagina = 'Protección de Datos';
             </div>
         </div>
 
-        <!-- 🖼️ 2. DEBAJO DE LA FRANJA ROJA: Tu imagen original a lo largo sin marcos ni cajas blancas -->
+        
         <div class="w-full bg-white overflow-hidden pt-10" data-aos="fade-up" data-aos-delay="100">
             <div class="max-w-7xl mx-auto px-6">
-                <!-- Se luce completa al 100% conservando sus linderos originales y su proporción horizontal nativa -->
+                
                 <img src="assets/img/banner-transparencia.jpg" alt="Seguridad de Datos COAC" class="w-full h-auto max-h-[360px] md:max-h-[420px] object-contain mx-auto rounded-3xl shadow-sm">
             </div>
         </div>
