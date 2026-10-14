@@ -37,7 +37,7 @@
                     $redesf = $fnindex->fnindex_rredes();
                     while ($menuredesf = $redesf->fetch_assoc()) {
                         ?>
-                        <a href="<?php echo $menuredesf['url_redes'] ?>" target="_blank" class="w-10 h-10 rounded-full bg-white/10 flex items-center justify-center hover:bg-rojo transition-colors"><i class="fa-brands <?php echo utf8_encode($menuredesf['icono']) ?>"></i></a>
+                        <a href="<?php echo $menuredesf['url_redes'] ?>" target="_blank" class="w-10 h-10 rounded-full bg-white/10 flex items-center justify-center hover:bg-rojo transition-colors"><i class="fa-brands <?php echo $menuredesf['icono'] ?>"></i></a>
                         <?php
                     }
                     ?>

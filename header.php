@@ -13,7 +13,7 @@
             while ($menuredes = $redes->fetch_assoc()) {
                 ?>
                 <a href="<?php echo $menuredes['url_redes'] ?>" target="_blank" class="hover:text-[#ffd9d6] hover:scale-110 transition-all">
-                    <i class="fa-brands <?php echo utf8_encode($menuredes['icono']) ?>"></i>
+                    <i class="fa-brands <?php echo $menuredes['icono'] ?>"></i>
                 </a>
                 <?php
             }
@@ -68,7 +68,7 @@
                                     continue;
                                 }
                                 ?>
-                                <li><a href="<?php echo $mapaCredito[$menudetprod['id_prod']] ?>?id=<?php echo $menudetprod['id_prod'] ?>" class="block px-2 py-1.5 rounded-lg hover:bg-[#a31a16]/5 hover:text-[#a31a16] text-xs font-semibold transition-all"><?php echo arreglar_mojibake(utf8_encode($menudetprod['nombre_prod'])) ?></a></li>
+                                <li><a href="<?php echo $mapaCredito[$menudetprod['id_prod']] ?>?id=<?php echo $menudetprod['id_prod'] ?>" class="block px-2 py-1.5 rounded-lg hover:bg-[#a31a16]/5 hover:text-[#a31a16] text-xs font-semibold transition-all"><?php echo arreglar_mojibake($menudetprod['nombre_prod']) ?></a></li>
                                 <?php
                             }
                             ?>
@@ -82,7 +82,7 @@
                             $detprod = $fnindex->fnindex_rproducto_xtipo(2);
                             while ($menudetprod = $detprod->fetch_assoc()) {
                                 ?>
-                                <li><a href="detprod-inversion-vencimiento.php?id=<?php echo $menudetprod['id_prod'] ?>" class="block px-2 py-1.5 rounded-lg hover:bg-[#a31a16]/5 hover:text-[#a31a16] text-xs font-semibold transition-all"><?php echo arreglar_mojibake(utf8_encode($menudetprod['nombre_prod'])) ?></a></li>
+                                <li><a href="detprod-inversion-vencimiento.php?id=<?php echo $menudetprod['id_prod'] ?>" class="block px-2 py-1.5 rounded-lg hover:bg-[#a31a16]/5 hover:text-[#a31a16] text-xs font-semibold transition-all"><?php echo arreglar_mojibake($menudetprod['nombre_prod']) ?></a></li>
                                 <?php
                             }
                             ?>
@@ -97,7 +97,7 @@
                             $detprod = $fnindex->fnindex_rproducto_xtipo(3);
                             while ($menudetprod = $detprod->fetch_assoc()) {
                                 ?>
-                                <li><a href="detprod-ahorro.php?id=<?php echo $menudetprod['id_prod'] ?>" class="block px-2 py-1.5 rounded-lg hover:bg-[#a31a16]/5 hover:text-[#a31a16] text-xs font-semibold transition-all"><?php echo arreglar_mojibake(utf8_encode($menudetprod['nombre_prod'])) ?></a></li>
+                                <li><a href="detprod-ahorro.php?id=<?php echo $menudetprod['id_prod'] ?>" class="block px-2 py-1.5 rounded-lg hover:bg-[#a31a16]/5 hover:text-[#a31a16] text-xs font-semibold transition-all"><?php echo arreglar_mojibake($menudetprod['nombre_prod']) ?></a></li>
                                 <?php
                             }
                             ?>
@@ -170,13 +170,13 @@
                         $detprodm = $fnindex->fnindex_rproducto_xtipo(2);
                         while ($menudetprodm = $detprodm->fetch_assoc()) {
                             ?>
-                            <li><a href="detprod-inversion-vencimiento.php?id=<?php echo $menudetprodm['id_prod'] ?>" class="block py-2 px-2 rounded-lg hover:text-[#a31a16] transition-colors">Inversión: <?php echo arreglar_mojibake(utf8_encode($menudetprodm['nombre_prod'])) ?></a></li>
+                            <li><a href="detprod-inversion-vencimiento.php?id=<?php echo $menudetprodm['id_prod'] ?>" class="block py-2 px-2 rounded-lg hover:text-[#a31a16] transition-colors">Inversión: <?php echo arreglar_mojibake($menudetprodm['nombre_prod']) ?></a></li>
                             <?php
                         }
                         $detprodm = $fnindex->fnindex_rproducto_xtipo(3);
                         while ($menudetprodm = $detprodm->fetch_assoc()) {
                             ?>
-                            <li><a href="detprod-ahorro.php?id=<?php echo $menudetprodm['id_prod'] ?>" class="block py-2 px-2 rounded-lg hover:text-[#a31a16] transition-colors">Ahorro: <?php echo arreglar_mojibake(utf8_encode($menudetprodm['nombre_prod'])) ?></a></li>
+                            <li><a href="detprod-ahorro.php?id=<?php echo $menudetprodm['id_prod'] ?>" class="block py-2 px-2 rounded-lg hover:text-[#a31a16] transition-colors">Ahorro: <?php echo arreglar_mojibake($menudetprodm['nombre_prod']) ?></a></li>
                             <?php
                         }
                         ?>
@@ -200,7 +200,7 @@
             while ($menuredes2 = $redes2->fetch_assoc()) {
                 ?>
                 <a href="<?php echo $menuredes2['url_redes'] ?>" target="_blank" class="hover:text-[#a31a16] transition-colors">
-                    <i class="fa-brands <?php echo utf8_encode($menuredes2['icono']) ?>"></i>
+                    <i class="fa-brands <?php echo $menuredes2['icono'] ?>"></i>
                 </a>
                 <?php
             }

@@ -2,6 +2,7 @@
 require './controler/conexion.php';
 include './fn/fn-credito.php';
 require './funciones/fn-index.php';
+require_once './funciones/fn-utilidades.php';
 $con = new Conecciones();
 $fncredito = new Fn_credito();
 $fnindex = new Fn_index();
@@ -92,7 +93,7 @@ $dettexto = $fnindex->fnindex_rtextosxtipo(6);
                             <div class="col-lg-12 col-md-12 col-sm-12 text-sm-start text-justify wow fadeInLeft" data-wow-delay="300ms" style="text-align: justify !important; visibility: visible; animation-delay: 300ms; animation-name: fadeInLeft;">
                                 <?php
                                 if (!empty($dettexto[0]['texto_texto'])) {
-                                    echo utf8_encode($dettexto[0]['texto_texto']);
+                                    echo arreglar_mojibake($dettexto[0]['texto_texto']);
                                 } else {
                                     echo '<p class="text-neutral-500">Estamos actualizando el contenido de esta sección. Si necesitas información sobre nuestra política de privacidad, contáctanos en <a href="contacto.php" class="text-rojo font-semibold">contacto.php</a>.</p>';
                                 }

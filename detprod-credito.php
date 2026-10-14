@@ -8,8 +8,8 @@ $fnindex = new Fn_index();
 $id = isset($_GET['id']) ? intval($_GET['id']) : 116;
 $detproducto = $fnindex->fnindex_rproducto_xtextoses($id);
 
-$titulo = !empty($detproducto[0]['nombre_prod']) ? arreglar_mojibake(utf8_encode($detproducto[0]['nombre_prod'])) : 'Crédito Especial';
-$desc = !empty($detproducto[0]['descripcion_prod']) ? arreglar_mojibake(utf8_encode($detproducto[0]['descripcion_prod'])) : 'Línea de financiamiento adaptada para impulsar tus metas personales o comerciales.';
+$titulo = !empty($detproducto[0]['nombre_prod']) ? arreglar_mojibake($detproducto[0]['nombre_prod']) : 'Crédito Especial';
+$desc = !empty($detproducto[0]['descripcion_prod']) ? arreglar_mojibake($detproducto[0]['descripcion_prod']) : 'Línea de financiamiento adaptada para impulsar tus metas personales o comerciales.';
 $interes_base = !empty($detproducto[0]['int_prod']) ? number_format($detproducto[0]['int_prod'], 2) : '15.00';
 
 $mapaTipoCredito = [

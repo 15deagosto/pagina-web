@@ -141,7 +141,7 @@ $mapaTipoCredito = [
                                 <select name="tipocred_calcula" class="w-full bg-white border border-neutral-200 focus:border-[#a31a16]/40 rounded-xl px-4 py-3 text-neutral-800 font-semibold outline-none text-sm cursor-pointer">
                                     <?php while ($menulistprod = $listproducto->fetch_assoc()) { 
                                         if (!isset($mapaTipoCredito[$menulistprod['id_prod']])) continue; ?>
-                                        <option value="<?php echo $mapaTipoCredito[$menulistprod['id_prod']] ?>"><?php echo arreglar_mojibake(utf8_encode($menulistprod['nombre_prod'])) ?></option>
+                                        <option value="<?php echo $mapaTipoCredito[$menulistprod['id_prod']] ?>"><?php echo arreglar_mojibake($menulistprod['nombre_prod']) ?></option>
                                     <?php } ?>
                                 </select>
                             </div>
@@ -222,10 +222,10 @@ $mapaTipoCredito = [
                                 <img style="width:32px;" src="assets/img/icon-money.png" class="group-hover:brightness-0 group-hover:invert transition-all" alt="Icon">
                             </div>
                             <h3 class="text-xl font-black tracking-tight text-neutral-800 mb-3 group-hover:text-[#a31a16] transition-colors">
-                                <?php echo arreglar_mojibake(utf8_encode($menucredito['nombre_prod'])) ?>
+                                <?php echo arreglar_mojibake($menucredito['nombre_prod']) ?>
                             </h3>
                             <p class="text-xs text-neutral-500 leading-relaxed text-justify line-clamp-4">
-                                <?php echo arreglar_mojibake(utf8_encode($menucredito['descripcion_prod'])) ?>
+                                <?php echo arreglar_mojibake($menucredito['descripcion_prod']) ?>
                             </p>
                         </div>
                         <div class="pt-4 border-t border-neutral-50 flex items-center justify-between">

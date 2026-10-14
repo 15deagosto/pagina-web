@@ -83,7 +83,7 @@ $tituloPagina = 'Educación Financiera';
                                         <?php echo arreglar_mojibake($menueducafinan['titulo_edfi']) ?>
                                     </a>
                                 </h3>
-                                
+
                                 <p class="text-neutral-500 text-xs md:text-sm leading-relaxed text-justify line-clamp-3 font-medium">
                                     <?php echo arreglar_mojibake($menueducafinan['resumen_edfi']) ?>
                                 </p>

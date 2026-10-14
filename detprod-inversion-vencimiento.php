@@ -9,9 +9,9 @@ $fnindex = new Fn_index();
 $id = $_GET['id'];
 $detproducto = $fnindex->fnindex_rproducto_xtextoses($id);
 
-$tituloInversion = arreglar_mojibake(utf8_encode($detproducto[0]['nombre_prod']));
+$tituloInversion = arreglar_mojibake($detproducto[0]['nombre_prod']);
 $descInversion = $detproducto[0]['descripcion_prod']
-        ? arreglar_mojibake(utf8_encode($detproducto[0]['descripcion_prod']))
+        ? arreglar_mojibake($detproducto[0]['descripcion_prod'])
         : 'Los socios o clientes de la Cooperativa podrán invertir en depósito a plazo fijo, a través de la suscripción de un contrato de DPF, aceptando los términos y condiciones del mismo.';
 $montoTexto = 'hasta 15.000,00 dólares';
 $plazoTexto = 'Al vencimiento del contrato';
