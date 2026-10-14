@@ -1,0 +1,2 @@
+# 🚀 ENRUTADOR GLOBAL DE ERRORES: Redirige cualquier link roto a tu página personalizada
+ErrorDocument 404 /cooperativa15deagosto_local/pagina-web/404.php

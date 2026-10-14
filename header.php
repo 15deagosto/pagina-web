@@ -1,3 +1,11 @@
+<?php
+// INICIO DEL RASTREADOR: Captura el HTML antes de que se envíe al navegador
+ob_start(function($buffer) {
+    // Inyecta automáticamente loading="lazy" en todas las etiquetas <img> del sitio
+    return str_replace('<img ', '<img loading="lazy" ', $buffer);
+});
+?>
+
 <?php require_once './funciones/fn-utilidades.php'; ?>
 
 <!-- TOP BAR: Línea Superior Institucional -->

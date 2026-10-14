@@ -108,15 +108,15 @@ if ($slider) {
                     <!-- MINI GRID DE ESTADÍSTICAS BANCARIAS (Prueba Social) -->
                     <div class="grid grid-cols-3 gap-4 mt-12 pt-8 border-t border-white/10">
                         <div>
-                            <p class="text-2xl md:text-3xl font-black text-white">+1500</p>
-                            <p class="text-xs text-white/60 uppercase tracking-wider mt-1">Socios Activos</p>
+                            <p class="contador-hero text-2xl md:text-3xl font-black text-white" data-target="1500">0</p>
+                            <p class="text-xs text-white/60 uppercase tracking-wider mt-1-1">Socios Activos</p>
                         </div>
                         <div>
-                            <p class="text-2xl md:text-3xl font-black text-white">10+</p>
+                            <p class="contador-hero text-2xl md:text-3xl font-black text-white" data-target="10">0</p>
                             <p class="text-xs text-white/60 uppercase tracking-wider mt-1">Años en mercado</p>
                         </div>
                         <div>
-                            <p class="text-2xl md:text-3xl font-black text-white">5000+</p>
+                            <p class="contador-hero text-2xl md:text-3xl font-black text-white" data-target="5000">0</p>
                             <p class="text-xs text-white/60 uppercase tracking-wider mt-1">Créditos concedidos</p>
                         </div>
                     </div>
@@ -299,6 +299,43 @@ if ($slider) {
                 });
                 setInterval(function () { mostrar((actual + 1) % slides.length); }, 5000);
             })();
+        </script>
+        <script>
+        (() => {
+            const elementos = document.querySelectorAll('.contador-hero');
+            
+            const iniciarConteo = (el) => {
+                const destino = +el.getAttribute('data-target');
+                let actual = 0;
+                const pasos = 40; 
+                const incremento = destino <= 50 ? 1 : Math.ceil(destino / pasos);
+                const intervaloTiempo = destino <= 50 ? 80 : 30; // Los números pequeños van más lento (80ms)
+
+                const timer = setInterval(() => {
+                    actual += incremento;
+                    
+                    if (actual >= destino) {
+                        // FORMATO UNIFICADO: Todos terminan con el signo "+" al inicio por estética corporativa
+                        el.innerText = "+" + destino;
+                        clearInterval(timer);
+                    } else {
+                        el.innerText = "+" + actual;
+                    }
+                }, intervaloTiempo);
+            };
+
+            // Radar de scroll que despierta la animación al asomarse en la pantalla
+            const obs = new IntersectionObserver((entries, observer) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        iniciarConteo(entry.target);
+                        observer.unobserve(entry.target);
+                    }
+                });
+            }, { threshold: 0.2 });
+
+            elementos.forEach(item => obs.observe(item));
+        })();
         </script>
     </body>
 </html>

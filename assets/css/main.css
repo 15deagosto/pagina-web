@@ -9,7 +9,7 @@ ul {
 }
 ul li {
     list-style: none;
-}16
+}
 
 
 h2, p {
@@ -2332,7 +2332,7 @@ Location:
     line-height: 70px;
     border-radius: 4px;
     transition: all 0.4s;
-    //background: #e6e6e6;
+    
     display: inline-block;
 }
 .service3-section-area .service3-single-boxarea .icons img {
@@ -6964,7 +6964,6 @@ Location:
     font-weight: var(--ztc-weight-semibold);
     line-height: 24px;
     letter-spacing: -0.48px;
-    7904
 }
 .vl-footer2-section-area .vl-footer-widget ul li a {
     color: rgba(255, 255, 255, 0.8);
@@ -14964,3 +14963,4 @@ Location:
     height: 2px;
     width: 50%;
 }
+

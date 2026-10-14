@@ -60,4 +60,10 @@
             </div>
         </div>
     </div>
+
+    <?php
+    // 🚀 FIN DEL RASTREADOR: Suelta el HTML modificado y limpio con la carga diferida lista
+    ob_end_flush();
+    ?>
+
 </footer>
