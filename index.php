@@ -174,6 +174,11 @@ if ($slider) {
             <?php include './mod-servicios-v2.php' ?>
         </section>
 
+        <!-- ===== TESTIMONIOS ===== -->
+        <section class="py-16 md:py-24">
+            <?php include './mod-testimonios-v2.php' ?>
+        </section>
+
         <!-- ===== SIMULADOR ===== -->
         <section class="bg-rojo-light/40 py-16 md:py-24">
             <?php include './mod-simulador.php' ?>
