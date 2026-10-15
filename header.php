@@ -27,6 +27,32 @@ ob_start(function($buffer) {
             }
             ?>
         </div>
+        <!-- Contenedor General del Buscador Predictivo Global -->
+        <div class="flex items-center">
+            
+            <!--  Botón de la Lupa Fijo en el Menú -->
+            <button id="btn-buscar" class="cursor-pointer text-white hover:text-red-200 transition-colors p-2 text-sm focus:outline-none" aria-label="Buscar en el sitio">
+                <i class="fa-solid fa-magnifying-glass text-lg"></i>
+            </button>
+
+            <!--  BARRA MAESTRA ROJA CON EFECTO CRISTAL ESMERILADO Y ANIMACIÓN SUAVE -->
+            <div id="caja-busqueda" class="hidden absolute inset-x-0 top-0 h-12 bg-[#a31a16]/90 backdrop-blur-md border-b border-white/20 shadow-lg items-center justify-between px-6 z-50 transition-all duration-500 ease-out origin-top transform scale-y-95 opacity-0">
+                
+                <div class="flex items-center w-full max-w-5xl mx-auto">
+                    <!-- Icono interno-->
+                    <i class="fa-solid fa-magnifying-glass text-white/70 mr-3 text-sm animate-pulse"></i>
+                    
+                    <!-- Input -->
+                    <input type="search" id="input-buscar" autocomplete="off" placeholder="¿Qué solución financiera estás buscando hoy?..." class="w-full bg-transparent border-none outline-none py-1 text-sm font-semibold text-white placeholder-white/40 focus:ring-0 tracking-wide">
+                </div>
+
+                <!--  BOTÓN DE CIERRE -->
+                <button id="btn-cerrar-buscar" class="cursor-pointer text-white/70 hover:text-white font-black px-4 py-1 rounded-full hover:bg-white/10 transition-all text-xs focus:outline-none flex items-center gap-1.5 ml-4 uppercase tracking-wider">
+                    Cerrar <i class="fa-solid fa-xmark text-sm"></i>
+                </button>
+            </div>
+
+        </div>
     </div>
 </div>
 
@@ -110,6 +136,11 @@ ob_start(function($buffer) {
                             }
                             ?>
                         </ul>
+                        <!-- 📊 BOTÓN COMPARADOR PREMIUM ADAPTADO AL ROJO CORPORATIVO -->
+<button onclick="abrirComparadorFintech()" class="cursor-pointer inline-flex items-center justify-center w-full px-5 py-3 rounded-2xl bg-[#a31a16] hover:bg-[#7a1310] text-white font-extrabold text-[11px] tracking-wider uppercase transition-all duration-300 shadow-md hover:shadow-lg hover:-translate-y-0.5 gap-2 border border-transparent focus:outline-none">
+    <i class="fa-solid fa-chart-columns text-sm text-white animate-pulse"></i> Comparar Tasas
+</button>
+
                     </div>
                 </div>
             </li>
@@ -150,6 +181,9 @@ ob_start(function($buffer) {
             <button class="lg:hidden text-[#a31a16] hover:text-[#7a1310] text-2xl p-1.5 rounded-xl hover:bg-neutral-50 transition-colors" id="v2-burger" aria-label="Abrir menú">
                 <i class="fa-solid fa-bars-staggered"></i>
             </button>
+        </div>
+                <div id="lista-sugerencias" class="hidden absolute left-1/2 -translate-x-1/2 top-full mt-1 w-full max-w-5xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-2xl shadow-2xl overflow-hidden flex flex-col z-50" style="z-index: 999999 !important;">
+            <!-- Las recomendaciones oficiales de la cooperativa se inyectarán aquí en caliente -->
         </div>
     </div>
 </nav>
@@ -229,4 +263,106 @@ ob_start(function($buffer) {
         if (cerrar) cerrar.addEventListener('click', cerrarMenu);
         if (overlay) overlay.addEventListener('click', cerrarMenu);
     })();
+
+document.addEventListener('DOMContentLoaded', () => {
+    const btnBuscar = document.getElementById('btn-buscar');
+    const cajaBusqueda = document.getElementById('caja-busqueda');
+    const inputBuscar = document.getElementById('input-buscar');
+    const btnCerrarBuscar = document.getElementById('btn-cerrar-buscar');
+    const listaSugerencias = document.getElementById('lista-sugerencias');
+
+    // MAPA DE CONTENIDOS Y ENLACES OFICIALES DE LA COOPERATIVA
+    const baseConocimiento = [
+        { titulo: "💰 Solicitar un Crédito / Microcrédito Inmediato", url: "requisitos-credito.php", palabras: ["credito", "microcredito", "prestamo", "dinero", "consumo"] },
+        { titulo: "🧮 Simular Crédito (Calculadora de Cuotas)", url: "simulador-credito.php", palabras: ["simulador", "calcular", "cuota", "tabla", "interes"] },
+        { titulo: "🐷 Cuentas de Ahorros Coactivas y Plazo Fijo", url: "tasas-interes.php", palabras: ["ahorros", "cuenta", "guardar", "tasas", "interes"] },
+        { titulo: "📈 Inversiones a Plazo Fijo Premium", url: "tasas-interes.php", palabras: ["inversiones", "invertir", "plazo fijo", "poliza", "rendimiento"] },
+        { titulo: "🧾 Pago de Servicios Públicos y Convenios", url: "agencias.php", palabras: ["servicios", "pago", "agua", "luz", "matricula", "convenios"] },
+        { titulo: "⭐ Califícanos (Buzón de Opiniones y Experiencia)", url: "contacto.php", palabras: ["calificanos", "opinion", "sugerencia", "queja", "contacto"] },
+        { titulo: "🎓 Plataforma EDÚCATE (Educación Financiera)", url: "educacion-financiera.php", palabras: ["educate", "educacion", "financiera", "cursos", "talleres"] },
+        { titulo: "🏢 Agencias, Oficinas y Horarios de Atención", url: "agencias.php", palabras: ["agencias", "oficinas", "horarios", "donde", "direccion", "sucursal"] },
+        { titulo: "🔒 15 de Agosto Virtual (Banca en Línea)", url: "login.php", palabras: ["virtual", "banca", "login", "ingresar", "plataforma", "entrar"] }
+    ];
+
+    // 1. ABRIR LA BARRA ROJA CON TRANSICIÓN DE VIDA
+    if (btnBuscar && cajaBusqueda && inputBuscar) {
+        btnBuscar.addEventListener('click', (e) => {
+            e.stopPropagation();
+            cajaBusqueda.classList.remove('hidden', 'scale-y-95', 'opacity-0');
+            cajaBusqueda.classList.add('flex', 'scale-y-100', 'opacity-100');
+            inputBuscar.focus();
+        });
+    }
+
+    // 2. CERRAR LA BARRA CON TRANSICIÓN SUAVE
+    const cerrarBuscador = () => {
+        if (cajaBusqueda) {
+            cajaBusqueda.classList.remove('flex', 'scale-y-100', 'opacity-100');
+            cajaBusqueda.classList.add('hidden', 'scale-y-95', 'opacity-0');
+        }
+        if (inputBuscar) inputBuscar.value = '';
+        if (listaSugerencias) {
+            listaSugerencias.innerHTML = '';
+            listaSugerencias.classList.add('hidden');
+        }
+    };
+
+
+    if (btnCerrarBuscar) {
+        btnCerrarBuscar.addEventListener('click', (e) => {
+            e.stopPropagation();
+            cerrarBuscador();
+        });
+    }
+
+    // 3. MOTOR PREDICTIVO EN CALIENTE CON RENDERIZADO PREMIUM
+    if (inputBuscar && listaSugerencias) {
+        inputBuscar.addEventListener('input', (e) => {
+            const termino = e.target.value.toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g, "").trim();
+
+            if (termino === '') {
+                listaSugerencias.innerHTML = '';
+                listaSugerencias.classList.add('hidden');
+                return;
+            }
+
+            const coincidencias = baseConocimiento.filter(item => {
+                const tituloLimpio = item.titulo.toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g, "");
+                return tituloLimpio.includes(termino) || item.palabras.some(p => p.includes(termino));
+            });
+
+            // Si no hay resultados, muestra el aviso limpio sobre el fondo blanco fusionado
+            if (coincidencias.length === 0) {
+                listaSugerencias.innerHTML = `<div class="p-4 text-xs text-slate-500 italic bg-white text-center">No encontramos resultados para tu búsqueda.</div>`;
+                listaSugerencias.classList.remove('hidden');
+                return;
+            }
+
+            // Inyecta las recomendaciones en su nueva capa, totalmente al frente y bien espaciadas
+            listaSugerencias.innerHTML = coincidencias.map(item => `
+                <a href="${item.url}" class="p-4 text-xs font-bold text-slate-700 hover:bg-slate-50 border-b border-slate-100 transition-all flex items-center justify-between group no-underline bg-white">
+                    <span class="group-hover:text-[#a31a16] transition-colors flex items-center gap-2">${item.titulo}</span>
+                    <div class="inline-flex items-center justify-center w-6 h-6 rounded-full bg-slate-100 text-slate-400 group-hover:bg-[#a31a16] group-hover:text-white transition-all duration-300">
+                        <i class="fa-solid fa-chevron-right text-[10px]"></i>
+                    </div>
+                </a>
+            `).join('');
+
+            listaSugerencias.classList.remove('hidden');
+        });
+
+        inputBuscar.addEventListener('keydown', (e) => {
+            if (e.key === 'Enter') e.preventDefault();
+        });
+    }
+
+    // Cerrar la barra si clican en una zona vacía fuera del buscador
+    document.addEventListener('click', (e) => {
+        if (cajaBusqueda && !cajaBusqueda.contains(e.target) && e.target !== btnBuscar && !listaSugerencias.contains(e.target)) {
+            cerrarBuscador();
+        }
+    });
+});
+
+
 </script>
