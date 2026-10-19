@@ -62,7 +62,7 @@ ob_start(function($buffer) {
         
         <!-- Logotipo Institucional Responsivo -->
         <a href="index.php" class="flex items-center shrink-0 group">
-            <img src="assets/img/logo/logo2.png" alt="Cooperativa 15 de Agosto" class="h-11 object-contain transition-transform duration-300 group-hover:scale-[1.01]">
+            <img src="assets/img/logo/logo2.webp" widht="145" height="44" alt="Cooperativa 15 de Agosto" class="h-11 object-contain transition-transform duration-300 group-hover:scale-[1.01]">
         </a>
 
         <!-- MENÚ CENTRAL DESKTOP: Enlaces con Animación de Línea de Fondo -->

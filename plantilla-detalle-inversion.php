@@ -39,7 +39,7 @@ $tituloPagina = $titulo_inv;
         </header>
 
         <!--===== HERO AREA ADAPTADA =======-->
-        <div class="w-full bg-gradient-to-r from-neutral-50 to-neutral-100 bg-center bg-cover bg-no-repeat h-[240px] md:h-[280px] flex items-center border-b border-neutral-100" style="background-image: url(assets/img/banner-credito.jpg);">
+        <div class="w-full bg-gradient-to-r from-neutral-50 to-neutral-100 bg-center bg-cover bg-no-repeat h-[240px] md:h-[280px] flex items-center border-b border-neutral-100" style="background-image: url(assets/img/all-images/bg/fondo-empresa-01.png);">
             <div class="max-w-7xl mx-auto px-6 w-full">
                 <div class="grid grid-cols-1 lg:grid-cols-12 items-center">
                     <div class="lg:col-span-4"></div>

@@ -11,7 +11,7 @@ $fnindex = new Fn_index();
     <head>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>Inicio - 15 de Agosto Cooperativa de Ahorro y Crédito</title>
+        <title>Trabaja con nosotros - 15 de Agosto Cooperativa de Ahorro y Crédito</title>
 
         <!--=====FAB ICON=======-->
         <link rel="shortcut icon" href="assets/img/favicon-coop.png" type="image/x-icon">
@@ -45,7 +45,7 @@ $fnindex = new Fn_index();
 
         
         <!--===== HERO AREA STARTS =======-->
-        <div class="inner-pages-section-area" style="background-image: url(assets/img/all-images/bg/bg-header-002.png); background-position: center; background-repeat: no-repeat; background-size: cover;">
+        <div class="inner-pages-section-area" style="background-image: url(assets/img/all-images/bg/fondo-004.png); background-position: center; background-repeat: no-repeat; background-size: cover;">
             <div class="container">
                 <div class="row">
                     <div class="col-lg-12 m-auto">

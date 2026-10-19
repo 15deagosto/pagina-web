@@ -167,7 +167,7 @@
 </div>
 
 <!-- ==========================================
-     📊 PANEL DESLIZABLE: COMPARADOR FINTECH v1.0
+      PANEL DESLIZABLE: COMPARADOR FINTECH v1.0
      ========================================== -->
 <!-- Fondo traslúcido de fondo (Oculto de fábrica) -->
 <div id="comparador-overlay" class="hidden fixed inset-0 bg-slate-900/40 backdrop-blur-sm z-[99999] transition-opacity duration-300 opacity-0"></div>
@@ -187,12 +187,12 @@
             </div>
         </div>
         <!-- Botón circular de cierre X -->
-        <button id="btn-cerrar-comparador" class="cursor-pointer w-8 h-8 rounded-full bg-slate-100 text-slate-500 hover:bg-red-50 hover:text-[#a31a16] transition-colors flex items-center justify-center focus:outline-none">
+        <button id="btn-cerrar-comparador" class="cursor-pointer w-8 h-8 rounded-full bg-slate-100 text-slate-500 hover:bg-red-50 hover:text-[#a31a16] transition-colors flex items-center justify-center focus:outline-none" aria-label="Cerrar comparador">
             <i class="fa-solid fa-xmark text-sm"></i>
         </button>
     </div>
 
-    <!-- 🎛️ SWAP DE PESTAÑAS FINTECH (Controla el cambio en caliente) -->
+    <!--  SWAP DE PESTAÑAS FINTECH (Controla el cambio en caliente) -->
     <div class="p-6 pb-2">
         <div class="bg-slate-100 p-1 rounded-2xl flex gap-1">
             <button id="tab-creditos" class="cursor-pointer w-full py-2.5 text-xs font-black rounded-xl transition-all shadow-sm bg-[#a31a16] text-white focus:outline-none">
@@ -204,7 +204,7 @@
         </div>
     </div>
 
-    <!-- 📊 CONTENEDOR DE TABLAS (Se llenará dinámicamente con JavaScript) -->
+    <!--  CONTENEDOR DE TABLAS (Se llenará dinámicamente con JavaScript) -->
     <div class="flex-1 overflow-y-auto p-6 pt-2">
         <div id="contenido-comparador-tarjetas" class="flex flex-col gap-4">
             <!-- Las tarjetas lado a lado / apiladas se inyectarán aquí limpias -->
@@ -238,7 +238,7 @@ document.addEventListener('DOMContentLoaded', () => {
     };
 
 
-    // 🎨 2. FUNCIÓN PARA PINTAR LAS TARJETAS LADO A LADO / APILADAS
+    //  2. FUNCIÓN PARA PINTAR LAS TARJETAS LADO A LADO / APILADAS
     const renderizarTabla = (tipo) => {
         const productos = datosComparador[tipo];
         if (!contenedorTarjetas || !productos) return;
@@ -264,7 +264,7 @@ document.addEventListener('DOMContentLoaded', () => {
         `).join('') + '<p class="text-[9px] text-neutral-400 italic text-center mt-1">* Tasas nominales referenciales reguladas por la SEPS.</p>';
     };
 
-    // ⚡ 3. CONTROL DE PESTAÑAS (SWAP EN CALIENTE)
+    //  3. CONTROL DE PESTAÑAS (SWAP EN CALIENTE)
     const activarTab = (tabActiva, tabInactiva, tipo) => {
         tabActiva.classList.remove('bg-transparent', 'text-slate-600', 'font-bold');
         tabActiva.classList.add('bg-[#a31a16]', 'text-white', 'font-black');
@@ -278,7 +278,7 @@ document.addEventListener('DOMContentLoaded', () => {
         tabAhorros.addEventListener('click', () => activarTab(tabAhorros, tabCreditos, 'ahorros'));
     }
 
-    // 🔓 4. FUNCIONES GLOBALES PARA ABRIR Y CERRAR LA PERSIANA LATERAL
+    //  4. FUNCIONES GLOBALES PARA ABRIR Y CERRAR LA PERSIANA LATERAL
     window.abrirComparadorFintech = () => {
         if (overlay && drawer) {
             renderizarTabla('creditos'); // Arranca mostrando créditos por defecto

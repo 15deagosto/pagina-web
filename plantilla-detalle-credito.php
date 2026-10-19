@@ -40,7 +40,7 @@ $codigoCalculo = isset($mapaInversowB[$titulo]) ? $mapaInversowB[$titulo] : 'SOC
         <?php include 'header.php'; ?>
 
         <!-- ===== HERO AREA AJUSTADA SIN RECORTES ===== -->
-        <div class="w-full bg-gradient-to-r from-neutral-50 to-neutral-100 bg-center bg-cover bg-no-repeat h-[240px] md:h-[280px] flex items-center border-b border-neutral-100" style="background-image: url(assets/img/banner-credito.jpg);">
+        <div class="w-full bg-gradient-to-r from-neutral-50 to-neutral-100 bg-center bg-cover bg-no-repeat h-[240px] md:h-[280px] flex items-center border-b border-neutral-100" style="background-image: url(assets/img/all-images/bg/fondo-empresa-01.webp);">
             <div class="max-w-7xl mx-auto px-6 w-full">
                 <div class="grid grid-cols-1 lg:grid-cols-12 items-center">
                     <div class="lg:col-span-4"></div>
@@ -61,10 +61,10 @@ $codigoCalculo = isset($mapaInversowB[$titulo]) ? $mapaInversowB[$titulo] : 'SOC
         <section class="py-16 md:py-24 max-w-7xl mx-auto px-6 grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
             <div class="lg:col-span-6 grid grid-cols-2 gap-4 sm:gap-6 items-center" data-aos="fade-right">
                 <div class="w-full overflow-hidden">
-                    <img src="assets/img/img-producto-ahorro-01.jpg" class="w-full h-auto object-contain rounded-3xl shadow-soft hover:scale-[1.01] transition-transform duration-500" alt="COAC">
+                    <img src="assets/img/img-producto-ahorro-01.webp" class="w-full h-auto object-contain rounded-3xl shadow-soft hover:scale-[1.01] transition-transform duration-500" alt="COAC">
                 </div>
                 <div class="w-full overflow-hidden">
-                    <img src="assets/img/img-producto-ahorro-02.jpg" class="w-full h-auto object-contain rounded-3xl shadow-soft hover:scale-[1.01] transition-transform duration-500" alt="Crédito">
+                    <img src="assets/img/img-producto-ahorro-02.webp" class="w-full h-auto object-contain rounded-3xl shadow-soft hover:scale-[1.01] transition-transform duration-500" alt="Crédito">
                 </div>
             </div>
             <div class="lg:col-span-6" data-aos="fade-left">

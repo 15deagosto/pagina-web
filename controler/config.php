@@ -7,17 +7,17 @@ require_once __DIR__ . '/config.local.php';
 // correctos antes de desplegar a producción (ver EMAILRECLAMOSARAS,
 // que es el canal de denuncias SARAS -- prioridad alta de corregir).
 define ("URLPRINCIPAL","https://cooperativa15deagosto.fin.ec/");
-define ("URLIMAGEN","https://www.sumakkawsay.fin.ec/images/logo-sumakkawsay-02.png");
-define ("EMAILTEST_1","sistemas@supaysoft.net");
+//define ("URLIMAGEN","https://www.sumakkawsay.fin.ec/images/logo-sumakkawsay-02.png");
+define ("EMAILTEST_1","sistemas@cooperativa15deagosto.fin.ec");
 define ("EMPRESA","Cooperativa de Ahorro y crédito 15 de Agosto");
-define ("TELFEMPRESA","03 2809 624");
-define ("EMAILPROSPECCION","prospeccion@sumakkawsay.fin.ec");
-define ("EDUCACIONFINANCIERA","educacion@sumakkawsay.fin.ec");
-define ("EMAILPROSPECCION1","prospeccion1@sumakkawsay.fin.ec");
-define ("EMAILCONTATANOS","contactos@sumakkawsay.fin.ec");
-define ("EMAILPROVEEDOR","");
-define ("EMAILTALENTO","talentohumano@sumakkawsay.fin.ec");
-define ("EMAILRECLAMOS","reclamos@sumakkawsay.fin.ec");
-define ("EMAILRECLAMOSARAS","denunciassaras@sumakkawsay.fin.ec");
+//define ("TELFEMPRESA","03 2809 624");
+//define ("EMAILPROSPECCION","prospeccion@sumakkawsay.fin.ec");
+//define ("EDUCACIONFINANCIERA","educacion@sumakkawsay.fin.ec");
+//define ("EMAILPROSPECCION1","prospeccion1@sumakkawsay.fin.ec");
+//define ("EMAILCONTATANOS","contactos@sumakkawsay.fin.ec");
+//define ("EMAILPROVEEDOR","");
+define ("EMAILTALENTO","talentohumano@cooperativa15deagosto.fin.ec");
+//define ("EMAILRECLAMOS","reclamos@sumakkawsay.fin.ec");
+//define ("EMAILRECLAMOSARAS","denunciassaras@sumakkawsay.fin.ec");
 
 
