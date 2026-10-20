@@ -55,7 +55,7 @@ $tituloPagina = 'Política SARAS';
         </div>
 
         <!-- =====2. NARRATIVA SARAS: Manteniendo tus imágenes y fondos de fábrica originales ===== -->
-        <section class="py-16 md:py-24 bg-center bg-cover bg-no-repeat border-b border-neutral-100" style="background-image: url(assets/img/all-images/bg/hero-bg1.png);">
+        <section class="py-16 md:py-24 bg-center bg-cover bg-no-repeat border-b border-neutral-100" style="background-image: url(assets/img/all-images/bg/hero-bg1.webp);">
             <div class="max-w-7xl mx-auto px-6 grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
                 
                 <!-- Textos Editoriales Regulados -->
@@ -75,7 +75,7 @@ $tituloPagina = 'Política SARAS';
                 <div class="lg:col-span-5 relative flex justify-center" data-aos="fade-left">
                     <div class="absolute -inset-4 bg-gradient-to-tr from-[#a31a16]/10 to-transparent rounded-[40px] blur-xl opacity-50 pointer-events-none"></div>
                     <div class="relative max-w-[80%] lg:max-w-full overflow-hidden transition-all duration-300">
-                        <img src="assets/img/all-images/hero/hero-img1.png" alt="SARAS COAC" class="w-full h-auto object-contain hover:scale-[1.02] transition-transform duration-500">
+                        <img src="assets/img/all-images/hero/hero-img1.webp" alt="SARAS COAC" class="w-full h-auto object-contain hover:scale-[1.02] transition-transform duration-500">
                     </div>
                 </div>
 

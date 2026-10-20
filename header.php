@@ -136,7 +136,7 @@ ob_start(function($buffer) {
                             }
                             ?>
                         </ul>
-                        <!-- 📊 BOTÓN COMPARADOR PREMIUM ADAPTADO AL ROJO CORPORATIVO -->
+                        <!--  BOTÓN COMPARADOR PREMIUM ADAPTADO AL ROJO CORPORATIVO -->
 <button onclick="abrirComparadorFintech()" class="cursor-pointer inline-flex items-center justify-center w-full px-5 py-3 rounded-2xl bg-[#a31a16] hover:bg-[#7a1310] text-white font-extrabold text-[11px] tracking-wider uppercase transition-all duration-300 shadow-md hover:shadow-lg hover:-translate-y-0.5 gap-2 border border-transparent focus:outline-none">
     <i class="fa-solid fa-chart-columns text-sm text-white animate-pulse"></i> Comparar Tasas
 </button>
