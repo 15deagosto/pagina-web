@@ -404,8 +404,8 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // CONFIGURACIÓN DE NÚMEROS TELEFÓNICOS CORPORATIVOS DE LA COOPERATIVA
     // (Cambien estos números de prueba por los teléfonos reales del personal de TI y Crédito)
-    const telefonoCreditos = "593983135746"; // Formato internacional: código país (593) + número
-    const telefonoBanca = "593983135746";
+    const telefonoCreditos = "593963860869"; // Formato internacional: código país (593) + número
+    const telefonoBanca = "593963860869";
 
     // Enlace para el canal de Créditos
     if (canalCreditos) {

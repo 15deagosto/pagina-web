@@ -272,10 +272,10 @@ if ($slider) {
             </div>
         </section>
 
-        <!-- BOTÓN DE WHATSAPP OPTIMIZADO: Con enlace real para romper el bloqueo de SEO de Google -->
+        <!-- BOTÓN DE WHATSAPP OPTIMIZADO: Con enlace real para romper el bloqueo de SEO de Google 
         <a href="https://wa.me" onclick="whatsapo()" target="_blank" class="fixed bottom-6 right-6 z-50 w-14 h-14 rounded-full bg-[#25D366] text-white flex items-center justify-center text-2xl shadow-xl hover:scale-110 animate-bounce transition-transform" style="animation-duration: 3s;" aria-label="Comunícate con un asesor de la Cooperativa por WhatsApp">
             <i class="fab fa-whatsapp"></i>
-        </a>
+        </a>-->
 
 
         <?php include './footer.php' ?>
