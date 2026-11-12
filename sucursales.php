@@ -14,8 +14,8 @@ $tituloPagina = 'Canales de Atención';
         <title>Canales de Atención - 15 de Agosto Cooperativa de Ahorro y Crédito</title>
         <link rel="shortcut icon" href="assets/img/favicon-coop.png" type="image/x-icon">
         <?php include "head-v2.php"; ?>
-        <link rel="stylesheet" href="https://unpkg.com" integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin=""/>
-        <script src="https://unpkg.com" integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin=""></script>
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.css"/>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.js"></script>
     </head>
     <body class="v2 bg-white text-neutral-800">
 
@@ -91,13 +91,13 @@ $tituloPagina = 'Canales de Atención';
                 <!-- PANEL DERECHO: El Mapa Interactivo Embebido (Ocupa 7 columnas) -->
                 <div class="lg:col-span-7 sticky top-24 z-10" data-aos="fade-up" data-aos-delay="100">
                     <div class="w-full h-[550px] bg-slate-100 rounded-3xl border border-neutral-100 shadow-soft overflow-hidden">
-                        
-                        <iframe id="iframe-mapa-coop" 
-                                src="https://google.com" 
-                                class="w-full h-full border-none" 
-                                allowfullscreen="" 
-                                loading="lazy">
-                        </iframe>
+                        <?php if (!empty($coordenadas_javascript)) { ?>
+                            <div id="mapa-interactivo-coop" class="w-full h-full"></div>
+                        <?php } else { ?>
+                            <div class="w-full h-full flex items-center justify-center text-center px-8">
+                                <p class="text-neutral-400 text-sm font-medium">No hay coordenadas registradas todavía para mostrar el mapa de agencias.</p>
+                            </div>
+                        <?php } ?>
                     </div>
                 </div>
 
@@ -109,7 +109,10 @@ $tituloPagina = 'Canales de Atención';
         <?php include './footer.php' ?>
         <?php include "scripts-v2.php"; ?>
         <script>
+        const agencias = <?php echo json_encode($coordenadas_javascript, JSON_UNESCAPED_UNICODE); ?>;
         document.addEventListener('DOMContentLoaded', () => {
+            if (!agencias.length) return;
+
             // 2. INICIALIZAR EL MAPA CENTRADO EN LA PRIMERA AGENCIA (MATRIZ)
             const primera = agencias[0];
             const mapa = L.map('mapa-interactivo-coop').setView([primera.lat, primera.lng], 13);
