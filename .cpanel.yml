@@ -1,5 +1,5 @@
 ---
 deployment:
   tasks:
-    - export DEPLOYPATH=/home/cooperat/beta.cooperativa15deagosto.fin.ec/
+    - export DEPLOYPATH=/home/cooperat/public_html/
     - /bin/cp -R * $DEPLOYPATH
