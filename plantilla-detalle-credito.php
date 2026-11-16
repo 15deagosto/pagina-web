@@ -261,11 +261,14 @@ if (!empty($rangosTiers)) {
                     chip.classList.add('bg-[#a31a16]/10', 'border-[#a31a16]/50', 'text-[#a31a16]');
                 });
             });
+            const montoMin = <?php echo (int) $rangoProducto['montoMin']; ?>;
+            const montoMax = <?php echo (int) $rangoProducto['montoMax']; ?>;
             if (inputMonto && labelError && btnCalcular) {
+                labelError.innerHTML = '<i class="fa-solid fa-circle-exclamation"></i> El monto debe estar entre $' + montoMin.toLocaleString('es-EC') + ' y $' + montoMax.toLocaleString('es-EC') + '.';
                 inputMonto.addEventListener('input', function() {
                     let montoTexto = inputMonto.value.trim();
                     let montoNum = parseFloat(montoTexto.replace(/[,.]/g, ''));
-                    if (montoTexto === "" || (!isNaN(montoNum) && montoNum >= 1000)) {
+                    if (montoTexto === "" || (!isNaN(montoNum) && montoNum >= montoMin && montoNum <= montoMax)) {
                         labelError.classList.add('hidden');
                         inputMonto.classList.remove('border-red-500', 'bg-red-50/50');
                         btnCalcular.disabled = false;
