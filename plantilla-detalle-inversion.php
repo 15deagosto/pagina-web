@@ -5,6 +5,7 @@ $desc_inv = isset($descInversion) ? $descInversion : 'Multiplica tu capital de f
 $monto_inv = isset($montoTexto) ? $montoTexto : 'Consultar en Agencia';
 $plazo_inv = isset($plazoTexto) ? $plazoTexto : 'Plazos Flexibles';
 $tasa_inv = isset($tasaTexto) ? $tasaTexto : 'Tasas Competitivas';
+$pago_inv = isset($pagoInteresTexto) ? $pagoInteresTexto : 'Según modalidad';
 
 $tituloPagina = $titulo_inv;
 ?>
@@ -108,8 +109,54 @@ $tituloPagina = $titulo_inv;
                             <p class="text-base font-black text-emerald-600 tracking-tight"><?php echo $tasa_inv; ?></p>
                         </div>
                     </div>
+                    <div class="group bg-white border border-neutral-100 rounded-3xl p-6 shadow-soft hover:border-[#a31a16]/20 hover:-translate-y-1 transition-all duration-300 flex gap-4 items-start">
+                        <div class="w-10 h-10 rounded-xl bg-[#a31a16]/5 flex items-center justify-center text-[#a31a16] shrink-0"><i class="fa-solid fa-coins text-sm"></i></div>
+                        <div>
+                            <h4 class="font-bold text-neutral-800 text-sm mb-1 tracking-tight">Pago de Interés</h4>
+                            <p class="text-sm font-extrabold text-[#a31a16] tracking-tight mt-0.5"><?php echo $pago_inv; ?></p>
+                        </div>
+                    </div>
+                    <div class="group bg-white border border-neutral-100 rounded-3xl p-6 shadow-soft hover:border-[#a31a16]/20 hover:-translate-y-1 transition-all duration-300 flex gap-4 items-start">
+                        <div class="w-10 h-10 rounded-xl bg-[#a31a16]/5 flex items-center justify-center text-[#a31a16] shrink-0"><i class="fa-solid fa-rotate text-sm"></i></div>
+                        <div>
+                            <h4 class="font-bold text-neutral-800 text-sm mb-1 tracking-tight">Renovación e Integrantes</h4>
+                            <p class="text-sm font-extrabold text-[#a31a16] tracking-tight mt-0.5">Renovación automática: Sí · Máximo 3 integrantes</p>
+                        </div>
+                    </div>
                 </div>
             </div>
+        </section>
+
+        <!-- ===== SECCIÓN: TABLA REAL DE TASAS POR PLAZO Y MONTO ===== -->
+        <section class="py-16 md:py-24 max-w-5xl mx-auto px-6">
+            <div class="text-center mb-10" data-aos="fade-up">
+                <div class="text-[#a31a16] font-bold uppercase text-xs tracking-widest mb-2 flex items-center justify-center gap-2">
+                    <span class="w-6 h-0.5 bg-[#a31a16] inline-block"></span> Tabla de tasas
+                </div>
+                <h2 class="text-2xl md:text-3xl font-black text-neutral-800 tracking-tight">Tasa referencial por plazo y monto</h2>
+                <p class="text-neutral-500 text-sm mt-2">Persona natural. Es la misma tabla para las tres modalidades de pago de interés.</p>
+            </div>
+            <div class="overflow-x-auto rounded-2xl border border-neutral-100 shadow-soft">
+                <table class="w-full text-sm text-left">
+                    <thead class="bg-neutral-50 text-neutral-600 uppercase text-[11px] font-black tracking-wide">
+                        <tr>
+                            <th class="px-4 py-3">Plazo (días)</th>
+                            <th class="px-4 py-3">Hasta $10.000</th>
+                            <th class="px-4 py-3">$10.000 a $49.999</th>
+                            <th class="px-4 py-3">$50.000 en adelante</th>
+                        </tr>
+                    </thead>
+                    <tbody class="divide-y divide-neutral-100">
+                        <tr><td class="px-4 py-3 font-bold text-neutral-700">90 – 179</td><td class="px-4 py-3">5,00%</td><td class="px-4 py-3">6,50%</td><td class="px-4 py-3">6,50%</td></tr>
+                        <tr><td class="px-4 py-3 font-bold text-neutral-700">180 – 269</td><td class="px-4 py-3">6,00%</td><td class="px-4 py-3">7,00%</td><td class="px-4 py-3">7,50%</td></tr>
+                        <tr><td class="px-4 py-3 font-bold text-neutral-700">270 – 364</td><td class="px-4 py-3">6,50%</td><td class="px-4 py-3">7,50%</td><td class="px-4 py-3">8,00%</td></tr>
+                        <tr><td class="px-4 py-3 font-bold text-neutral-700">365 – 548</td><td class="px-4 py-3">7,00%</td><td class="px-4 py-3">8,00%</td><td class="px-4 py-3">8,50%</td></tr>
+                        <tr><td class="px-4 py-3 font-bold text-neutral-700">549 en adelante</td><td class="px-4 py-3">7,50%</td><td class="px-4 py-3">8,50%</td><td class="px-4 py-3">9,00%</td></tr>
+                    </tbody>
+                </table>
+            </div>
+            <p class="text-xs text-neutral-500 font-medium mt-5 leading-relaxed">Personas jurídicas (hasta $100.000): aproximadamente de 4,60% a 30 días hasta 11,00% desde 360 días.</p>
+            <p class="text-[11px] text-neutral-400 font-semibold mt-3"><i class="fa-solid fa-circle-exclamation"></i> Tasas referenciales informadas por Captaciones; pueden variar según la modalidad de pago de interés. Confirma la tasa exacta con un asesor antes de contratar.</p>
         </section>
 
         <!-- ===== SECCIÓN 3: REQUISITOS GENERALES DE APERTURA ===== -->

@@ -128,10 +128,17 @@ ob_start(function($buffer) {
                         <h4 class="text-[11px] font-black tracking-widest text-[#a31a16] uppercase mb-3 pb-1 border-b border-neutral-50">Inversiones</h4>
                         <ul class="space-y-0.5 flex-1">
                             <?php
+                            $mapaInversionPorNombre = [
+                                'Al vencimiento' => 'detprod-inversion-vencimiento.php',
+                                'Anticipado' => 'detprod-inversion-anticipado.php',
+                                'Periódico' => 'detprod-inversion-periodico.php',
+                            ];
                             $detprod = $fnindex->fnindex_rproducto_xtipo(2);
                             while ($menudetprod = $detprod->fetch_assoc()) {
+                                $nombreInv = trim(arreglar_mojibake($menudetprod['nombre_prod']));
+                                $archivoInv = $mapaInversionPorNombre[$nombreInv] ?? 'detprod-inversion-vencimiento.php';
                                 ?>
-                                <li><a href="detprod-inversion-vencimiento.php?id=<?php echo $menudetprod['id_prod'] ?>" class="block px-2 py-1.5 rounded-lg hover:bg-[#a31a16]/5 hover:text-[#a31a16] text-xs font-semibold transition-all"><?php echo arreglar_mojibake($menudetprod['nombre_prod']) ?></a></li>
+                                <li><a href="<?php echo $archivoInv ?>?id=<?php echo $menudetprod['id_prod'] ?>" class="block px-2 py-1.5 rounded-lg hover:bg-[#a31a16]/5 hover:text-[#a31a16] text-xs font-semibold transition-all">DPF <?php echo $nombreInv ?></a></li>
                                 <?php
                             }
                             ?>

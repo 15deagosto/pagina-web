@@ -13,8 +13,9 @@ $tituloInversion = arreglar_mojibake($detproducto[0]['nombre_prod']);
 $descInversion = $detproducto[0]['descripcion_prod']
         ? arreglar_mojibake($detproducto[0]['descripcion_prod'])
         : 'Los socios o clientes de la Cooperativa podrán invertir en depósito a plazo fijo, a través de la suscripción de un contrato de DPF, aceptando los términos y condiciones del mismo.';
-$montoTexto = 'hasta 15.000,00 dólares';
-$plazoTexto = 'Al vencimiento del contrato';
-$tasaTexto = 'hasta 14.99%';
+$pagoInteresTexto = 'Al final del plazo (al vencimiento)';
+$montoTexto = 'Sin monto máximo · tasa según el tramo (ver tabla)';
+$plazoTexto = 'Desde 90 días en adelante';
+$tasaTexto = '5,00% a 9,00% según plazo y monto';
 
 include './plantilla-detalle-inversion.php';
