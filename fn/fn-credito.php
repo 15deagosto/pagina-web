@@ -86,13 +86,13 @@ class Fn_credito {
 
     function fncredito_xget_creditotasa($tipocredito) {
         if ($tipocredito == 'SOCIOFIEL') {
-            $tasa = 14.55;
+            $tasa = 14.99;
         }
         if ($tipocredito == 'CONSUMO') {
             $tasa = 15.50;
         }
         if ($tipocredito == 'POLIZA') {
-            $tasa = 17.99;
+            $tasa = 18.00;
         }
         if ($tipocredito == 'FACILITO') {
             $tasa = 24.99;
@@ -114,6 +114,24 @@ class Fn_credito {
         }
         if ($tipocredito == 'MUJEREMPRENDEDORA') {
             $tasa = 19.90;
+        }
+        if ($tipocredito == 'ALIVIOFINANCIERO') {
+            $tasa = 19.90;
+        }
+        if ($tipocredito == 'ALIVIOFINANCIEROCONSUMO') {
+            $tasa = 15.50;
+        }
+        if ($tipocredito == 'POLICREDITOJURIDICO') {
+            $tasa = 17.99;
+        }
+        if ($tipocredito == 'ALIVIOSOLIDARIO') {
+            $tasa = 19.90;
+        }
+        if ($tipocredito == 'ALIVIOSOLIDARIOCONSUMO') {
+            $tasa = 15.50;
+        }
+        if ($tipocredito == 'CONSUMOAPOYO') {
+            $tasa = 13.99;
         }
         return $tasa;
     }

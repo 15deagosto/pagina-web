@@ -11,9 +11,9 @@ $detproducto = $fnindex->fnindex_rproducto_xtextoses($id);
 $titulo = arreglar_mojibake($detproducto[0]['nombre_prod']);
 $desc = arreglar_mojibake($detproducto[0]['descripcion_prod']);
 
-$tipoCredito = 'CRÉDITO DE CONSUMO';
-$montoTexto = 'hasta 20.000,00 dólares';
-$plazoTexto = 'máximo hasta 48 meses';
+$tipoCredito = 'ALIVIOFINANCIEROCONSUMO';
+$montoTexto = 'desde 300,00 hasta 200.000,00 dólares';
+$plazoTexto = 'máximo hasta 183 meses';
 $perfilTexto = 'Ser mayor de 18 años y no mayor a 65 años incluido la vida del crédito.';
 $segmentoTexto = 'Personas Naturales bajo relación de dependencia, servicios profesionales.';
 

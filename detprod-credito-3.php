@@ -12,10 +12,10 @@ $titulo = arreglar_mojibake($detproducto[0]['nombre_prod']);
 $desc = arreglar_mojibake($detproducto[0]['descripcion_prod']);
 
 $tipoCredito = 'POLIZA';
-$montoTexto = 'hasta el 90% del capital de la póliza (DPF)';
+$montoTexto = '$100 – $200.000 (hasta el 90% del capital de la póliza/DPF)';
 $plazoTexto = 'Al vencimiento de la póliza';
 $perfilTexto = 'Ser mayor de 18 años y no mayor a 65 años incluido la vida del crédito.';
 $segmentoLabel = 'Tasa de interés';
-$segmentoTexto = 'Calculamos tu crédito al 17.99%';
+$segmentoTexto = 'Consulta la tasa vigente con un asesor';
 
 include './plantilla-detalle-credito.php';

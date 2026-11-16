@@ -32,7 +32,7 @@ class Fn_calculacredito {
             ['min' => 10501, 'max' => 21000, 'plazo_max' => 54],
             ['min' => 21001, 'max' => 31500, 'plazo_max' => 66],
             ['min' => 31501, 'max' => 52500, 'plazo_max' => 84],
-            ['min' => 52501, 'max' => 84000, 'plazo_max' => 96]
+            ['min' => 52501, 'max' => 200000, 'plazo_max' => 122]
         ],
         'FACILITO' => [
             ['min' => 300, 'max' => 1060, 'plazo_max' => 12],
@@ -43,7 +43,7 @@ class Fn_calculacredito {
             ['min' => 10501, 'max' => 21000, 'plazo_max' => 54],
             ['min' => 21001, 'max' => 31500, 'plazo_max' => 66],
             ['min' => 31501, 'max' => 52500, 'plazo_max' => 84],
-            ['min' => 52501, 'max' => 84000, 'plazo_max' => 96]
+            ['min' => 52501, 'max' => 150000, 'plazo_max' => 108]
         ],
         'ESPECIAL' => [
             ['min' => 300, 'max' => 1060, 'plazo_max' => 12],
@@ -54,7 +54,7 @@ class Fn_calculacredito {
             ['min' => 10501, 'max' => 21000, 'plazo_max' => 54],
             ['min' => 21001, 'max' => 31500, 'plazo_max' => 66],
             ['min' => 31501, 'max' => 52500, 'plazo_max' => 84],
-            ['min' => 52501, 'max' => 84000, 'plazo_max' => 96]
+            ['min' => 52501, 'max' => 150000, 'plazo_max' => 108]
         ],
         'PREFERENCIAL' => [
             ['min' => 300, 'max' => 1060, 'plazo_max' => 12],
@@ -65,7 +65,28 @@ class Fn_calculacredito {
             ['min' => 10501, 'max' => 21000, 'plazo_max' => 54],
             ['min' => 21001, 'max' => 31500, 'plazo_max' => 66],
             ['min' => 31501, 'max' => 52500, 'plazo_max' => 84],
-            ['min' => 52501, 'max' => 84000, 'plazo_max' => 96]
+            ['min' => 52501, 'max' => 150000, 'plazo_max' => 108]
+        ],
+        'POLIZA' => [
+            ['min' => 100, 'max' => 200000, 'plazo_max' => 108]
+        ],
+        'ALIVIOFINANCIERO' => [
+            ['min' => 300, 'max' => 200000, 'plazo_max' => 263]
+        ],
+        'ALIVIOFINANCIEROCONSUMO' => [
+            ['min' => 300, 'max' => 200000, 'plazo_max' => 183]
+        ],
+        'POLICREDITOJURIDICO' => [
+            ['min' => 300, 'max' => 100000, 'plazo_max' => 97]
+        ],
+        'ALIVIOSOLIDARIO' => [
+            ['min' => 300, 'max' => 200000, 'plazo_max' => 263]
+        ],
+        'ALIVIOSOLIDARIOCONSUMO' => [
+            ['min' => 300, 'max' => 200000, 'plazo_max' => 207]
+        ],
+        'CONSUMOAPOYO' => [
+            ['min' => 300, 'max' => 200000, 'plazo_max' => 248]
         ],
         'MICROEMPRENDEDOR' => [
             ['min' => 300, 'max' => 1060, 'plazo_max' => 12],
@@ -82,7 +103,7 @@ class Fn_calculacredito {
             ['min' => 3151, 'max' => 5250, 'plazo_max' => 30],
             ['min' => 5251, 'max' => 10500, 'plazo_max' => 42],
             ['min' => 10501, 'max' => 25000, 'plazo_max' => 54],
-            ['min' => 25001, 'max' => 40000, 'plazo_max' => 66]
+            ['min' => 25001, 'max' => 150000, 'plazo_max' => 108]
         ],
         'CREDIPUNTOS' => [
             ['min' => 300, 'max' => 1000, 'plazo_max' => 12]

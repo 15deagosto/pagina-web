@@ -12,7 +12,7 @@ $titulo = arreglar_mojibake($detproducto[0]['nombre_prod']);
 $desc = arreglar_mojibake($detproducto[0]['descripcion_prod']);
 
 $tipoCredito = 'FACILITO';
-$montoTexto = 'hasta 84.000,00 dólares';
+$montoTexto = 'desde 300,00 hasta 150.000,00 dólares';
 $plazoTexto = 'máximo hasta 108 meses';
 $perfilTexto = 'Ser mayor de 18 años y no mayor a 65 años incluido la vida del crédito.';
 $segmentoTexto = 'Personas Naturales y jurídicas, que la permanencia de su negocio sea al menos de un año en el mercado.';

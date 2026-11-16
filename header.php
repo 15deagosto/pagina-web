@@ -86,23 +86,38 @@ ob_start(function($buffer) {
                     <!-- CATEGORÍA 1: CRÉDITOS -->
                     <div class="flex flex-col">
                         <h4 class="text-[11px] font-black uppercase tracking-widest text-[#a31a16] mb-3 pb-1 border-b border-neutral-50">Créditos</h4>
-                        <ul class="space-y-0.5 flex-1">
-                            <li><a href="microcredito.php?id=1" class="block px-2 py-1.5 rounded-lg hover:bg-[#a31a16]/5 hover:text-[#a31a16] text-xs font-semibold transition-all">Microcrédito</a></li>
-                            <li><a href="consumo.php?id=1" class="block px-2 py-1.5 rounded-lg hover:bg-[#a31a16]/5 hover:text-[#a31a16] text-xs font-semibold transition-all">Consumo</a></li>
+                        <ul class="space-y-0.5 flex-1 max-h-72 overflow-y-auto">
                             <?php
-                            $mapaCredito = [
-                                116 => 'detprod-credito-1.php', 115 => 'detprod-credito-3.php',
-                                120 => 'detprod-credito-4.php', 118 => 'detprod-credito-7.php', 119 => 'detprod-credito-8.php',
-                                114 => 'detprod-credito-9.php', 113 => 'detprod-credito-10.php',
-                                51 => 'detprod-credito-micro.php',
+                            // Mapa por nombre real del producto -> página de detalle. Usar el nombre
+                            // (no el id_prod) evita que esto se rompa si el id cambia entre entornos.
+                            $mapaCreditoPorNombre = [
+                                'Microcrédito' => 'detprod-credito-4.php',
+                                'Credi Mujer Emprende' => 'detprod-credito-10.php',
+                                'Micro Emprendedor VIP' => 'detprod-credito-8.php',
+                                'Consumo' => 'detprod-credito-2.php',
+                                'Credi Poliza Especial' => 'detprod-credito-3.php',
+                                'Policrédito Jurídico' => 'detprod-credito-policredito.php',
+                                'Microcrédito Alivio Financiero' => 'detprod-credito-micro.php',
+                                'Consumo Alivio Financiero' => 'detprod-credito-consumo.php',
+                                'Credi Puntos' => 'detprod-credito-9.php',
+                                'Crédito Socio Fiel' => 'detprod-credito-1.php',
+                                'Alivio Solidario' => 'detprod-credito-aliviosolidario.php',
+                                'Alivio Solidario Consumo' => 'detprod-credito-aliviosolidarioconsumo.php',
+                                'Consumo Apoyo' => 'detprod-credito-consumoapoyo.php',
                             ];
-                            $detprod = $fnindex->fnindex_rproducto_xtipo(5);
-                            while ($menudetprod = $detprod->fetch_assoc()) {
-                                if (!isset($mapaCredito[$menudetprod['id_prod']])) {
+                            $productosCredito = [];
+                            foreach ([5, 6] as $tipoLinea) {
+                                $detprodtipo = $fnindex->fnindex_rproducto_xtipo($tipoLinea);
+                                while ($menudetprod = $detprodtipo->fetch_assoc()) {
+                                    $productosCredito[trim(arreglar_mojibake($menudetprod['nombre_prod']))] = $menudetprod['id_prod'];
+                                }
+                            }
+                            foreach ($mapaCreditoPorNombre as $nombreReal => $archivoDetalle) {
+                                if (!isset($productosCredito[$nombreReal])) {
                                     continue;
                                 }
                                 ?>
-                                <li><a href="<?php echo $mapaCredito[$menudetprod['id_prod']] ?>?id=<?php echo $menudetprod['id_prod'] ?>" class="block px-2 py-1.5 rounded-lg hover:bg-[#a31a16]/5 hover:text-[#a31a16] text-xs font-semibold transition-all"><?php echo arreglar_mojibake($menudetprod['nombre_prod']) ?></a></li>
+                                <li><a href="<?php echo $archivoDetalle ?>?id=<?php echo $productosCredito[$nombreReal] ?>" class="block px-2 py-1.5 rounded-lg hover:bg-[#a31a16]/5 hover:text-[#a31a16] text-xs font-semibold transition-all"><?php echo $nombreReal ?></a></li>
                                 <?php
                             }
                             ?>

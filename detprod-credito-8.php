@@ -12,8 +12,8 @@ $titulo = arreglar_mojibake($detproducto[0]['nombre_prod']);
 $desc = arreglar_mojibake($detproducto[0]['descripcion_prod']);
 
 $tipoCredito = 'MICROVIP';
-$montoTexto = 'hasta 40.000,00 dólares';
-$plazoTexto = 'máximo hasta 66 meses';
+$montoTexto = 'desde 2.000,00 hasta 150.000,00 dólares';
+$plazoTexto = 'máximo hasta 108 meses';
 $perfilTexto = 'Ser mayor de 18 años y no mayor a 65 años incluido la vida del crédito.';
 $segmentoTexto = 'Destinado para socios externos o nuevos en categoría Doble AA, triple AAA.';
 

@@ -12,8 +12,8 @@ $titulo = arreglar_mojibake($detproducto[0]['nombre_prod']);
 $desc = arreglar_mojibake($detproducto[0]['descripcion_prod']);
 
 $tipoCredito = 'SOCIOFIEL';
-$montoTexto = 'hasta 15.000,00 dólares';
-$plazoTexto = 'máximo hasta 48 meses';
+$montoTexto = 'desde 1,00 hasta 15.000,00 dólares';
+$plazoTexto = 'máximo hasta 49 meses';
 $perfilTexto = 'Ser mayor de 18 años y no mayor a 65 años incluido la vida del crédito.';
 $segmentoTexto = 'Personas Naturales bajo relación de dependencia, servicios profesionales.';
 

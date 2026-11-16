@@ -22,7 +22,14 @@ $mapaInversowB = [
     'Micro Emprendedor VIP' => 'MICROVIP',
     'Credi Puntos' => 'CREDIPUNTOS',
     'Credi Mujer Emprende' => 'MUJEREMPRENDEDORA',
-    'Microcrédito Facilito, Especial y Preferencial' => 'FACILITO'
+    'Microcrédito' => 'FACILITO',
+    'Microcrédito Alivio Financiero' => 'ALIVIOFINANCIERO',
+    'Consumo' => 'CONSUMO',
+    'Consumo Alivio Financiero' => 'ALIVIOFINANCIEROCONSUMO',
+    'Policrédito Jurídico' => 'POLICREDITOJURIDICO',
+    'Alivio Solidario' => 'ALIVIOSOLIDARIO',
+    'Alivio Solidario Consumo' => 'ALIVIOSOLIDARIOCONSUMO',
+    'Consumo Apoyo' => 'CONSUMOAPOYO'
 ];
 $codigoCalculo = isset($mapaInversowB[$titulo]) ? $mapaInversowB[$titulo] : 'SOCIOFIEL';
 ?>

@@ -6,16 +6,12 @@ require_once './funciones/fn-utilidades.php';
 $con = new Conecciones();
 $fncredito = new Fn_credito();
 $fnindex = new Fn_index();
-$listcredito = $fnindex->fnindex_rproducto_xtipo(5); // Tipo 6 para Consumo en tu Base
-$listproducto = $fnindex->fnindex_rproducto_xtipo(5);
+$listcredito = $fnindex->fnindex_rproducto_xtipo(6); // Tipo 6 para Consumo en tu Base
+$listproducto = $fnindex->fnindex_rproducto_xtipo(6);
 
-$mapaTipoCredito = [
-    116 => 'SOCIOFIEL',
-    118 => 'MICROEMPRENDEDOR',
-    119 => 'MICROVIP',
-    114 => 'CREDIPUNTOS',
-    113 => 'MUJEREMPRENDEDORA',
-    120 => 'FACILITO',
+$mapaCreditoConsumo = [
+    112 => 'detprod-credito-2.php',
+    50 => 'detprod-credito-consumo.php',
 ];
 ?>
 <!DOCTYPE html>
@@ -230,7 +226,7 @@ $mapaTipoCredito = [
                         </div>
                         <div class="pt-4 border-t border-neutral-50 flex items-center justify-between">
                             <span class="text-[10px] font-black text-neutral-400 uppercase tracking-wider">Aprobación Ágil</span>
-                            <a href="detprod-credito-micro.php?id=<?php echo $menucredito['id_prod'] ?>" class="inline-flex items-center justify-center w-10 h-10 rounded-full bg-neutral-50 text-neutral-400 group-hover:bg-[#a31a16] group-hover:text-white transition-all duration-300">
+                            <a href="<?php echo $mapaCreditoConsumo[$menucredito['id_prod']] ?? 'detprod-credito-2.php' ?>?id=<?php echo $menucredito['id_prod'] ?>" class="inline-flex items-center justify-center w-10 h-10 rounded-full bg-neutral-50 text-neutral-400 group-hover:bg-[#a31a16] group-hover:text-white transition-all duration-300">
                                 <i class="fa-solid fa-chevron-right text-sm"></i>
                             </a>
                         </div>
