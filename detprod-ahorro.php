@@ -7,5 +7,6 @@ $id = $_GET['id'];
 $fn_ahorro = new Fn_ahorro();
 $titulo = $fn_ahorro->fnahorro_xget_ahorro($id);
 $desc = $fn_ahorro->fnahorro_xdescget_ahorro($id);
+$datosAhorro = $fn_ahorro->fnahorro_xget_datos($id);
 
 include './plantilla-detalle-ahorro.php';

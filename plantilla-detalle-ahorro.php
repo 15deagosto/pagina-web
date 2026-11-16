@@ -8,6 +8,12 @@ require_once './funciones/fn-utilidades.php';
 $titulo = arreglar_mojibake($titulo);
 $desc = arreglar_mojibake(is_array($desc) ? '' : $desc);
 $tituloPagina = $titulo;
+if (!isset($datosAhorro)) {
+    $datosAhorro = ['montos' => '', 'tasa' => '', 'notas' => ''];
+}
+$datosAhorro['montos'] = arreglar_mojibake($datosAhorro['montos'] ?? '');
+$datosAhorro['tasa'] = arreglar_mojibake($datosAhorro['tasa'] ?? '');
+$datosAhorro['notas'] = arreglar_mojibake($datosAhorro['notas'] ?? '');
 ?>
 <!DOCTYPE html>
 <html lang="es">
@@ -66,6 +72,44 @@ $tituloPagina = $titulo;
                 </div>
             </div>
         </section>
+
+        <!-- ===== SECCIÓN INFORMATIVA: MONTOS Y TASA REALES DEL PRODUCTO ===== -->
+        <?php if (!empty($datosAhorro['montos']) || !empty($datosAhorro['tasa'])) { ?>
+        <section class="bg-neutral-50/50 py-16 border-t border-b border-neutral-100">
+            <div class="max-w-5xl mx-auto px-6">
+                <div class="text-center mb-10" data-aos="fade-up">
+                    <div class="text-[#a31a16] font-bold uppercase text-xs tracking-widest mb-2 flex items-center justify-center gap-2">
+                        <span class="w-6 h-0.5 bg-[#a31a16] inline-block"></span> Información del producto
+                    </div>
+                    <h2 class="text-2xl md:text-3xl font-black text-neutral-800 tracking-tight">Montos y tasa de <?php echo $titulo ?></h2>
+                </div>
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                    <?php if (!empty($datosAhorro['montos'])) { ?>
+                    <div class="bg-white rounded-2xl p-6 border border-neutral-100 shadow-soft" data-aos="fade-up">
+                        <div class="w-11 h-11 rounded-xl bg-[#a31a16]/5 flex items-center justify-center text-[#a31a16] mb-4"><i class="fa-solid fa-sack-dollar"></i></div>
+                        <h3 class="font-black text-neutral-800 text-sm mb-1.5">Montos</h3>
+                        <p class="text-neutral-500 text-xs leading-relaxed font-medium"><?php echo $datosAhorro['montos'] ?></p>
+                    </div>
+                    <?php } ?>
+                    <?php if (!empty($datosAhorro['tasa'])) { ?>
+                    <div class="bg-white rounded-2xl p-6 border border-neutral-100 shadow-soft" data-aos="fade-up" data-aos-delay="60">
+                        <div class="w-11 h-11 rounded-xl bg-[#a31a16]/5 flex items-center justify-center text-[#a31a16] mb-4"><i class="fa-solid fa-percent"></i></div>
+                        <h3 class="font-black text-neutral-800 text-sm mb-1.5">Tasa anual</h3>
+                        <p class="text-neutral-500 text-xs leading-relaxed font-medium"><?php echo $datosAhorro['tasa'] ?></p>
+                    </div>
+                    <?php } ?>
+                    <?php if (!empty($datosAhorro['notas'])) { ?>
+                    <div class="bg-white rounded-2xl p-6 border border-neutral-100 shadow-soft" data-aos="fade-up" data-aos-delay="120">
+                        <div class="w-11 h-11 rounded-xl bg-[#a31a16]/5 flex items-center justify-center text-[#a31a16] mb-4"><i class="fa-solid fa-circle-info"></i></div>
+                        <h3 class="font-black text-neutral-800 text-sm mb-1.5">Beneficios incluidos</h3>
+                        <p class="text-neutral-500 text-xs leading-relaxed font-medium"><?php echo $datosAhorro['notas'] ?></p>
+                    </div>
+                    <?php } ?>
+                </div>
+                <p class="text-center text-[11px] text-neutral-400 font-semibold mt-8"><i class="fa-solid fa-circle-exclamation"></i> Información referencial sujeta a confirmación con Captaciones. Para abrir tu cuenta, acércate a cualquier agencia.</p>
+            </div>
+        </section>
+        <?php } ?>
 
         <!-- ===== SECCIÓN 2: CARACTERÍSTICAS FINANCIERAS CON FÓRMULA UNIFICADA ===== -->
         <section class="bg-neutral-50/50 py-16 md:py-24 border-t border-b border-neutral-100">

@@ -30,19 +30,20 @@ class Fn_ahorro {
         return $desc;
     }
 
-    function fnahorro_xget_listahorro() {
-        $foo = array("1" => 'Crédito Socio Fiel',
-            "2" => 'Consumo',
-            "3" => 'Credi Poliza Especial',
-            "4" => 'Microcrédito Facilito',
-            "5" => 'Microcrédito Especial',
-            "6" => 'Microcrédito Preferencial',
-            "7" => 'Micro Emprendedor',
-            "8" => 'Micro Emprendedor VIP',
-            "9" => 'CrediPuntos',
-            "10" => 'Crédito Mujer emprendedora');
-        return $foo;
+    function fnahorro_xget_datos($id) {
+        $con = new Conecciones;
+        $mysqlidato = $con->crearConexion();
+        $id = intval($id);
+        $sql = "SELECT texto1_prod, texto2_prod, texto3_prod FROM producto WHERE id_prod = $id AND estado_prod = 1 LIMIT 1";
+        $resultado = $mysqlidato->query($sql);
+        $datos = ['montos' => '', 'tasa' => '', 'notas' => ''];
+        if ($resultado && $fila = $resultado->fetch_assoc()) {
+            $datos['montos'] = $fila['texto1_prod'];
+            $datos['tasa'] = $fila['texto2_prod'];
+            $datos['notas'] = $fila['texto3_prod'];
+        }
+        $mysqlidato->close();
+        return $datos;
     }
-    
-    
+
 }
