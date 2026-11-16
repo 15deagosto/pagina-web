@@ -12,40 +12,25 @@ $resultado = $fn_calculacredito->calcularCreditoCompleto($monto, $plazo, $tasa, 
 //echo $monto.'/'.$plazo.'/'.$tasa.'/'.$tipocred;
 //print_r($resultado);
 ?>
-<br><br>
 <?php if($resultado['cuota_mensual'] == 0){ ?>
-<div class="row" style="margin-bottom: 10px;">
-    <div class="col-md-12 text-center" style="background: #f8e1e0;border-radius: 20px;">
-        <?php echo $resultado['error'] ?>
-
+<div class="w-full bg-white rounded-2xl p-5 flex items-start gap-3 text-left">
+    <div class="w-9 h-9 rounded-full bg-red-50 flex items-center justify-center text-red-600 flex-shrink-0">
+        <i class="fa-solid fa-triangle-exclamation"></i>
+    </div>
+    <div>
+        <h4 class="font-black text-sm text-neutral-800 mb-1">Monto o plazo fuera de rango</h4>
+        <p class="text-xs text-neutral-600 leading-relaxed"><?php echo $resultado['error'] ?></p>
     </div>
 </div>
 <?php } else { ?>
-<center><h4> Para un crédito de $ <?php echo number_format($monto, 2) ?> a <?php echo $plazo ?> meses plazo, tu cuota mensual aproximada es de: </h4></center>
-<br><br>
-<div class="row">
-    <div class="col-md-12 text-center">
-        <h3> Primera Cuota Aproximada </h3>
+<div class="w-full text-center">
+    <p class="text-[11px] uppercase tracking-widest font-bold text-white/60 mb-1">Cuota mensual aproximada</p>
+    <h2 class="text-4xl font-black text-white mb-3">$ <?php echo number_format($resultado['cuota_mensual'], 2) ?></h2>
+    <div class="flex items-center justify-center gap-2 mb-3">
+        <div class="bg-white/10 border border-white/10 rounded-full px-3 py-1 text-[11px] font-bold text-white/90"><i class="fa-solid fa-money-bill-wave mr-1"></i> $ <?php echo number_format($monto, 2) ?></div>
+        <div class="bg-white/10 border border-white/10 rounded-full px-3 py-1 text-[11px] font-bold text-white/90"><i class="fa-solid fa-calendar-days mr-1"></i> <?php echo $plazo ?> meses</div>
     </div>
-</div>
-<div class="row text-center" style="border-color: #a31a16;
-     padding: 10px 30px;
-     border-radius: 20px;">
-    <!--    <div class="col-md-6 dflex">
-            <img src="./assets/img/icon-tasa.png" style="width: 60px; ">
-        </div>-->
-    <div class="col-md-12 text-center" style="align-content: center !important">
-        <center>
-        <div style="background: #a31a16;width: fit-content;padding: 8px 20px;border-radius: 50px;">
-            <h2 class="text-white-coop" style="color: white;font-weight: bold;">$ <?php echo number_format($resultado['cuota_mensual'], 2) ?>  </h2>
-        </div>
-        </center>
-    </div>
-</div>
-
-<div class="row" style="margin-top: 20px;text-align: justify !important;">
-    <small>Nota: Los resultados de esta calculadora son solo una aproximación. Los montos reales pueden variar por factores intermedios como el seguro de desgravamen y otros gastos administrativos o impuestos, y no representan cotizaciones ni precalificaciones para un préstamo. Para conocer la tasa y condiciones exactas de tu crédito, comunícate con un asesor de la Cooperativa.</small>
+    <p class="text-[10px] text-white/50 leading-relaxed px-2">Es solo una aproximación: puede variar por el seguro de desgravamen u otros cargos. Para la tasa y condiciones exactas, consulta con un asesor.</p>
 </div>
 <?php } ?>
-
 

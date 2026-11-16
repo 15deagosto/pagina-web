@@ -27,7 +27,7 @@ window.onclick = function (event) {
 
 function calcularcredito() {
     // Mostrar carga
-    document.getElementById('resultado').innerHTML = '<p>Calculando...</p>';
+    document.getElementById('resultado').innerHTML = '<div class="text-center p-2"><i class="fa-solid fa-circle-notch fa-spin text-white/70 text-xl mb-2"></i><p class="text-[11px] text-white/70 font-medium">Calculando tu cuota...</p></div>';
     // Obtener los datos del formulario
     const formulario = document.getElementById('formularioCredito');
     const formData = new FormData(formulario);
@@ -44,15 +44,11 @@ function calcularcredito() {
             })
             .then(data => {
                 // Mostrar resultados
-                if (data.error) {
-                    document.getElementById('resultado').innerHTML = data;
-                } else {
-                    document.getElementById('resultado').innerHTML = data;
-                }
+                document.getElementById('resultado').innerHTML = data;
             })
             .catch(error => {
                 document.getElementById('resultado').innerHTML =
-                        `<div class="error">Error al procesar la solicitud: ${error.message}</div>`;
+                        `<div class="w-full bg-white rounded-2xl p-5 text-left"><p class="text-xs font-bold text-red-600">No se pudo calcular tu cuota. Intenta de nuevo en unos segundos.</p></div>`;
             });
 }
 

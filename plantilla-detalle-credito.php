@@ -153,22 +153,19 @@ $codigoCalculo = isset($mapaInversowB[$titulo]) ? $mapaInversowB[$titulo] : 'SOC
                         <div class="text-[#a31a16] font-bold uppercase text-xs tracking-widest mb-3 flex items-center gap-2">
                             <span class="w-6 h-0.5 bg-[#a31a16] inline-block"></span> Proyección Inmediata
                         </div>
-                        <h2 class="text-3xl font-black text-neutral-800 tracking-tight mb-4">Simula tus cuotas para <span class="text-[#a31a16]"><?php echo $titulo; ?></span></h2>
-                        <p class="text-neutral-500 text-xs md:text-sm mb-8 leading-relaxed">Proyecta tu amortización mensual al instante de forma nativa. Los cálculos se procesan bajo las tasas comerciales vigentes en la cooperativa.</p>
+                        <h2 class="text-3xl font-black text-neutral-800 tracking-tight mb-2">Simula tu cuota en <span class="text-[#a31a16]">segundos</span></h2>
+                        <div class="inline-flex items-center gap-2 bg-[#a31a16]/5 border border-[#a31a16]/10 rounded-full px-3 py-1 mb-6">
+                            <i class="fa-solid fa-circle-check text-[#a31a16] text-xs"></i>
+                            <span class="text-[#a31a16] text-xs font-bold"><?php echo $titulo; ?></span>
+                        </div>
 
                         <form method="POST" id="formularioCredito" class="bg-neutral-50 rounded-3xl p-6 md:p-8 border border-neutral-100 grid grid-cols-1 sm:grid-cols-2 gap-5 shadow-sm">
                             <!-- Inyectamos dinámicamente el código de texto que espera el AJAX transaccional de tu Core -->
                             <input type="hidden" name="tipocred_calcula" value="<?php echo $codigoCalculo; ?>">
                             <input type="hidden" name="tasa_calcula" value="">
-                            
-                            <div class="flex flex-col gap-2 sm:col-span-2">
-                                <label class="font-extrabold text-neutral-700 text-sm"><i class="fa-solid fa-chart-line text-[#a31a16] mr-1"></i> Línea de Crédito Asignada</label>
-                                <div class="w-full bg-white border border-neutral-200 rounded-xl px-4 py-3 text-neutral-800 font-extrabold text-sm shadow-inner-sm">
-                                    <?php echo $titulo; ?> -- Proyección Referencial Anual
-                                </div>
-                            </div>
+
                             <div class="flex flex-col gap-2">
-                                <label class="font-extrabold text-neutral-700 text-sm"><i class="fa-solid fa-money-bill-wave text-[#a31a16] mr-1"></i> Valor solicitado*</label>
+                                <label class="font-extrabold text-neutral-700 text-sm"><i class="fa-solid fa-money-bill-wave text-[#a31a16] mr-1"></i> ¿Cuánto necesitas?</label>
                                 <div class="relative">
                                     <span class="absolute left-4 top-1/2 -translate-y-1/2 font-bold text-neutral-400">$</span>
                                     <input name="monto_calcula" id="monto_calcula" type="text" placeholder="Ej: 3000" required class="w-full bg-white border border-neutral-200 focus:border-[#a31a16]/40 rounded-xl pl-8 pr-4 py-3 text-neutral-800 font-semibold outline-none text-sm">
@@ -176,10 +173,15 @@ $codigoCalculo = isset($mapaInversowB[$titulo]) ? $mapaInversowB[$titulo] : 'SOC
                                 <span id="error_monto" class="hidden text-xs font-bold text-red-600 mt-1"><i class="fa-solid fa-circle-exclamation"></i> El monto mínimo de simulación permitido es $1,000.</span>
                             </div>
                             <div class="flex flex-col gap-2">
-                                <label class="font-extrabold text-neutral-700 text-sm"><i class="fa-solid fa-calendar-days text-[#a31a16] mr-1"></i> Plazo estimado*</label>
+                                <label class="font-extrabold text-neutral-700 text-sm"><i class="fa-solid fa-calendar-days text-[#a31a16] mr-1"></i> ¿En cuánto tiempo?</label>
                                 <div class="relative">
-                                    <input name="plazo_calcula" type="text" placeholder="Ej: 12" required class="w-full bg-white border border-neutral-200 focus:border-[#a31a16]/40 rounded-xl px-4 py-3 text-neutral-800 font-semibold outline-none text-sm">
+                                    <input name="plazo_calcula" id="plazo_calcula" type="text" placeholder="Ej: 12" required class="w-full bg-white border border-neutral-200 focus:border-[#a31a16]/40 rounded-xl px-4 py-3 text-neutral-800 font-semibold outline-none text-sm">
                                     <span class="absolute right-4 top-1/2 -translate-y-1/2 font-bold text-xs text-neutral-400 uppercase">Meses</span>
+                                </div>
+                                <div class="flex gap-1.5 mt-0.5">
+                                    <?php foreach ([6, 12, 24, 36] as $mesesRapido) { ?>
+                                    <button type="button" class="chip-plazo flex-1 bg-white border border-neutral-200 hover:border-[#a31a16]/50 hover:text-[#a31a16] rounded-lg py-1 text-[11px] font-bold text-neutral-500 transition-colors" data-plazo="<?php echo $mesesRapido; ?>"><?php echo $mesesRapido; ?>m</button>
+                                    <?php } ?>
                                 </div>
                             </div>
                             <div class="flex flex-col gap-2 sm:col-span-2">
@@ -190,7 +192,7 @@ $codigoCalculo = isset($mapaInversowB[$titulo]) ? $mapaInversowB[$titulo] : 'SOC
                                 </select>
                             </div>
                             <div class="sm:col-span-2 pt-2">
-                                <button id="btn_calcular_master" onclick="calcularcredito()" type="button" class="w-full bg-[#a31a16] hover:bg-[#7a1310] text-white font-extrabold py-3.5 rounded-xl shadow-md transition-all uppercase text-xs tracking-wide"><i class="fa-solid fa-calculator"></i> CALCULAR AHORA</button>
+                                <button id="btn_calcular_master" onclick="calcularcredito()" type="button" class="w-full bg-[#a31a16] hover:bg-[#7a1310] text-white font-extrabold py-3.5 rounded-xl shadow-md hover:shadow-lg transition-all uppercase text-xs tracking-wide"><i class="fa-solid fa-calculator"></i> CALCULAR AHORA</button>
                             </div>
                         </form>
                     </div>
@@ -203,15 +205,15 @@ $codigoCalculo = isset($mapaInversowB[$titulo]) ? $mapaInversowB[$titulo] : 'SOC
                             <div class="relative z-10 flex justify-between items-start">
                                 <div>
                                     <p class="text-[9px] uppercase tracking-widest text-white/60 font-black mb-0.5">COAC 15 de Agosto</p>
-                                    <h3 class="text-lg font-black tracking-tight">Proyección Calculada</h3>
+                                    <h3 class="text-lg font-black tracking-tight">Tu proyección</h3>
                                 </div>
                                 <div class="w-9 h-9 rounded-xl bg-white/10 backdrop-blur-md border border-white/20 flex items-center justify-center text-white"><i class="fa-solid fa-vault text-sm"></i></div>
                             </div>
 
-                            <div id="resultado" class="text-white bg-white/5 backdrop-blur-sm border border-white/10 rounded-2xl p-4 min-h-[200px] flex flex-col justify-center overflow-hidden [&_br]:hidden [&_table]:w-full [&_table]:flex [&_table]:flex-col [&_td]:w-full [&_td]:block [&_td]:p-0 [&_td]:text-xs [&_span.text-rojo]:text-[#ffd9d6] [&_span]:inline-block [&_span]:font-black [&_span]:text-2xl [&_span]:my-1 [&_span]:text-white [&_b]:hidden [&_font]:hidden">
+                            <div id="resultado" class="text-white bg-white/5 backdrop-blur-sm border border-white/10 rounded-2xl p-4 min-h-[200px] flex flex-col justify-center overflow-hidden">
                                 <div class="text-center p-2">
                                     <div class="w-10 h-10 rounded-full bg-white/10 flex items-center justify-center mx-auto mb-2 text-white"><i class="fa-solid fa-chart-line"></i></div>
-                                    <p class="text-[11px] text-white/70 font-medium leading-relaxed">Presione calcular ahora para enlazar los Web Services dinámicos de tu base de datos de pruebas.</p>
+                                    <p class="text-[11px] text-white/70 font-medium leading-relaxed">Ingresa un monto y un plazo, y presiona "Calcular ahora" para ver tu cuota aproximada al instante.</p>
                                 </div>
                             </div>
 
@@ -232,8 +234,20 @@ $codigoCalculo = isset($mapaInversowB[$titulo]) ? $mapaInversowB[$titulo] : 'SOC
         <script>
         document.addEventListener("DOMContentLoaded", function() {
             const inputMonto = document.getElementById('monto_calcula');
+            const inputPlazo = document.getElementById('plazo_calcula');
             const labelError = document.getElementById('error_monto');
             const btnCalcular = document.getElementById('btn_calcular_master');
+            document.querySelectorAll('.chip-plazo').forEach(function(chip) {
+                chip.addEventListener('click', function() {
+                    if (inputPlazo) {
+                        inputPlazo.value = chip.getAttribute('data-plazo');
+                    }
+                    document.querySelectorAll('.chip-plazo').forEach(function(c) {
+                        c.classList.remove('bg-[#a31a16]/10', 'border-[#a31a16]/50', 'text-[#a31a16]');
+                    });
+                    chip.classList.add('bg-[#a31a16]/10', 'border-[#a31a16]/50', 'text-[#a31a16]');
+                });
+            });
             if (inputMonto && labelError && btnCalcular) {
                 inputMonto.addEventListener('input', function() {
                     let montoTexto = inputMonto.value.trim();
