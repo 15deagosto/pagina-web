@@ -111,7 +111,7 @@ class Fn_calculacredito {
         'MUJEREMPRENDEDORA' => [
             ['min' => 300, 'max' => 1060, 'plazo_max' => 12],
             ['min' => 1061, 'max' => 2100, 'plazo_max' => 24],
-            ['min' => 2101, 'max' => 3150, 'plazo_max' => 36],
+            ['min' => 2101, 'max' => 3000, 'plazo_max' => 36],
         ]
     ];
 

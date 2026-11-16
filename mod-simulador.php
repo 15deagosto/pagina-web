@@ -1,16 +1,42 @@
 <?php
 require_once './funciones/fn-utilidades.php';
-$listproducto = $fnindex->fnindex_rproducto_xtipo(5);
-
-// Mapeo exacto de productos de la cooperativa
-$mapaTipoCredito = [
-    116 => 'SOCIOFIEL',
-    118 => 'MICROEMPRENDEDOR',
-    119 => 'MICROVIP',
-    114 => 'CREDIPUNTOS',
-    113 => 'MUJEREMPRENDEDORA',
-    120 => 'FACILITO',
+require_once './fn/fn-calcula-credito.php';
+// Mapa por nombre real del producto -> código de tasa que espera el simulador.
+$mapaTipoCreditoPorNombre = [
+    'Microcrédito' => 'FACILITO',
+    'Credi Mujer Emprende' => 'MUJEREMPRENDEDORA',
+    'Micro Emprendedor VIP' => 'MICROVIP',
+    'Consumo' => 'CONSUMO',
+    'Credi Poliza Especial' => 'POLIZA',
+    'Policrédito Jurídico' => 'POLICREDITOJURIDICO',
+    'Microcrédito Alivio Financiero' => 'ALIVIOFINANCIERO',
+    'Consumo Alivio Financiero' => 'ALIVIOFINANCIEROCONSUMO',
+    'Credi Puntos' => 'CREDIPUNTOS',
+    'Crédito Socio Fiel' => 'SOCIOFIEL',
+    'Alivio Solidario' => 'ALIVIOSOLIDARIO',
+    'Alivio Solidario Consumo' => 'ALIVIOSOLIDARIOCONSUMO',
+    'Consumo Apoyo' => 'CONSUMOAPOYO',
 ];
+$productosSimulador = [];
+foreach ([5, 6] as $tipoLinea) {
+    $detprodtipo = $fnindex->fnindex_rproducto_xtipo($tipoLinea);
+    while ($menulistprod = $detprodtipo->fetch_assoc()) {
+        $productosSimulador[trim(arreglar_mojibake($menulistprod['nombre_prod']))] = true;
+    }
+}
+// Calcula el rango total (monto y plazo) permitido para cada código de tasa,
+// para mostrarlo como guía al elegir el producto en el simulador.
+function rangoTotalCredito($codigoTasa) {
+    $rangos = Fn_calculacredito::obtenerRangos($codigoTasa);
+    $montoMin = $rangos[0]['min'];
+    $montoMax = 0;
+    $plazoMax = 0;
+    foreach ($rangos as $r) {
+        $montoMax = max($montoMax, $r['max']);
+        $plazoMax = max($plazoMax, $r['plazo_max']);
+    }
+    return ['montoMin' => $montoMin, 'montoMax' => $montoMax, 'plazoMin' => Fn_calculacredito::MIN_PLAZO, 'plazoMax' => $plazoMax];
+}
 ?>
 
 <!-- ===== MOD-SIMULADOR: Validación Inteligente en el Formulario v5.0 ===== -->
@@ -41,16 +67,18 @@ $mapaTipoCredito = [
                     </label>
                     <select name="tipocred_calcula" id="tipocred_calcula" class="w-full bg-neutral-50 border border-neutral-200 focus:border-[#a31a16]/40 focus:bg-white rounded-xl px-4 py-3.5 text-neutral-800 font-semibold outline-none transition-all cursor-pointer">
                         <?php
-                        while ($menulistprod = $listproducto->fetch_assoc()) {
-                            if (!isset($mapaTipoCredito[$menulistprod['id_prod']])) {
+                        foreach ($mapaTipoCreditoPorNombre as $nombreReal => $codigoTasa) {
+                            if (!isset($productosSimulador[$nombreReal])) {
                                 continue;
                             }
+                            $rango = rangoTotalCredito($codigoTasa);
                             ?>
-                            <option value="<?php echo $mapaTipoCredito[$menulistprod['id_prod']] ?>"> 
-                                <?php echo arreglar_mojibake(utf8_encode($menulistprod['nombre_prod'])) ?>
+                            <option value="<?php echo $codigoTasa ?>" data-monto-min="<?php echo $rango['montoMin'] ?>" data-monto-max="<?php echo $rango['montoMax'] ?>" data-plazo-min="<?php echo $rango['plazoMin'] ?>" data-plazo-max="<?php echo $rango['plazoMax'] ?>">
+                                <?php echo $nombreReal ?>
                             </option>
                         <?php } ?>
                     </select>
+                    <p id="rango_producto" class="text-xs text-neutral-500 font-semibold"></p>
                 </div>
 
                 <!-- 2. INGRESO DE MONTO CON MENSAJE DE ERROR INTEGRADO -->
@@ -64,7 +92,7 @@ $mapaTipoCredito = [
                     </div>
                     <!--ALERTA ROJA EN LETRAS PEQUEÑAS (Oculta por defecto) -->
                     <span id="error_monto" class="hidden text-xs font-bold text-red-600 mt-1 flex items-center gap-1">
-                        <i class="fa-solid fa-circle-exclamation"></i> El monto mínimo de simulación permitido es $3,150.
+                        <i class="fa-solid fa-circle-exclamation"></i> Verifica que el monto esté dentro del rango permitido para este producto.
                     </span>
                 </div>
 
@@ -154,7 +182,24 @@ document.addEventListener("DOMContentLoaded", function() {
     const inputPlazo = document.getElementsByName('plazo_calcula')[0];
     const selectProducto = document.getElementsByName('tipocred_calcula')[0];
     const btnCalcular = document.getElementById('btn_calcular_master');
-    
+    const rangoProducto = document.getElementById('rango_producto');
+
+    // Muestra el monto y plazo permitido para el producto elegido
+    function mostrarRangoProducto() {
+        if (!rangoProducto || !selectProducto) return;
+        const opcion = selectProducto.options[selectProducto.selectedIndex];
+        if (!opcion) return;
+        const montoMin = Number(opcion.dataset.montoMin).toLocaleString('es-EC');
+        const montoMax = Number(opcion.dataset.montoMax).toLocaleString('es-EC');
+        const plazoMin = opcion.dataset.plazoMin;
+        const plazoMax = opcion.dataset.plazoMax;
+        rangoProducto.innerHTML = '<i class="fa-solid fa-circle-info text-[#a31a16] mr-1"></i> Monto: $' + montoMin + ' - $' + montoMax + ' &middot; Plazo: ' + plazoMin + ' - ' + plazoMax + ' meses';
+    }
+    if (selectProducto) {
+        selectProducto.addEventListener('change', mostrarRangoProducto);
+        mostrarRangoProducto();
+    }
+
     // Creamos una etiqueta dinámica para el error del Plazo justo debajo de su casilla
     let labelErrorMonto = document.getElementById('error_monto');
     
@@ -197,15 +242,14 @@ document.addEventListener("DOMContentLoaded", function() {
             // POLÍTICAS DINÁMICAS POR PRODUCTO 
             // =========================================================
             if (productoActual === "CREDIPUNTOS") {
-                // Validación de Monto para Credi Puntos (Mínimo real institucional $500, Máximo $1,000)
+                // Credi Puntos: monto $300 - $1.000, plazo 3 - 12 meses
                 if (montoTexto !== "") {
-                    if (montoNum < 500) {
-                        errorMontoMsg = "El monto mínimo permitido para Credi Puntos es \$500.";
+                    if (montoNum < 300) {
+                        errorMontoMsg = "El monto mínimo permitido para Credi Puntos es \$300.";
                     } else if (montoNum > 1000) {
                         errorMontoMsg = "El monto máximo permitido para Credi Puntos es \$1,000.";
                     }
                 }
-                // Validación de Plazo (Límite máximo 12 meses, mínimo 3 meses)
                 if (plazoTexto !== "") {
                     if (plazoNum < 3) {
                         errorPlazoMsg = "El plazo mínimo para Credi Puntos es de 3 meses.";
@@ -214,8 +258,13 @@ document.addEventListener("DOMContentLoaded", function() {
                     }
                 }
             } else if (productoActual === "MUJEREMPRENDEDORA") {
-                if (montoTexto !== "" && montoNum < 3150) {
-                    errorMontoMsg = "El monto mínimo permitido para Mujer Emprendedora es \$3,150.";
+                // Mujer Emprendedora: monto $300 - $3.000, plazo 3 - 36 meses
+                if (montoTexto !== "") {
+                    if (montoNum < 300) {
+                        errorMontoMsg = "El monto mínimo permitido para Mujer Emprendedora es \$300.";
+                    } else if (montoNum > 3000) {
+                        errorMontoMsg = "El monto máximo permitido para Mujer Emprendedora es \$3,000.";
+                    }
                 }
                 if (plazoTexto !== "" && (plazoNum < 3 || plazoNum > 36)) {
                     errorPlazoMsg = "El plazo permitido debe estar entre 3 y 36 meses.";

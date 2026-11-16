@@ -8,10 +8,11 @@
  * Requiere que $fnindex, header.php y footer.php ya estén disponibles.
  */
 require_once './funciones/fn-utilidades.php';
+require_once './fn/fn-calcula-credito.php';
 if (!isset($segmentoLabel)) {
     $segmentoLabel = 'Segmento';
 }
-$titulo = arreglar_mojibake($titulo);
+$titulo = trim(arreglar_mojibake($titulo));
 $desc = arreglar_mojibake($desc);
 $tituloPagina = $titulo;
 
@@ -22,6 +23,7 @@ $mapaInversowB = [
     'Micro Emprendedor VIP' => 'MICROVIP',
     'Credi Puntos' => 'CREDIPUNTOS',
     'Credi Mujer Emprende' => 'MUJEREMPRENDEDORA',
+    'Credi Poliza Especial' => 'POLIZA',
     'Microcrédito' => 'FACILITO',
     'Microcrédito Alivio Financiero' => 'ALIVIOFINANCIERO',
     'Consumo' => 'CONSUMO',
@@ -32,6 +34,15 @@ $mapaInversowB = [
     'Consumo Apoyo' => 'CONSUMOAPOYO'
 ];
 $codigoCalculo = isset($mapaInversowB[$titulo]) ? $mapaInversowB[$titulo] : 'SOCIOFIEL';
+$rangoProducto = ['montoMin' => 300, 'montoMax' => 0, 'plazoMin' => Fn_calculacredito::MIN_PLAZO, 'plazoMax' => 0];
+$rangosTiers = Fn_calculacredito::obtenerRangos($codigoCalculo);
+if (!empty($rangosTiers)) {
+    $rangoProducto['montoMin'] = $rangosTiers[0]['min'];
+    foreach ($rangosTiers as $tier) {
+        $rangoProducto['montoMax'] = max($rangoProducto['montoMax'], $tier['max']);
+        $rangoProducto['plazoMax'] = max($rangoProducto['plazoMax'], $tier['plazo_max']);
+    }
+}
 ?>
 <!DOCTYPE html>
 <html lang="es">
@@ -171,6 +182,7 @@ $codigoCalculo = isset($mapaInversowB[$titulo]) ? $mapaInversowB[$titulo] : 'SOC
                                     <input name="monto_calcula" id="monto_calcula" type="text" placeholder="Ej: 3000" required class="w-full bg-white border border-neutral-200 focus:border-[#a31a16]/40 rounded-xl pl-8 pr-4 py-3 text-neutral-800 font-semibold outline-none text-sm">
                                 </div>
                                 <span id="error_monto" class="hidden text-xs font-bold text-red-600 mt-1"><i class="fa-solid fa-circle-exclamation"></i> El monto mínimo de simulación permitido es $1,000.</span>
+                                <span class="text-[11px] text-neutral-400 font-semibold"><i class="fa-solid fa-circle-info"></i> Entre $<?php echo number_format($rangoProducto['montoMin']) ?> y $<?php echo number_format($rangoProducto['montoMax']) ?></span>
                             </div>
                             <div class="flex flex-col gap-2">
                                 <label class="font-extrabold text-neutral-700 text-sm"><i class="fa-solid fa-calendar-days text-[#a31a16] mr-1"></i> ¿En cuánto tiempo?</label>
@@ -178,6 +190,7 @@ $codigoCalculo = isset($mapaInversowB[$titulo]) ? $mapaInversowB[$titulo] : 'SOC
                                     <input name="plazo_calcula" id="plazo_calcula" type="text" placeholder="Ej: 12" required class="w-full bg-white border border-neutral-200 focus:border-[#a31a16]/40 rounded-xl px-4 py-3 text-neutral-800 font-semibold outline-none text-sm">
                                     <span class="absolute right-4 top-1/2 -translate-y-1/2 font-bold text-xs text-neutral-400 uppercase">Meses</span>
                                 </div>
+                                <span class="text-[11px] text-neutral-400 font-semibold"><i class="fa-solid fa-circle-info"></i> Entre <?php echo $rangoProducto['plazoMin'] ?> y <?php echo $rangoProducto['plazoMax'] ?> meses</span>
                                 <div class="flex gap-1.5 mt-0.5">
                                     <?php foreach ([6, 12, 24, 36] as $mesesRapido) { ?>
                                     <button type="button" class="chip-plazo flex-1 bg-white border border-neutral-200 hover:border-[#a31a16]/50 hover:text-[#a31a16] rounded-lg py-1 text-[11px] font-bold text-neutral-500 transition-colors" data-plazo="<?php echo $mesesRapido; ?>"><?php echo $mesesRapido; ?>m</button>
