@@ -293,17 +293,21 @@ document.addEventListener('DOMContentLoaded', () => {
     const btnCerrarBuscar = document.getElementById('btn-cerrar-buscar');
     const listaSugerencias = document.getElementById('lista-sugerencias');
 
-    // MAPA DE CONTENIDOS Y ENLACES OFICIALES DE LA COOPERATIVA
+    // MAPA DE CONTENIDOS Y ENLACES OFICIALES DE LA COOPERATIVA (solo páginas reales y activas)
     const baseConocimiento = [
-        { titulo: "💰 Solicitar un Crédito / Microcrédito Inmediato", url: "requisitos-credito.php", palabras: ["credito", "microcredito", "prestamo", "dinero", "consumo"] },
-        { titulo: "🧮 Simular Crédito (Calculadora de Cuotas)", url: "simulador-credito.php", palabras: ["simulador", "calcular", "cuota", "tabla", "interes"] },
-        { titulo: "🐷 Cuentas de Ahorros Coactivas y Plazo Fijo", url: "tasas-interes.php", palabras: ["ahorros", "cuenta", "guardar", "tasas", "interes"] },
-        { titulo: "📈 Inversiones a Plazo Fijo Premium", url: "tasas-interes.php", palabras: ["inversiones", "invertir", "plazo fijo", "poliza", "rendimiento"] },
-        { titulo: "🧾 Pago de Servicios Públicos y Convenios", url: "agencias.php", palabras: ["servicios", "pago", "agua", "luz", "matricula", "convenios"] },
-        { titulo: "⭐ Califícanos (Buzón de Opiniones y Experiencia)", url: "contacto.php", palabras: ["calificanos", "opinion", "sugerencia", "queja", "contacto"] },
-        { titulo: "🎓 Plataforma EDÚCATE (Educación Financiera)", url: "educacion-financiera.php", palabras: ["educate", "educacion", "financiera", "cursos", "talleres"] },
-        { titulo: "🏢 Agencias, Oficinas y Horarios de Atención", url: "agencias.php", palabras: ["agencias", "oficinas", "horarios", "donde", "direccion", "sucursal"] },
-        { titulo: "🔒 15 de Agosto Virtual (Banca en Línea)", url: "login.php", palabras: ["virtual", "banca", "login", "ingresar", "plataforma", "entrar"] }
+        { titulo: "Microcrédito", descripcion: "Solicita tu crédito o microcrédito con tasas preferenciales", icono: "fa-sack-dollar", url: "detprod-credito-4.php?id=120", palabras: ["credito", "microcredito", "prestamo", "dinero", "solicitar"] },
+        { titulo: "Crédito de Consumo", descripcion: "Financia tus proyectos personales y familiares", icono: "fa-cart-shopping", url: "detprod-credito-consumo.php?id=50", palabras: ["consumo", "credito", "prestamo", "compras"] },
+        { titulo: "Simulador de Crédito", descripcion: "Calcula tu tabla de amortización y cuotas estimadas", icono: "fa-calculator", url: "simulador-credito.php", palabras: ["simulador", "calcular", "cuota", "tabla", "interes", "amortizacion"] },
+        { titulo: "Cuentas de Ahorro", descripcion: "Ahorro a la vista, programado, infantil y estudiantil", icono: "fa-piggy-bank", url: "detprod-ahorro.php?id=81", palabras: ["ahorros", "ahorro", "cuenta", "guardar", "vista"] },
+        { titulo: "Inversiones a Plazo Fijo (DPF)", descripcion: "Haz crecer tu dinero con una póliza a plazo fijo", icono: "fa-chart-line", url: "detprod-inversion-vencimiento.php?id=53", palabras: ["inversiones", "invertir", "plazo fijo", "poliza", "rendimiento", "dpf"] },
+        { titulo: "Pago de Servicios y Convenios", descripcion: "Pago de convenios, transferencias y recaudaciones", icono: "fa-file-invoice-dollar", url: "servicios.php", palabras: ["servicios", "pago", "convenios", "transferencias", "recaudacion"] },
+        { titulo: "Califícanos", descripcion: "Cuéntanos tu experiencia con nuestra atención", icono: "fa-star", url: "calificanos.php", palabras: ["calificanos", "opinion", "experiencia", "calificar"] },
+        { titulo: "Quejas y Reclamos", descripcion: "Registra un reclamo o una sugerencia formal", icono: "fa-comment-dots", url: "quejas-sugerencias.php", palabras: ["queja", "reclamo", "sugerencia"] },
+        { titulo: "Contáctanos", descripcion: "Escríbenos tus preguntas o solicitudes", icono: "fa-envelope", url: "contacto.php", palabras: ["contacto", "contactanos", "escribir", "mensaje"] },
+        { titulo: "Educación Financiera", descripcion: "Cursos y talleres para mejorar tus finanzas", icono: "fa-graduation-cap", url: "educacion-financiera.php", palabras: ["educate", "educacion", "financiera", "cursos", "talleres"] },
+        { titulo: "Agencias y Horarios de Atención", descripcion: "Encuentra la oficina más cercana a ti", icono: "fa-location-dot", url: "sucursales.php", palabras: ["agencias", "oficinas", "horarios", "donde", "direccion", "sucursal", "canales"] },
+        { titulo: "Trabaja con Nosotros", descripcion: "Conoce nuestras vacantes disponibles", icono: "fa-briefcase", url: "trabaja-nosotros.php", palabras: ["trabajo", "empleo", "vacante", "trabaja"] },
+        { titulo: "15 de Agosto Virtual", descripcion: "Ingresa a tu banca en línea", icono: "fa-lock", url: "login.php", palabras: ["virtual", "banca", "login", "ingresar", "plataforma", "entrar"] }
     ];
 
     // 1. ABRIR LA BARRA ROJA CON TRANSICIÓN DE VIDA
@@ -362,9 +366,15 @@ document.addEventListener('DOMContentLoaded', () => {
 
             // Inyecta las recomendaciones en su nueva capa, totalmente al frente y bien espaciadas
             listaSugerencias.innerHTML = coincidencias.map(item => `
-                <a href="${item.url}" class="p-4 text-xs font-bold text-slate-700 hover:bg-slate-50 border-b border-slate-100 transition-all flex items-center justify-between group no-underline bg-white">
-                    <span class="group-hover:text-[#a31a16] transition-colors flex items-center gap-2">${item.titulo}</span>
-                    <div class="inline-flex items-center justify-center w-6 h-6 rounded-full bg-slate-100 text-slate-400 group-hover:bg-[#a31a16] group-hover:text-white transition-all duration-300">
+                <a href="${item.url}" class="px-4 py-3.5 hover:bg-slate-50 border-b border-slate-100 last:border-b-0 transition-all flex items-center gap-3.5 group no-underline bg-white">
+                    <div class="shrink-0 inline-flex items-center justify-center w-10 h-10 rounded-xl bg-[#a31a16]/5 text-[#a31a16] group-hover:bg-[#a31a16] group-hover:text-white transition-all duration-300">
+                        <i class="fa-solid ${item.icono} text-sm"></i>
+                    </div>
+                    <div class="min-w-0 flex-1">
+                        <p class="text-xs font-bold text-slate-700 group-hover:text-[#a31a16] transition-colors truncate">${item.titulo}</p>
+                        <p class="text-[11px] font-medium text-slate-400 truncate">${item.descripcion}</p>
+                    </div>
+                    <div class="shrink-0 inline-flex items-center justify-center w-6 h-6 rounded-full bg-slate-100 text-slate-400 group-hover:bg-[#a31a16] group-hover:text-white transition-all duration-300">
                         <i class="fa-solid fa-chevron-right text-[10px]"></i>
                     </div>
                 </a>

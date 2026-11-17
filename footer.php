@@ -136,8 +136,8 @@
 <!-- ==========================================
       BANNER DE CONSENTIMIENTO LOPDP v1.0 
      ========================================== -->
-<div id="banner-cookies-lopdp" class="hidden fixed bottom-6 right-6 left-6 md:left-auto md:max-w-md bg-white border border-neutral-100 rounded-3xl shadow-2xl p-5 z-50 transition-all duration-500 transform translate-y-10 opacity-0 flex flex-col gap-4 font-sans">
-    
+<div id="banner-cookies-lopdp" class="hidden fixed bottom-24 md:bottom-6 right-6 left-6 md:left-auto md:max-w-md bg-white border border-neutral-100 rounded-3xl shadow-2xl p-5 z-50 transition-all duration-500 transform translate-y-10 opacity-0 flex flex-col gap-4 font-sans">
+
     <div class="flex items-start gap-3.5">
         <!-- Icono Institucional de Privacidad -->
         <div class="w-10 h-10 rounded-2xl bg-red-50 flex items-center justify-center text-[#a31a16] flex-shrink-0 shadow-sm">
@@ -146,22 +146,25 @@
         <div>
             <h4 class="text-sm font-black text-neutral-800 tracking-tight mb-1">Aviso de Privacidad y Cookies</h4>
             <p class="text-neutral-500 text-xs leading-relaxed">
-                En la <strong>Cooperativa 15 de Agosto</strong> utilizamos cookies esenciales para garantizar la seguridad de tus transacciones y optimizar el rendimiento de la plataforma bajo los lineamientos de la LOPDP ecuatoriana.
+                En la <strong>Cooperativa 15 de Agosto</strong> utilizamos cookies propias (esenciales, siempre activas) para la seguridad de tu sesión y el funcionamiento del sitio. Puedes aceptar también las cookies no esenciales de rendimiento, o rechazarlas.
             </p>
         </div>
     </div>
 
     <!-- Enlaces y Botones Regulados -->
-    <div class="flex items-center justify-between gap-4 border-t border-neutral-50 pt-3.5 mt-1">
+    <div class="flex flex-col gap-3 border-t border-neutral-50 pt-3.5 mt-1">
+        <div class="flex items-center gap-3">
+            <button id="btn-rechazar-cookies" class="cursor-pointer flex-1 inline-flex items-center justify-center px-4 py-2.5 rounded-xl bg-white border border-neutral-200 hover:border-neutral-300 text-neutral-600 font-extrabold text-[11px] tracking-wider uppercase transition-all duration-300 focus:outline-none">
+                Rechazar no esenciales
+            </button>
+            <button id="btn-aceptar-cookies" class="cursor-pointer flex-1 inline-flex items-center justify-center px-4 py-2.5 rounded-xl bg-[#a31a16] hover:bg-red-800 text-white font-extrabold text-[11px] tracking-wider uppercase transition-all duration-300 shadow-sm hover:shadow-md focus:outline-none">
+                Aceptar todas
+            </button>
+        </div>
         <!-- Enlace a tu archivo oficial de políticas -->
-        <a href="cookies.php" class="text-xs text-neutral-400 font-bold hover:text-[#a31a16] transition-colors no-underline">
-            <i class="fa-solid fa-shield-halved text-[10px]"></i> Leer política
+        <a href="cookies.php" class="text-xs text-neutral-400 font-bold hover:text-[#a31a16] transition-colors no-underline text-center">
+            <i class="fa-solid fa-shield-halved text-[10px]"></i> Leer política de cookies
         </a>
-        
-        <!-- Botón de Aceptación Rápido -->
-        <button id="btn-aceptar-cookies" class="cursor-pointer inline-flex items-center justify-center px-5 py-2.5 rounded-xl bg-[#a31a16] hover:bg-red-800 text-white font-extrabold text-[11px] tracking-wider uppercase transition-all duration-300 shadow-sm hover:shadow-md focus:outline-none">
-            Aceptar y Continuar
-        </button>
     </div>
 
 </div>
@@ -206,9 +209,13 @@
 
     <!--  CONTENEDOR DE TABLAS (Se llenará dinámicamente con JavaScript) -->
     <div class="flex-1 overflow-y-auto p-6 pt-2">
-        <div id="contenido-comparador-tarjetas" class="flex flex-col gap-4">
+        <div id="contenido-comparador-tarjetas" class="flex flex-col gap-3">
             <!-- Las tarjetas lado a lado / apiladas se inyectarán aquí limpias -->
         </div>
+    </div>
+
+    <div class="px-6 pb-5 pt-1 border-t border-neutral-50">
+        <p class="text-[10px] text-neutral-400 leading-relaxed text-center">* Tasas nominales referenciales reguladas por la SEPS. Pueden variar según evaluación crediticia. Consulta con un asesor antes de contratar.</p>
     </div>
 
 </div>
@@ -223,17 +230,17 @@ document.addEventListener('DOMContentLoaded', () => {
     const contenedorTarjetas = document.getElementById('contenido-comparador-tarjetas');
 
   
-    // BASE DE DATOS FINTECH CON PRODUCTOS REALES
+    // BASE DE DATOS CON PRODUCTOS REALES Y ACTIVOS DEL CATÁLOGO
     const datosComparador = {
         creditos: [
-            { titulo: "🚀 Microcrédito Alivio Financiero", tasa: "15.8% *", plazo: "Hasta 48 meses", ventaja: "Financiamiento ágil diseñado para consolidar deudas y capital de trabajo.", bg: "bg-red-50/40 text-[#a31a16]", link: "simulador-credito.php" },
-            { titulo: "👩‍💼 Credi Mujer Emprende", tasa: "16.5% *", plazo: "Hasta 36 meses", ventaja: "Crédito exclusivo para impulsar los negocios y emprendimientos liderados por mujeres.", bg: "bg-slate-50 text-slate-800", link: "simulador-credito.php" },
-            { titulo: "🤝 Crédito Socio Fiel", tasa: "14.2% *", plazo: "Hasta 60 meses", ventaja: "Tasas preferenciales y condiciones especiales para nuestros socios activos.", bg: "bg-slate-50 text-slate-800", link: "simulador-credito.php" }
+            { icono: "fa-solid fa-seedling", titulo: "Microcrédito", tasa: "Desde 20,09%*", plazo: "Hasta 108 meses · hasta $150.000", ventaja: "Financiamiento para impulsar o hacer crecer tu negocio o emprendimiento.", destacado: true, link: "simulador-credito.php" },
+            { icono: "fa-solid fa-person-dress", titulo: "Credi Mujer Emprende", tasa: "19,90%*", plazo: "Hasta 36 meses · hasta $3.000", ventaja: "Crédito exclusivo para impulsar los negocios liderados por mujeres.", destacado: false, link: "simulador-credito.php" },
+            { icono: "fa-solid fa-handshake", titulo: "Crédito Socio Fiel", tasa: "14,99%*", plazo: "Hasta 48 meses · hasta $15.000", ventaja: "Tasa preferencial y condiciones especiales para socios activos.", destacado: false, link: "simulador-credito.php" }
         ],
         ahorros: [
-            { titulo: "📈 Inversiones Al Vencimiento", tasa: "Hasta 10.5% *", plazo: "Desde 31 días", ventaja: "Pólizas a plazo fijo con el respaldo y la máxima rentabilidad de la cooperativa.", bg: "bg-red-50/40 text-[#a31a16]", link: "detprod-ahorro.php?id=78" },
-            { titulo: "🐷 Ahorro Programado", tasa: "5.0% *", plazo: "Mínimo 6 meses", ventaja: "Planifica tus metas depositando una cuota fija mensual con interés preferencial.", bg: "bg-slate-50 text-slate-800", link: "detprod-ahorro.php?id=84" },
-            { titulo: "⭐ Ahorro Socio Fiel", tasa: "3.5% *", plazo: "Disponibilidad 24/7", ventaja: "Cuenta de ahorros corriente con capitalización de intereses mensuales.", bg: "bg-slate-50 text-slate-800", link: "detprod-ahorro.php?id=83" }
+            { icono: "fa-solid fa-sack-dollar", titulo: "Depósito a Plazo Fijo", tasa: "5,00% a 9,00%*", plazo: "Desde 90 días", ventaja: "Haz crecer tu capital con una tasa fija pactada desde el inicio.", destacado: true, link: "detprod-inversion-vencimiento.php?id=53" },
+            { icono: "fa-solid fa-wallet", titulo: "Ahorro Vista", tasa: "Hasta 2,00%*", plazo: "Disponibilidad inmediata", ventaja: "Tu cuenta de ahorros de siempre, con intereses según tu saldo.", destacado: false, link: "detprod-ahorro.php?id=81" },
+            { icono: "fa-solid fa-graduation-cap", titulo: "Ahorro Estudiantil", tasa: "3,00% anual*", plazo: "Apertura desde $3", ventaja: "Pensado para que los más jóvenes construyan el hábito del ahorro.", destacado: false, link: "detprod-ahorro.php?id=125" }
         ]
     };
 
@@ -244,24 +251,27 @@ document.addEventListener('DOMContentLoaded', () => {
         if (!contenedorTarjetas || !productos) return;
 
         contenedorTarjetas.innerHTML = productos.map(p => `
-            <div class="${p.bg} border border-neutral-100 rounded-2xl p-5 shadow-sm flex flex-col justify-between transition-all duration-300">
-                <div>
-                    <div class="flex items-center justify-between mb-3">
-                        <h4 class="text-xs font-black uppercase tracking-tight">${p.titulo}</h4>
-                        <span class="text-base font-black tracking-tight text-[#a31a16]">${p.tasa}</span>
+            <div class="${p.destacado ? 'bg-red-50/40 border-[#a31a16]/15' : 'bg-white border-neutral-100'} border rounded-2xl p-4 shadow-sm flex flex-col gap-3 transition-all duration-300 hover:shadow-md hover:-translate-y-0.5">
+                <div class="flex items-start gap-3">
+                    <div class="w-10 h-10 rounded-xl ${p.destacado ? 'bg-[#a31a16] text-white' : 'bg-red-50 text-[#a31a16]'} flex items-center justify-center shrink-0">
+                        <i class="${p.icono} text-sm"></i>
                     </div>
-                    <p class="text-[10px] text-neutral-400 font-bold mb-2 flex items-center gap-1">
-                        <i class="fa-regular fa-clock"></i> Plazo: ${p.plazo}
-                    </p>
-                    <p class="text-[11px] text-neutral-500 leading-relaxed">${p.ventaja}</p>
+                    <div class="flex-1 min-w-0">
+                        <div class="flex items-center justify-between gap-2">
+                            <h4 class="text-xs font-black text-neutral-800 uppercase tracking-tight truncate">${p.titulo}</h4>
+                            <span class="shrink-0 text-xs font-black tracking-tight text-[#a31a16] bg-white border border-[#a31a16]/15 rounded-full px-2.5 py-1">${p.tasa}</span>
+                        </div>
+                        <p class="text-[10px] text-neutral-400 font-bold mt-1 flex items-center gap-1">
+                            <i class="fa-regular fa-clock"></i> ${p.plazo}
+                        </p>
+                    </div>
                 </div>
-                <div class="border-t border-neutral-100/50 pt-3 mt-4 flex justify-end">
-                    <a href="${p.link}" class="inline-flex items-center justify-center px-4 py-2 rounded-xl bg-white border border-neutral-200 hover:border-[#a31a16] text-neutral-700 hover:text-[#a31a16] text-[10px] font-black uppercase tracking-wider transition-all gap-1.5 no-underline shadow-sm">
-                        Ver Requisitos <i class="fa-solid fa-arrow-right text-[9px]"></i>
-                    </a>
-                </div>
+                <p class="text-[11px] text-neutral-500 leading-relaxed">${p.ventaja}</p>
+                <a href="${p.link}" class="self-end inline-flex items-center justify-center px-4 py-2 rounded-xl bg-white border border-neutral-200 hover:border-[#a31a16] text-neutral-700 hover:text-[#a31a16] text-[10px] font-black uppercase tracking-wider transition-all gap-1.5 no-underline shadow-sm">
+                    Ver detalle <i class="fa-solid fa-arrow-right text-[9px]"></i>
+                </a>
             </div>
-        `).join('') + '<p class="text-[9px] text-neutral-400 italic text-center mt-1">* Tasas nominales referenciales reguladas por la SEPS.</p>';
+        `).join('');
     };
 
     //  3. CONTROL DE PESTAÑAS (SWAP EN CALIENTE)
@@ -318,38 +328,42 @@ document.addEventListener('DOMContentLoaded', () => {
 document.addEventListener('DOMContentLoaded', () => {
     const bannerCookies = document.getElementById('banner-cookies-lopdp');
     const btnAceptarCookies = document.getElementById('btn-aceptar-cookies');
+    const btnRechazarCookies = document.getElementById('btn-rechazar-cookies');
 
-    if (bannerCookies && btnAceptarCookies) {
+    if (bannerCookies && btnAceptarCookies && btnRechazarCookies) {
         //  1. VERIFICACIÓN LEGAL EN LA MEMORIA DEL NAVEGADOR
-        // Revisa si ya existe el token de consentimiento aprobado anteriormente
-        const consentimientoAprobado = localStorage.getItem('coop15Agosto_cookies_consent');
+        // Revisa si ya existe una decisión guardada (aceptado o rechazado)
+        const consentimientoGuardado = localStorage.getItem('coop15Agosto_cookies_consent');
 
-        if (!consentimientoAprobado) {
-            //  Si no ha aceptado, espera 1.2 segundos y levanta el banner de forma elegante
+        if (!consentimientoGuardado) {
+            //  Si no ha decidido, espera 1.2 segundos y levanta el banner de forma elegante
             setTimeout(() => {
                 bannerCookies.classList.remove('hidden');
                 // Forzamos un pequeño reflow para activar las transiciones visuales de Tailwind
-                void bannerCookies.offsetWidth; 
+                void bannerCookies.offsetWidth;
                 bannerCookies.classList.remove('translate-y-10', 'opacity-0');
                 bannerCookies.classList.add('translate-y-0', 'opacity-100');
             }, 1200);
         }
 
-        //  2. ACCIÓN DE COMPROMISO AL DAR CLIC EN ACEPTAR
-        btnAceptarCookies.addEventListener('click', (e) => {
-            e.stopPropagation();
-
-            // Desvanece el banner hacia abajo de forma fluida
+        //  2. CIERRA EL BANNER Y GUARDA LA DECISIÓN TOMADA
+        const cerrarBannerCookies = (decision) => {
             bannerCookies.classList.remove('translate-y-0', 'opacity-100');
             bannerCookies.classList.add('translate-y-10', 'opacity-0');
-
-            // Guarda la firma de consentimiento en el disco del usuario de forma indefinida
-            localStorage.setItem('coop15Agosto_cookies_consent', 'true');
-
-            // Apaga el contenedor por completo tras terminar la animación visual de 500ms
+            localStorage.setItem('coop15Agosto_cookies_consent', decision);
             setTimeout(() => {
                 bannerCookies.classList.add('hidden');
             }, 500);
+        };
+
+        btnAceptarCookies.addEventListener('click', (e) => {
+            e.stopPropagation();
+            cerrarBannerCookies('aceptado');
+        });
+
+        btnRechazarCookies.addEventListener('click', (e) => {
+            e.stopPropagation();
+            cerrarBannerCookies('rechazado');
         });
     }
 });

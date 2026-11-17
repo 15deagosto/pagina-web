@@ -73,7 +73,7 @@ if ($slider) {
         <?php include 'header.php'; ?>
 
         <!-- ===== HERO ===== -->
-        <section class="relative overflow-hidden bg-gradient-to-br from-[#7a1310] via-[#a31a16] to-[#4a0b09] text-white py-12 md:py-20 lg:py-28">
+        <section class="relative overflow-hidden bg-gradient-to-br from-[#7a1310] via-[#a31a16] to-[#4a0b09] text-white py-8 md:py-12 lg:py-16">
             <!-- Círculos de Luz Ambientales (Glow Blobs Avanzados) -->
             <div class="absolute w-[500px] h-[500px] rounded-full bg-white/10 -top-40 -right-20 blur-[120px] pointer-events-none animate-pulse" style="animation-duration: 8s;"></div>
             <div class="absolute w-[600px] h-[600px] rounded-full bg-black/30 -bottom-40 -left-20 blur-[140px] pointer-events-none"></div>
@@ -84,7 +84,7 @@ if ($slider) {
             <div class="relative max-w-7xl mx-auto px-6 grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
                 
                 <!-- TEXTO PRINCIPAL -->
-                <div class="lg:col-span-12 text-left max-w-3xl" data-aos="fade-right" data-aos-duration="900">
+                <div class="lg:col-span-7 text-left" data-aos="fade-right" data-aos-duration="900">
                     <span class="inline-flex items-center gap-2 bg-white/10 backdrop-blur-md border border-white/20 px-4 py-2 rounded-full text-xs font-semibold tracking-wide uppercase mb-6 shadow-sm">
                         <i class="fa-solid fa-shield-halved text-[#ffd9d6]"></i> Garantía y Seguridad • Regulados por la SEPS
                     </span>
@@ -109,7 +109,7 @@ if ($slider) {
                     </div>
 
                     <!-- MINI GRID DE ESTADÍSTICAS BANCARIAS (Prueba Social) -->
-                    <div class="grid grid-cols-3 gap-4 mt-12 pt-8 border-t border-white/10">
+                    <div class="grid grid-cols-3 gap-4 mt-6 pt-5 border-t border-white/10">
                         <div>
                             <p class="contador-hero text-2xl md:text-3xl font-black text-white" data-target="1500">0</p>
                             <p class="text-xs text-white/60 uppercase tracking-wider mt-1-1">Socios Activos</p>
@@ -125,12 +125,58 @@ if ($slider) {
                     </div>
                 </div>
 
+                <!-- PANEL DE CONFIANZA (Lado Derecho) -->
+                <div class="lg:col-span-5 relative" data-aos="fade-left" data-aos-duration="900" data-aos-delay="150">
+                    <div class="absolute -inset-1 bg-gradient-to-br from-white/15 to-transparent rounded-[32px] blur-md opacity-70"></div>
+                    <div class="relative glass rounded-[28px] p-5 md:p-6 flex flex-col gap-3">
+                        <div class="flex items-center gap-3 border-b border-white/15 pb-3">
+                            <div class="w-11 h-11 rounded-xl bg-white/15 flex items-center justify-center text-white shrink-0">
+                                <i class="fa-solid fa-building-columns text-lg"></i>
+                            </div>
+                            <div>
+                                <p class="font-black text-white leading-tight">¿Por qué elegirnos?</p>
+                                <p class="text-xs text-white/60">Más de 10 años respaldando a nuestros socios</p>
+                            </div>
+                        </div>
+
+                        <div class="flex items-start gap-3">
+                            <div class="w-9 h-9 rounded-lg bg-white/15 flex items-center justify-center text-[#ffd9d6] shrink-0 mt-0.5">
+                                <i class="fa-solid fa-bolt text-sm"></i>
+                            </div>
+                            <div>
+                                <p class="text-sm font-bold text-white">Créditos ágiles</p>
+                                <p class="text-xs text-white/60 leading-relaxed">Respuesta rápida y requisitos simples para tu microcrédito.</p>
+                            </div>
+                        </div>
+
+                        <div class="flex items-start gap-3">
+                            <div class="w-9 h-9 rounded-lg bg-white/15 flex items-center justify-center text-[#ffd9d6] shrink-0 mt-0.5">
+                                <i class="fa-solid fa-shield-halved text-sm"></i>
+                            </div>
+                            <div>
+                                <p class="text-sm font-bold text-white">Depósitos protegidos</p>
+                                <p class="text-xs text-white/60 leading-relaxed">Respaldados por el Seguro de Depósitos (COSEDE).</p>
+                            </div>
+                        </div>
+
+                        <div class="flex items-start gap-3">
+                            <div class="w-9 h-9 rounded-lg bg-white/15 flex items-center justify-center text-[#ffd9d6] shrink-0 mt-0.5">
+                                <i class="fa-solid fa-headset text-sm"></i>
+                            </div>
+                            <div>
+                                <p class="text-sm font-bold text-white">Asesoría cercana</p>
+                                <p class="text-xs text-white/60 leading-relaxed">Acompañamiento personalizado en cada una de nuestras agencias.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
             </div>
 
             <?php if (!empty($slides)) { ?>
             <!-- BANNER PROMOCIONAL (Ancho Completo) -->
-            <div class="relative max-w-7xl mx-auto px-6 mt-12 md:mt-16" data-aos="fade-up" data-aos-duration="900">
-                <div class="relative rounded-2xl overflow-hidden shadow-2xl h-32 sm:h-44 md:h-56 lg:h-64 w-full bg-white/5 border border-white/15">
+            <div class="relative max-w-7xl mx-auto px-6 mt-6 md:mt-8" data-aos="fade-up" data-aos-duration="900">
+                <div class="relative rounded-2xl overflow-hidden shadow-2xl h-28 sm:h-36 md:h-44 lg:h-52 w-full bg-white/5 border border-white/15">
                     <?php foreach ($slides as $i => $slide) { ?>
                         <div class="hero-slide absolute inset-0 <?php echo $i === 0 ? 'activa' : ''; ?>" data-slide="<?php echo $i ?>">
                             <?php
