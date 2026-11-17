@@ -83,8 +83,8 @@ if ($slider) {
 
             <div class="relative max-w-7xl mx-auto px-6 grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
                 
-                <!-- TEXTO PRINCIPAL (Lado Izquierdo) -->
-                <div class="lg:col-span-7 text-left" data-aos="fade-right" data-aos-duration="900">
+                <!-- TEXTO PRINCIPAL -->
+                <div class="lg:col-span-12 text-left max-w-3xl" data-aos="fade-right" data-aos-duration="900">
                     <span class="inline-flex items-center gap-2 bg-white/10 backdrop-blur-md border border-white/20 px-4 py-2 rounded-full text-xs font-semibold tracking-wide uppercase mb-6 shadow-sm">
                         <i class="fa-solid fa-shield-halved text-[#ffd9d6]"></i> Garantía y Seguridad • Regulados por la SEPS
                     </span>
@@ -125,40 +125,34 @@ if ($slider) {
                     </div>
                 </div>
 
-                <!-- SLIDER / IMAGEN (Lado Derecho) -->
-                <div class="lg:col-span-5 relative" data-aos="fade-left" data-aos-duration="900" data-aos-delay="200">
-                    <!-- Marco Estilizado Tipo Flotante (Efecto Tarjeta de Crédito Premium) -->
-                    <div class="absolute -inset-1 bg-gradient-to-r from-white/20 to-transparent rounded-[32px] blur-md opacity-70"></div>
-                    
-                    <div class="relative rounded-[28px] overflow-hidden shadow-2xl h-64 sm:h-72 md:h-80 lg:h-[420px] w-full bg-white border border-white/20 p-2 transition-all duration-300">
-                        <div class="relative w-full h-full rounded-[20px] overflow-hidden bg-white">
-                            <?php foreach ($slides as $i => $slide) { ?>
-                                <div class="hero-slide absolute inset-0 flex items-center justify-center <?php echo $i === 0 ? 'activa' : ''; ?>" data-slide="<?php echo $i ?>">
-                                    <?php
-                                    $url = trim($slide['url_slider'] ?? '');
-                                    $esLinkValido = strlen($url) > 4;
-                                    if ($esLinkValido) { ?><a href="<?php echo htmlspecialchars($url) ?>" target="_blank"><?php } ?>
-                                    <img src="assets/img/<?php echo htmlspecialchars($slide['img_slider']) ?>" alt="Cooperativa 15 de Agosto" class="w-full h-full object-contain mx-auto">
-                                    <?php if ($esLinkValido) { ?></a><?php } ?>
-                                </div>
-                            <?php } ?>
-                            <?php if (empty($slides)) { ?>
-                                <img src="assets/img/logo/logo2.png" alt="Cooperativa 15 de Agosto" class="w-full h-full object-contain p-8 mx-auto">
-                            <?php } ?>
-                        </div>
-                    </div>
+            </div>
 
-                    <!-- Indicadores del Slider Flotantes -->
-                    <?php if (count($slides) > 1) { ?>
-                        <div id="hero-dots" class="absolute bottom-6 left-1/2 -translate-x-1/2 flex justify-center gap-2 bg-black/30 backdrop-blur-md px-3 py-2 rounded-full border border-white/10 z-20">
-                            <?php foreach ($slides as $i => $slide) { ?>
-                                <span class="hero-dot <?php echo $i === 0 ? 'activo' : ''; ?>" data-dot="<?php echo $i ?>"></span>
-                            <?php } ?>
+            <?php if (!empty($slides)) { ?>
+            <!-- BANNER PROMOCIONAL (Ancho Completo) -->
+            <div class="relative max-w-7xl mx-auto px-6 mt-12 md:mt-16" data-aos="fade-up" data-aos-duration="900">
+                <div class="relative rounded-2xl overflow-hidden shadow-2xl h-32 sm:h-44 md:h-56 lg:h-64 w-full bg-white/5 border border-white/15">
+                    <?php foreach ($slides as $i => $slide) { ?>
+                        <div class="hero-slide absolute inset-0 <?php echo $i === 0 ? 'activa' : ''; ?>" data-slide="<?php echo $i ?>">
+                            <?php
+                            $url = trim($slide['url_slider'] ?? '');
+                            $esLinkValido = strlen($url) > 4;
+                            if ($esLinkValido) { ?><a href="<?php echo htmlspecialchars($url) ?>" target="_blank"><?php } ?>
+                            <img src="assets/img/<?php echo htmlspecialchars($slide['img_slider']) ?>" alt="Cooperativa 15 de Agosto" class="w-full h-full object-cover">
+                            <?php if ($esLinkValido) { ?></a><?php } ?>
                         </div>
                     <?php } ?>
                 </div>
 
+                <!-- Indicadores del Slider -->
+                <?php if (count($slides) > 1) { ?>
+                    <div id="hero-dots" class="absolute bottom-3 left-1/2 -translate-x-1/2 flex justify-center gap-2 bg-black/30 backdrop-blur-md px-3 py-2 rounded-full border border-white/10 z-20">
+                        <?php foreach ($slides as $i => $slide) { ?>
+                            <span class="hero-dot <?php echo $i === 0 ? 'activo' : ''; ?>" data-dot="<?php echo $i ?>"></span>
+                        <?php } ?>
+                    </div>
+                <?php } ?>
             </div>
+            <?php } ?>
         </section>
 
 
@@ -238,41 +232,7 @@ if ($slider) {
             </div>
         </section>
 
-        <!-- ===== DESCARGA APP ===== -->
-        <section class="bg-gradient-to-br from-[#7a1310] to-[#a31a16] text-white py-12 md:py-16 border-t border-white/5">
-            <div class="max-w-7xl mx-auto px-6 flex flex-col lg:flex-row justify-between items-center gap-8" data-aos="fade-up">
-                <div class="text-center lg:text-left flex flex-col gap-1">
-                    <h2 class="text-2xl md:text-3xl font-black tracking-tight flex items-center justify-center lg:justify-start gap-2">
-                        <i class="fa-solid fa-mobile-screen-button text-xl animate-pulse"></i> Descarga nuestra App
-                    </h2>
-                    <p class="text-xs text-white/80 max-w-md leading-relaxed">
-                        Explora un universo de oportunidades digitales, realiza consultas de saldos y simulaciones cuando quieras y desde donde quieras de forma segura.
-                    </p>
-                </div>
-                
-                <!-- Botones Oficiales maquetados nativamente en cajas oscuras  -->
-                <div class="flex flex-wrap items-center justify-center gap-4 shrink-0">
-                    <!-- Botón Google Play -->
-                    <a href="#" class="group flex items-center gap-3 bg-black/30 backdrop-blur-md border border-white/10 px-4 py-2 rounded-xl hover:bg-black/50 hover:border-white/20 transition-all duration-300 w-36 h-12">
-                        <i class="fa-brands fa-google-play text-xl text-white group-hover:scale-105 transition-transform"></i>
-                        <div class="flex flex-col text-left leading-none">
-                            <span class="text-[9px] text-white/50 font-bold uppercase tracking-wider">Disponible en</span>
-                            <span class="text-xs font-black text-white mt-0.5">Google Play</span>
-                        </div>
-                    </a>
-                    <!-- Botón App Store -->
-                    <a href="#" class="group flex items-center gap-3 bg-black/30 backdrop-blur-md border border-white/10 px-4 py-2 rounded-xl hover:bg-black/50 hover:border-white/20 transition-all duration-300 w-36 h-12">
-                        <i class="fa-brands fa-apple text-xl text-white group-hover:scale-105 transition-transform"></i>
-                        <div class="flex flex-col text-left leading-none">
-                            <span class="text-[9px] text-white/50 font-bold uppercase tracking-wider">Consíguelo en el</span>
-                            <span class="text-xs font-black text-white mt-0.5">App Store</span>
-                        </div>
-                    </a>
-                </div>
-            </div>
-        </section>
-
-        <!-- BOTÓN DE WHATSAPP OPTIMIZADO: Con enlace real para romper el bloqueo de SEO de Google 
+        <!-- BOTÓN DE WHATSAPP OPTIMIZADO: Con enlace real para romper el bloqueo de SEO de Google
         <a href="https://wa.me" onclick="whatsapo()" target="_blank" class="fixed bottom-6 right-6 z-50 w-14 h-14 rounded-full bg-[#25D366] text-white flex items-center justify-center text-2xl shadow-xl hover:scale-110 animate-bounce transition-transform" style="animation-duration: 3s;" aria-label="Comunícate con un asesor de la Cooperativa por WhatsApp">
             <i class="fab fa-whatsapp"></i>
         </a>-->

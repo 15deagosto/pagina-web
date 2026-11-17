@@ -439,7 +439,7 @@ class Fn_simuladores {
     </tr>
     
 </table>
-<table style="width: 100%; margin-left: 200px; margin-top: 50px;"><tr><td>Por favor no responder el email, fué generado automáticamente desde: www.cacec.com.ec</td></tr></table>';
+<table style="width: 100%; margin-left: 200px; margin-top: 50px;"><tr><td>Por favor no responder el email, fué generado automáticamente desde: cooperativa15deagosto.fin.ec</td></tr></table>';
 
         $message .= "\r\n\r\n--" . $uniqueid . "--";
 
@@ -465,7 +465,7 @@ class Fn_simuladores {
         <td><b>Estadocivil:</b> ' . utf8_encode($detsolicitud[0]['estadocivil_inversion']) . '</td>
     </tr>
 </table>
-<table style="width: 100%; margin-left: 200px; margin-top: 50px;"><tr><td>Por favor no responder el email, fué generado automáticamente desde: www.cacec.com.ec</td></tr></table>';
+<table style="width: 100%; margin-left: 200px; margin-top: 50px;"><tr><td>Por favor no responder el email, fué generado automáticamente desde: cooperativa15deagosto.fin.ec</td></tr></table>';
 
         $message .= "\r\n\r\n--" . $uniqueid . "--";
 
@@ -486,7 +486,7 @@ class Fn_simuladores {
         $mail->Username = SMTP_USER;
         $mail->Password = SMTP_PASSWORD;
         $mail->setFrom(SMTP_USER, 'Solicitud Inversión - '.EMPRESA);
-        $mail->addAddress('calidad@supaysoft.net', 'Solicitud Inversión - '.EMPRESA);
+        $mail->addAddress(EMAILPROSPECCION, 'Solicitud Inversión - '.EMPRESA);
         $mail->Subject = 'Solicitud Inversión - '.EMPRESA;
         $uniqueid = uniqid('np');
         $mail->CharSet = 'UTF-8';
@@ -506,7 +506,7 @@ class Fn_simuladores {
         $cabeceras .= 'Content-type: text/html; charset=utf-8' . "\r\n";
 
         $cabeceras .= 'To:  <' . $para . '>' . "\r\n";
-        $cabeceras .= 'From: noreply@sumakkawsay.fin.ec' . "\r\n";
+        $cabeceras .= 'From: noreply@cooperativa15deagosto.fin.ec' . "\r\n";
 
 // Enviarlo
         $send = mail($para, $título, $mensaje, $cabeceras);
@@ -524,7 +524,7 @@ class Fn_simuladores {
         $cabeceras .= 'Content-type: text/html; charset=utf-8' . "\r\n";
 
         $cabeceras .= 'To:  <' . $para . '>' . "\r\n";
-        $cabeceras .= 'From: noreply@sumakkawsay.fin.ec' . "\r\n";
+        $cabeceras .= 'From: noreply@cooperativa15deagosto.fin.ec' . "\r\n";
 
 // Enviarlo
         $send = mail($para, $título, $mensaje, $cabeceras);
@@ -536,7 +536,7 @@ class Fn_simuladores {
     }
     function fnindex_sendemail_queja($mensaje) {
         $from = EMAIL_USER;
-        $to= trim(EMAILQUEJAS);
+        $to= trim(EMAILRECLAMOS);
         $subject = 'Mensaje desde la web (Quejas y sugerencias)';
         $message = $mensaje;
         $encabezados = "MIME-Version: 1.0" . "\r\n";

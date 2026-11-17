@@ -1094,11 +1094,8 @@ class Fn_proveedores {
         $encabezados = "MIME-Version: 1.0" . "\r\n";
         # ojo, es una concatenación:
         $encabezados .= "Content-type:text/html; charset=UTF-8" . "\r\n";
-        $encabezados .= 'From: CoacOccidental<' . EMAIL_USER . '>' . "\r\n";
-        # emails produccion
+        $encabezados .= 'From: Cooperativa 15 de Agosto<' . EMAIL_USER . '>' . "\r\n";
         $emails = EMAILPROVEEDOR;
-        # emails prueba
-        //$emails = 'calidad@supaysoft.net,calidad@supaysoft.net';
         $resultado = mail($emails, $subject, $html, $encabezados); #Mandar al final los encabezados
         if ($resultado) {
             return 1;

@@ -1,4 +1,5 @@
 <?php
+require_once __DIR__ . '/../controler/config.php';
 
 $iopc = $_POST['iopc'];
 if ($iopc == 1) {
@@ -95,9 +96,7 @@ if ($iopc == 1) {
 # ojo, es una concatenación:
         $encabezados .= "Content-type:text/html; charset=UTF-8" . "\r\n";
         $encabezados .= 'From:  Coac 15 de agosto <noreply@cooperativa15deagosto.fin.ec>' . "\r\n";
-        // TODO: confirmar con la cooperativa el correo real que debe recibir estos
-        // mensajes (antes apuntaba a la empresa desarrolladora del sitio).
-        $emails = 'info@coop15deagosto.fin.ec';
+        $emails = EMAILCONTATANOS;
         $resultado = mail($emails, $subject, $html, $encabezados); #Mandar al final los encabezados
         if ($resultado) {
             echo '<div style="margin-top:20px;background:#edffed; padding: 5px 10px;">Mensaje enviado correctamente, en la brevedad de lo posible uno de nuestros asesores responderá a tu mensaje.</div>';
@@ -204,9 +203,7 @@ if ($iopc == 2) {
 # ojo, es una concatenación:
         $encabezados .= "Content-type:text/html; charset=UTF-8" . "\r\n";
         $encabezados .= 'From:  Coac 15 de agosto <noreply@cooperativa15deagosto.fin.ec>' . "\r\n";
-        // TODO: confirmar con la cooperativa el correo real que debe recibir estos
-        // mensajes (antes apuntaba a la empresa desarrolladora del sitio).
-        $emails = 'info@coop15deagosto.fin.ec';
+        $emails = EMAILRECLAMOS;
         $resultado = mail($emails, $subject, $html, $encabezados); #Mandar al final los encabezados
         if ($resultado) {
             echo '<div style="margin-top:20px;background:#edffed; padding: 5px 10px;">Mensaje enviado correctamente, en la brevedad de lo posible uno de nuestros asesores responderá a tu mensaje.</div>';
@@ -238,8 +235,7 @@ if ($iopc == 3) {
         $encabezados = "MIME-Version: 1.0" . "\r\n";
         $encabezados .= "Content-type:text/html; charset=UTF-8" . "\r\n";
         $encabezados .= 'From:  Coac 15 de agosto <noreply@cooperativa15deagosto.fin.ec>' . "\r\n";
-        // TODO: confirmar con la cooperativa el correo real que debe recibir las evaluaciones.
-        $emails = 'info@coop15deagosto.fin.ec';
+        $emails = EMAILCONTATANOS;
         $resultado = mail($emails, $subject, $html, $encabezados);
         if ($resultado) {
             echo '<div style="margin-top:20px;background:#edffed; padding: 5px 10px;">Gracias por tu evaluacion.</div>';

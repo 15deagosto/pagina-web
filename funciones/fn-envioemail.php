@@ -4,13 +4,13 @@ class Fn_envioemail {
 
     function fnenvioemail_formulariocontacto($msg_mail){
         $para = EMAILCONTATANOS;
-        $título = "CONTACTOS SUMAK KAWSAY";
+        $título = "CONTACTOS 15 DE AGOSTO";
         $mensaje = $msg_mail;
         $cabeceras = 'MIME-Version: 1.0' . "\r\n";
         $cabeceras .= 'Content-type: text/html; charset=utf-8' . "\r\n";
 
         $cabeceras .= 'To:  <' . $para . '>' . "\r\n";
-        $cabeceras .= 'From: noreply@sumakkawsay.fin.ec' . "\r\n";
+        $cabeceras .= 'From: noreply@cooperativa15deagosto.fin.ec' . "\r\n";
 
 // Enviarlo
         $send = mail($para, $título, $mensaje, $cabeceras);
@@ -28,7 +28,7 @@ class Fn_envioemail {
         $cabeceras .= 'Content-type: text/html; charset=utf-8' . "\r\n";
 
         $cabeceras .= 'To:  <' . $para . '>' . "\r\n";
-        $cabeceras .= 'From: noreply@sumakkawsay.fin.ec' . "\r\n";
+        $cabeceras .= 'From: noreply@cooperativa15deagosto.fin.ec' . "\r\n";
 
 // Enviarlo
         $send = mail($para, $título, $mensaje, $cabeceras);
@@ -40,13 +40,13 @@ class Fn_envioemail {
     }
     function fnenvioemail_formularioxquejayreclamo_data($msg_mail){
         $para = EMAILRECLAMOS;
-        $título = "QUEJA Y RECLAMO SUMAK KAWSAY";
+        $título = "QUEJA Y RECLAMO 15 DE AGOSTO";
         $mensaje = $msg_mail;
         $cabeceras = 'MIME-Version: 1.0' . "\r\n";
         $cabeceras .= 'Content-type: text/html; charset=utf-8' . "\r\n";
 
         $cabeceras .= 'To:  <' . $para . '>' . "\r\n";
-        $cabeceras .= 'From: noreply@sumakkawsay.fin.ec' . "\r\n";
+        $cabeceras .= 'From: noreply@cooperativa15deagosto.fin.ec' . "\r\n";
 
 // Enviarlo
         $send = mail($para, $título, $mensaje, $cabeceras);
@@ -58,13 +58,13 @@ class Fn_envioemail {
     }
     function fnenvioemail_formularioxquejayreclamosara_data($msg_mail){
         $para = EMAILRECLAMOSARAS;
-        $título = "QUEJA Y RECLAMO SARAS SUMAK KAWSAY";
+        $título = "QUEJA Y RECLAMO SARAS 15 DE AGOSTO";
         $mensaje = $msg_mail;
         $cabeceras = 'MIME-Version: 1.0' . "\r\n";
         $cabeceras .= 'Content-type: text/html; charset=utf-8' . "\r\n";
 
         $cabeceras .= 'To:  <' . $para . '>' . "\r\n";
-        $cabeceras .= 'From: noreply@sumakkawsay.fin.ec' . "\r\n";
+        $cabeceras .= 'From: noreply@cooperativa15deagosto.fin.ec' . "\r\n";
 
 // Enviarlo
         $send = mail($para, $título, $mensaje, $cabeceras);
@@ -76,13 +76,13 @@ class Fn_envioemail {
     }
     function fnenvioemail_formulariotrabajo($msg_mail){
         $para = EMAILTALENTO;
-        $título = "POSTULACIÓN SUMAK KAWSAY";
+        $título = "POSTULACIÓN 15 DE AGOSTO";
         $mensaje = $msg_mail;
         $cabeceras = 'MIME-Version: 1.0' . "\r\n";
         $cabeceras .= 'Content-type: text/html; charset=utf-8' . "\r\n";
 
         $cabeceras .= 'To:  <' . $para . '>' . "\r\n";
-        $cabeceras .= 'From: noreply@sumakkawsay.fin.ec' . "\r\n";
+        $cabeceras .= 'From: noreply@cooperativa15deagosto.fin.ec' . "\r\n";
 
 // Enviarlo
         $send = mail($para, $título, $mensaje, $cabeceras);

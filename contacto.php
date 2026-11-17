@@ -90,7 +90,7 @@ $tituloPagina = 'Contacto';
                         <div>
                             <span class="text-[10px] font-black text-neutral-400 uppercase tracking-widest block mb-0.5">Servicio Preferencial</span>
                             <h4 class="font-black text-neutral-800 text-base mb-1 tracking-tight">Llámanos</h4>
-                            <a href="tel:1800244285" class="text-rojo font-black text-sm hover:text-rojo-dark transition-colors">1800 - 244285</a>
+                            <a href="tel:0326690343" class="text-rojo font-black text-sm hover:text-rojo-dark transition-colors">032 690 343</a>
                         </div>
                     </div>
 
@@ -102,7 +102,7 @@ $tituloPagina = 'Contacto';
                         <div>
                             <span class="text-[10px] font-black text-neutral-400 uppercase tracking-widest block mb-0.5">Atención Digital</span>
                             <h4 class="font-black text-neutral-800 text-base mb-1 tracking-tight">Correo electrónico</h4>
-                            <a href="mailto:info@coop15deagosto.fin.ec" class="text-rojo font-black text-sm hover:text-rojo-dark transition-colors">info@coop15deagosto.fin.ec</a>
+                            <a href="mailto:info@cooperativa15deagosto.fin.ec" class="text-rojo font-black text-sm hover:text-rojo-dark transition-colors">info@cooperativa15deagosto.fin.ec</a>
                         </div>
                     </div>
 

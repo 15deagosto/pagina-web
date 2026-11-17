@@ -75,7 +75,7 @@
                     </div>
                     <div>
                         <h4 class="font-extrabold text-neutral-800 text-base mb-1">Tecnología a tu Alcance</h4>
-                        <p class="text-xs text-neutral-500 leading-normal">Consulta tus saldos y gestiona tus trámites desde nuestra App Móvil.</p>
+                        <p class="text-xs text-neutral-500 leading-normal">Consulta tus saldos y gestiona tus trámites desde 15 de Agosto Virtual.</p>
                     </div>
                 </div>
 

@@ -5,8 +5,8 @@
                 <h4 class="text-white font-bold mb-4">Cooperativa 15 de Agosto</h4>
                 <p class="text-sm text-neutral-400 max-w-xs mb-5">Cooperativa de Ahorro y Crédito 15 de Agosto de Pilacoto, regulada por la Superintendencia de Economía Popular y Solidaria (SEPS) -- Segmento 2.</p>
                 <div>
-                    <span class="text-white font-semibold text-sm">Línea de Emergencia</span><br>
-                    <a href="tel:1800244285" class="text-xl font-extrabold text-white hover:text-rojo transition-colors">1800 - 244285</a>
+                    <span class="text-white font-semibold text-sm">Atención al Cliente</span><br>
+                    <a href="tel:0326690343" class="text-xl font-extrabold text-white hover:text-rojo transition-colors">032 690 343</a>
                 </div>
             </div>
             <div>
