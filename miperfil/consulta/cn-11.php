@@ -5,6 +5,7 @@ require '../funciones/fn-alert.php';
 $opc_cn = $_POST['dato_0'];
 $fn11 = new Fn_11();
 $fnalert = new Fn_alert();
+$include = 0;
 
 //OPC
 

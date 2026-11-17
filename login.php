@@ -41,7 +41,7 @@ $tituloPagina = 'Iniciar Sesión';
             <div class="max-w-7xl mx-auto px-6 w-full text-center">
                 <div data-aos="fade-up" data-aos-duration="800">
                     <h2 class="text-3xl md:text-5xl font-black text-white tracking-tight mb-3 drop-shadow-sm">
-                        Banca Virtual
+                        Portal Administrativo
                     </h2>
                     <div class="text-xs md:text-sm font-bold text-white/70 tracking-wide">
                         <a href="index.php" class="hover:text-white transition-colors">Inicio</a> 
@@ -104,16 +104,10 @@ $tituloPagina = 'Iniciar Sesión';
                     </div>
 
                      <div class="pt-6 border-t border-neutral-100 flex flex-col gap-3 text-center">
-                        <p class="text-xs text-neutral-400 font-bold uppercase tracking-wider">¿Eres nuevo en la cooperativa?</p>
-                        <div class="flex flex-col sm:flex-row justify-center items-center gap-2 sm:gap-4 text-xs font-black">
-                            <a href="contacto.php" class="text-[#a31a16] hover:text-[#7a1310] transition-colors flex items-center gap-1">
-                                <i class="fa-solid fa-user-plus text-[10px]"></i> Solicitar apertura de cuenta
-                            </a>
-                            <span class="hidden sm:block text-neutral-300">|</span>
-                            <a href="educacion-financiera.php" class="text-neutral-500 hover:text-[#a31a16] transition-colors flex items-center gap-1">
-                                <i class="fa-solid fa-circle-question text-[10px]"></i> ¿Cómo activar mi Banca?
-                            </a>
-                        </div>
+                        <p class="text-xs text-neutral-400 font-bold leading-relaxed">
+                            Acceso exclusivo para personal autorizado de la Cooperativa.<br>
+                            Si tienes problemas para ingresar, contacta al administrador del sistema.
+                        </p>
                     </div>
                 </form>
 

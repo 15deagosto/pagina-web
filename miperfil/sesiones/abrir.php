@@ -14,6 +14,6 @@ if (isset($_SESSION['sesiongonzanama'])) {
     $rucusu_open = $sesion[0]['Ruc'];
     $telefusu_open = $sesion[0]['Tele'];
     $dirusu_open = $sesion[0]['Dire'];
-    $tipousu_open = $sesion[0]['Tipo'];
+    $tipousu_open = $sesion[0]['Tipo'] ?? null;
     $numerousus = 1;
 }

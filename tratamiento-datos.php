@@ -264,8 +264,7 @@ $fnindex = new Fn_index();
                                     <b>- Tratamiento de datos en sitios web</b><br>
                                     La Cooperativa en beneficio de sus usuarios pone a disposición los siguientes portales
                                 web oficiales:<br>
-                                <a href="https://cooperativa15deagostofin.ec/">https://cooperativa15deagosto.fin.ec/</a><br>
-                                <a href="https://enlinea.cooperativa15deagosto.fin.ec/">https://enlinea.cooperativa15deagosto.fin.ec/</a>
+                                <a href="https://cooperativa15deagosto.fin.ec/">https://cooperativa15deagosto.fin.ec/</a>
                                 <p></p>
                                 <p>
                                     Dichos sitios web, así como páginas derivadas de estas o enlaces a páginas que se
@@ -289,14 +288,13 @@ $fnindex = new Fn_index();
                                 
                                 </p>
                                 <p>
-                                </p><h5><b>- Tratamiento de datos en aplicaciones móviles</b></h5><br> 
-                                   Las aplicaciones móviles de la Cooperativa cuentan con altos estándares de seguridad
-                                para resguardar la información de los usuarios, estas aplicaciones solicitarán información
-                                personal al usuario para su correcto funcionamiento, señalando expresamente que en
-                                ningún momento será requerida información catalogada como sensible.
-                                Estas aplicaciones móviles requieren de permisos específicos pertenecientes al
-                                dispositivo móvil para su correcto funcionamiento, que deben ser aceptados por el
-                                usuario.
+                                </p><h5><b>- Tratamiento de datos en aplicaciones móviles</b></h5><br>
+                                   Actualmente la Cooperativa no cuenta con aplicaciones móviles propias. En caso de
+                                desarrollar y publicar una aplicación móvil oficial en el futuro, esta contará con altos
+                                estándares de seguridad para resguardar la información de los usuarios, solicitará
+                                únicamente los permisos del dispositivo necesarios para su correcto funcionamiento y en
+                                ningún momento requerirá información catalogada como sensible, lo cual será informado
+                                oportunamente a los socios y usuarios a través de nuestros canales oficiales.
                                 <p></p>
                                 <p>
                                 </p><h5><b>- Uso de cookies en plataformas digitales</b></h5><br> 
@@ -309,15 +307,10 @@ $fnindex = new Fn_index();
                                 acceder a las páginas web ya sea (Ordenador, Smartphone, Dispositivo inteligente, etc.).
                                 <p></p>
                                 <p>
-                                   En el caso del portal web oficial https://cooperativa15deagostofin.ec/ la Cooperativa informa a
-                                los usuarios y socios que dicho portal web no ocupa cookies para el funcionamiento del
-                                mismo.
-                                
-                                </p>
-                                <p>
-                                   En el caso del portal web transaccional https://enlinea.cooperativa15deagosto.fin.ec/ utiliza
-                                cookies las cuales se detallan en el siguiente enlace.
-                                
+                                   En el caso del portal web oficial https://cooperativa15deagosto.fin.ec/ la Cooperativa informa a
+                                los usuarios y socios que dicho portal web utiliza cookies únicamente con fines técnicos
+                                y de seguridad, tal como se detalla en nuestra <a href="cookies.php">Política de Cookies</a>.
+
                                 </p>
                                 <p>
                                 </p><h5><b>- Tratamiento de datos mediante videovigilancia</b></h5><br>

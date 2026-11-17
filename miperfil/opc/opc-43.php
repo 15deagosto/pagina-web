@@ -54,7 +54,7 @@ $tabla = $a->get_quejas_filto('',$fhasta, '', '');
                                     $id = $menu['id_queja'];
                                 ?>
                                     <tr>
-                                        <td> <?php echo ($menu['nombre_queja'].' '.$menu['apellido_queja']) ?></td>
+                                        <td> <?php echo ($menu['nombre_queja']) ?></td>
                                         <td> <?php echo ($menu['nombre_nosotros']) ?> </td>
                                         <td> <?php echo ($menu['fecha_queja']) ?> </td>
                                         <td> <?php echo ($menu['hora_queja']) ?> </td>

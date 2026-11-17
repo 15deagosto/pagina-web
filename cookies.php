@@ -33,7 +33,7 @@ $tituloPagina = 'Cookies';
             </p>
 
             <ul class="list-disc pl-6 text-neutral-600 text-sm flex flex-col gap-3 mb-8">
-                <li><strong>Seguridad de Transacciones:</strong> Cookies obligatorias que validan el cifrado de datos de tu sesión perimetral para evitar fraudes en el acceso a 15 de Agosto Virtual.</li>
+                <li><strong>Seguridad de la Sesión:</strong> Cookies técnicas necesarias que protegen la navegación y evitan accesos no autorizados dentro del sitio web.</li>
                 <li><strong>Optimización de Rendimiento:</strong> Almacenamiento local ligero que agiliza la velocidad de carga de tus simuladores de crédito, tablas de interés y portafolio de productos financieros.</li>
                 <li><strong>Canales de Soporte:</strong> Cookies de enlace técnico necesarias para permitir la operatividad de nuestro Asesor Virtual interactivo de WhatsApp sin rastrear tu información personal.</li>
             </ul>

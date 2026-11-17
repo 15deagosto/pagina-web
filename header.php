@@ -194,10 +194,10 @@ ob_start(function($buffer) {
             </li>
         </ul>
 
-        <!-- BOTÓN ACCIÓN DE BANCA VIRTUAL PREMIUM -->
+        <!-- BOTÓN ACCIÓN PORTAL ADMINISTRATIVO (acceso interno de personal) -->
         <div class="flex items-center gap-3 shrink-0">
             <a href="login.php" class="hidden md:inline-flex bg-gradient-to-r from-[#a31a16] to-[#7a1310] hover:from-[#7a1310] hover:to-[#4a0b09] text-white font-extrabold px-6 py-3 rounded-xl hover:-translate-y-0.5 transition-all shadow-md hover:shadow-[#a31a16]/10 text-xs tracking-wider uppercase">
-                <i class="fa-solid fa-sack-dollar mr-2 text-sm opacity-90"></i> 15 de Agosto Virtual
+                <i class="fa-solid fa-user-shield mr-2 text-sm opacity-90"></i> Portal Administrativo
             </a>
             <!-- Botón Hamburguesa Móvil -->
             <button class="lg:hidden text-[#a31a16] hover:text-[#7a1310] text-2xl p-1.5 rounded-xl hover:bg-neutral-50 transition-colors" id="v2-burger" aria-label="Abrir menú">
@@ -256,7 +256,7 @@ ob_start(function($buffer) {
 
     <div class="mt-8 pt-4 border-t border-neutral-100">
         <a href="login.php" class="block text-center bg-gradient-to-r from-[#a31a16] to-[#7a1310] text-white font-extrabold py-3.5 rounded-xl shadow-md text-xs tracking-wider uppercase mb-6">
-            <i class="fa-solid fa-laptop-code mr-1"></i> 15 de Agosto Virtual
+            <i class="fa-solid fa-user-shield mr-1"></i> Portal Administrativo
         </a>
         <div class="flex justify-center gap-5 text-lg text-neutral-400">
             <?php
@@ -307,7 +307,7 @@ document.addEventListener('DOMContentLoaded', () => {
         { titulo: "Educación Financiera", descripcion: "Cursos y talleres para mejorar tus finanzas", icono: "fa-graduation-cap", url: "educacion-financiera.php", palabras: ["educate", "educacion", "financiera", "cursos", "talleres"] },
         { titulo: "Agencias y Horarios de Atención", descripcion: "Encuentra la oficina más cercana a ti", icono: "fa-location-dot", url: "sucursales.php", palabras: ["agencias", "oficinas", "horarios", "donde", "direccion", "sucursal", "canales"] },
         { titulo: "Trabaja con Nosotros", descripcion: "Conoce nuestras vacantes disponibles", icono: "fa-briefcase", url: "trabaja-nosotros.php", palabras: ["trabajo", "empleo", "vacante", "trabaja"] },
-        { titulo: "15 de Agosto Virtual", descripcion: "Ingresa a tu banca en línea", icono: "fa-lock", url: "login.php", palabras: ["virtual", "banca", "login", "ingresar", "plataforma", "entrar"] }
+        { titulo: "Portal Administrativo", descripcion: "Acceso para personal autorizado", icono: "fa-user-shield", url: "login.php", palabras: ["portal", "administrativo", "login", "ingresar", "entrar"] }
     ];
 
     // 1. ABRIR LA BARRA ROJA CON TRANSICIÓN DE VIDA

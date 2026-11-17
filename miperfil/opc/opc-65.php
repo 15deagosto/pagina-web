@@ -42,7 +42,7 @@ $tabla = $a->fn65_rdocumentos_all();
                                     $st = $menu['estado_doc'];
                                     $id = $menu['id_doc'];
                                     $estado = $a->fn65_estado_xid($st);
-                                    $fecha = date("d-m-Y", strtotime($value['fecha_doc']));
+                                    $fecha = date("d-m-Y", strtotime($menu['fecha_doc']));
                                     $tipo3 = $menu['tipo3_doc'];
                                     if ($tipo3 == 1) {
                                         $ntipo3 = "Instructivos";

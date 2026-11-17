@@ -28,18 +28,12 @@ if ($opc_cn == 1) {
 if ($opc_cn == 2) {
     $id = $_POST['dato_1'];
     $nombre_vacante = ($_POST['nombre_vacante']);
-//    $tiempo_vacante = ($_POST['tiempo_vacante']);
-//    $area_vacante = ($_POST['area_vacante']);
-//    $tipo_vacante = ($_POST['tipo_vacante']);
-//    $presencia_vacante = ($_POST['presencia_vacante']);
-//    $lugar_vacante = ($_POST['lugar_vacante']);
-//    $niveleduca_vacante = ($_POST['niveleduca_vacante']);
     $tiempo_vacante = 1;
-    $area_vacante = "N";
-    $tipo_vacante = 1;
-    $presencia_vacante = "Presencial";
-    $lugar_vacante = "Sumak";
-    $niveleduca_vacante = "SU";
+    $area_vacante = $_POST['area_vacante'] ?? '';
+    $tipo_vacante = $_POST['tipo_vacante'] ?? 'FULL';
+    $presencia_vacante = $_POST['presencia_vacante'] ?? 'Presencial';
+    $lugar_vacante = $_POST['lugar_vacante'] ?? '';
+    $niveleduca_vacante = $_POST['niveleduca_vacante'] ?? '';
     $fechain_vacante = ($_POST['fechain_vacante']);
     $fechaout_vacante = ($_POST['fechaout_vacante']);
     $cuenta = $fn100->fn100_unoticias_x($nombre_vacante, $tiempo_vacante, $area_vacante, $tipo_vacante,
@@ -191,7 +185,7 @@ if ($opc_cn == 10) {
     $requisitos_vacante = ($_POST['requisitos_vacante']);
     $desc_vacante = ($_POST['desc_vacante']);
     $frame_vacante = ($_POST['frame_vacante']);
-    $cuenta = $fn100->fn100_utextonoticias_x($funcion_vacante, $requisitos_vacante, $desc_vacante,$frame_vacante, $id);
+    $cuenta = $fn100->fn100_utextonoticias_x($funcion_vacante, $desc_vacante, $requisitos_vacante, $frame_vacante, $id);
     echo $fnalert->fnalert_edit($cuenta);
     $tabla = $fn100->fn100_rnoticias_all();
     $include = 1;

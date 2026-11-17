@@ -61,7 +61,7 @@ $desde = date('Y-m-d', strtotime($hasta . "- 30 days"));
                                         <td> <?php echo ($menu['telefono_inversion']) ?> </td>
                                         <td> <?php echo ($menu['email_inversion']) ?> </td>
                                         <td> <?php echo ($menu['entidad_inversion']) ?> </td>
-                                        <td> <?php echo ($detzona[0]['provincia'].' - '.$detzona[0]['canton'].' - '.$detzona[0]['parroquia']) ?> </td>
+                                        <td> <?php echo isset($detzona[0]) ? ($detzona[0]['provincia'].' - '.$detzona[0]['canton'].' - '.$detzona[0]['parroquia']) : ($menu['ciudad_inversion'] ?: '-') ?> </td>
                                         <td> 
                                             
                                                 <div class="custom-control custom-checkbox mb-3">

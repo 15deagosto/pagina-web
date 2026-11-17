@@ -29,6 +29,12 @@ if (isset($_GET['opc'])) {
 
 if (!isset($_SESSION['sesiongonzanama'])) {
     header('Location: ../login.php');
+    exit();
+}
+
+// Solo dígitos (evita que opc se use para incluir archivos arbitrarios)
+if (!preg_match('/^-?[0-9]+$/', $opc)) {
+    $opc = '-1';
 }
 ?>
 <!DOCTYPE html>
@@ -193,7 +199,20 @@ if (!isset($_SESSION['sesiongonzanama'])) {
     ***********************************-->
             <div class="content-body">
                 <!-- row -->
-                <?php include './opc/opc-' . $opc . '.php'; ?>
+                <?php
+                // "Mi Perfil" siempre es accesible; el resto depende de los permisos del rol (tabla rolmenu)
+                $opcPermitido = ($opc === '14') || ($m->fn_chkmenu_x((int) $idroll_open, (int) $opc) > 0);
+                if ($opcPermitido) {
+                    include './opc/opc-' . $opc . '.php';
+                } else {
+                    ?>
+                    <div class="alert alert-danger">
+                        <h4><i class="fa fa-ban"></i> Acceso no autorizado</h4>
+                        <p>Tu usuario no tiene permiso para ver esta sección. Si crees que es un error, contacta al administrador.</p>
+                    </div>
+                    <?php
+                }
+                ?>
             </div>
             <!--**********************************
                 Content body end

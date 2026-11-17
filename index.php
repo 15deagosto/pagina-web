@@ -99,9 +99,9 @@ if ($slider) {
                     
                     <!-- Botones Premium con Efectos Activos -->
                     <div class="flex flex-wrap gap-4">
-                        <a href="login.php" class="group relative bg-white text-[#a31a16] font-extrabold px-8 py-4 rounded-xl shadow-lg hover:shadow-white/20 hover:-translate-y-0.5 transition-all duration-300 overflow-hidden">
+                        <a href="contacto.php" class="group relative bg-white text-[#a31a16] font-extrabold px-8 py-4 rounded-xl shadow-lg hover:shadow-white/20 hover:-translate-y-0.5 transition-all duration-300 overflow-hidden">
                             <span class="absolute inset-0 w-full h-full bg-gradient-to-r from-transparent via-white/40 to-transparent -translateX-full group-hover:animate-[shimmer_1.5s_infinite]"></span>
-                            15 de Agosto Virtual <i class="fa-solid fa-arrow-right ml-2 text-xs group-hover:translate-x-1 transition-transform"></i>
+                            Solicitar Apertura de Cuenta <i class="fa-solid fa-arrow-right ml-2 text-xs group-hover:translate-x-1 transition-transform"></i>
                         </a>
                         <a href="simulador-credito.php" class="bg-white/10 backdrop-blur-md border border-white/20 font-bold px-8 py-4 rounded-xl hover:bg-white/20 hover:-translate-y-0.5 transition-all duration-300">
                             <i class="fa-solid fa-calculator mr-2 opacity-80"></i> Simular Crédito

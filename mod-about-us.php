@@ -74,8 +74,8 @@
                         <i class="fa-solid fa-mobile-screen-button text-lg"></i>
                     </div>
                     <div>
-                        <h4 class="font-extrabold text-neutral-800 text-base mb-1">Tecnología a tu Alcance</h4>
-                        <p class="text-xs text-neutral-500 leading-normal">Consulta tus saldos y gestiona tus trámites desde 15 de Agosto Virtual.</p>
+                        <h4 class="font-extrabold text-neutral-800 text-base mb-1">Atención Cercana</h4>
+                        <p class="text-xs text-neutral-500 leading-normal">Resuelve tus trámites en cualquiera de nuestras agencias o por WhatsApp con un asesor.</p>
                     </div>
                 </div>
 

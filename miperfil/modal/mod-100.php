@@ -96,48 +96,48 @@ if ($opc_mod == 2) {
                                     <input type="text" name="nombre_vacante" class="form-control" value="<?php echo ($tupla[0]['nombre_vacante']) ?>">
                                 </div>
                             </div>
-<!--                            <div class="form-group row">
-                                <div class="col-sm-6">
-                                    <label class="col-form-label">Tiempo</label>
-                                    <div class="">
-                                        <input type="text" name="tiempo_vacante" class="form-control" value="<?php echo ($tupla[0]['tiempo_vacante']) ?>">
-                                    </div>
-                                </div>
+                            <div class="form-group row">
                                 <div class="col-sm-6">
                                     <label class="col-form-label">Área</label>
                                     <div class="">
-                                        <input type="text" name="area_vacante" class="form-control" value="<?php echo ($tupla[0]['area_vacante']) ?>">
-                                    </div>   
-                                </div>
-                            </div>-->
-<!--                            <div class="form-group row">
-                                <div class="col-sm-6">
-                                    <label class="col-form-label">Tipo</label>
-                                    <div class="">
-                                        <input type="text" name="tipo_vacante" class="form-control" value="<?php echo ($tupla[0]['tipo_vacante']) ?>">
-                                    </div> 
-                                </div>
-                                <div class="col-sm-6">
-                                    <label class="col-form-label">Modo</label>
-                                    <div class="">
-                                        <input type="text" name="presencia_vacante" class="form-control" value="<?php echo ($tupla[0]['presencia_vacante']) ?>">
-                                    </div>   
-                                </div>
-                            </div>-->
-<!--                            <div class="form-group row">
-                                <div class="col-sm-6">
-                                    <label class="col-form-label">Lugar</label>
-                                    <div class="">
-                                        <input type="text" name="lugar_vacante" class="form-control" value="<?php echo ($tupla[0]['lugar_vacante']) ?>">
+                                        <input type="text" name="area_vacante" class="form-control" placeholder="Ej: Negocios, Operaciones, Talento Humano" value="<?php echo ($tupla[0]['area_vacante']) ?>">
                                     </div>
                                 </div>
                                 <div class="col-sm-6">
+                                    <label class="col-form-label">Lugar / Agencia</label>
+                                    <div class="">
+                                        <input type="text" name="lugar_vacante" class="form-control" placeholder="Ej: Agencia Matriz" value="<?php echo ($tupla[0]['lugar_vacante']) ?>">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-group row">
+                                <div class="col-sm-4">
+                                    <label class="col-form-label">Tipo de contrato</label>
+                                    <div class="">
+                                        <select name="tipo_vacante" class="form-control">
+                                            <?php foreach (['FULL' => 'Tiempo completo', 'PARCIAL' => 'Medio tiempo', 'OCASIONAL' => 'Ocasional', 'PRACTICAS' => 'Prácticas'] as $val => $label) { ?>
+                                                <option value="<?php echo $val ?>" <?php echo ($tupla[0]['tipo_vacante'] === $val) ? 'selected' : '' ?>><?php echo $label ?></option>
+                                            <?php } ?>
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="col-sm-4">
+                                    <label class="col-form-label">Modalidad</label>
+                                    <div class="">
+                                        <select name="presencia_vacante" class="form-control">
+                                            <?php foreach (['Presencial', 'Híbrido', 'Remoto'] as $val) { ?>
+                                                <option value="<?php echo $val ?>" <?php echo ($tupla[0]['presencia_vacante'] === $val) ? 'selected' : '' ?>><?php echo $val ?></option>
+                                            <?php } ?>
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="col-sm-4">
                                     <label class="col-form-label">Nivel Requerido</label>
                                     <div class="">
-                                        <input type="text" name="niveleduca_vacante" class="form-control" value="<?php echo ($tupla[0]['niveleduca_vacante']) ?>">
-                                    </div>  
+                                        <input type="text" name="niveleduca_vacante" class="form-control" placeholder="Ej: Tercer nivel" value="<?php echo ($tupla[0]['niveleduca_vacante']) ?>">
+                                    </div>
                                 </div>
-                            </div>-->
+                            </div>
                             <div class="form-group row">
                                 <div class="col-sm-6">
                                     <label class="col-form-label">Fecha Inicio</label>

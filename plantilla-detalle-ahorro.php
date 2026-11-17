@@ -127,7 +127,7 @@ $datosAhorro['notas'] = arreglar_mojibake($datosAhorro['notas'] ?? '');
                     $caracteristicas = [
                         ['icon' => 'fa-solid fa-vault', 'titulo' => 'Tu dinero siempre seguro', 'texto' => 'Maneja tus ahorros y depósitos cotidianos con total respaldo institucional.'],
                         ['icon' => 'fa-solid fa-layer-group', 'titulo' => 'Todo en un solo lugar', 'texto' => 'Recibe transferencias, salarios o subsidios sin comisiones ocultas.'],
-                        ['icon' => 'fa-solid fa-laptop-file', 'titulo' => 'Finanzas a tu alcance', 'texto' => 'Monitorea tus saldos las 24/7 de forma rápida mediante la Banca Virtual.'],
+                        ['icon' => 'fa-solid fa-laptop-file', 'titulo' => 'Finanzas a tu alcance', 'texto' => 'Consulta tu saldo y movimientos en cualquiera de nuestras agencias a nivel nacional.'],
                         ['icon' => 'fa-solid fa-percent', 'titulo' => 'Gana más con tu saldo', 'texto' => 'Genera un rendimiento preferencial capitalizable según tu saldo diario diario.'],
                         ['icon' => 'fa-solid fa-mobile-screen-button', 'titulo' => 'Pagos y cobros fáciles', 'texto' => 'Agiliza tus movimientos transaccionales desde ventanilla o canales digitales.'],
                         ['icon' => 'fa-solid fa-hand-holding-heart', 'titulo' => 'Soluciones cotidianas', 'texto' => 'Apertura ágil diseñada para respaldar tus metas de ahorro familiar o comercial.'],

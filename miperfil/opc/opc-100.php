@@ -45,23 +45,8 @@ $tabla = $a->fn100_rnoticias_all();
                                 while ($menu = $tabla->fetch_assoc()) {
                                     $st = $menu['estado_vacante'];
                                     $id = $menu['id_vacante'];
-                                    $tipo = $menu['tipo_noticia'];
                                     $estado = $a->fn100_estado_xid($st);
                                     $user = $a->fn100_rusernoticias_xid($id);
-                                    switch($tipo) {
-                                        case 0:
-                                            $tiponot = "Normal";
-                                        break;
-                                        case 1:
-                                            $tiponot = "Destacado";
-                                        break;
-                                        case 2:
-                                            $tiponot = "Slider";
-                                        break;
-                                        case 3:
-                                            $tiponot = "Actualidad";
-                                        break;
-                                    }
                                     ?>
                                     <tr>
                                         <td>  </td>

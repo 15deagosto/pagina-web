@@ -114,11 +114,11 @@
                 <i class="fa-brands fa-whatsapp text-sm text-green-500 opacity-60 group-hover:opacity-100 transition-opacity"></i>
             </a>
 
-            <!-- Canal 2: Banca Virtual -->
+            <!-- Canal 2: Ahorros e Inversiones -->
             <a href="#" id="canal-banca" class="no-underline flex items-center justify-between p-3 rounded-xl border border-neutral-100 hover:border-[#a31a16]/20 hover:bg-[#a31a16]/5 transition-all group">
                 <div class="flex items-center gap-2.5">
-                    <i class="fa-solid fa-laptop-code text-sm text-[#a31a16]"></i>
-                    <span class="text-xs font-bold text-neutral-700 group-hover:text-[#a31a16] transition-colors">Soporte Banca Virtual</span>
+                    <i class="fa-solid fa-piggy-bank text-sm text-[#a31a16]"></i>
+                    <span class="text-xs font-bold text-neutral-700 group-hover:text-[#a31a16] transition-colors">Ahorros e Inversiones</span>
                 </div>
                 <i class="fa-brands fa-whatsapp text-sm text-green-500 opacity-60 group-hover:opacity-100 transition-opacity"></i>
             </a>
@@ -419,22 +419,22 @@ document.addEventListener('DOMContentLoaded', () => {
     // CONFIGURACIÓN DE NÚMEROS TELEFÓNICOS CORPORATIVOS DE LA COOPERATIVA
     // (Cambien estos números de prueba por los teléfonos reales del personal de TI y Crédito)
     const telefonoCreditos = "593963860869"; // Formato internacional: código país (593) + número
-    const telefonoBanca = "593963860869";
+    const telefonoAhorros = "593963860869";
 
     // Enlace para el canal de Créditos
     if (canalCreditos) {
         // Texto automatizado que aparecerá en el teclado del socio
         const mensajeCredito = encodeURIComponent("Hola, me comunico desde el portal web. Deseo solicitar asesoría sobre los requisitos para un Microcrédito Inmediato.");
-        
+
         canalCreditos.setAttribute('href', "https://wa.me/" + telefonoCreditos + "?text=" + mensajeCredito);
         canalCreditos.setAttribute('target', '_blank');
     }
 
-    // Enlace para el canal de Soporte Técnico
+    // Enlace para el canal de Ahorros e Inversiones
     if (canalBanca) {
-        const mensajeBanca = encodeURIComponent("Hola, necesito asistencia técnica. No logro ingresar a la plataforma de 15 de Agosto Virtual.");
-        
-        canalBanca.setAttribute('href', "https://wa.me/" + telefonoBanca + "?text=" + mensajeBanca);
+        const mensajeBanca = encodeURIComponent("Hola, me comunico desde el portal web. Deseo asesoría sobre cuentas de ahorro e inversiones a plazo fijo.");
+
+        canalBanca.setAttribute('href', "https://wa.me/" + telefonoAhorros + "?text=" + mensajeBanca);
         canalBanca.setAttribute('target', '_blank');
     }
 

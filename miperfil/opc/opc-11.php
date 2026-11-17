@@ -74,7 +74,11 @@ $tabla = $a->fn11_rusuario_all();
                                         </td>
                                         <td>
                                             <select onchange="cn11_f6(6,<?php echo $id ?>,this.value)">
+                                                <?php if (isset($rolactivo[0])) { ?>
                                                 <option value="<?php echo $rolactivo[0]['id_rol'] ?>"><?php echo $rolactivo[0]['nombre_rol'] ?></option>
+                                                <?php } else { ?>
+                                                <option value="">Sin rol asignado</option>
+                                                <?php } ?>
                                                 <?php
                                                 while ($detroles = $roles->fetch_assoc()) {
                                                 ?>

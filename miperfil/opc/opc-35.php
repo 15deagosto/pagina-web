@@ -65,7 +65,7 @@ $tabla = $a->fn35_rresponsabilidad_social_all();
                                         <td>  </td>
                                         <td> <?php echo ($menu['titulo_respsocial']) ?> </td>
                                         <td> <?php echo ($menu['fechainicio_respsocial']) ?> </td>
-                                        <td> <?php echo ($user[0]['nombre_usuario'].' '.$user[0]['apellido_usuario']) ?> </td>
+                                        <td> <?php echo isset($user[0]) ? ($user[0]['nombre_usuario'].' '.$user[0]['apellido_usuario']) : '-' ?> </td>
                                         <td> 
                                             <label><i class="fa fa-file-image-o fa-3x" ></i></label>
                                             <button onclick='md35_d6(6,1,1,<?php echo $id?>)' data-toggle="modal" data-target="#modalcontent_md" class='btn btn-outline-primary shadow btn-xs sharp mr-1'><i class='fa fa-upload'></i></button>

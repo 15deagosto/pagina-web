@@ -44,7 +44,7 @@ $tabla = $a->fn91_rrepositorio_alltp();
                                     $id = $menu['id_rep'];
                                     $tipo=$menu['tipo_rep'];
                                     $estado = $a->fn91_estado_xid($st);
-                                    $fecha = date("d-m-Y", strtotime($archivo['fecha_rep']));
+                                    $fecha = date("d-m-Y", strtotime($menu['fecha_rep']));
                                     ?>
                                     <tr>
                                         <td><?php echo $menu['nombre_rep']?></td>

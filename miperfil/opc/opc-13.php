@@ -1,5 +1,4 @@
 <?php
-session_start();
 require './funciones/fn-13.php';
 $a = new Fn13();
 $rol = $a->fn13_r_rol_x_xestado();

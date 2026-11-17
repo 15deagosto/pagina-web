@@ -1,33 +1,50 @@
 <?php
 require './controler/conexion.php';
-include './fn/fn-credito.php';
 require './funciones/fn-index.php';
-$con = new Conecciones();
-$fncredito = new Fn_credito();
+require_once './controler/config.php';
+require_once './funciones/fn-utilidades.php';
 $fnindex = new Fn_index();
+
+$con = new Conecciones();
+$mysqlidato = $con->crearConexion();
+$idVacante = isset($_GET['id']) ? (int) $_GET['id'] : 0;
+$resVacante = $mysqlidato->query("SELECT * FROM vacante WHERE id_vacante = $idVacante AND estado_vacante = 1 LIMIT 1");
+$vacante = $resVacante ? $resVacante->fetch_assoc() : null;
+
+if (!$vacante) {
+    header('Location: trabaja-nosotros.php');
+    exit();
+}
+
+$mesesEs = [1 => 'enero', 2 => 'febrero', 3 => 'marzo', 4 => 'abril', 5 => 'mayo', 6 => 'junio', 7 => 'julio', 8 => 'agosto', 9 => 'septiembre', 10 => 'octubre', 11 => 'noviembre', 12 => 'diciembre'];
+function fechaVacanteEs($fecha, $mesesEs) {
+    $t = strtotime($fecha);
+    return $t ? (date('j', $t) . ' de ' . $mesesEs[(int) date('n', $t)] . ' de ' . date('Y', $t)) : '';
+}
+$imgVacante = (!empty($vacante['img_vacante']) && file_exists(__DIR__ . '/miperfil/images/' . $vacante['img_vacante']))
+    ? 'miperfil/images/' . $vacante['img_vacante']
+    : 'assets/img/img-item-busca-empleo.jpg';
+
+$tituloPagina = arreglar_mojibake($vacante['nombre_vacante']);
 ?>
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
     <head>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>Trabaja con nosotros - 15 de Agosto Cooperativa de Ahorro y Crédito</title>
-
-        <!--=====FAB ICON=======-->
+        <title><?php echo htmlspecialchars($tituloPagina) ?> - 15 de Agosto Cooperativa de Ahorro y Crédito</title>
         <link rel="shortcut icon" href="assets/img/favicon-coop.png" type="image/x-icon">
-
         <?php include "head-v2.php"; ?>
     </head>
-    <body class="v2">
+    <body class="v2 bg-white text-neutral-800">
 
-        <!--===== PRELOADER STARTS =======-->
+        <!--===== PRELOADER =======-->
         <div class="preloader">
             <img src="assets/img/logo/logo2.png">
             <div class="loader"></div>
         </div>
-        <!--===== PRELOADER ENDS =======-->
 
-        <!--===== PROGRESS STARTS=======-->
+        <!--===== PROGRESS =======-->
         <div class="paginacontainer">
             <div class="progress-wrap">
                 <svg class="progress-circle svg-content" width="100%" height="100%" viewBox="-1 -1 102 102">
@@ -35,160 +52,119 @@ $fnindex = new Fn_index();
                 </svg>
             </div>
         </div>
-        <!--===== PROGRESS ENDS=======-->
 
-        <!--=====HEADER START=======-->
         <header class="homepage2-body">
             <?php include 'header.php'; ?>
         </header>
-        <!--=====HEADER END =======-->
 
-        
-        <!--===== HERO AREA STARTS =======-->
-        <div class="inner-pages-section-area" style="background-image: url(assets/img/all-images/bg/fondo-004.png); background-position: center; background-repeat: no-repeat; background-size: cover;">
-            <div class="container">
-                <div class="row">
-                    <div class="col-lg-12 m-auto">
-                        <div class="inner-header text-center">
-                            <h2 style="font-size: 65px;">Trabaja con nosotros</h2>
-                            <div class="space24"></div>
-                            <a href="index.php">Inicio <i class="fa-solid fa-angle-right"></i> <span>Trabaja con nosotros</span></a>
-                        </div>
-                    </div>
-                </div>
-                <div class="row d-flex align-items-center">
-                    <div class="col-lg-8 col-md-12 col-sm-12 col-xs-12">
-                        <!--===============spacing==============-->
-                        <div class="pd_top_80"></div>
-                        <!--===============spacing==============-->
-
-                        <!--===============spacing==============-->
-                        <div class="pd_bottom_80"></div>
-                        <!--===============spacing==============-->
-                    </div>
-                    <div class="col-lg-4 hidden-md image_column">
-                        <div class="slider_image margin_extra" style="position: absolute;
-                             text-align: right;margin: -250px -158px -330px 0px !important;">
-                            <img style="max-width: 45%;
-                                 height: auto;" src="assets/img/all-images/about/cal-img.png" class="img-fluid" alt="slider image">
-                        </div>
-                    </div>
-                </div>
-
-            </div>
-        </div>
-        <!--===== HERO AREA ENDS =======-->
-
-        <!--===== SERVICE AREA STARTS =======-->
-        <div class="service-details-siderbars-area sp8">
-            <div class="container">
-                <div class="row">
-                    <div class="col-lg-8 m-auto d-flex">
-                        <img src="assets/img/search_user.svg" style="width: 100px;margin-right: 50px;">
-                        <div class="heading1 space-margin60" style="margin-top: 45px;">
-                            <h3 style="color: #6c6c6c">Se requiere contratar </h3>
-                            <h2 style="color: #a31a16;">Jefe de Operaciones</h2>
-                            <h3>AGENCIA MATRIZ</h3>
-                        </div>
-                    </div>
-                </div> 
-                <div class="row">
-                    <div class="col-lg-8 m-auto">
-                        <div class="service-main-detailsarea rightpadding">
-
-                            <div class="space32"></div>
-                            <div style="background: #a31a16;padding: 5px 10px; width: fit-content;">
-                                <h3 style="color: #fff">Requisitos</h3>
-                            </div>
-                            <hr style="border: 2px #cbcbcb dashed;">
-                            <div class="space16"></div>
-                            <div class="d-flex">
-                                <div class="item-vacante"></div>
-                                <p class="w-d98">Título de tercer nivel registrado en la SENECYT en ramas de contabilidad y Auditoria, administración, finanzas o afines.</p>
-                            </div>
-                            <div class="d-flex">
-                                <div class="item-vacante"></div>
-                                <p class="w-d98">Certificación que acrediten 1 año de experiencia en el sector financiero.</p>
-                            </div>
-                            <div class="space16"></div>
-                            <div style="background: #a31a16;padding: 5px 10px; width: fit-content;">
-                                <h3 style="color: #fff">Conocimiento</h3>
-                            </div>
-                            <hr style="border: 2px #cbcbcb dashed;">
-                            <div class="space16"></div>
-                            <div class="d-flex">
-                                <div class="item-vacante"></div>
-                                <p class="w-d98"> Contabilidad general</p>
-                            </div>
-                            <div class="d-flex">
-                                <div class="item-vacante"></div>
-                                <p class="w-d98"> Ajustes y conciliaciones</p>
-                            </div>
-                            <div class="d-flex">
-                                <div class="item-vacante"></div>
-                                <p class="w-d98"> Normativa del sector cooperativo</p>
-                            </div>
-                            <div class="d-flex">
-                                <div class="item-vacante"></div>
-                                <p class="w-d98">Office intermedio</p>
-                            </div>
-                            <div class="space16"></div>
-                            <div style="background: #a31a16;padding: 5px 10px; width: fit-content;">
-                                <h3 style="color: #fff">Habilidades</h3>
-                            </div>
-                            <hr style="border: 2px #cbcbcb dashed;">
-                            <div class="space16"></div>
-                            <div class="d-flex">
-                                <div class="item-vacante"></div>
-                                <p class="w-d98">Capacidad de Análisis,</p>
-                            </div>
-                            <div class="d-flex">
-                                <div class="item-vacante"></div>
-                                <p class="w-d98">Organización y Calidad</p>
-                            </div>
-                            <div class="space32"></div>
-                            <div style="background: #a31a16;padding: 5px 10px; width: fit-content;">
-                                <h3 style="color: #fff">Funciones</h3>
-                            </div>
-                            <hr style="border: 2px #cbcbcb dashed;">
-                            <div class="space16"></div>
-                            <div class="d-flex">
-                                <div class="item-vacante"></div>
-                                <p class="w-d98">Planificar, organizar y supervisar la gestión de apoyo operativo al área de negocios, administración central y controlar todas las operaciones de captaciones, colocaciones y servicios que se brindan a socios, clientes y usuarios en las agencias.</p>
-                            </div>
-                            <div class="d-flex">
-                                <div class="item-vacante"></div>
-                                <p class="w-d98">Mantener y asegurar el control de Cajas.</p>
-                            </div>
-                            <div class="d-flex">
-                                <div class="item-vacante"></div>
-                                <p class="w-d98">Controlar los arqueos diarios, faltantes, el aprovisionamiento de recursos para abastecer los fondos de cambio, depósitos banbcarios y procesos de efectivización.</p>
-                            </div>
-                            <div class="space32"></div>
-                            <div style="background: #f3f3f3;padding: 15px;">
-                                <p>Estabilidad laboral</p>
-                                <p>Organización y calidad</p>
-                                <p>100% Presencial</p>
-                            </div>
-                            <div style="margin-top: 50px;background: #791a2e; padding: 15px;border-radius: 20px;text-align: center;">
-                                <p style="color: #fff;">Si cumples con el perfil envia tu hoja de vida en formato PDF al correo: seleccion@cooperativa15deagosto.fin.ec o al 098 217 1003</p>
-                            </div>
-                           
-                        </div>
+        <!-- ===== HERO AREA UNIFICADA: Gradiente Rojo Corporativo ===== -->
+        <div class="w-full bg-gradient-to-br from-[#7a1310] to-[#a31a16] h-[200px] md:h-[240px] flex items-center border-b border-[#7a1310]/20 shadow-inner">
+            <div class="max-w-7xl mx-auto px-6 w-full text-center">
+                <div data-aos="fade-up" data-aos-duration="800">
+                    <h2 class="text-2xl md:text-4xl font-black text-white tracking-tight mb-3 drop-shadow-sm"><?php echo htmlspecialchars($tituloPagina) ?></h2>
+                    <div class="text-xs md:text-sm font-bold text-white/70 tracking-wide">
+                        <a href="index.php" class="hover:text-white transition-colors">Inicio</a>
+                        <i class="fa-solid fa-angle-right text-[10px] mx-2 opacity-50"></i>
+                        <a href="trabaja-nosotros.php" class="hover:text-white transition-colors">Trabaja con Nosotros</a>
+                        <i class="fa-solid fa-angle-right text-[10px] mx-2 opacity-50"></i>
+                        <span class="text-[#ffd9d6] font-extrabold">Detalle de Vacante</span>
                     </div>
                 </div>
             </div>
-            <div style="height: 200px;"></div>
         </div>
 
-        <!--===== SERVICE AREA ENDS =======-->
+        <!-- ===== DETALLE DE VACANTE ===== -->
+        <section class="py-16 md:py-20 max-w-5xl mx-auto px-6">
+            <div class="grid grid-cols-1 lg:grid-cols-3 gap-10">
 
-        <!--===== FOOTER AREA STARTS =======-->
+                <!-- COLUMNA PRINCIPAL -->
+                <div class="lg:col-span-2" data-aos="fade-up">
+                    <img src="<?php echo $imgVacante ?>" alt="<?php echo htmlspecialchars($tituloPagina) ?>" class="w-full h-56 object-cover rounded-3xl mb-8 shadow-soft">
+
+                    <?php
+                    $funcionVacante = trim(arreglar_mojibake($vacante['funcion_vacante']));
+                    if ($funcionVacante !== '' && $funcionVacante !== '<br>' && $funcionVacante !== '-') { ?>
+                        <div class="mb-8">
+                            <div class="inline-block bg-[#a31a16] px-4 py-1.5 rounded-lg mb-4">
+                                <h3 class="text-white font-black text-sm uppercase tracking-wide">Funciones</h3>
+                            </div>
+                            <div class="prose prose-sm max-w-none text-neutral-600 leading-relaxed"><?php echo $funcionVacante ?></div>
+                        </div>
+                    <?php } ?>
+
+                    <?php
+                    $requisitosVacante = trim(arreglar_mojibake($vacante['requisitos_vacante']));
+                    if ($requisitosVacante !== '' && $requisitosVacante !== '<br>' && $requisitosVacante !== 'ALL') { ?>
+                        <div class="mb-8">
+                            <div class="inline-block bg-[#a31a16] px-4 py-1.5 rounded-lg mb-4">
+                                <h3 class="text-white font-black text-sm uppercase tracking-wide">Requisitos</h3>
+                            </div>
+                            <div class="prose prose-sm max-w-none text-neutral-600 leading-relaxed"><?php echo $requisitosVacante ?></div>
+                        </div>
+                    <?php } ?>
+
+                    <?php
+                    $descVacante = trim(arreglar_mojibake($vacante['desc_vacante']));
+                    if ($descVacante !== '' && $descVacante !== '<br>') { ?>
+                        <div class="mb-8">
+                            <div class="inline-block bg-[#a31a16] px-4 py-1.5 rounded-lg mb-4">
+                                <h3 class="text-white font-black text-sm uppercase tracking-wide">Descripción</h3>
+                            </div>
+                            <div class="prose prose-sm max-w-none text-neutral-600 leading-relaxed"><?php echo $descVacante ?></div>
+                        </div>
+                    <?php } ?>
+
+                    <div class="bg-[#7a1310] rounded-2xl p-6 text-center mt-10">
+                        <p class="text-white font-semibold text-sm leading-relaxed">
+                            Si cumples con el perfil, envía tu hoja de vida en formato PDF a
+                            <a href="mailto:<?php echo EMAILTALENTO ?>" class="underline font-black"><?php echo EMAILTALENTO ?></a>
+                        </p>
+                    </div>
+                </div>
+
+                <!-- COLUMNA LATERAL: FICHA DE LA VACANTE -->
+                <div class="lg:col-span-1" data-aos="fade-up" data-aos-delay="100">
+                    <div class="bg-neutral-50 border border-neutral-100 rounded-3xl p-6 sticky top-24">
+                        <h4 class="font-black text-neutral-800 text-sm uppercase tracking-wide mb-5">Ficha de la vacante</h4>
+                        <ul class="space-y-4 text-xs">
+                            <li class="flex items-start gap-3">
+                                <i class="fa-solid fa-building text-[#a31a16] mt-0.5"></i>
+                                <div><span class="block text-neutral-400 font-bold uppercase tracking-wide text-[10px]">Área</span><?php echo htmlspecialchars(arreglar_mojibake($vacante['area_vacante'])) ?></div>
+                            </li>
+                            <li class="flex items-start gap-3">
+                                <i class="fa-solid fa-location-dot text-[#a31a16] mt-0.5"></i>
+                                <div><span class="block text-neutral-400 font-bold uppercase tracking-wide text-[10px]">Lugar</span><?php echo htmlspecialchars(arreglar_mojibake($vacante['lugar_vacante'])) ?></div>
+                            </li>
+                            <li class="flex items-start gap-3">
+                                <i class="fa-solid fa-briefcase text-[#a31a16] mt-0.5"></i>
+                                <div><span class="block text-neutral-400 font-bold uppercase tracking-wide text-[10px]">Tipo de contrato</span><?php echo htmlspecialchars(arreglar_mojibake($vacante['tipo_vacante'])) ?></div>
+                            </li>
+                            <li class="flex items-start gap-3">
+                                <i class="fa-solid fa-laptop-house text-[#a31a16] mt-0.5"></i>
+                                <div><span class="block text-neutral-400 font-bold uppercase tracking-wide text-[10px]">Modalidad</span><?php echo htmlspecialchars(arreglar_mojibake($vacante['presencia_vacante'])) ?></div>
+                            </li>
+                            <li class="flex items-start gap-3">
+                                <i class="fa-solid fa-graduation-cap text-[#a31a16] mt-0.5"></i>
+                                <div><span class="block text-neutral-400 font-bold uppercase tracking-wide text-[10px]">Nivel requerido</span><?php echo htmlspecialchars(arreglar_mojibake($vacante['niveleduca_vacante'])) ?></div>
+                            </li>
+                            <li class="flex items-start gap-3 pt-3 border-t border-neutral-200">
+                                <i class="fa-regular fa-calendar-days text-[#a31a16] mt-0.5"></i>
+                                <div><span class="block text-neutral-400 font-bold uppercase tracking-wide text-[10px]">Postular hasta</span><?php echo fechaVacanteEs($vacante['fechaout_vacante'], $mesesEs) ?></div>
+                            </li>
+                        </ul>
+                        <a href="mailto:<?php echo EMAILTALENTO ?>" class="mt-6 w-full inline-flex items-center justify-center gap-2 bg-[#a31a16] hover:bg-[#7a1310] text-white font-extrabold py-3.5 rounded-xl text-xs tracking-wider uppercase transition-all">
+                            <i class="fa-solid fa-paper-plane text-[11px]"></i> Postular ahora
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!--===== FOOTER AREA =======-->
         <div class="vl-footer2-section-area">
             <?php include './footer.php' ?>
         </div>
-        <!--===== FOOTER AREA ENDS =======-->
 
         <?php include "scripts-v2.php"; ?>
-</body>
+    </body>
 </html>

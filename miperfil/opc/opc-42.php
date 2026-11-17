@@ -1,5 +1,4 @@
 <?php
-session_start();
 require './funciones/fn-42.php';
 require './sesiones/abrir.php';
 $a = new Fn42();
