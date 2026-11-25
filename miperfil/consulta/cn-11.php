@@ -19,7 +19,7 @@ if ($opc_cn == 1) {
     $apellido_usuario = ($_POST['apellido_usuario']);
     $telefono_usuario = ($_POST['telefono_usuario']);
     $email_usuario = ($_POST['email_usuario']);
-    $estado = 0;
+    $estado = 1;
     $cuenta = $fn11->fn11_cusuario_xdata($nombre_usuario, $apellido_usuario, $telefono_usuario, $email_usuario, $estado);
     echo $fnalert->fnalert_create($cuenta);
     $tabla = $fn11->fn11_rusuario_all();

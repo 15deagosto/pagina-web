@@ -6,7 +6,9 @@
                 <p class="text-sm text-neutral-400 max-w-xs mb-5">Cooperativa de Ahorro y Crédito 15 de Agosto de Pilacoto, regulada por la Superintendencia de Economía Popular y Solidaria (SEPS) -- Segmento 2.</p>
                 <div>
                     <span class="text-white font-semibold text-sm">Atención al Cliente</span><br>
-                    <a href="tel:0326690343" class="text-xl font-extrabold text-white hover:text-rojo transition-colors">032 690 343</a>
+                    <a href="https://wa.me/593963860869" target="_blank" class="text-xl font-extrabold text-white hover:text-rojo transition-colors">
+                        <i class="fa-brands fa-whatsapp"></i> 0963 860 869
+                    </a>
                 </div>
             </div>
             <div>

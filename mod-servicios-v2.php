@@ -16,7 +16,7 @@
    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
 
         <!-- BLOQUE 1: CALIFÍCANOS -->
-        <a href="contacto.php" class="group relative bg-white rounded-3xl p-8 shadow-soft border border-neutral-100 hover:border-[#a31a16]/20 hover:-translate-y-2 hover:shadow-softhover transition-all duration-300 ease-out flex flex-col justify-between h-[340px]" data-aos="fade-up" data-aos-delay="100">
+        <a href="calificanos.php" class="group relative bg-white rounded-3xl p-8 shadow-soft border border-neutral-100 hover:border-[#a31a16]/20 hover:-translate-y-2 hover:shadow-softhover transition-all duration-300 ease-out flex flex-col justify-between h-[340px]" data-aos="fade-up" data-aos-delay="100">
             <div>
                 <div class="w-14 h-14 rounded-2xl bg-[#a31a16]/5 flex items-center justify-center text-[#a31a16] group-hover:bg-[#a31a16] group-hover:text-white transition-all duration-300 shadow-sm mb-6">
                     <i class="fa-solid fa-star-half-stroke text-2xl"></i>
@@ -33,7 +33,7 @@
         </a>
 
         <!-- BLOQUE 2: PAGO DE SERVICIOS -->
-        <a href="agencias.php" class="group relative bg-white rounded-3xl p-8 shadow-soft border border-neutral-100 hover:border-[#a31a16]/20 hover:-translate-y-2 hover:shadow-softhover transition-all duration-300 ease-out flex flex-col justify-between h-[340px]" data-aos="fade-up" data-aos-delay="200">
+        <a href="servicios.php" class="group relative bg-white rounded-3xl p-8 shadow-soft border border-neutral-100 hover:border-[#a31a16]/20 hover:-translate-y-2 hover:shadow-softhover transition-all duration-300 ease-out flex flex-col justify-between h-[340px]" data-aos="fade-up" data-aos-delay="200">
             <div>
                 <div class="w-14 h-14 rounded-2xl bg-[#a31a16]/5 flex items-center justify-center text-[#a31a16] group-hover:bg-[#a31a16] group-hover:text-white transition-all duration-300 shadow-sm mb-6">
                     <i class="fa-solid fa-receipt text-2xl"></i>
@@ -50,7 +50,7 @@
         </a>
 
         <!-- BLOQUE 3: SOLICITAR UN CRÉDITO -->
-        <a href="requisitos-credito.php" class="group relative bg-white rounded-3xl p-8 shadow-soft border border-neutral-100 hover:border-[#a31a16]/20 hover:-translate-y-2 hover:shadow-softhover transition-all duration-300 ease-out flex flex-col justify-between h-[340px]" data-aos="fade-up" data-aos-delay="300">
+        <a href="detprod-credito-4.php?id=120" class="group relative bg-white rounded-3xl p-8 shadow-soft border border-neutral-100 hover:border-[#a31a16]/20 hover:-translate-y-2 hover:shadow-softhover transition-all duration-300 ease-out flex flex-col justify-between h-[340px]" data-aos="fade-up" data-aos-delay="300">
             <div>
                 <div class="w-14 h-14 rounded-2xl bg-[#a31a16]/5 flex items-center justify-center text-[#a31a16] group-hover:bg-[#a31a16] group-hover:text-white transition-all duration-300 shadow-sm mb-6">
                     <i class="fa-solid fa-hand-holding-dollar text-2xl"></i>
@@ -84,7 +84,7 @@
         </a>
 
         <!-- BLOQUE 5: AHORROS -->
-        <a href="tasas-interes.php" class="group relative bg-white rounded-3xl p-8 shadow-soft border border-neutral-100 hover:border-[#a31a16]/20 hover:-translate-y-2 hover:shadow-softhover transition-all duration-300 ease-out flex flex-col justify-between h-[340px]" data-aos="fade-up" data-aos-delay="500">
+        <a href="detprod-ahorro.php?id=81" class="group relative bg-white rounded-3xl p-8 shadow-soft border border-neutral-100 hover:border-[#a31a16]/20 hover:-translate-y-2 hover:shadow-softhover transition-all duration-300 ease-out flex flex-col justify-between h-[340px]" data-aos="fade-up" data-aos-delay="500">
             <div>
                 <div class="w-14 h-14 rounded-2xl bg-[#a31a16]/5 flex items-center justify-center text-[#a31a16] group-hover:bg-[#a31a16] group-hover:text-white transition-all duration-300 shadow-sm mb-6">
                     <i class="fa-solid fa-piggy-bank text-2xl"></i>
@@ -101,7 +101,7 @@
         </a>
 
         <!-- BLOQUE 6: INVERSIONES -->
-        <a href="tasas-interes.php" class="group relative bg-white rounded-3xl p-8 shadow-soft border border-neutral-100 hover:border-[#a31a16]/20 hover:-translate-y-2 hover:shadow-softhover transition-all duration-300 ease-out flex flex-col justify-between h-[340px]" data-aos="fade-up" data-aos-delay="600">
+        <a href="detprod-inversion-vencimiento.php?id=53" class="group relative bg-white rounded-3xl p-8 shadow-soft border border-neutral-100 hover:border-[#a31a16]/20 hover:-translate-y-2 hover:shadow-softhover transition-all duration-300 ease-out flex flex-col justify-between h-[340px]" data-aos="fade-up" data-aos-delay="600">
             <div>
                 <div class="w-14 h-14 rounded-2xl bg-[#a31a16]/5 flex items-center justify-center text-[#a31a16] group-hover:bg-[#a31a16] group-hover:text-white transition-all duration-300 shadow-sm mb-6">
                     <i class="fa-solid fa-chart-line text-2xl"></i>

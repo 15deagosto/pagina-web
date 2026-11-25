@@ -7,6 +7,7 @@ ob_start(function($buffer) {
 ?>
 
 <?php require_once './funciones/fn-utilidades.php'; ?>
+<?php if (isset($fnindex)) { $fnindex->fnindex_registrarVisita(); } ?>
 
 <!-- TOP BAR: Línea Superior Institucional -->
 <div class="bg-[#a31a16] text-white text-xs border-b border-white/5 relative z-50">

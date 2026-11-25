@@ -1304,6 +1304,29 @@ class Fn_index {
         return $resultado;
     }
 
+    // Registra una visita en la tabla "paginas" (una sola vez por página y por sesión de navegador)
+    function fnindex_registrarVisita() {
+        if (session_status() === PHP_SESSION_NONE) {
+            session_start();
+        }
+
+        $pagina = strtoupper(basename($_SERVER['SCRIPT_NAME'], '.php'));
+
+        if (isset($_SESSION['visitas_registradas'][$pagina])) {
+            return;
+        }
+
+        $userAgent = $_SERVER['HTTP_USER_AGENT'] ?? '';
+        $ip = $_SERVER['REMOTE_ADDR'] ?? '';
+        $url = $_SERVER['REQUEST_URI'] ?? ('/' . strtolower($pagina) . '.php');
+        $navegador = $this->fnindex_getBrowser_version($userAgent);
+        $so = $this->fnindex_getPlatform($userAgent);
+
+        $this->fnindex_c_view_xdata($pagina, $url, $ip, $navegador, $so, 1, 'web');
+
+        $_SESSION['visitas_registradas'][$pagina] = true;
+    }
+
     function fnindex_verifiviewtest() {
         $con = new Conecciones;
         $mysqlidato = $con->crearConexion();

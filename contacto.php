@@ -82,15 +82,15 @@ $tituloPagina = 'Contacto';
                 <!-- TARJETA INFORMATIVA CORPORATIVA (Lado Derecho - Ancho 5 de 12) -->
                 <div class="lg:col-span-5 flex flex-col gap-6" data-aos="fade-left">
                     
-                    <!-- ITEM 1: LLÁMANOS -->
+                    <!-- ITEM 1: WHATSAPP -->
                     <div class="bg-gradient-to-br from-white to-neutral-50 border border-neutral-100 rounded-3xl p-6 shadow-soft flex gap-5 items-start hover:border-rojo/20 hover:-translate-y-1 transition-all duration-300 group">
                         <div class="w-12 h-12 rounded-2xl bg-rojo-light/50 flex items-center justify-center flex-shrink-0 text-rojo border border-rojo/5 group-hover:bg-rojo group-hover:text-white transition-colors duration-300 shadow-sm">
-                            <i class="fa-solid fa-phone text-lg"></i>
+                            <i class="fa-brands fa-whatsapp text-lg"></i>
                         </div>
                         <div>
                             <span class="text-[10px] font-black text-neutral-400 uppercase tracking-widest block mb-0.5">Servicio Preferencial</span>
-                            <h4 class="font-black text-neutral-800 text-base mb-1 tracking-tight">Llámanos</h4>
-                            <a href="tel:0326690343" class="text-rojo font-black text-sm hover:text-rojo-dark transition-colors">032 690 343</a>
+                            <h4 class="font-black text-neutral-800 text-base mb-1 tracking-tight">Escríbenos</h4>
+                            <a href="https://wa.me/593963860869" target="_blank" class="text-rojo font-black text-sm hover:text-rojo-dark transition-colors">0963 860 869</a>
                         </div>
                     </div>
 
