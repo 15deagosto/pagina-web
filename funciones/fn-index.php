@@ -1305,14 +1305,21 @@ class Fn_index {
     }
 
     // Registra una visita en la tabla "paginas" (una sola vez por página y por sesión de navegador)
+    // tipo_pagina 1 = navegación general (reporte "Visitas"), 2 = ficha de producto (reporte "Productos")
     function fnindex_registrarVisita() {
+        global $tituloPagina, $tipoPaginaVisita;
+
         if (session_status() === PHP_SESSION_NONE) {
             session_start();
         }
 
-        $pagina = strtoupper(basename($_SERVER['SCRIPT_NAME'], '.php'));
+        $tipo = isset($tipoPaginaVisita) ? (int) $tipoPaginaVisita : 1;
+        $pagina = ($tipo == 2 && !empty($tituloPagina))
+            ? strtoupper($tituloPagina)
+            : strtoupper(basename($_SERVER['SCRIPT_NAME'], '.php'));
 
-        if (isset($_SESSION['visitas_registradas'][$pagina])) {
+        $claveSesion = $tipo . '-' . $pagina;
+        if (isset($_SESSION['visitas_registradas'][$claveSesion])) {
             return;
         }
 
@@ -1322,9 +1329,9 @@ class Fn_index {
         $navegador = $this->fnindex_getBrowser_version($userAgent);
         $so = $this->fnindex_getPlatform($userAgent);
 
-        $this->fnindex_c_view_xdata($pagina, $url, $ip, $navegador, $so, 1, 'web');
+        $this->fnindex_c_view_xdata($pagina, $url, $ip, $navegador, $so, $tipo, 'web');
 
-        $_SESSION['visitas_registradas'][$pagina] = true;
+        $_SESSION['visitas_registradas'][$claveSesion] = true;
     }
 
     function fnindex_verifiviewtest() {

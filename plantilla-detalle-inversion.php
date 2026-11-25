@@ -8,6 +8,7 @@ $tasa_inv = isset($tasaTexto) ? $tasaTexto : 'Tasas Competitivas';
 $pago_inv = isset($pagoInteresTexto) ? $pagoInteresTexto : 'Según modalidad';
 
 $tituloPagina = $titulo_inv;
+$tipoPaginaVisita = 2;
 ?>
 <!DOCTYPE html>
 <html lang="es">

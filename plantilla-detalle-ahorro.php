@@ -8,6 +8,7 @@ require_once './funciones/fn-utilidades.php';
 $titulo = arreglar_mojibake($titulo);
 $desc = arreglar_mojibake(is_array($desc) ? '' : $desc);
 $tituloPagina = $titulo;
+$tipoPaginaVisita = 2;
 if (!isset($datosAhorro)) {
     $datosAhorro = ['montos' => '', 'tasa' => '', 'notas' => ''];
 }

@@ -15,6 +15,7 @@ if (!isset($segmentoLabel)) {
 $titulo = trim(arreglar_mojibake($titulo));
 $desc = arreglar_mojibake($desc);
 $tituloPagina = $titulo;
+$tipoPaginaVisita = 2;
 
 // Mapeo inverso de equivalencias para conectar de forma automática el Web Service AJAX
 $mapaInversowB = [
